@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Store — PsyTectrics™</title>
-<meta name="description" content="PsyTectrics Store. The TRACE-R Awareness Ring — continuous SC Blueprint™ monitoring on your finger."/>
+<meta name="description" content="PsyTectrics Store. Smart Ring and Smart Watch — continuous health monitoring on your finger and wrist."/>
 <link rel="icon" href="pt_icon.png" type="image/png"/>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 <style>
@@ -28,10 +28,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .nav-cta{background:var(--accent);color:#060B18;padding:0.6rem 1.4rem;font-family:var(--mono);font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s}
 .nav-cta:hover{opacity:0.85}
 
-/* HERO SPLIT */
 .hero{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 70px);background:#060B18}
-.hero-visual{display:flex;align-items:center;justify-content:center;padding:4rem;position:relative;border-right:1px solid rgba(255,255,255,0.06);background:#FFFFFF}
-.hero-visual::before{content:none}
+.hero-visual{display:flex;align-items:center;justify-content:center;padding:4rem;position:relative;border-right:1px solid rgba(255,255,255,0.06);background:#ffffff}
 .ring-wrap{position:relative;z-index:1;animation:float 6s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 .hero-copy{padding:4rem;display:flex;flex-direction:column;justify-content:center;gap:1.2rem}
@@ -49,7 +47,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .btn-ghost{color:rgba(255,255,255,0.55);font-family:var(--mono);font-size:0.72rem;letter-spacing:0.08em;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:2px;transition:color 0.2s}
 .btn-ghost:hover{color:rgba(255,255,255,0.9)}
 
-/* SECTIONS */
 section{padding:6rem 0;border-top:1px solid var(--line)}
 .container{max-width:1200px;margin:0 auto;padding:0 3rem}
 .section-label{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;display:block}
@@ -57,7 +54,6 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 .section-title em{font-style:italic;color:var(--accent)}
 .section-desc{color:var(--muted);font-size:0.9rem;line-height:1.8;max-width:560px;margin-bottom:3rem}
 
-/* FEATURES */
 .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
 .feature-card{background:#fff;padding:2.2rem;transition:background 0.2s;display:flex;flex-direction:column;gap:0.75rem}
 .feature-card:hover{background:var(--bg-soft)}
@@ -65,7 +61,6 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 .feature-card h3{font-family:var(--serif);font-size:1.1rem;font-weight:300;color:var(--text)}
 .feature-card p{color:var(--muted);font-size:0.84rem;line-height:1.7}
 
-/* SPECS */
 .specs-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:start}
 .specs-list{list-style:none}
 .specs-list li{display:flex;justify-content:space-between;align-items:baseline;padding:0.9rem 0;border-bottom:1px solid var(--line)}
@@ -73,10 +68,9 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 .spec-label{color:var(--muted);font-size:0.86rem}
 .spec-value{color:var(--text);font-size:0.86rem;text-align:right}
 
-/* SIZE + COLOUR SELECTOR */
 .selector-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:0.6rem;display:block}
 .size-row{display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:1.5rem}
-.size-btn{width:44px;height:44px;border:1px solid var(--line-strong);background:transparent;color:var(--muted);font-family:var(--mono);font-size:0.7rem;cursor:pointer;transition:all 0.2s;border-radius:0}
+.size-btn{width:44px;height:44px;border:1px solid var(--line-strong);background:transparent;color:var(--muted);font-family:var(--mono);font-size:0.7rem;cursor:pointer;transition:all 0.2s}
 .size-btn:hover{border-color:var(--accent-border);color:var(--text)}
 .size-btn.active{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
 .colour-row{display:flex;gap:0.5rem;margin-bottom:0.4rem}
@@ -87,9 +81,6 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 .colour-name{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.08em;color:var(--muted);margin-bottom:1.5rem}
 .size-guide-link{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.06em;color:var(--muted2);text-decoration:underline;text-underline-offset:3px;cursor:pointer;display:block;margin-top:-1rem;margin-bottom:1.5rem}
 
-/* PURCHASE CARD */
-.purchase-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:3rem;align-items:start}
-.purchase-card{background:var(--bg-soft);border:1px solid var(--accent-border);padding:2.5rem}
 .purchase-tag{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:0.75rem}
 .price-display{font-family:var(--serif);font-size:4rem;font-weight:300;color:var(--text);line-height:1;margin-bottom:0.2rem}
 .price-display sup{font-size:1.6rem;vertical-align:top;margin-top:0.65rem;display:inline-block}
@@ -102,7 +93,6 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 .purchase-note p{color:var(--muted);font-size:0.84rem;line-height:1.8}
 .purchase-note strong{color:var(--text);font-weight:400}
 
-/* FOOTER */
 .pt-footer{background:#060B18;border-top:1px solid rgba(255,255,255,0.07);padding:2rem 3rem}
 .pt-footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 .pt-footer-logo{font-family:var(--mono);font-size:0.78rem;letter-spacing:0.16em;color:rgba(255,255,255,0.5);font-weight:700}
@@ -111,7 +101,7 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 .pt-footer-links a:hover{color:rgba(255,255,255,0.7)}
 .pt-footer-note{font-family:var(--mono);font-size:0.58rem;color:rgba(255,255,255,0.2)}
 
-@media(max-width:1024px){.features-grid{grid-template-columns:repeat(2,1fr)}.specs-layout{grid-template-columns:1fr;gap:3rem}.purchase-grid{grid-template-columns:1fr}}
+@media(max-width:1024px){.features-grid{grid-template-columns:repeat(2,1fr)}.specs-layout{grid-template-columns:1fr;gap:3rem}}
 @media(max-width:900px){.hero{grid-template-columns:1fr}.hero-visual{display:none}}
 @media(max-width:768px){nav{padding:0.8rem 1.2rem}.nav-links{display:none}.container{padding:0 1.5rem}.features-grid{grid-template-columns:1fr}.pt-footer{padding:2rem 1.5rem}.pt-footer-inner{flex-direction:column;text-align:center;align-items:center}.pt-footer-links{justify-content:center}}
 </style>
@@ -129,27 +119,24 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
     <li><a href="framework.html">Framework</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
+  <a href="#products" class="nav-cta">Shop Now</a>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
   <div class="hero-visual">
-    <!-- HERO IMAGE: Replace src with your supplier's hero/lifestyle shot.
-         Best: a clean angled or flat-lay photo of the ring on dark/white background.
-         Ideal size: 800×800px or 1:1 ratio. PNG with transparent bg works great here.
-         Example filename: img/trace-r-hero.png -->
     <div class="ring-wrap">
       <img
-        src="img/trace-r-ring-1.png"
-        alt="TRACE-R Awareness Ring by PsyTectrics"
+        src="img/smart-ring-hero.png"
+        alt="PsyTectrics Smart Ring"
         style="width:340px;height:340px;object-fit:contain;display:block;filter:drop-shadow(0 20px 40px rgba(0,212,255,0.15))"
       />
     </div>
   </div>
   <div class="hero-copy">
-    <div class="hero-eyebrow">TRACE-R Collection · PsyTectrics™ Store</div>
-    <h1>Your body,<br/><em>decoded.</em></h1>
-    <p class="hero-desc">The TRACE-R range maps your SC Blueprint™ ratio, Awareness Index™, and Drift continuously — passively, without interruption. Behavioural intelligence you don't have to think about. Choose the form that fits your life.</p>
+    <div class="hero-eyebrow">PsyTectrics™ Store</div>
+    <h1>Health tracking,<br/><em>simplified.</em></h1>
+    <p class="hero-desc">Continuous heart rate, sleep, and blood oxygen monitoring — worn on your finger or wrist. No subscription. No bulk. Just accurate data delivered to your phone.</p>
     <div class="hero-stats">
       <div class="hero-stat">
         <div class="hero-stat-num">7</div>
@@ -157,7 +144,7 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
       </div>
       <div class="hero-stat">
         <div class="hero-stat-num">50m</div>
-        <div class="hero-stat-label">Water resistant</div>
+        <div class="hero-stat-label">Waterproof</div>
       </div>
       <div class="hero-stat">
         <div class="hero-stat-num">24/7</div>
@@ -179,38 +166,38 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 <section id="features">
   <div class="container">
     <span class="section-label">What it does</span>
-    <h2 class="section-title">Intelligence on your<br/><em>finger.</em></h2>
-    <p class="section-desc">The TRACE-R tracks three core SC Blueprint™ metrics continuously — no tapping, no opening an app, no thinking about it.</p>
+    <h2 class="section-title">Intelligence on your<br/><em>finger or wrist.</em></h2>
+    <p class="section-desc">Both devices track the same core health metrics continuously — no tapping, no opening an app, no thinking about it.</p>
     <div class="features-grid">
       <div class="feature-card">
-        <div class="feature-icon">◈</div>
-        <h3>SC Blueprint™ ratio</h3>
-        <p>Your NARC, YARC, SIST, and Øll codes tracked in real time. See which code is dominant and how your behavioural pattern shifts throughout the day.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">◎</div>
-        <h3>Awareness Index™</h3>
-        <p>Your live position on the −5 to +5 axis. Zero is Zero-Point — the fully balanced state. The ring tells you how close you are and which direction you're moving.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">◇</div>
-        <h3>Drift detection</h3>
-        <p>When the gap between your conscious presentation and subconscious pattern becomes significant, the TRACE-R surfaces a quiet alert. A signal before it becomes behaviour.</p>
-      </div>
-      <div class="feature-card">
         <div class="feature-icon">♡</div>
-        <h3>Heart rate & SpO₂</h3>
-        <p>Continuous optical heart rate and blood oxygen monitoring. Resting baseline, active state, and overnight recovery — fed directly into your awareness profile.</p>
+        <h3>Heart Rate Monitoring</h3>
+        <p>Continuous optical heart rate tracking day and night. Resting baseline, active state, and overnight recovery — all logged automatically.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">◑</div>
-        <h3>Sleep & recovery</h3>
-        <p>REM cycle detection, sleep staging, and overnight SpO₂. Wake up knowing exactly how your subconscious layer is operating — not just how long you slept.</p>
+        <h3>Sleep Tracking</h3>
+        <p>REM cycle detection, sleep staging, and overnight SpO₂. Wake up knowing exactly how well you recovered — not just how long you slept.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">◈</div>
+        <h3>Blood Oxygen (SpO₂)</h3>
+        <p>Passive monitoring of blood oxygen saturation levels — a key marker of respiratory health and athletic readiness.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">△</div>
+        <h3>Activity Tracking</h3>
+        <p>Step count, calorie burn, and activity recognition built in. Automatically detects workouts and daily movement patterns.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">◯</div>
-        <h3>Titanium build</h3>
-        <p>Aerospace-grade titanium. 4g. Available in Midnight Black, Arctic Silver, and Champagne Gold. The PT chip mark is micro-etched into every ring.</p>
+        <h3>Titanium & Premium Build</h3>
+        <p>Aerospace-grade titanium ring at just 4g. Square-face watch with AMOLED display. Both built to a standard you'd expect from devices this close to your body.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⌀</div>
+        <h3>iOS & Android App</h3>
+        <p>Your data, beautifully visualised. Trends, scores, and daily insights — all delivered through the free companion app. No subscription required.</p>
       </div>
     </div>
   </div>
@@ -223,114 +210,84 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
       <div>
         <span class="section-label">Specifications</span>
         <h2 class="section-title">Built for<br/><em>precision.</em></h2>
-        <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;max-width:380px">Every component chosen with care. Aerospace titanium, medical-grade sensors, Bluetooth 5.3 — built to the standard you'd expect from a device this close to your body.</p>
+        <p style="color:var(--muted);font-size:0.9rem;line-height:1.8;max-width:380px">Every component chosen with care. Medical-grade sensors, Bluetooth 5.3, and up to 10-day battery life — built to the standard you'd expect.</p>
       </div>
       <ul class="specs-list">
-        <li><span class="spec-label">Material</span><span class="spec-value">Aerospace titanium · PVD coated</span></li>
-        <li><span class="spec-label">Weight</span><span class="spec-value">~4g</span></li>
-        <li><span class="spec-label">Battery life</span><span class="spec-value">Up to 7 days</span></li>
+        <li><span class="spec-label">Ring material</span><span class="spec-value">Aerospace titanium · PVD coated</span></li>
+        <li><span class="spec-label">Ring weight</span><span class="spec-value">~4g</span></li>
+        <li><span class="spec-label">Ring battery</span><span class="spec-value">Up to 7 days</span></li>
+        <li><span class="spec-label">Watch battery</span><span class="spec-value">Up to 10 days</span></li>
         <li><span class="spec-label">Water resistance</span><span class="spec-value">50 metres · 5 ATM</span></li>
         <li><span class="spec-label">Sensors</span><span class="spec-value">PPG · SpO₂ · Temperature · Accelerometer</span></li>
         <li><span class="spec-label">Connectivity</span><span class="spec-value">Bluetooth 5.3</span></li>
         <li><span class="spec-label">Compatibility</span><span class="spec-value">iOS 14+ · Android 9+</span></li>
-        <li><span class="spec-label">Charging</span><span class="spec-value">Magnetic · 60 min full charge</span></li>
-        <li><span class="spec-label">Sizes</span><span class="spec-value">6 · 7 · 8 · 9 · 10 · 11 · 12</span></li>
-        <li><span class="spec-label">Colours</span><span class="spec-value">Midnight Black · Arctic Silver · Champagne Gold</span></li>
-        <li><span class="spec-label">Part number</span><span class="spec-value">PT-TRC-R001</span></li>
+        <li><span class="spec-label">Ring sizes</span><span class="spec-value">6 · 7 · 8 · 9 · 10 · 11 · 12</span></li>
+        <li><span class="spec-label">Ring colours</span><span class="spec-value">Midnight Black · Arctic Silver · Champagne Gold</span></li>
+        <li><span class="spec-label">Watch colours</span><span class="spec-value">Midnight Black · Arctic Silver</span></li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- PRODUCT GRID -->
+<!-- PRODUCTS -->
 <section id="products" style="background:var(--bg-soft)">
   <div class="container">
-    <span class="section-label">Choose your TRACE-R</span>
+    <span class="section-label">Choose your device</span>
     <h2 class="section-title">The <em>range.</em></h2>
-    <p class="section-desc">Two form factors. One intelligence layer. Pick the TRACE-R that fits your life — both sync to the same PsyTectrics profile.</p>
+    <p class="section-desc">Two form factors, one health platform. Pick the device that fits your lifestyle — both sync to the same app and profile.</p>
 
-    <!-- PRODUCT CARDS ROW -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:3rem">
 
-      <!-- RING CARD -->
+      <!-- SMART RING -->
       <div style="background:#fff;padding:2.5rem;display:flex;flex-direction:column;gap:1rem">
         <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:0.5rem">
-          <span style="font-family:var(--mono);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent)">PT-TRC-R001</span>
+          <span style="font-family:var(--mono);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent)">PT-SR-001</span>
           <span style="font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;background:rgba(0,212,255,0.08);border:1px solid var(--accent-border);color:var(--accent);padding:0.2rem 0.5rem">Bestseller</span>
         </div>
-
         <div style="display:flex;justify-content:center;align-items:center;padding:1.5rem;background:var(--bg-soft);margin-bottom:0.5rem;min-height:200px">
-          <img
-            id="ring-card-img"
-            src="img/trace-r-ring-black-case.png"
-            alt="TRACE-R Awareness Ring — Midnight Black"
-            style="width:180px;height:180px;object-fit:contain;display:block"
-          />
+          <img id="ring-card-img" src="img/smart-ring-black.png" alt="PsyTectrics Smart Ring" style="width:180px;height:180px;object-fit:contain;display:block"/>
         </div>
-
-        <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--text)">TRACE-R Awareness Ring</h3>
-        <p style="color:var(--muted);font-size:0.86rem;line-height:1.7">Continuous SC Blueprint™ monitoring in 4g of aerospace titanium. Invisible intelligence — worn, not carried.</p>
-
+        <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--text)">Smart Ring</h3>
+        <p style="color:var(--muted);font-size:0.86rem;line-height:1.7">Continuous health monitoring in 4g of aerospace titanium. Heart rate, sleep, SpO₂ — tracked invisibly on your finger.</p>
         <div style="display:flex;align-items:baseline;gap:0.4rem;margin-top:0.5rem">
           <span style="font-family:var(--serif);font-size:2.8rem;font-weight:300;color:var(--text);line-height:1">£89</span>
         </div>
         <p style="color:var(--muted);font-size:0.75rem;font-style:italic">Free UK delivery · Ships in 5–7 working days</p>
-
         <ul style="list-style:none;margin:0.5rem 0">
           <li style="display:flex;align-items:center;gap:0.7rem;padding:0.45rem 0;border-bottom:1px solid var(--line);font-size:0.82rem;color:var(--muted)"><span style="color:var(--accent);font-size:0.45rem">✦</span>7-day battery · 50m waterproof</li>
           <li style="display:flex;align-items:center;gap:0.7rem;padding:0.45rem 0;border-bottom:1px solid var(--line);font-size:0.82rem;color:var(--muted)"><span style="color:var(--accent);font-size:0.45rem">✦</span>Sizes 6–12 · Black, Silver, Gold</li>
-          <li style="display:flex;align-items:center;gap:0.7rem;padding:0.45rem 0;font-size:0.82rem;color:var(--muted)"><span style="color:var(--accent);font-size:0.45rem">✦</span>PT chip mark micro-etched</li>
+          <li style="display:flex;align-items:center;gap:0.7rem;padding:0.45rem 0;font-size:0.82rem;color:var(--muted)"><span style="color:var(--accent);font-size:0.45rem">✦</span>Magnetic charging dock included</li>
         </ul>
-
-        <button class="btn-primary" style="width:100%;text-align:center;padding:0.9rem;margin-top:auto" onclick="openOrder('ring')">Order Ring — £89 →</button>
+        <button class="btn-primary" style="width:100%;text-align:center;padding:0.9rem;margin-top:auto" onclick="openOrder('ring')">Order Smart Ring — £89 →</button>
       </div>
 
-      <!-- WATCH CARD -->
-      <div style="background:#fff;padding:2.5rem;display:flex;flex-direction:column;gap:1rem;position:relative">
+      <!-- SMART WATCH -->
+      <div style="background:#fff;padding:2.5rem;display:flex;flex-direction:column;gap:1rem">
         <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:0.5rem">
-          <span style="font-family:var(--mono);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent)">PT-TRC-W001</span>
+          <span style="font-family:var(--mono);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent)">PT-SW-001</span>
           <span style="font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;background:rgba(0,212,255,0.04);border:1px solid rgba(0,212,255,0.15);color:var(--muted);padding:0.2rem 0.5rem">New</span>
         </div>
-
         <div style="display:flex;justify-content:center;align-items:center;padding:1.5rem;background:var(--bg-soft);margin-bottom:0.5rem;min-height:200px">
-          <img
-            src="img/trace-r-watch-2.png"
-            alt="TRACE-R Awareness Watch — Midnight Black"
-            style="width:140px;height:180px;object-fit:contain;display:block;image-rendering:auto"
-          />
+          <img src="img/smart-watch-black.png" alt="PsyTectrics Smart Watch" style="width:150px;height:180px;object-fit:contain;display:block"/>
         </div>
-
-        <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--text)">TRACE-R Awareness Watch</h3>
-        <p style="color:var(--muted);font-size:0.86rem;line-height:1.7">The full TRACE-R dashboard on your wrist. Larger screen for live Awareness Index™ readouts, Drift alerts, and session summaries — without reaching for your phone.</p>
-
+        <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--text)">Smart Watch</h3>
+        <p style="color:var(--muted);font-size:0.86rem;line-height:1.7">Full health dashboard on your wrist. AMOLED display with live readouts, notifications, and 10-day battery — no phone needed.</p>
         <div style="display:flex;align-items:baseline;gap:0.4rem;margin-top:0.5rem">
           <span style="font-family:var(--serif);font-size:2.8rem;font-weight:300;color:var(--text);line-height:1">£119</span>
         </div>
         <p style="color:var(--muted);font-size:0.75rem;font-style:italic">Free UK delivery · Ships in 5–7 working days</p>
-
         <ul style="list-style:none;margin:0.5rem 0">
-          <li style="display:flex;align-items:center;gap:0.7rem;padding:0.45rem 0;border-bottom:1px solid var(--line);font-size:0.82rem;color:var(--muted)"><span style="color:var(--accent);font-size:0.45rem">✦</span>Live display · Drift alerts on-wrist</li>
           <li style="display:flex;align-items:center;gap:0.7rem;padding:0.45rem 0;border-bottom:1px solid var(--line);font-size:0.82rem;color:var(--muted)"><span style="color:var(--accent);font-size:0.45rem">✦</span>10-day battery · 5 ATM waterproof</li>
-          <li style="display:flex;align-items:center;gap:0.7rem;padding:0.45rem 0;font-size:0.82rem;color:var(--muted)"><span style="color:var(--accent);font-size:0.45rem">✦</span>Black or Silver · 44mm case</li>
+          <li style="display:flex;align-items:center;gap:0.7rem;padding:0.45rem 0;border-bottom:1px solid var(--line);font-size:0.82rem;color:var(--muted)"><span style="color:var(--accent);font-size:0.45rem">✦</span>AMOLED display · call & notifications</li>
+          <li style="display:flex;align-items:center;gap:0.7rem;padding:0.45rem 0;font-size:0.82rem;color:var(--muted)"><span style="color:var(--accent);font-size:0.45rem">✦</span>Black or Silver · magnetic charging</li>
         </ul>
-
-        <button class="btn-primary" style="width:100%;text-align:center;padding:0.9rem;margin-top:auto" onclick="openOrder('watch')">Order Watch — £119 →</button>
+        <button class="btn-primary" style="width:100%;text-align:center;padding:0.9rem;margin-top:auto" onclick="openOrder('watch')">Order Smart Watch — £119 →</button>
       </div>
-    </div>
-
-    <!-- ASSESSMENT NOTE -->
-    <div class="purchase-note">
-      <p><strong>Assessment recommended before ordering.</strong><br/><br/>
-      Both TRACE-R devices work standalone — but reach full capability when paired with your PsyTectrics awareness profile. Your SC Blueprint™ baseline calibrates Drift detection and personalises your Awareness Index™ readings.<br/><br/>
-      The Solo Assessment is free to complete. Your full profile unlocks for £49. We recommend completing it before setting up your device.<br/><br/>
-      <strong>Already have your assessment code?</strong> Enter it during device setup in the app.</p>
-      <br/>
-      <a href="solo.html" style="font-family:var(--mono);font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-border);padding-bottom:2px">Take the free assessment →</a>
     </div>
   </div>
 </section>
 
-<!-- ORDER MODAL OVERLAY -->
+<!-- ORDER MODAL -->
 <div id="order-overlay" style="display:none;position:fixed;inset:0;background:rgba(6,11,24,0.92);z-index:500;align-items:center;justify-content:center">
   <div style="background:#fff;max-width:520px;width:90%;padding:2.5rem;position:relative;max-height:90vh;overflow-y:auto">
     <button onclick="closeOrder()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;font-family:var(--mono);font-size:0.7rem;color:var(--muted);cursor:pointer;letter-spacing:0.06em">✕ CLOSE</button>
@@ -341,9 +298,9 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
     <div id="ring-options">
       <span class="selector-label">Colour</span>
       <div class="colour-row">
-        <button class="colour-btn active" style="background:#1a1a1a" onclick="selectColour(this,'Midnight Black');swapRingImg('img/trace-r-ring-black-case.png')" title="Midnight Black"></button>
-        <button class="colour-btn" style="background:#C8D0D8" onclick="selectColour(this,'Arctic Silver');swapRingImg('img/trace-r-ring-silver.png')" title="Arctic Silver"></button>
-        <button class="colour-btn" style="background:#C9A96E" onclick="selectColour(this,'Champagne Gold');swapRingImg('img/trace-r-ring-gold.png')" title="Champagne Gold"></button>
+        <button class="colour-btn active" style="background:#1a1a1a" onclick="selectColour(this,'Midnight Black');swapRingImg('img/smart-ring-black.png')" title="Midnight Black"></button>
+        <button class="colour-btn" style="background:#C8D0D8" onclick="selectColour(this,'Arctic Silver');swapRingImg('img/smart-ring-silver.png')" title="Arctic Silver"></button>
+        <button class="colour-btn" style="background:#C9A96E" onclick="selectColour(this,'Champagne Gold');swapRingImg('img/smart-ring-gold.png')" title="Champagne Gold"></button>
       </div>
       <div class="colour-name" id="colour-name">Midnight Black</div>
       <span class="selector-label">Ring size</span>
@@ -385,7 +342,7 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
     <div class="pt-footer-links">
       <a href="index.html">Home</a>
       <a href="prototypes.html">Prototypes</a>
-      <a href="index.html">Store</a>
+      <a href="store_index.html">Store</a>
       <a href="contact.html">Contact</a>
     </div>
     <span class="pt-footer-note">© 2026 PsyTectrics Technologies Ltd · All rights reserved</span>
@@ -400,8 +357,17 @@ function swapRingImg(src){
   if(cardImg) cardImg.src = src;
 }
 
-function selectSize(btn){btn.closest('.size-row').querySelectorAll('.size-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');}
-function selectColour(btn,name){btn.closest('.colour-row').querySelectorAll('.colour-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const nameEl=btn.closest('div').nextElementSibling;if(nameEl)nameEl.textContent=name;}
+function selectSize(btn){
+  btn.closest('.size-row').querySelectorAll('.size-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function selectColour(btn,name){
+  btn.closest('.colour-row').querySelectorAll('.colour-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const nameEl = btn.closest('div').nextElementSibling;
+  if(nameEl) nameEl.textContent = name;
+}
 
 function openOrder(product){
   currentProduct = product;
@@ -409,28 +375,26 @@ function openOrder(product){
   overlay.style.display = 'flex';
   document.body.style.overflow = 'hidden';
   if(product === 'ring'){
-    document.getElementById('modal-tag').textContent = 'PT-TRC-R001 · Awareness Ring';
+    document.getElementById('modal-tag').textContent = 'PT-SR-001 · Smart Ring';
     document.getElementById('modal-price').innerHTML = '<sup>£</sup>89';
     document.getElementById('ring-options').style.display = 'block';
     document.getElementById('watch-options').style.display = 'none';
     document.getElementById('modal-perks').innerHTML = `
-      <li>TRACE-R Ring in your chosen colour &amp; size</li>
+      <li>Smart Ring in your chosen colour & size</li>
       <li>Magnetic charging dock included</li>
-      <li>PsyTectrics app — iOS &amp; Android (free)</li>
-      <li>60-day returns · 1-year warranty</li>
-      <li>PT chip mark micro-etched on surface</li>`;
+      <li>Free companion app — iOS & Android</li>
+      <li>60-day returns · 1-year warranty</li>`;
     document.getElementById('modal-order-btn').textContent = 'Confirm Order — £89 →';
   } else {
-    document.getElementById('modal-tag').textContent = 'PT-TRC-W001 · Awareness Watch';
+    document.getElementById('modal-tag').textContent = 'PT-SW-001 · Smart Watch';
     document.getElementById('modal-price').innerHTML = '<sup>£</sup>119';
     document.getElementById('ring-options').style.display = 'none';
     document.getElementById('watch-options').style.display = 'block';
     document.getElementById('modal-perks').innerHTML = `
-      <li>TRACE-R Watch in your chosen colour</li>
+      <li>Smart Watch in your chosen colour</li>
       <li>Magnetic charging cable included</li>
-      <li>PsyTectrics app — iOS &amp; Android (free)</li>
-      <li>60-day returns · 1-year warranty</li>
-      <li>Live Drift alerts on-wrist</li>`;
+      <li>Free companion app — iOS & Android</li>
+      <li>60-day returns · 1-year warranty</li>`;
     document.getElementById('modal-order-btn').textContent = 'Confirm Order — £119 →';
   }
 }
@@ -442,8 +406,8 @@ function closeOrder(){
 
 document.getElementById('modal-order-btn').addEventListener('click', function(){
   const price = currentProduct === 'ring' ? '£89' : '£119';
-  const name = currentProduct === 'ring' ? 'TRACE-R Awareness Ring' : 'TRACE-R Awareness Watch';
-  const ref = currentProduct === 'ring' ? 'PT-TRC-R001' : 'PT-TRC-W001';
+  const name = currentProduct === 'ring' ? 'Smart Ring' : 'Smart Watch';
+  const ref = currentProduct === 'ring' ? 'PT-SR-001' : 'PT-SW-001';
   let details = '';
   if(currentProduct === 'ring'){
     const size = document.querySelector('#ring-options .size-btn.active')?.textContent || '7';
@@ -454,8 +418,8 @@ document.getElementById('modal-order-btn').addEventListener('click', function(){
     const band = document.querySelector('#watch-options .size-btn.active')?.textContent || 'Silicone';
     details = 'Colour: ' + colour + '\nBand: ' + band;
   }
-  const subject = encodeURIComponent(name + ' Order — PsyTectrics™');
-  const body = encodeURIComponent('Hi,\n\nI would like to order a ' + name + '.\n\n' + details + '\nProduct: ' + ref + '\nPrice: ' + price + '\n\nPlease send me a payment link.\n\nThank you.');
+  const subject = encodeURIComponent('PsyTectrics ' + name + ' Order');
+  const body = encodeURIComponent('Hi,\n\nI would like to order a ' + name + '.\n\n' + details + '\nProduct ref: ' + ref + '\nPrice: ' + price + '\n\nPlease send me a payment link.\n\nThank you.');
   window.location.href = 'mailto:hello@psytectrics.com?subject=' + subject + '&body=' + body;
 });
 
@@ -463,8 +427,9 @@ function showSizeGuide(){
   alert('Ring size guide:\n\nSize 6 — 16.5mm inner diameter\nSize 7 — 17.3mm\nSize 8 — 18.2mm\nSize 9 — 19.0mm\nSize 10 — 19.8mm\nSize 11 — 20.6mm\nSize 12 — 21.4mm\n\nMeasure your finger circumference in mm and divide by 3.14 to get diameter.');
 }
 
-// Close overlay on backdrop click
-document.getElementById('order-overlay').addEventListener('click', function(e){if(e.target===this)closeOrder();});
+document.getElementById('order-overlay').addEventListener('click', function(e){
+  if(e.target === this) closeOrder();
+});
 </script>
 </body>
 </html>
