@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Reports — PsyTectrics™</title>
+<meta name="description" content="PsyTectrics awareness reports. Solo Assessment, Observer Profile, Business Audit. Select your report type to begin."/>
+<link rel="icon" href="pt_icon.png" type="image/png"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FFFFFF;--bg-soft:#F4F6F9;
+  --text:#0B1020;--muted:#6B7280;--muted2:#9CA3AF;
+  --accent:#00D4FF;--accent-soft:rgba(0,212,255,0.08);--accent-border:rgba(0,212,255,0.25);
+  --line:rgba(0,0,0,0.08);--line-strong:rgba(0,0,0,0.14);
+  --serif:'Montserrat',sans-serif;--sans:'Inter',sans-serif;--mono:'Space Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;padding-top:70px;-webkit-font-smoothing:antialiased;min-height:100vh}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0.85rem 2.5rem;border-bottom:1px solid rgba(255,255,255,0.06);background:#060B18;height:70px}
+.nav-logo-wrap{display:flex;align-items:center;text-decoration:none}
+.nav-logo-img{height:52px;width:auto;display:block}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-family:var(--mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.nav-cta{background:var(--accent);color:#060B18;padding:0.6rem 1.4rem;font-family:var(--mono);font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s}
+.nav-cta:hover{opacity:0.85}
+
+/* HERO */
+.page-hero{padding:5rem 3rem 4rem;border-bottom:1px solid var(--line);max-width:1200px;margin:0 auto;text-align:center}
+.eyebrow{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:1.2rem}
+.hero-title{font-family:var(--serif);font-size:clamp(2.5rem,5vw,4rem);font-weight:300;line-height:1.05;margin-bottom:1rem}
+.hero-title em{font-style:italic;color:var(--accent)}
+.hero-desc{color:var(--muted);font-size:0.95rem;line-height:1.85;max-width:540px;margin:0 auto}
+
+/* CARDS */
+.cards-section{max-width:1200px;margin:0 auto;padding:4rem 3rem}
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.report-card{background:#fff;display:flex;flex-direction:column;transition:background 0.2s;cursor:pointer;text-decoration:none;color:inherit}
+.report-card:hover{background:var(--bg-soft)}
+.report-card.featured{background:var(--bg-soft)}
+.card-header{padding:2.5rem 2.5rem 0}
+.card-badge{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-border);padding:0.28rem 0.75rem;display:inline-block;margin-bottom:1.5rem}
+.card-price{font-family:var(--serif);font-size:3.5rem;font-weight:300;color:var(--text);line-height:1;margin-bottom:0.2rem}
+.card-price sup{font-size:1.4rem;vertical-align:top;margin-top:0.6rem;display:inline-block}
+.card-price-note{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.08em;color:var(--muted2);margin-bottom:1.2rem}
+.card-header h2{font-family:var(--serif);font-size:1.6rem;font-weight:300;color:var(--text);margin-bottom:0;line-height:1.15}
+.card-header h2 em{font-style:italic;color:var(--accent)}
+.card-body{padding:1.2rem 2.5rem;flex:1}
+.card-body p{color:var(--muted);font-size:0.86rem;line-height:1.75;margin-bottom:1.2rem}
+.card-features{list-style:none;display:flex;flex-direction:column;margin-bottom:1.2rem}
+.card-features li{display:flex;align-items:flex-start;gap:0.65rem;padding:0.5rem 0;border-bottom:1px solid rgba(0,0,0,0.05);font-size:0.82rem;color:var(--muted);line-height:1.5}
+.card-features li:last-child{border-bottom:none}
+.card-features li::before{content:'—';color:var(--accent);flex-shrink:0;font-family:var(--mono);font-size:0.72rem;margin-top:1px}
+.card-note{background:var(--accent-soft);border:1px solid var(--accent-border);border-left:2px solid var(--accent);padding:0.8rem 1rem;font-size:0.74rem;color:var(--muted);line-height:1.65;margin-bottom:1.2rem}
+.card-footer{padding:1.5rem 2.5rem 2.5rem}
+.card-btn{display:block;width:100%;padding:1rem;text-align:center;font-family:var(--mono);font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border:none;cursor:pointer;transition:opacity 0.2s;text-decoration:none;background:var(--accent);color:#060B18}
+.card-btn:hover{opacity:0.85}
+.card-btn-outline{background:transparent;color:var(--text);border:1px solid var(--line-strong)}
+.card-btn-outline:hover{border-color:var(--accent-border);color:var(--accent)}
+
+/* CTA STRIP */
+.cta-strip{background:var(--bg-soft);border-top:1px solid var(--line);padding:4rem 3rem;text-align:center}
+.cta-strip h2{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:300;margin-bottom:0.75rem}
+.cta-strip h2 em{font-style:italic;color:var(--accent)}
+.cta-strip p{color:var(--muted);font-size:0.88rem;line-height:1.75;max-width:460px;margin:0 auto 2rem}
+
+/* FOOTER */
+.pt-footer{background:#060B18;border-top:1px solid rgba(255,255,255,0.07);padding:2rem 3rem}
+.pt-footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.pt-footer-logo{font-family:var(--mono);font-size:0.78rem;letter-spacing:0.16em;color:rgba(255,255,255,0.5);font-weight:700}
+.pt-footer-links{display:flex;gap:1.8rem;flex-wrap:wrap}
+.pt-footer-links a{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s}
+.pt-footer-links a:hover{color:rgba(255,255,255,0.7)}
+.pt-footer-note{font-family:var(--mono);font-size:0.58rem;color:rgba(255,255,255,0.2);letter-spacing:0.06em}
+
+@media(max-width:900px){.cards-grid{grid-template-columns:1fr}}
+@media(max-width:768px){nav{padding:0.8rem 1.2rem}.nav-links{display:none}.page-hero{padding:4rem 1.5rem 2.5rem}.cards-section{padding:2.5rem 1.5rem}.cta-strip{padding:3rem 1.5rem}.pt-footer{padding:2rem 1.5rem}.pt-footer-inner{flex-direction:column;text-align:center;align-items:center}.pt-footer-links{justify-content:center}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo-wrap">
+    <img src="pt_logo.png" alt="PsyTectrics" class="nav-logo-img"/>
+  </a>
+  <ul class="nav-links">
+    <li><a href="reports.html" class="active">Reports</a></li>
+    <li><a href="prototypes.html">Prototypes</a></li>
+    <li><a href="store_index.html">Store</a></li>
+    <li><a href="framework.html">Framework</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div style="border-bottom:1px solid var(--line)">
+  <div class="page-hero">
+    <span class="eyebrow">Awareness Index™ · PsyTectrics™</span>
+    <h1 class="hero-title">Select your<br/><em>report type.</em></h1>
+    <p class="hero-desc">Three structured reports grounded in the SC Blueprint™ framework. Select the type that fits — the assessment opens immediately.</p>
+  </div>
+</div>
+
+<div class="cards-section">
+  <div class="cards-grid">
+
+    <!-- SOLO -->
+    <a href="solo.html" class="report-card">
+      <div class="card-header">
+        <div class="card-badge">Personal · Solo</div>
+        <div class="card-price"><sup>£</sup>49</div>
+        <div class="card-price-note">Free to complete · Report unlocks at £49</div>
+        <h2>Solo<br/><em>Assessment</em></h2>
+      </div>
+      <div class="card-body">
+        <p>56 structured questions across conscious and subconscious layers. Your full SC Blueprint™ ratio, Awareness Index™ score, and Drift — mapped in real time as you answer.</p>
+        <ul class="card-features">
+          <li>Free to complete — results shown immediately</li>
+          <li>SC Blueprint™ ratio — NARC · YARC · SIST · Øll</li>
+          <li>Awareness Index™ — position on the −5 to +5 axis</li>
+          <li>Drift score — conscious vs subconscious gap</li>
+          <li>Full AI-written interpretive report</li>
+          <li>56-character encoded assessment code</li>
+          <li>Profile Chat integration</li>
+        </ul>
+        <div class="card-note">The geo diagram updates in real time as you answer — watch your SC Blueprint™ map build with every question.</div>
+      </div>
+      <div class="card-footer">
+        <span class="card-btn">Start Solo Assessment →</span>
+      </div>
+    </a>
+
+    <!-- OBSERVER -->
+    <a href="observer.html" class="report-card featured">
+      <div class="card-header">
+        <div class="card-badge">Third-party · Observer</div>
+        <div class="card-price"><sup>£</sup>75</div>
+        <div class="card-price-note">Delivered within 48 hours</div>
+        <h2>Observer<br/><em>Report</em></h2>
+      </div>
+      <div class="card-body">
+        <p>Submit message history, emails, or a written behavioural description of someone else. No subject participation required. Full SC Blueprint™ profile delivered within 48 hours.</p>
+        <ul class="card-features">
+          <li>No subject participation required</li>
+          <li>Submit WhatsApp exports · emails · descriptions</li>
+          <li>Full SC Blueprint™ ratio for the subject</li>
+          <li>Awareness Index™ and Drift for the subject</li>
+          <li>Relational dynamic analysis</li>
+          <li>Delivered within 48 hours of submission</li>
+          <li>Co-parenting · legal · workplace contexts</li>
+        </ul>
+        <div class="card-note">Observer Reports are used for documentation and understanding — not surveillance. All submissions reviewed before acceptance.</div>
+      </div>
+      <div class="card-footer">
+        <span class="card-btn">Start Observer Report →</span>
+      </div>
+    </a>
+
+    <!-- BUSINESS -->
+    <a href="business.html" class="report-card">
+      <div class="card-header">
+        <div class="card-badge">Organisation · Enterprise</div>
+        <div class="card-price"><sup>£</sup>125</div>
+        <div class="card-price-note">Delivered within 5 working days</div>
+        <h2>Business<br/><em>Audit</em></h2>
+      </div>
+      <div class="card-body">
+        <p>Structured behavioural audit for teams, leadership, or organisations — mapping awareness levels, SC Blueprint™ patterns, and friction points. Scope agreed before payment.</p>
+        <ul class="card-features">
+          <li>Digital footprint and brand tone audit</li>
+          <li>SC Blueprint™ mapping for individuals or teams</li>
+          <li>Awareness Index™ and Drift per person</li>
+          <li>Gap analysis and recalibration recommendations</li>
+          <li>Delivered within 5 working days</li>
+          <li>Scope confirmed before any charge</li>
+        </ul>
+        <div class="card-note">No charge until you approve the scope. Bespoke brief agreed before work begins.</div>
+      </div>
+      <div class="card-footer">
+        <span class="card-btn card-btn-outline">Start Business Audit →</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<div class="cta-strip">
+  <h2>Not sure which<br/><em>to choose?</em></h2>
+  <p>Start with the Solo Assessment — it's free to complete and takes 15–20 minutes. Your results appear immediately. The written report unlocks at £49.</p>
+  <a href="solo.html" style="display:inline-block;background:var(--accent);color:#060B18;padding:0.9rem 2.2rem;font-family:var(--mono);font-size:0.74rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s">Begin Solo Assessment — free →</a>
+</div>
+
+<footer class="pt-footer">
+  <div class="pt-footer-inner">
+    <span class="pt-footer-logo">PSYTECTRICS™</span>
+    <div class="pt-footer-links">
+      <a href="index.html">Home</a>
+      <a href="prototypes.html">Prototypes</a>
+      <a href="store_index.html">Store</a>
+      <a href="framework.html">Framework</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <span class="pt-footer-note">© 2026 PsyTectrics Technologies Ltd · All rights reserved</span>
+  </div>
+</footer>
+
+</body>
+</html>

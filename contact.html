@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contact — PsyTectrics™</title>
+<meta name="description" content="Get in touch with PsyTectrics. Assessment enquiries, report commissions, licensing, enterprise and press."/>
+<link rel="icon" href="pt_icon.png" type="image/png"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --nav-bg:#060B18;
+  --bg:#FFFFFF;--bg-soft:#F4F6F9;--bg-soft2:#E8ECF2;
+  --text:#0B1020;--muted:#6B7280;--muted2:#9CA3AF;
+  --accent:#00D4FF;--accent-dark:#0099BB;
+  --accent-soft:rgba(0,212,255,0.08);--accent-border:rgba(0,212,255,0.25);
+  --line:rgba(0,0,0,0.08);--line-strong:rgba(0,0,0,0.14);
+  --silver:#C7D0D9;--emerald:#00C27A;
+  --serif:'Montserrat',sans-serif;--sans:'Inter',sans-serif;--mono:'Space Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;padding-top:70px;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0.85rem 2.5rem;border-bottom:1px solid rgba(255,255,255,0.06);background:#060B18;height:70px}
+.nav-logo-wrap{display:flex;align-items:center;text-decoration:none}
+.nav-logo-img{height:52px;width:auto;display:block}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-family:var(--mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.nav-cta{background:var(--accent);color:#060B18;padding:0.6rem 1.4rem;font-family:var(--mono);font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s;border:none;cursor:pointer}
+.nav-cta:hover{opacity:0.85}
+
+/* PAGE HERO */
+.page-hero{padding:6rem 3rem 5rem;border-bottom:1px solid var(--line);max-width:1200px;margin:0 auto}
+.eyebrow{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:1.2rem}
+.hero-title{font-family:var(--serif);font-size:clamp(2.8rem,6vw,5rem);font-weight:300;line-height:1.05;margin-bottom:1rem}
+.hero-title em{font-style:italic;color:var(--accent)}
+.hero-desc{color:var(--muted);font-size:0.95rem;line-height:1.85;max-width:500px}
+
+/* LAYOUT */
+.container{max-width:1200px;margin:0 auto;padding:0 3rem}
+.contact-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:5rem;align-items:start;padding:5rem 3rem;max-width:1200px;margin:0 auto}
+
+/* LEFT */
+.info-label{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:block}
+.info-title{font-family:var(--serif);font-size:1.6rem;font-weight:300;color:var(--text);margin-bottom:0.6rem;line-height:1.15}
+.info-title em{font-style:italic;color:var(--accent)}
+.info-desc{color:var(--muted);font-size:0.84rem;line-height:1.75;margin-bottom:2rem}
+
+.quick-links{display:flex;flex-direction:column;gap:1px}
+.quick-link{background:var(--bg-soft);border:1px solid var(--line);padding:1.1rem 1.4rem;text-decoration:none;display:flex;align-items:center;justify-content:space-between;gap:1rem;transition:border-color 0.2s,background 0.2s}
+.quick-link:hover{border-color:var(--accent-border);background:var(--accent-soft)}
+.ql-tag{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:0.25rem}
+.ql-name{font-family:var(--serif);font-size:0.95rem;font-weight:400;color:var(--text)}
+.ql-arrow{color:var(--accent);font-size:1rem;flex-shrink:0}
+
+.response-note{margin-top:1.5rem;padding:1.1rem 1.4rem;background:var(--accent-soft);border:1px solid var(--accent-border);border-left:3px solid var(--accent)}
+.response-note p{font-family:var(--mono);font-size:0.67rem;letter-spacing:0.03em;color:var(--muted);line-height:1.7}
+.response-note p strong{color:var(--text)}
+
+/* FORM */
+.form-card{background:var(--bg-soft);border:1px solid var(--line);padding:2.5rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.form-field{display:flex;flex-direction:column;gap:0.4rem}
+.form-field.full{grid-column:1/-1}
+.field-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)}
+.field-input,.field-select,.field-textarea{width:100%;background:#fff;border:1px solid var(--line-strong);color:var(--text);font-family:var(--sans);font-size:0.86rem;padding:0.8rem 1rem;outline:none;transition:border-color 0.2s;appearance:none;-webkit-appearance:none}
+.field-input:focus,.field-select:focus,.field-textarea:focus{border-color:var(--accent)}
+.field-input::placeholder,.field-textarea::placeholder{color:var(--muted);opacity:0.6}
+.field-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;background-color:#fff;padding-right:2.5rem;cursor:pointer}
+.field-textarea{min-height:130px;resize:vertical;line-height:1.6}
+.form-submit-row{margin-top:1.5rem;display:flex;align-items:center;gap:1.5rem}
+.btn-submit{background:var(--accent);color:#060B18;border:none;padding:0.9rem 2.5rem;font-family:var(--mono);font-size:0.74rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:opacity 0.2s}
+.btn-submit:hover{opacity:0.85}
+.btn-submit:disabled{opacity:0.4;cursor:not-allowed}
+.submit-note{font-family:var(--mono);font-size:0.62rem;color:var(--muted2);letter-spacing:0.04em}
+.form-status{display:none;padding:0.9rem 1.2rem;font-family:var(--mono);font-size:0.7rem;margin-top:1rem;border:1px solid}
+.form-status.success{display:block;background:rgba(0,194,122,0.07);border-color:rgba(0,194,122,0.3);color:#00875A}
+.form-status.error{display:block;background:rgba(196,98,45,0.07);border-color:rgba(196,98,45,0.3);color:#C4622D}
+
+/* CHANNELS */
+.channels{padding:4rem 3rem;border-top:1px solid var(--line);background:var(--bg-soft)}
+.channels-inner{max-width:1200px;margin:0 auto}
+.channels-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:2rem}
+.channel-card{background:#fff;padding:2rem;transition:background 0.2s}
+.channel-card:hover{background:var(--bg-soft)}
+.ch-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;display:block}
+.ch-title{font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--text);margin-bottom:0.5rem}
+.ch-desc{color:var(--muted);font-size:0.8rem;line-height:1.65;margin-bottom:1rem}
+.ch-link{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.05em;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-border);padding-bottom:1px;transition:border-color 0.2s}
+.ch-link:hover{border-color:var(--accent)}
+
+
+
+
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr;gap:3rem;padding:3rem 1.5rem}.channels-grid{grid-template-columns:1fr}}
+@media(max-width:768px){nav{padding:0.8rem 1.2rem}.nav-links{display:none}.page-hero{padding:4rem 1.5rem 3rem}footer{flex-direction:column;text-align:center}.footer-links{justify-content:center}}
+
+
+
+
+/* === PT FOOTER === */
+.pt-footer{background:#060B18;border-top:1px solid rgba(255,255,255,0.07);padding:2rem 3rem}
+.pt-footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.pt-footer-logo{font-family:'Space Mono',monospace;font-size:0.78rem;letter-spacing:0.16em;color:rgba(255,255,255,0.5);font-weight:700}
+.pt-footer-links{display:flex;gap:1.8rem;flex-wrap:wrap}
+.pt-footer-links a{font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s}
+.pt-footer-links a:hover{color:rgba(255,255,255,0.7)}
+.pt-footer-note{font-family:'Space Mono',monospace;font-size:0.58rem;color:rgba(255,255,255,0.2);letter-spacing:0.06em}
+@media(max-width:768px){.pt-footer-inner{flex-direction:column;text-align:center;align-items:center}.pt-footer-links{justify-content:center}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo-wrap">
+    <img src="pt_logo.png" alt="PsyTectrics" class="nav-logo-img"/>
+  </a>
+  <ul class="nav-links">
+    <li><a href="reports.html">Reports</a></li>
+    <li><a href="prototypes.html">Prototypes</a></li>
+    <li><a href="store_index.html">Store</a></li>
+    <li><a href="framework.html">Framework</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+</nav>
+
+<div style="border-bottom:1px solid var(--line)">
+  <div class="page-hero">
+    <span class="eyebrow">Contact · PsyTectrics™</span>
+    <h1 class="hero-title">Get in<br/><em>touch.</em></h1>
+    <p class="hero-desc">Assessment enquiries, report commissions, enterprise licensing, and press. All messages read personally and responded to within 24 hours on working days.</p>
+  </div>
+</div>
+
+<div class="contact-grid">
+  <div>
+    <span class="info-label">Quick routes</span>
+    <h2 class="info-title">Know what<br/><em>you need?</em></h2>
+    <p class="info-desc">Use a direct route below or fill in the form — we'll route it correctly.</p>
+
+    <div class="quick-links">
+      <a href="reports.html" class="quick-link">
+        <div><span class="ql-tag">Free to start</span><span class="ql-name">Take the assessment</span></div>
+        <span class="ql-arrow">→</span>
+      </a>
+      <a href="reports.html" class="quick-link">
+        <div><span class="ql-tag">Solo · Observer · Business</span><span class="ql-name">Commission a report</span></div>
+        <span class="ql-arrow">→</span>
+      </a>
+      <a href="store_index.html" class="quick-link">
+        <div><span class="ql-tag">TRACE-R · Store</span><span class="ql-name">Order a product</span></div>
+        <span class="ql-arrow">→</span>
+      </a>
+      <a href="prototypes.html" class="quick-link">
+        <div><span class="ql-tag">NDA · Hardware</span><span class="ql-name">Device ecosystem enquiry</span></div>
+        <span class="ql-arrow">→</span>
+      </a>
+      <a href="framework.html" class="quick-link">
+        <div><span class="ql-tag">Practitioners · Enterprise</span><span class="ql-name">SC Blueprint™ licensing</span></div>
+        <span class="ql-arrow">→</span>
+      </a>
+    </div>
+
+    <div class="response-note">
+      <p><strong>Response time:</strong> Within 24 hours on working days.<br/>
+      <strong>Based in:</strong> London, UK.<br/>
+      <strong>Enterprise / IP enquiries:</strong> <strong>hello@psytectrics.com</strong></p>
+    </div>
+  </div>
+
+  <div class="form-card">
+    <form id="ptForm" action="https://formspree.io/f/mreorpre" method="POST">
+      <div class="form-row">
+        <div class="form-field">
+          <label class="field-label" for="name">Name</label>
+          <input class="field-input" id="name" name="name" type="text" required placeholder="Your name"/>
+        </div>
+        <div class="form-field">
+          <label class="field-label" for="email">Email</label>
+          <input class="field-input" id="email" name="email" type="email" required placeholder="your@email.com"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field full">
+          <label class="field-label" for="type">Enquiry type</label>
+          <select class="field-select" id="type" name="enquiry_type">
+            <option>Question about the assessment</option>
+            <option>Commission a Solo Report</option>
+            <option>Commission an Observer Report</option>
+            <option>Commission a Business Report</option>
+            <option>TRACE-R / Product order</option>
+            <option>Enterprise / Organisation</option>
+            <option>SC Blueprint™ licensing</option>
+            <option>Hardware & device enquiry</option>
+            <option>Press / media</option>
+            <option>Investment / partnership</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field full">
+          <label class="field-label" for="message">Message</label>
+          <textarea class="field-textarea" id="message" name="message" required placeholder="Tell us what you need."></textarea>
+        </div>
+      </div>
+      <input type="hidden" name="_subject" value="PsyTectrics Enquiry"/>
+      <div style="position:absolute;left:-9999px;opacity:0;height:0"><input type="text" name="_gotcha" tabindex="-1" autocomplete="off"/></div>
+      <div class="form-submit-row">
+        <button class="btn-submit" type="submit" id="submitBtn">Send message</button>
+        <span class="submit-note">Responded within 24 hours</span>
+      </div>
+      <div class="form-status" id="formStatus"></div>
+    </form>
+  </div>
+</div>
+
+<div class="channels">
+  <div class="channels-inner">
+    <span class="info-label">Channels</span>
+    <h2 style="font-family:var(--serif);font-size:1.6rem;font-weight:300;color:var(--text)">Other ways to <em style="font-style:italic;color:var(--accent)">reach us.</em></h2>
+    <div class="channels-grid">
+      <div class="channel-card">
+        <span class="ch-label">General enquiries</span>
+        <div class="ch-title">Email</div>
+        <p class="ch-desc">For all product, report, and general enquiries. Use the form above or email directly.</p>
+        <a href="mailto:hello@psytectrics.com" class="ch-link">hello@psytectrics.com</a>
+      </div>
+      <div class="channel-card">
+        <span class="ch-label">IP · Investment · NDA</span>
+        <div class="ch-title">PsyTectrics Technologies Ltd</div>
+        <p class="ch-desc">For IP licensing, investment enquiries, and formal NDA requests.</p>
+        <a href="mailto:hello@psytectrics.com" class="ch-link">hello@psytectrics.com</a>
+      </div>
+      <div class="channel-card">
+        <span class="ch-label">Built by</span>
+        <div class="ch-title">Ric Lee Digital</div>
+        <p class="ch-desc">All technology, infrastructure, and digital delivery across PsyTectrics is designed and built by Ric Lee Digital.</p>
+        <a href="https://riclee-dc.info" target="_blank" class="ch-link">riclee-dc.info</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+const form = document.getElementById('ptForm');
+const status = document.getElementById('formStatus');
+const btn = document.getElementById('submitBtn');
+form.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  btn.disabled = true; btn.textContent = 'Sending…';
+  try {
+    const res = await fetch(form.action, { method:'POST', body:new FormData(form), headers:{'Accept':'application/json'} });
+    if(res.ok){ status.className='form-status success'; status.textContent="Message received. You'll hear back within 24 hours."; form.reset(); }
+    else { throw new Error(); }
+  } catch { status.className='form-status error'; status.textContent='Something went wrong. Email hello@psytectrics.com directly.'; }
+  btn.disabled = false; btn.textContent = 'Send message';
+});
+</script>
+
+<footer class="pt-footer">
+  <div class="pt-footer-inner">
+    <span class="pt-footer-logo">PSYTECTRICS™</span>
+    <div class="pt-footer-links">
+      <a href="index.html">Home</a>
+      <a href="reports.html">Assess</a>
+      <a href="reports.html">Reports</a>
+      <a href="prototypes.html">Prototypes</a>
+      <a href="store_index.html">Store</a>
+      <a href="framework.html">Framework</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <span class="pt-footer-note">© 2026 PsyTectrics Technologies Ltd · All rights reserved</span>
+  </div>
+</footer>
+</body>
+</html>

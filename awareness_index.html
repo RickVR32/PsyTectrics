@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Awareness Index™ — PsyTectrics™</title>
+<link rel="icon" href="pt_icon.png" type="image/png"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FFFFFF;--bg-soft:#F4F6F9;--bg-panel:#F0F2F6;
+  --text:#0B1020;--muted:#6B7280;--muted2:#9CA3AF;
+  --accent:#00D4FF;--accent-soft:rgba(0,212,255,0.08);--accent-border:rgba(0,212,255,0.25);
+  --line:rgba(0,0,0,0.08);--line-strong:rgba(0,0,0,0.14);
+  --narc:#C4622D;--yarc:#1D9E75;--sist:#534AB7;--oll:#A0426B;
+  --serif:'Montserrat',sans-serif;--sans:'Inter',sans-serif;--mono:'Space Mono',monospace;
+  --nav-h:70px;
+}
+html,body{height:100%;overflow:hidden}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;border-bottom:1px solid rgba(255,255,255,0.06);background:#060B18;height:var(--nav-h)}
+.nav-logo-wrap{display:flex;align-items:center;text-decoration:none}
+.nav-logo-img{height:46px;width:auto;display:block}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.nav-badge{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-border);padding:0.28rem 0.75rem}
+.nav-back{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s}
+.nav-back:hover{color:rgba(255,255,255,0.8)}
+
+/* MAIN — geo left, 3 cols right */
+.main-layout{display:grid;grid-template-columns:280px 1fr;height:calc(100vh - var(--nav-h));margin-top:var(--nav-h)}
+
+/* GEO COL */
+.geo-col{border-right:1px solid var(--line);padding:1rem;display:flex;flex-direction:column;gap:0.75rem;background:#FAFBFC;overflow:hidden}
+.diag-header{display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.diag-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted)}
+.diag-prog{font-family:var(--mono);font-size:0.6rem;color:var(--muted);display:none}
+.diag-svg-wrap{flex:1;display:flex;align-items:center;justify-content:center;position:relative;min-height:0;overflow:hidden}
+#main-diagram{width:100%;height:100%;display:block}
+.diag-layer-badge{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--sist);text-align:center;flex-shrink:0}
+.oc-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;flex-shrink:0}
+.oc-mini{display:flex;flex-direction:column;gap:2px}
+.oc-mini-label{font-family:var(--mono);font-size:6.5px;letter-spacing:0.08em}
+.oc-mini-track{height:2px;background:var(--line)}
+.oc-mini-fill{height:100%;transition:width 0.6s ease}
+.oc-mini-pct{font-family:var(--mono);font-size:6.5px;color:var(--muted)}
+
+/* NODE TOOLTIP */
+.node-tooltip{position:absolute;background:#fff;border:1px solid var(--line-strong);padding:10px 12px;font-size:10px;max-width:200px;display:none;z-index:50;box-shadow:0 4px 16px rgba(0,0,0,0.1);pointer-events:none}
+
+/* 3-COL CONTENT */
+.content-cols{display:grid;grid-template-columns:repeat(3,1fr);height:100%;overflow:hidden;gap:0;background:var(--line)}
+
+.content-col{background:#fff;display:flex;flex-direction:column;overflow:hidden;border-right:1px solid var(--line)}
+.content-col:last-child{border-right:none}
+
+/* COL HEADER TAB */
+.col-tab{padding:0.75rem 1.2rem;border-bottom:1px solid var(--line);background:#FAFBFC;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:0.5rem}
+.col-tab-label{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent)}
+.col-tab-price{font-family:var(--mono);font-size:0.62rem;font-weight:700;color:var(--text)}
+
+/* SCROLLABLE BODY */
+.col-body{flex:1;overflow-y:auto;padding:1.2rem}
+.col-body::-webkit-scrollbar{width:2px}
+.col-body::-webkit-scrollbar-thumb{background:var(--line-strong)}
+
+/* PROGRESS BAR — solo col only */
+.q-progress-bar{height:2px;background:var(--line);flex-shrink:0}
+.q-progress-fill{height:100%;background:var(--accent);transition:width 0.4s ease;width:0%}
+
+/* INTRO BLOCK */
+.col-eyebrow{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:0.6rem}
+.col-title{font-family:var(--serif);font-weight:300;font-size:clamp(1.2rem,2vw,1.5rem);line-height:1.15;margin-bottom:0.6rem;color:var(--text)}
+.col-title em{font-style:italic;color:var(--accent)}
+.col-desc{font-size:0.8rem;color:var(--muted);line-height:1.75;margin-bottom:0.8rem}
+.col-tags{display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:0.8rem}
+.col-tag{font-family:var(--mono);font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.2rem 0.6rem;background:var(--accent-soft);border:1px solid var(--accent-border);color:var(--accent)}
+.col-note{font-size:0.74rem;color:var(--muted);line-height:1.7;background:var(--bg-soft);border-left:2px solid var(--accent);padding:0.65rem 0.8rem;margin-bottom:0.8rem}
+.col-free-note{font-size:0.74rem;color:var(--muted);line-height:1.7;margin-bottom:0.8rem}
+.col-free-note strong{color:var(--text);font-weight:500}
+
+/* CONTEXT INPUTS — solo */
+.ctx-field{margin-bottom:0.75rem}
+.ctx-field label{font-family:var(--mono);font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:0.3rem}
+.ctx-field input,.ctx-field textarea,.ctx-field select{width:100%;font-family:var(--sans);font-size:0.8rem;color:var(--text);background:#fff;border:1px solid var(--line-strong);padding:0.6rem 0.8rem;outline:none;transition:border-color 0.2s;border-radius:0;-webkit-appearance:none}
+.ctx-field input:focus,.ctx-field textarea:focus,.ctx-field select:focus{border-color:var(--accent)}
+.ctx-field input::placeholder,.ctx-field textarea::placeholder{color:var(--muted2);font-size:0.78rem}
+.ctx-field textarea{resize:none;line-height:1.6;min-height:56px}
+.ctx-age-row{display:flex;gap:0.3rem;flex-wrap:wrap}
+.ctx-age-btn{font-family:var(--mono);font-size:0.55rem;letter-spacing:0.06em;padding:0.35rem 0.6rem;border:1px solid var(--line-strong);background:transparent;color:var(--muted);cursor:pointer;transition:all 0.15s;border-radius:0}
+.ctx-age-btn:hover{border-color:var(--accent);color:var(--accent)}
+.ctx-age-btn.active{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+.ctx-context-row{display:flex;gap:0.3rem;flex-wrap:wrap}
+.ctx-ctx-btn{font-family:var(--mono);font-size:0.55rem;letter-spacing:0.06em;padding:0.35rem 0.7rem;border:1px solid var(--line-strong);background:transparent;color:var(--muted);cursor:pointer;transition:all 0.15s;border-radius:0}
+.ctx-ctx-btn:hover{border-color:var(--accent);color:var(--accent)}
+.ctx-ctx-btn.active{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+
+/* START BTN */
+.start-btn{width:100%;font-family:var(--mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--accent);color:#060B18;padding:0.8rem 1rem;border:none;cursor:pointer;transition:opacity 0.2s;font-weight:700;border-radius:0;display:block;text-align:center;margin-top:0.5rem}
+.start-btn:hover{opacity:0.85}
+
+/* QUESTION SCREEN */
+.q-step{display:none;flex-direction:column;gap:0.75rem}
+.q-step.active{display:flex}
+.q-meta-row{display:flex;align-items:center;gap:6px}
+.q-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.q-code-lbl{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase}
+.q-layer-lbl{font-family:var(--mono);font-size:0.58rem;color:var(--muted);margin-left:auto;text-transform:uppercase}
+.q-node-name{font-family:var(--serif);font-weight:300;font-size:1.4rem;line-height:1.2;color:var(--text)}
+.q-question{font-size:0.8rem;color:var(--muted);line-height:1.7}
+.q-answers{display:flex;flex-direction:column;gap:5px;margin:0.75rem 0 0.9rem}
+.q-answer-btn{display:flex;align-items:center;gap:10px;width:100%;padding:0.65rem 0.8rem;background:#fff;border:1.5px solid var(--line);cursor:pointer;text-align:left;font-family:var(--sans);font-size:0.8rem;color:var(--text);line-height:1.4;transition:border-color 0.15s,background 0.15s;border-radius:0}
+.q-answer-btn:hover{border-color:var(--accent);background:var(--accent-soft)}
+.q-answer-num{display:flex;align-items:center;justify-content:center;width:20px;height:20px;min-width:20px;background:var(--line);color:var(--muted);font-family:var(--mono);font-size:0.62rem;font-weight:700;flex-shrink:0;border-radius:0}
+.q-nav-row{display:flex;align-items:center;justify-content:space-between}
+.q-btn{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.6rem 1.2rem;border:none;cursor:pointer;transition:all 0.2s;border-radius:0}
+.q-btn-primary{background:var(--accent);color:#060B18;font-weight:700}
+.q-btn-primary:hover{opacity:0.85}
+.q-btn-primary:disabled{opacity:0.35;cursor:not-allowed}
+.q-btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--line-strong)}
+.q-btn-ghost:hover{color:var(--text);border-color:var(--line-strong)}
+
+/* REVEAL */
+.awareness-reveal{display:none;flex-direction:column;gap:0.75rem;text-align:center;padding:1.5rem 0.5rem;flex:1;justify-content:center;align-items:center}
+.awareness-reveal.visible{display:flex}
+.ar-lbl{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted)}
+.ar-score{font-family:var(--serif);font-weight:300;font-size:5rem;line-height:1;transition:color 0.5s}
+.ar-state{font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase}
+.ar-desc{font-size:0.76rem;color:var(--muted);line-height:1.7;max-width:260px}
+.ar-track{height:2px;background:var(--line);width:100%;max-width:200px}
+.ar-fill{height:100%;transition:width 0.8s ease}
+.ar-gen-btn{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--accent);color:#060B18;padding:0.75rem 1.5rem;border:none;cursor:pointer;font-weight:700;border-radius:0;transition:opacity 0.2s}
+.ar-gen-btn:hover{opacity:0.85}
+.ar-gen-btn:disabled{opacity:0.35;cursor:not-allowed}
+
+/* RESULTS */
+.results-wrap{padding:1rem 0}
+.r-section{background:var(--bg-soft);border:1px solid var(--line);padding:1rem;margin-bottom:0.6rem}
+.r-section-lbl{font-family:var(--mono);font-size:0.56rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:0.75rem;display:block}
+.r-level-big{font-family:var(--serif);font-weight:300;font-size:3.5rem;line-height:1;text-align:center}
+.r-level-name{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;text-align:center;margin-top:0.25rem}
+.r-bar-wrap{height:2px;background:var(--line);margin:0.6rem auto;max-width:160px;overflow:hidden}
+.r-bar{height:100%;transition:width 1s ease}
+.r-oc-row{display:flex;align-items:center;gap:6px;margin-bottom:3px}
+.r-oc-name{font-family:var(--mono);font-size:0.7rem;min-width:38px}
+.r-oc-trk{flex:1;height:2px;background:var(--line)}
+.r-oc-fill{height:100%;transition:width 1s ease}
+.r-oc-pct{font-family:var(--serif);font-size:0.9rem;font-weight:300;min-width:32px;text-align:right}
+.r-interp{font-size:0.78rem;line-height:1.8;color:var(--text)}
+.r-code-box{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;color:var(--accent);padding:0.7rem 0.8rem;background:var(--accent-soft);border:1px solid var(--accent-border);word-break:break-all;margin-bottom:0.5rem}
+.r-action-row{display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.75rem}
+.r-btn{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.6rem 1rem;border:none;cursor:pointer;text-decoration:none;display:inline-block;border-radius:0}
+.r-btn-primary{background:var(--accent);color:#060B18;font-weight:700}
+.r-btn-outline{background:transparent;color:var(--muted);border:1px solid var(--line-strong)}
+.retake-lnk{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);cursor:pointer;border-bottom:1px solid var(--line-strong);padding-bottom:1px;background:none;border-top:none;border-left:none;border-right:none;margin-top:0.75rem;display:block;width:fit-content}
+
+/* OBS / BIZ FORM */
+.obs-field{margin-bottom:0.75rem}
+.obs-field label{font-family:var(--mono);font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:0.3rem}
+.obs-field input,.obs-field select,.obs-field textarea{width:100%;font-family:var(--sans);font-size:0.8rem;color:var(--text);background:#fff;border:1px solid var(--line-strong);padding:0.6rem 0.8rem;outline:none;transition:border-color 0.2s;border-radius:0;-webkit-appearance:none}
+.obs-field input:focus,.obs-field select:focus,.obs-field textarea:focus{border-color:var(--accent)}
+.obs-field input::placeholder,.obs-field textarea::placeholder{color:var(--muted2);font-size:0.78rem}
+.obs-field textarea{resize:vertical;line-height:1.6;min-height:90px}
+.obs-field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%236B7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 0.8rem center;background-color:#fff;padding-right:2rem;cursor:pointer}
+.obs-field-row{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem}
+.obs-divider{border:none;border-top:1px solid var(--line);margin:0.75rem 0}
+.obs-context-note{font-size:0.76rem;color:var(--muted);line-height:1.7;padding:0.65rem 0.8rem;background:var(--bg-soft);border-left:2px solid var(--accent);margin-bottom:0.75rem}
+.obs-price-note{font-size:0.74rem;color:var(--muted);line-height:1.65;padding:0.65rem 0.8rem;border:1px solid var(--line);margin-bottom:0.75rem}
+.obs-price-note strong{color:var(--text);font-weight:500}
+.obs-submit-btn{width:100%;font-family:var(--mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--accent);color:#060B18;padding:0.8rem 1rem;border:none;cursor:pointer;font-weight:700;border-radius:0;transition:opacity 0.2s}
+.obs-submit-btn:hover{opacity:0.85}
+.obs-disclaimer{font-family:var(--mono);font-size:0.52rem;color:var(--muted2);line-height:1.65;margin-top:0.75rem;text-align:center}
+.obs-success{background:rgba(0,194,122,0.06);border:1px solid rgba(0,194,122,0.25);padding:1.2rem;text-align:center;display:none;margin-top:0.75rem}
+.obs-success.visible{display:block}
+.obs-success-title{font-family:var(--serif);font-size:1.1rem;font-weight:300;color:#00C27A;margin-bottom:0.4rem}
+.obs-success-body{font-size:0.8rem;color:var(--muted);line-height:1.65}
+
+/* FOOTER */
+.pt-footer{background:#060B18;border-top:1px solid rgba(255,255,255,0.07);padding:1.2rem 2.5rem;flex-shrink:0}
+.pt-footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem}
+.pt-footer-logo{font-family:var(--mono);font-size:0.7rem;letter-spacing:0.16em;color:rgba(255,255,255,0.5);font-weight:700}
+.pt-footer-links{display:flex;gap:1.5rem}
+.pt-footer-links a{font-family:var(--mono);font-size:0.56rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s}
+.pt-footer-links a:hover{color:rgba(255,255,255,0.7)}
+.pt-footer-note{font-family:var(--mono);font-size:0.52rem;color:rgba(255,255,255,0.2)}
+
+/* NODE PULSE */
+@keyframes node-pulse{0%{filter:drop-shadow(0 0 0px currentColor);opacity:0.6}50%{filter:drop-shadow(0 0 8px currentColor);opacity:1}100%{filter:drop-shadow(0 0 0px currentColor);opacity:0.6}}
+.node-active-pulse{animation:node-pulse 1.8s ease-in-out infinite}
+
+/* PAGE WRAPPER */
+.page-wrap{display:flex;flex-direction:column;height:100vh}
+.main-area{display:grid;grid-template-columns:280px 1fr;flex:1;overflow:hidden}
+
+@media(max-width:1024px){.content-cols{grid-template-columns:1fr}}
+@media(max-width:768px){.main-area{grid-template-columns:1fr}.geo-col{display:none}}
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+<nav>
+  <a href="index.html" class="nav-logo-wrap">
+    <img src="pt_logo.png" alt="PsyTectrics" class="nav-logo-img"/>
+  </a>
+  <div class="nav-right">
+    <span class="nav-badge">Awareness Index™</span>
+    <a href="reports.html" class="nav-back">← Reports</a>
+  </div>
+</nav>
+
+<div class="main-area" style="margin-top:var(--nav-h)">
+
+  <!-- GEO COL -->
+  <div class="geo-col">
+    <div class="diag-header">
+      <span class="diag-label">SC Blueprint™</span>
+      <span class="diag-prog" id="diag-prog">—</span>
+    </div>
+    <div class="diag-svg-wrap" id="diag-svg-wrap">
+      <svg id="main-diagram" viewBox="120 120 660 660" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="450,302 598,450 450,598 302,450" fill="none" stroke="#B8B2A8" stroke-width="1.2" opacity="0.7"/>
+        <circle cx="450" cy="450" r="220" fill="none" stroke="#C8C4BC" stroke-width="0.6" stroke-dasharray="3 9" opacity="0.14"/>
+        <circle cx="450" cy="450" r="70" fill="none" stroke="#C8C4BC" stroke-width="0.5" opacity="0.25"/>
+        <line x1="450" y1="106" x2="450" y2="794" stroke="#C8C4BC" stroke-width="0.5" stroke-dasharray="4 8" opacity="0.35"/>
+        <line x1="106" y1="450" x2="794" y2="450" stroke="#C8C4BC" stroke-width="0.5" stroke-dasharray="4 8" opacity="0.35"/>
+        <line x1="450" y1="302" x2="367.6" y2="246" stroke="#C4622D" stroke-width="1.2" opacity="0.35"/>
+        <line x1="367.6" y1="246" x2="286.6" y2="198.4" stroke="#C4622D" stroke-width="1" opacity="0.28"/>
+        <line x1="367.6" y1="246" x2="392.8" y2="155.5" stroke="#C4622D" stroke-width="1" opacity="0.28"/>
+        <line x1="450" y1="302" x2="532.4" y2="246" stroke="#C4622D" stroke-width="1.2" opacity="0.35"/>
+        <line x1="532.4" y1="246" x2="507.2" y2="155.5" stroke="#C4622D" stroke-width="1" opacity="0.28"/>
+        <line x1="532.4" y1="246" x2="613.4" y2="198.4" stroke="#C4622D" stroke-width="1" opacity="0.28"/>
+        <line x1="598" y1="450" x2="654" y2="367.6" stroke="#534AB7" stroke-width="1.2" opacity="0.35"/>
+        <line x1="654" y1="367.6" x2="701.6" y2="286.6" stroke="#534AB7" stroke-width="1" opacity="0.28"/>
+        <line x1="654" y1="367.6" x2="744.5" y2="392.8" stroke="#534AB7" stroke-width="1" opacity="0.28"/>
+        <line x1="598" y1="450" x2="654" y2="532.4" stroke="#534AB7" stroke-width="1.2" opacity="0.35"/>
+        <line x1="654" y1="532.4" x2="744.5" y2="507.2" stroke="#534AB7" stroke-width="1" opacity="0.28"/>
+        <line x1="654" y1="532.4" x2="701.6" y2="613.4" stroke="#534AB7" stroke-width="1" opacity="0.28"/>
+        <line x1="450" y1="598" x2="532.4" y2="654" stroke="#1D9E75" stroke-width="1.2" opacity="0.35"/>
+        <line x1="532.4" y1="654" x2="613.4" y2="701.6" stroke="#1D9E75" stroke-width="1" opacity="0.28"/>
+        <line x1="532.4" y1="654" x2="507.2" y2="744.5" stroke="#1D9E75" stroke-width="1" opacity="0.28"/>
+        <line x1="450" y1="598" x2="367.6" y2="654" stroke="#1D9E75" stroke-width="1.2" opacity="0.35"/>
+        <line x1="367.6" y1="654" x2="392.8" y2="744.5" stroke="#1D9E75" stroke-width="1" opacity="0.28"/>
+        <line x1="367.6" y1="654" x2="286.6" y2="701.6" stroke="#1D9E75" stroke-width="1" opacity="0.28"/>
+        <line x1="302" y1="450" x2="246" y2="532.4" stroke="#A0426B" stroke-width="1.2" opacity="0.35"/>
+        <line x1="246" y1="532.4" x2="198.4" y2="613.4" stroke="#A0426B" stroke-width="1" opacity="0.28"/>
+        <line x1="246" y1="532.4" x2="155.5" y2="507.2" stroke="#A0426B" stroke-width="1" opacity="0.28"/>
+        <line x1="302" y1="450" x2="246" y2="367.6" stroke="#A0426B" stroke-width="1.2" opacity="0.35"/>
+        <line x1="246" y1="367.6" x2="155.5" y2="392.8" stroke="#A0426B" stroke-width="1" opacity="0.28"/>
+        <line x1="246" y1="367.6" x2="198.4" y2="286.6" stroke="#A0426B" stroke-width="1" opacity="0.28"/>
+        <circle cx="450" cy="450" r="52" fill="white" stroke="#B0ABA0" stroke-width="1.8"/>
+        <circle cx="450" cy="450" r="3" fill="#6B7280" opacity="0.4"/>
+        <text id="obs-label" x="450" y="455" text-anchor="middle" font-size="11" fill="#6B7280" font-family="monospace" opacity="0.7">—</text>
+        <g id="node-narc" style="opacity:0.12;transition:opacity 0.5s;cursor:pointer" onmouseover="showTT('narc',event)" onmouseout="hideTT()"><polygon points="450,272 480,302 450,332 420,302" fill="transparent" stroke="#C4622D" stroke-width="2.2"/><text x="450" y="301" text-anchor="middle" font-size="10" fill="#C4622D" font-family="monospace">NARC</text><text id="v-narc" x="450" y="315" text-anchor="middle" font-size="9" fill="#C4622D" font-family="monospace" opacity="0.7">—</text></g>
+        <g id="node-sist" style="opacity:0.12;transition:opacity 0.5s;cursor:pointer" onmouseover="showTT('sist',event)" onmouseout="hideTT()"><polygon points="598,420 628,450 598,480 568,450" fill="transparent" stroke="#534AB7" stroke-width="2.2"/><text x="598" y="449" text-anchor="middle" font-size="10" fill="#534AB7" font-family="monospace">SIST</text><text id="v-sist" x="598" y="463" text-anchor="middle" font-size="9" fill="#534AB7" font-family="monospace" opacity="0.7">—</text></g>
+        <g id="node-yarc" style="opacity:0.12;transition:opacity 0.5s;cursor:pointer" onmouseover="showTT('yarc',event)" onmouseout="hideTT()"><polygon points="450,568 480,598 450,628 420,598" fill="transparent" stroke="#1D9E75" stroke-width="2.2"/><text x="450" y="597" text-anchor="middle" font-size="10" fill="#1D9E75" font-family="monospace">YARC</text><text id="v-yarc" x="450" y="611" text-anchor="middle" font-size="9" fill="#1D9E75" font-family="monospace" opacity="0.7">—</text></g>
+        <g id="node-oll" style="opacity:0.12;transition:opacity 0.5s;cursor:pointer" onmouseover="showTT('oll',event)" onmouseout="hideTT()"><polygon points="302,420 332,450 302,480 272,450" fill="transparent" stroke="#A0426B" stroke-width="2.2"/><text x="302" y="449" text-anchor="middle" font-size="10" fill="#A0426B" font-family="monospace">Øll</text><text id="v-oll" x="302" y="463" text-anchor="middle" font-size="9" fill="#A0426B" font-family="monospace" opacity="0.7">—</text></g>
+        <g id="node-a1" style="opacity:0;transition:opacity 0.5s"><ellipse cx="367.6" cy="246" rx="20" ry="11" transform="rotate(-22,367.6,246)" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="367.6" y="250" text-anchor="middle" font-size="8" fill="#C4622D" font-family="monospace">A1</text></g>
+        <g id="node-a2" style="opacity:0;transition:opacity 0.5s"><ellipse cx="532.4" cy="246" rx="20" ry="11" transform="rotate(22,532.4,246)" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="532.4" y="250" text-anchor="middle" font-size="8" fill="#C4622D" font-family="monospace">A2</text></g>
+        <g id="node-a3" style="opacity:0;transition:opacity 0.5s"><ellipse cx="654" cy="367.6" rx="20" ry="11" transform="rotate(68,654,367.6)" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="654" y="371.6" text-anchor="middle" font-size="8" fill="#534AB7" font-family="monospace">A3</text></g>
+        <g id="node-a4" style="opacity:0;transition:opacity 0.5s"><ellipse cx="654" cy="532.4" rx="20" ry="11" transform="rotate(112,654,532.4)" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="654" y="536.4" text-anchor="middle" font-size="8" fill="#534AB7" font-family="monospace">A4</text></g>
+        <g id="node-a5" style="opacity:0;transition:opacity 0.5s"><ellipse cx="532.4" cy="654" rx="20" ry="11" transform="rotate(158,532.4,654)" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="532.4" y="658" text-anchor="middle" font-size="8" fill="#1D9E75" font-family="monospace">A5</text></g>
+        <g id="node-a6" style="opacity:0;transition:opacity 0.5s"><ellipse cx="367.6" cy="654" rx="20" ry="11" transform="rotate(202,367.6,654)" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="367.6" y="658" text-anchor="middle" font-size="8" fill="#1D9E75" font-family="monospace">A6</text></g>
+        <g id="node-a7" style="opacity:0;transition:opacity 0.5s"><ellipse cx="246" cy="532.4" rx="20" ry="11" transform="rotate(248,246,532.4)" fill="transparent" stroke="#A0426B" stroke-width="2"/><text x="246" y="536.4" text-anchor="middle" font-size="8" fill="#A0426B" font-family="monospace">A7</text></g>
+        <g id="node-a8" style="opacity:0;transition:opacity 0.5s"><ellipse cx="246" cy="367.6" rx="20" ry="11" transform="rotate(292,246,367.6)" fill="transparent" stroke="#A0426B" stroke-width="2"/><text x="246" y="371.6" text-anchor="middle" font-size="8" fill="#A0426B" font-family="monospace">A8</text></g>
+        <g id="node-sc1"  style="opacity:0;transition:opacity 0.4s"><polygon points="298.7,205.5 276.1,205.2 287.4,185.9" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="264" y="189" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Intention</text></g>
+        <g id="node-sc2"  style="opacity:0;transition:opacity 0.4s"><polygon points="389,169 383.5,147.1 405.1,153.1" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="399.8" y="135" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Intention</text></g>
+        <g id="node-sc3"  style="opacity:0;transition:opacity 0.4s"><polygon points="511,169 494.9,153.1 516.5,147.1" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="500.2" y="135" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Presence</text></g>
+        <g id="node-sc4"  style="opacity:0;transition:opacity 0.4s"><polygon points="601.3,205.5 612.6,185.9 623.9,205.2" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="635.8" y="189" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Presence</text></g>
+        <g id="node-sc5"  style="opacity:0;transition:opacity 0.4s"><polygon points="694.5,298.7 694.8,276.1 714.1,287.4" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="714.8" y="268" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Core Self</text></g>
+        <g id="node-sc6"  style="opacity:0;transition:opacity 0.4s"><polygon points="731,389 752.9,383.5 746.9,405.1" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="769.5" y="404" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Core Self</text></g>
+        <g id="node-sc7"  style="opacity:0;transition:opacity 0.4s"><polygon points="731,511 746.9,494.9 752.9,516.5" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="769.5" y="504" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Integrity</text></g>
+        <g id="node-sc8"  style="opacity:0;transition:opacity 0.4s"><polygon points="694.5,601.3 714.1,612.6 694.8,623.9" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="714.8" y="640" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Integrity</text></g>
+        <g id="node-sc9"  style="opacity:0;transition:opacity 0.4s"><polygon points="601.3,694.5 623.9,694.8 612.6,714.1" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="635.8" y="719" text-anchor="middle" font-size="6.5" fill="#1D9E75" font-family="monospace">Balance</text></g>
+        <g id="node-sc10" style="opacity:0;transition:opacity 0.4s"><polygon points="511,731 516.5,752.9 494.9,746.9" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="500.2" y="774" text-anchor="middle" font-size="6.5" fill="#1D9E75" font-family="monospace">Balance</text></g>
+        <g id="node-sc11" style="opacity:0;transition:opacity 0.4s"><polygon points="389,731 405.1,746.9 383.5,752.9" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="399.8" y="774" text-anchor="middle" font-size="6.5" fill="#1D9E75" font-family="monospace">Connection</text></g>
+        <g id="node-sc12" style="opacity:0;transition:opacity 0.4s"><polygon points="298.7,694.5 287.4,714.1 276.1,694.8" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="264.2" y="719" text-anchor="middle" font-size="6.5" fill="#1D9E75" font-family="monospace">Connection</text></g>
+        <g id="node-sc13" style="opacity:0;transition:opacity 0.4s"><polygon points="205.5,601.3 205.2,623.9 185.9,612.6" fill="transparent" stroke="#A0426B" stroke-width="2"/><text x="185.2" y="640" text-anchor="middle" font-size="6.5" fill="#A0426B" font-family="monospace">Purpose</text></g>
+        <g id="node-sc14" style="opacity:0;transition:opacity 0.4s"><polygon points="169,511 147.1,516.5 153.1,494.9" fill="transparent" stroke="#A0426B" stroke-width="2"/><text x="130.5" y="504" text-anchor="middle" font-size="6.5" fill="#A0426B" font-family="monospace">Purpose</text></g>
+        <g id="node-sc15" style="opacity:0;transition:opacity 0.4s"><polygon points="169,389 153.1,405.1 147.1,383.5" fill="transparent" stroke="#A0426B" stroke-width="2"/><text x="130.5" y="404" text-anchor="middle" font-size="6.5" fill="#A0426B" font-family="monospace">Pattern</text></g>
+        <g id="node-sc16" style="opacity:0;transition:opacity 0.4s"><polygon points="205.5,298.7 185.9,287.4 205.2,276.1" fill="transparent" stroke="#A0426B" stroke-width="2"/><text x="185.2" y="268" text-anchor="middle" font-size="6.5" fill="#A0426B" font-family="monospace">Pattern</text></g>
+        <g id="node-bs" style="opacity:0;transition:opacity 0.5s"><polygon points="424,642 476,642 450,674" fill="none" stroke="#D4D0C8" stroke-width="1.3"/><text x="450" y="657" text-anchor="middle" font-size="7" fill="#6B7280" font-family="monospace">AI</text><text id="v-bs" x="450" y="669" text-anchor="middle" font-size="8" fill="#6B7280" font-family="monospace">—</text></g>
+      </svg>
+      <div class="node-tooltip" id="node-tooltip">
+        <div id="nt-name" style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:#0B1020;margin-bottom:2px">—</div>
+        <div id="nt-desc" style="font-size:9px;color:#6B7280;line-height:1.5">—</div>
+      </div>
+    </div>
+    <div class="diag-layer-badge" id="diag-layer-badge">SC Blueprint™ map</div>
+    <div class="oc-strip">
+      <div class="oc-mini"><div class="oc-mini-label" style="color:#C4622D">NARC</div><div class="oc-mini-track"><div class="oc-mini-fill" id="oc-narc" style="width:25%;background:#C4622D"></div></div><div class="oc-mini-pct" id="ocp-narc">25%</div></div>
+      <div class="oc-mini"><div class="oc-mini-label" style="color:#534AB7">SIST</div><div class="oc-mini-track"><div class="oc-mini-fill" id="oc-sist" style="width:25%;background:#534AB7"></div></div><div class="oc-mini-pct" id="ocp-sist">25%</div></div>
+      <div class="oc-mini"><div class="oc-mini-label" style="color:#1D9E75">YARC</div><div class="oc-mini-track"><div class="oc-mini-fill" id="oc-yarc" style="width:25%;background:#1D9E75"></div></div><div class="oc-mini-pct" id="ocp-yarc">25%</div></div>
+      <div class="oc-mini"><div class="oc-mini-label" style="color:#A0426B">Øll</div><div class="oc-mini-track"><div class="oc-mini-fill" id="oc-oll" style="width:25%;background:#A0426B"></div></div><div class="oc-mini-pct" id="ocp-oll">25%</div></div>
+    </div>
+  </div>
+
+  <!-- 3-COL CONTENT -->
+  <div class="content-cols">
+
+    <!-- COL 1: SOLO -->
+    <div class="content-col" id="solo-col">
+      <div class="col-tab">
+        <span class="col-tab-label">Solo Assessment</span>
+        <span class="col-tab-price">£49</span>
+      </div>
+      <div class="q-progress-bar"><div class="q-progress-fill" id="q-prog-fill"></div></div>
+      <div class="col-body" id="solo-body">
+        <!-- Intro screen -->
+        <div id="solo-intro">
+          <span class="col-eyebrow">Behavioral Intelligence Assessment</span>
+          <h2 class="col-title">Understand the<br/><em>Human Operating System</em></h2>
+          <p class="col-desc">56 structured questions across conscious and subconscious layers. Includes Drift measurement, Awareness Index™, and a full AI-generated interpretive report.</p>
+          <p class="col-free-note">The assessment is <strong>free to complete.</strong> Results shown immediately. Full written AI report unlocks for <strong>£49</strong> — paid at the end, no account required.</p>
+          <div class="ctx-field">
+            <label>Name</label>
+            <input type="text" id="solo-name" placeholder="Your name" oninput="updateGeoLabel()"/>
+          </div>
+          <div class="ctx-field">
+            <label>Age band (optional)</label>
+            <div class="ctx-age-row">
+              <button class="ctx-age-btn" onclick="selectAge(this,'Under 25')">Under 25</button>
+              <button class="ctx-age-btn" onclick="selectAge(this,'25–35')">25–35</button>
+              <button class="ctx-age-btn" onclick="selectAge(this,'35–45')">35–45</button>
+              <button class="ctx-age-btn" onclick="selectAge(this,'45–55')">45–55</button>
+              <button class="ctx-age-btn" onclick="selectAge(this,'55+')">55+</button>
+            </div>
+          </div>
+          <div class="ctx-field">
+            <label>When did you last feel most like yourself? (optional)</label>
+            <textarea id="solo-most" placeholder="A moment, situation, or period where you felt most aligned with who you actually are." rows="2"></textarea>
+          </div>
+          <div class="ctx-field">
+            <label>When did you last feel least like yourself? (optional)</label>
+            <textarea id="solo-least" placeholder="A situation where you felt most out of character, disconnected, or not yourself." rows="2"></textarea>
+          </div>
+          <div class="ctx-field">
+            <label>Current context (optional)</label>
+            <div class="ctx-context-row">
+              <button class="ctx-ctx-btn" onclick="selectCtx(this,'In a relationship')">In a relationship</button>
+              <button class="ctx-ctx-btn" onclick="selectCtx(this,'Co-parenting')">Co-parenting</button>
+              <button class="ctx-ctx-btn" onclick="selectCtx(this,'Single')">Single</button>
+              <button class="ctx-ctx-btn" onclick="selectCtx(this,'Major transition')">Major transition</button>
+            </div>
+          </div>
+          <button class="start-btn" onclick="startAssessment()">Begin assessment →</button>
+        </div>
+        <!-- Question screen -->
+        <div id="solo-questions" style="display:none">
+          <div id="q-card-wrap"></div>
+          <div class="awareness-reveal" id="awareness-reveal">
+            <div class="ar-lbl">Your Awareness Index™</div>
+            <div class="ar-score" id="ar-score">—</div>
+            <div class="ar-state" id="ar-state">—</div>
+            <div class="ar-desc" id="ar-desc">—</div>
+            <div class="ar-track"><div class="ar-fill" id="ar-fill"></div></div>
+            <button class="ar-gen-btn" id="ar-gen-btn" onclick="submitSolo()">Generate full profile →</button>
+          </div>
+        </div>
+        <!-- Results -->
+        <div id="solo-results" style="display:none" class="results-wrap"></div>
+      </div>
+    </div>
+
+    <!-- COL 2: OBSERVER -->
+    <div class="content-col" id="obs-col">
+      <div class="col-tab">
+        <span class="col-tab-label">Observer Report</span>
+        <span class="col-tab-price">£75</span>
+      </div>
+      <div class="col-body">
+        <span class="col-eyebrow">Observer Report · PsyTectrics™</span>
+        <h2 class="col-title">Profile someone<br/><em>from their messages.</em></h2>
+        <p class="col-desc">Submit conversation data — WhatsApp exports, message history, or written behavioural descriptions. The framework maps their SC Blueprint™ pattern and produces a structured interpretive report. Delivered within 48 hours.</p>
+        <div class="col-tags">
+          <span class="col-tag">Co-parenting documentation</span>
+          <span class="col-tag">Family court</span>
+          <span class="col-tag">Workplace dynamics</span>
+          <span class="col-tag">Relationship analysis</span>
+        </div>
+        <form id="obs-form" onsubmit="submitObs(event)">
+          <div class="obs-field-row">
+            <div class="obs-field"><label>Your name</label><input type="text" name="your_name" placeholder="Your full name" required/></div>
+            <div class="obs-field"><label>Your contact</label><input type="text" name="your_contact" placeholder="Email or Telegram" required/></div>
+          </div>
+          <div class="obs-field"><label>Subject — name or initials</label><input type="text" name="subject_name" placeholder="Who is being profiled" required/></div>
+          <div class="obs-field"><label>Your relationship to them</label><input type="text" name="relationship" placeholder="e.g. co-parent, ex-partner, colleague, manager" required/></div>
+          <hr class="obs-divider"/>
+          <div class="obs-context-note">The more data you provide, the more accurate the report. Natural conversation over time is more reliable than a single exchange. Include specific language they use, how they respond to conflict, and patterns you have observed repeatedly.</div>
+          <div class="obs-field"><label>Conversation data or behavioural description</label><textarea name="conversation_data" placeholder="Paste message exchanges, WhatsApp exports, or describe behavioural patterns you have observed over time." required></textarea></div>
+          <div class="obs-field"><label>Context — what you need the report to address</label><textarea name="context" placeholder="What is the situation? What are you trying to understand, document, or prepare for? If this is for legal or professional use, note that here." style="min-height:70px"></textarea></div>
+          <div class="obs-field"><label>Report type</label>
+            <select name="report_type">
+              <option>Standard Observer Report</option>
+              <option>Court-Ready (Co-Parenting / Legal)</option>
+              <option>Workplace / Professional</option>
+            </select>
+          </div>
+          <input type="hidden" name="_subject" value="Observer Report Request — PsyTectrics™"/>
+          <div class="obs-price-note"><strong>£75</strong> — You will receive a Stripe payment link via email once we have reviewed your submission. No charge until your report is confirmed.</div>
+          <button type="submit" class="obs-submit-btn" id="obs-btn">Submit for Observer Report →</button>
+        </form>
+        <div class="obs-success" id="obs-success">
+          <div class="obs-success-title">Received.</div>
+          <p class="obs-success-body">Your Observer Report request has been submitted. You will receive your report within 48 hours.</p>
+        </div>
+        <p class="obs-disclaimer">Observer Reports are structured interpretive instruments · Not a clinical diagnostic · PsyTectrics™ · All submissions reviewed directly · Reports delivered within 48 hours</p>
+      </div>
+    </div>
+
+    <!-- COL 3: BUSINESS -->
+    <div class="content-col" id="biz-col">
+      <div class="col-tab">
+        <span class="col-tab-label">Business Audit</span>
+        <span class="col-tab-price">From £125</span>
+      </div>
+      <div class="col-body">
+        <span class="col-eyebrow">Business Audit · PsyTectrics™</span>
+        <h2 class="col-title">A full awareness audit<br/><em>for your team.</em></h2>
+        <p class="col-desc">A structured behavioural audit drawing on the SC Blueprint™ framework — mapping awareness levels, patterns, and dynamic friction points across individuals or teams. Delivered as a written report. Bespoke scope agreed before work begins.</p>
+        <div class="col-tags">
+          <span class="col-tag">Team dynamics</span>
+          <span class="col-tag">Leadership assessment</span>
+          <span class="col-tag">Hiring & onboarding</span>
+          <span class="col-tag">Conflict resolution</span>
+          <span class="col-tag">Organisational culture</span>
+        </div>
+        <form id="biz-form" onsubmit="submitBiz(event)">
+          <div class="obs-field-row">
+            <div class="obs-field"><label>Your name</label><input type="text" name="your_name" placeholder="Your full name" required/></div>
+            <div class="obs-field"><label>Your contact</label><input type="text" name="your_contact" placeholder="Email or Telegram" required/></div>
+          </div>
+          <div class="obs-field"><label>Organisation / context</label><input type="text" name="organisation" placeholder="Company name or team context"/></div>
+          <div class="obs-field"><label>Number of individuals to be assessed</label>
+            <select name="scope">
+              <option value="1">1 individual</option>
+              <option value="2-5">2–5 people</option>
+              <option value="6-10">6–10 people</option>
+              <option value="10+">More than 10</option>
+            </select>
+          </div>
+          <hr class="obs-divider"/>
+          <div class="obs-context-note">Business Reports are scoped individually. After submitting this form, you will receive a brief scope summary and price confirmation before any work begins. Starting from £125 per individual.</div>
+          <div class="obs-field"><label>What are you trying to understand or resolve?</label><textarea name="brief" placeholder="Describe the situation — team friction, leadership gap, onboarding challenge, or any context driving this audit." required></textarea></div>
+          <div class="obs-field"><label>Any relevant background or supporting materials?</label><textarea name="background" placeholder="Previous assessments, HR reports, specific incidents, or anything that would help frame the work." style="min-height:70px"></textarea></div>
+          <input type="hidden" name="_subject" value="Business Audit Enquiry — PsyTectrics™"/>
+          <div class="obs-price-note"><strong>From £125</strong> — Scope and price confirmed via email before work begins. No charge until you approve the brief.</div>
+          <button type="submit" class="obs-submit-btn" id="biz-btn">Request a Business Report →</button>
+        </form>
+        <div class="obs-success" id="biz-success">
+          <div class="obs-success-title">Received.</div>
+          <p class="obs-success-body">Your Business Audit enquiry has been submitted. You will receive a scope summary and price confirmation within 48 hours.</p>
+        </div>
+        <p class="obs-disclaimer">Business Reports are structured interpretive instruments · Not a clinical diagnostic · PsyTectrics™ · Scope confirmed before work begins</p>
+      </div>
+    </div>
+
+  </div><!-- end content-cols -->
+</div><!-- end main-area -->
+
+<footer class="pt-footer">
+  <div class="pt-footer-inner">
+    <span class="pt-footer-logo">PSYTECTRICS™</span>
+    <div class="pt-footer-links">
+      <a href="index.html">Home</a>
+      <a href="reports.html">Reports</a>
+      <a href="prototypes.html">Prototypes</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <span class="pt-footer-note">© 2026 PsyTectrics Technologies Ltd · All rights reserved</span>
+  </div>
+</footer>
+
+</div><!-- end page-wrap -->
+
+<script>
+// ── NODES ────────────────────────────────────────────────
+const NODES=[
+  {id:'sc1', name:'Intention',  code:'NARC',slot:'A1',col:'#C4622D',svgId:'node-sc1', appId:'node-a1',ocId:'node-narc',layer:'Conscious',reversed:false,q:"I feel clear about what I genuinely want from life."},
+  {id:'sc2', name:'Intention',  code:'NARC',slot:'A1',col:'#C4622D',svgId:'node-sc2', appId:'node-a1',ocId:'node-narc',layer:'Conscious',reversed:false,q:"My goals reflect my personal values rather than outside expectations."},
+  {id:'sc3', name:'Presence',   code:'NARC',slot:'A2',col:'#C4622D',svgId:'node-sc3', appId:'node-a2',ocId:'node-narc',layer:'Conscious',reversed:false,q:"I am able to stay mentally present during important moments."},
+  {id:'sc4', name:'Presence',   code:'NARC',slot:'A2',col:'#C4622D',svgId:'node-sc4', appId:'node-a2',ocId:'node-narc',layer:'Conscious',reversed:false,q:"I notice my emotional state before reacting impulsively."},
+  {id:'sc5', name:'Core Self',  code:'SIST',slot:'A3',col:'#534AB7',svgId:'node-sc5', appId:'node-a3',ocId:'node-sist',layer:'Conscious',reversed:false,q:"I feel connected to who I truly am beneath social roles."},
+  {id:'sc6', name:'Core Self',  code:'SIST',slot:'A3',col:'#534AB7',svgId:'node-sc6', appId:'node-a3',ocId:'node-sist',layer:'Conscious',reversed:false,q:"I rarely feel the need to become someone different to gain approval."},
+  {id:'sc7', name:'Integrity',  code:'SIST',slot:'A4',col:'#534AB7',svgId:'node-sc7', appId:'node-a4',ocId:'node-sist',layer:'Conscious',reversed:false,q:"My actions usually align with the values I claim to believe in."},
+  {id:'sc8', name:'Integrity',  code:'SIST',slot:'A4',col:'#534AB7',svgId:'node-sc8', appId:'node-a4',ocId:'node-sist',layer:'Conscious',reversed:false,q:"I remain honest with myself even when the truth feels uncomfortable."},
+  {id:'sc9', name:'Balance',    code:'YARC',slot:'A5',col:'#1D9E75',svgId:'node-sc9', appId:'node-a5',ocId:'node-yarc',layer:'Conscious',reversed:false,q:"I can usually remain emotionally stable during stressful situations."},
+  {id:'sc10',name:'Balance',    code:'YARC',slot:'A5',col:'#1D9E75',svgId:'node-sc10',appId:'node-a5',ocId:'node-yarc',layer:'Conscious',reversed:false,q:"I consider multiple perspectives before forming conclusions."},
+  {id:'sc11',name:'Connection', code:'YARC',slot:'A6',col:'#1D9E75',svgId:'node-sc11',appId:'node-a6',ocId:'node-yarc',layer:'Conscious',reversed:false,q:"I genuinely try to understand other people's perspectives."},
+  {id:'sc12',name:'Connection', code:'YARC',slot:'A6',col:'#1D9E75',svgId:'node-sc12',appId:'node-a6',ocId:'node-yarc',layer:'Conscious',reversed:false,q:"I value meaningful connection more than status or appearance."},
+  {id:'sc13',name:'Purpose',    code:'Øll', slot:'A7',col:'#A0426B',svgId:'node-sc13',appId:'node-a7',ocId:'node-oll', layer:'Conscious',reversed:false,q:"I feel my life has direction or meaning beyond short-term survival."},
+  {id:'sc14',name:'Purpose',    code:'Øll', slot:'A7',col:'#A0426B',svgId:'node-sc14',appId:'node-a7',ocId:'node-oll', layer:'Conscious',reversed:false,q:"I regularly think about my long-term purpose."},
+  {id:'sc15',name:'Pattern',    code:'Øll', slot:'A8',col:'#A0426B',svgId:'node-sc15',appId:'node-a8',ocId:'node-oll', layer:'Conscious',reversed:false,q:"I notice recurring patterns in my behaviour over time."},
+  {id:'sc16',name:'Pattern',    code:'Øll', slot:'A8',col:'#A0426B',svgId:'node-sc16',appId:'node-a8',ocId:'node-oll', layer:'Conscious',reversed:false,q:"I can identify cycles that repeatedly appear in my life."},
+  {id:'ap1', name:'A1 Applied', code:'NARC',slot:'A1',col:'#C4622D',svgId:'node-sc1', appId:'node-a1',ocId:'node-narc',layer:'Conscious',reversed:false,q:"I follow through on my intentions even when it becomes inconvenient."},
+  {id:'ap2', name:'A2 Applied', code:'NARC',slot:'A2',col:'#C4622D',svgId:'node-sc3', appId:'node-a2',ocId:'node-narc',layer:'Conscious',reversed:false,q:"I am aware of my impact on others in real time."},
+  {id:'ap3', name:'A3 Applied', code:'SIST',slot:'A3',col:'#534AB7',svgId:'node-sc5', appId:'node-a3',ocId:'node-sist',layer:'Conscious',reversed:false,q:"I behave consistently whether or not I am being observed."},
+  {id:'ap4', name:'A4 Applied', code:'SIST',slot:'A4',col:'#534AB7',svgId:'node-sc7', appId:'node-a4',ocId:'node-sist',layer:'Conscious',reversed:false,q:"I can justify my decisions honestly to myself."},
+  {id:'ap5', name:'A5 Applied', code:'YARC',slot:'A5',col:'#1D9E75',svgId:'node-sc9', appId:'node-a5',ocId:'node-yarc',layer:'Conscious',reversed:false,q:"I can think clearly when emotions are high."},
+  {id:'ap6', name:'A6 Applied', code:'YARC',slot:'A6',col:'#1D9E75',svgId:'node-sc11',appId:'node-a6',ocId:'node-yarc',layer:'Conscious',reversed:false,q:"I can be fully present with someone without losing my own emotional footing."},
+  {id:'ap7', name:'A7 Applied', code:'Øll', slot:'A7',col:'#A0426B',svgId:'node-sc13',appId:'node-a7',ocId:'node-oll', layer:'Conscious',reversed:false,q:"The way I show up for others reflects something genuine rather than obligation."},
+  {id:'ap8', name:'A8 Applied', code:'Øll', slot:'A8',col:'#A0426B',svgId:'node-sc15',appId:'node-a8',ocId:'node-oll', layer:'Conscious',reversed:false,q:"I am actively working to break my own cycles rather than just recognising them."},
+  {id:'oc1', name:'NARC Direct',code:'NARC',slot:'OC',col:'#C4622D',svgId:'node-sc1', appId:'node-a1',ocId:'node-narc',layer:'Conscious',reversed:false,q:"I prioritise my own needs when resources are limited."},
+  {id:'oc2', name:'SIST Direct',code:'SIST',slot:'OC',col:'#534AB7',svgId:'node-sc5', appId:'node-a3',ocId:'node-sist',layer:'Conscious',reversed:false,q:"I naturally bring structure and stability to situations."},
+  {id:'oc3', name:'YARC Direct',code:'YARC',slot:'OC',col:'#1D9E75',svgId:'node-sc9', appId:'node-a5',ocId:'node-yarc',layer:'Conscious',reversed:false,q:"I naturally orient toward others' needs before my own."},
+  {id:'oc4', name:'Øll Direct', code:'Øll', slot:'OC',col:'#A0426B',svgId:'node-sc13',appId:'node-a7',ocId:'node-oll', layer:'Conscious',reversed:false,q:"I tend toward intense, all-or-nothing responses under pressure."},
+  {id:'sc17',name:'Intention',  code:'NARC',slot:'A1',col:'#C4622D',svgId:'node-sc2', appId:'node-a1',ocId:'node-narc',layer:'Subconscious',reversed:true, q:"I often pursue things to prove something to someone from my past."},
+  {id:'sc18',name:'Intention',  code:'NARC',slot:'A1',col:'#C4622D',svgId:'node-sc1', appId:'node-a1',ocId:'node-narc',layer:'Subconscious',reversed:true, q:"My drive comes from fear of failure more than genuine desire."},
+  {id:'sc19',name:'Presence',   code:'NARC',slot:'A2',col:'#C4622D',svgId:'node-sc4', appId:'node-a2',ocId:'node-narc',layer:'Subconscious',reversed:true, q:"My mind frequently replays past events or rehearses future ones."},
+  {id:'sc20',name:'Presence',   code:'NARC',slot:'A2',col:'#C4622D',svgId:'node-sc3', appId:'node-a2',ocId:'node-narc',layer:'Subconscious',reversed:true, q:"I react before I know why."},
+  {id:'sc21',name:'Core Self',  code:'SIST',slot:'A3',col:'#534AB7',svgId:'node-sc6', appId:'node-a3',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"I often feel like a different person in different settings."},
+  {id:'sc22',name:'Core Self',  code:'SIST',slot:'A3',col:'#534AB7',svgId:'node-sc5', appId:'node-a3',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"I adapt my personality significantly depending on who I am with."},
+  {id:'sc23',name:'Integrity',  code:'SIST',slot:'A4',col:'#534AB7',svgId:'node-sc8', appId:'node-a4',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"I sometimes act against my stated values without fully understanding why."},
+  {id:'sc24',name:'Integrity',  code:'SIST',slot:'A4',col:'#534AB7',svgId:'node-sc7', appId:'node-a4',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"I tell myself stories that protect my self-image even when they are not true."},
+  {id:'sc25',name:'Balance',    code:'YARC',slot:'A5',col:'#1D9E75',svgId:'node-sc10',appId:'node-a5',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"My emotional reactions often feel disproportionate to the trigger."},
+  {id:'sc26',name:'Balance',    code:'YARC',slot:'A5',col:'#1D9E75',svgId:'node-sc9', appId:'node-a5',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"I make decisions I later regret when I am emotionally activated."},
+  {id:'sc27',name:'Connection', code:'YARC',slot:'A6',col:'#1D9E75',svgId:'node-sc12',appId:'node-a6',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"I feel responsible for other people's emotional states."},
+  {id:'sc28',name:'Connection', code:'YARC',slot:'A6',col:'#1D9E75',svgId:'node-sc11',appId:'node-a6',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"I find it difficult to receive without feeling indebted."},
+  {id:'sc29',name:'Purpose',    code:'Øll', slot:'A7',col:'#A0426B',svgId:'node-sc14',appId:'node-a7',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"I am often unsure whether my purpose is genuinely mine or inherited from others."},
+  {id:'sc30',name:'Purpose',    code:'Øll', slot:'A7',col:'#A0426B',svgId:'node-sc13',appId:'node-a7',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"I feel a quiet sense of meaninglessness that persists beneath surface satisfaction."},
+  {id:'sc31',name:'Pattern',    code:'Øll', slot:'A8',col:'#A0426B',svgId:'node-sc16',appId:'node-a8',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"I recognise patterns in myself but feel unable to stop repeating them."},
+  {id:'sc32',name:'Pattern',    code:'Øll', slot:'A8',col:'#A0426B',svgId:'node-sc15',appId:'node-a8',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"My most significant life events seem to follow the same underlying script."},
+  {id:'ap9', name:'A1 Sub',     code:'NARC',slot:'A1',col:'#C4622D',svgId:'node-sc2', appId:'node-a1',ocId:'node-narc',layer:'Subconscious',reversed:true, q:"I abandon things when they stop feeling meaningful."},
+  {id:'ap10',name:'A2 Sub',     code:'NARC',slot:'A2',col:'#C4622D',svgId:'node-sc4', appId:'node-a2',ocId:'node-narc',layer:'Subconscious',reversed:true, q:"I am often unaware of my impact on others until after the fact."},
+  {id:'ap11',name:'A3 Sub',     code:'SIST',slot:'A3',col:'#534AB7',svgId:'node-sc6', appId:'node-a3',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"My behaviour changes when I feel I am being judged."},
+  {id:'ap12',name:'A4 Sub',     code:'SIST',slot:'A4',col:'#534AB7',svgId:'node-sc8', appId:'node-a4',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"I avoid examining decisions that might show I acted wrongly."},
+  {id:'ap13',name:'A5 Sub',     code:'YARC',slot:'A5',col:'#1D9E75',svgId:'node-sc10',appId:'node-a5',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"Logic leaves me when emotion enters."},
+  {id:'ap14',name:'A6 Sub',     code:'YARC',slot:'A6',col:'#1D9E75',svgId:'node-sc12',appId:'node-a6',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"I lose myself when someone I care about is struggling."},
+  {id:'ap15',name:'A7 Sub',     code:'Øll', slot:'A7',col:'#A0426B',svgId:'node-sc14',appId:'node-a7',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"What I give to others often comes from fear of being rejected rather than genuine care."},
+  {id:'ap16',name:'A8 Sub',     code:'Øll', slot:'A8',col:'#A0426B',svgId:'node-sc16',appId:'node-a8',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"I understand my patterns intellectually but they continue regardless."},
+  {id:'oc5', name:'NARC Sub',   code:'NARC',slot:'OC',col:'#C4622D',svgId:'node-sc2', appId:'node-a1',ocId:'node-narc',layer:'Subconscious',reversed:true, q:"Under pressure I become focused on self-protection above all else."},
+  {id:'oc6', name:'SIST Sub',   code:'SIST',slot:'OC',col:'#534AB7',svgId:'node-sc6', appId:'node-a3',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"I become rigid or controlling when I feel uncertain."},
+  {id:'oc7', name:'YARC Sub',   code:'YARC',slot:'OC',col:'#1D9E75',svgId:'node-sc12',appId:'node-a5',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"I habitually prioritise others at the expense of my own wellbeing."},
+  {id:'oc8', name:'Øll Sub',    code:'Øll', slot:'OC',col:'#A0426B',svgId:'node-sc16',appId:'node-a7',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"My reactions tend toward extremes — all in or completely withdrawn."},
+];
+
+const ANSWERS=["Strongly disagree","Disagree","Neutral / unsure","Agree","Strongly agree"];
+const LEVELS=[
+  {level:1,name:'Non-Conscious',  col:'#A0426B',desc:'Behaviour entirely automatic. No observer present.'},
+  {level:2,name:'Sub-Conscious',  col:'#A0426B',desc:'Hidden patterns driving decisions. You are moved but cannot yet see what moves you.'},
+  {level:3,name:'Conscious',      col:'#C4622D',desc:'The observer has switched on but remains largely reactive.'},
+  {level:4,name:'Aware',          col:'#C4622D',desc:'Awareness of your own loops. First level where genuine change becomes possible.'},
+  {level:5,name:'Choice',         col:'#534AB7',desc:'The gap between stimulus and response has opened. Behaviour is beginning to be chosen.'},
+  {level:6,name:'Integration',    col:'#534AB7',desc:'Holding both sides of a polarity simultaneously without collapsing into either.'},
+  {level:7,name:'Expression',     col:'#1D9E75',desc:'Conscious creation. Inner state reliably translates into outer reality.'},
+  {level:8,name:'Connection',     col:'#1D9E75',desc:'Genuine empathy without self-abandonment. Subconscious layer aligned.'},
+  {level:9,name:'Mastery',        col:'#1D9E75',desc:'Living by intention rather than impulse. Emotion is information, not instruction.'},
+  {level:10,name:'Creator/Source',col:'#00D4FF',desc:'25/25/25/25. Both layers aligned. Peak expression reached.'},
+];
+
+const TT_INFO={
+  narc:{name:'NARC',desc:'Self-reference, protection, identity, survival drive.'},
+  sist:{name:'SIST',desc:'Regulation, structure, integration, holding polarity.'},
+  yarc:{name:'YARC',desc:'Other-directed awareness, empathy, connection, giving.'},
+  oll: {name:'Øll', desc:'Volatility, threshold, intensity, transformation.'},
+};
+
+function getLevel(bs){
+  bs=parseFloat(bs);
+  if(bs<=-4.5)return LEVELS[0];if(bs<=-2.5)return LEVELS[1];if(bs<=-0.5)return LEVELS[2];
+  if(bs<=0.5)return LEVELS[3];if(bs<=1.5)return LEVELS[4];if(bs<=2.5)return LEVELS[5];
+  if(bs<=3.2)return LEVELS[6];if(bs<=3.8)return LEVELS[7];if(bs<=4.5)return LEVELS[8];
+  return LEVELS[9];
+}
+
+// ── STATE ────────────────────────────────────────────────
+let scores={}, currentStep=1, prevPulseEl=null, selectedAge='', selectedCtx='';
+
+function selectAge(btn,val){
+  document.querySelectorAll('.ctx-age-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active'); selectedAge=val;
+}
+function selectCtx(btn,val){
+  document.querySelectorAll('.ctx-ctx-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active'); selectedCtx=val;
+}
+function updateGeoLabel(){
+  const n=document.getElementById('solo-name')?.value.trim()||'—';
+  const el=document.getElementById('obs-label');
+  if(el)el.textContent=n.length>8?n.slice(0,8)+'…':n;
+}
+
+// ── START ASSESSMENT ──────────────────────────────────────
+function startAssessment(){
+  scores={};currentStep=1;
+  NODES.forEach(n=>{scores[n.id]=undefined;});
+  document.querySelectorAll('[id^="node-"]').forEach(el=>el.style.opacity='0');
+  ['node-narc','node-sist','node-yarc','node-oll'].forEach(id=>{
+    const el=document.getElementById(id);if(el)el.style.opacity='0.12';
+  });
+  document.getElementById('solo-intro').style.display='none';
+  document.getElementById('solo-questions').style.display='block';
+  document.getElementById('diag-prog').style.display='block';
+  showStep(1);
+}
+
+function showStep(step){
+  currentStep=step;
+  const total=NODES.length;
+  document.getElementById('q-prog-fill').style.width=(step/total*100).toFixed(0)+'%';
+  document.getElementById('diag-prog').textContent=step+' / '+total;
+  document.getElementById('awareness-reveal').classList.remove('visible');
+  if(step>total){showReveal();return;}
+  const n=NODES[step-1];
+  document.getElementById('diag-layer-badge').textContent=n.layer+' layer';
+  document.getElementById('q-card-wrap').style.display='block';
+  const cur=scores[n.id];const isLast=step===total;
+  const answersHtml=ANSWERS.map((ans,di)=>{
+    const raw=di+1;const sel=cur===raw;
+    return `<button class="q-answer-btn${sel?' selected':''}" onclick="selectAnswer('${n.id}',${raw},this,'${n.col}')" data-raw="${raw}" style="${sel?`border-color:${n.col};background:${n.col}18`:''}">
+      <span class="q-answer-num" style="${sel?`background:${n.col};color:#fff`:''}">${raw}</span>
+      <span>${ans}</span>
+    </button>`;
+  }).join('');
+  document.getElementById('q-card-wrap').innerHTML=`
+    <div class="q-step active">
+      <div class="q-meta-row">
+        <div class="q-dot" style="background:${n.col}"></div>
+        <span class="q-code-lbl" style="color:${n.col}">${n.code} · ${n.slot}</span>
+        <span class="q-layer-lbl">${n.layer}</span>
+      </div>
+      <div class="q-node-name">${n.name}</div>
+      <div class="q-question">${n.q}</div>
+      <div class="q-answers">${answersHtml}</div>
+      <div class="q-nav-row">
+        <button class="q-btn q-btn-ghost" onclick="goToQ(${step-1})" ${step===1?'style="visibility:hidden"':''}>← Back</button>
+        <button class="q-btn q-btn-primary" id="q-next-btn" onclick="${isLast?'finishAssessment()':'goToQ('+(step+1)+')'}" ${cur===undefined?'disabled':''}>
+          ${isLast?'Complete →':'Next →'}
+        </button>
+      </div>
+    </div>`;
+  activateNode(n);
+}
+
+function goToQ(s){if(s<1)return;showStep(s);}
+function finishAssessment(){showStep(NODES.length+1);}
+
+function activateNode(n){
+  if(prevPulseEl){prevPulseEl.classList.remove('node-active-pulse');}
+  const el=document.getElementById(n.svgId);
+  if(el){el.style.opacity='0.9';el.classList.add('node-active-pulse');prevPulseEl=el;}
+  const appEl=document.getElementById(n.appId);
+  if(appEl&&parseFloat(appEl.style.opacity||0)<0.35)appEl.style.opacity='0.35';
+  const ocEl=document.getElementById(n.ocId);
+  if(ocEl&&parseFloat(ocEl.style.opacity||0.12)<0.45)ocEl.style.opacity='0.45';
+}
+
+function selectAnswer(nodeId,raw,btn,col){
+  scores[nodeId]=raw;
+  document.querySelectorAll('.q-answers .q-answer-btn').forEach(b=>{
+    const sel=parseInt(b.dataset.raw)===raw;
+    b.className='q-answer-btn'+(sel?' selected':'');
+    b.style.borderColor=sel?col:'';b.style.background=sel?col+'18':'';
+    const num=b.querySelector('.q-answer-num');
+    if(num){num.style.background=sel?col:'';num.style.color=sel?'#fff':'';}
+  });
+  document.getElementById('q-next-btn')?.removeAttribute('disabled');
+  const n=NODES.find(x=>x.id===nodeId);
+  if(n){lightNode(n);updateOCBars();}
+}
+
+function lightNode(n){
+  const raw=scores[n.id];if(!raw)return;
+  const eff=n.reversed?(6-raw):raw;
+  const el=document.getElementById(n.svgId);if(!el)return;
+  el.style.opacity=(0.2+(eff/5)*0.7).toFixed(2);
+}
+
+function updateOCBars(){
+  const byCode={NARC:[],SIST:[],YARC:[],'Øll':[]};
+  NODES.forEach(n=>{
+    if(scores[n.id]!==undefined){
+      const eff=n.reversed?(6-scores[n.id]):scores[n.id];
+      byCode[n.code].push(eff);
+    }
+  });
+  const totals={};Object.entries(byCode).forEach(([k,v])=>{totals[k]=v.reduce((a,b)=>a+b,0)||0.001;});
+  const grand=Object.values(totals).reduce((a,b)=>a+b,0)||1;
+  const km={NARC:'narc',SIST:'sist',YARC:'yarc','Øll':'oll'};
+  Object.entries(totals).forEach(([k,t])=>{
+    const key=km[k];const pct=Math.round(t/grand*100);
+    const bar=document.getElementById('oc-'+key);const lbl=document.getElementById('ocp-'+key);
+    if(bar)bar.style.width=pct+'%';if(lbl)lbl.textContent=pct+'%';
+    const vEl=document.getElementById('v-'+key);if(vEl)vEl.textContent=pct+'%';
+    const effs=byCode[k];const effAvg=effs.length?effs.reduce((a,b)=>a+b,0)/effs.length:0;
+    const ocEl=document.getElementById('node-'+key);
+    if(ocEl)ocEl.style.opacity=(0.15+(effAvg/5)*0.75).toFixed(2);
+  });
+  const answered=NODES.filter(n=>scores[n.id]!==undefined);
+  if(answered.length){
+    const effs=answered.map(n=>n.reversed?(6-scores[n.id]):scores[n.id]);
+    const avg=effs.reduce((a,b)=>a+b,0)/effs.length;
+    const aiPct=Math.round((avg-1)/4*100);
+    const bsEl=document.getElementById('v-bs');if(bsEl)bsEl.textContent=aiPct+'%';
+    const bsNode=document.getElementById('node-bs');if(bsNode)bsNode.style.opacity=(answered.length/NODES.length*0.8).toFixed(2);
+  }
+}
+
+function showReveal(){
+  document.getElementById('q-card-wrap').style.display='none';
+  if(prevPulseEl){prevPulseEl.classList.remove('node-active-pulse');prevPulseEl=null;}
+  const answered=NODES.filter(n=>scores[n.id]!==undefined);
+  const effs=answered.map(n=>n.reversed?(6-scores[n.id]):scores[n.id]);
+  const avg=effs.reduce((a,b)=>a+b,0)/effs.length;
+  const bs=parseFloat(((avg-3)/2*5).toFixed(1));
+  const lvl=getLevel(bs);
+  document.getElementById('ar-score').textContent=lvl.level;
+  document.getElementById('ar-score').style.color=lvl.col;
+  document.getElementById('ar-state').textContent=lvl.name+' · AI '+(bs>0?'+':'')+bs;
+  document.getElementById('ar-state').style.color=lvl.col;
+  document.getElementById('ar-desc').textContent=lvl.desc;
+  document.getElementById('ar-fill').style.width=(lvl.level/10*100)+'%';
+  document.getElementById('ar-fill').style.background=lvl.col;
+  document.getElementById('awareness-reveal').classList.add('visible');
+}
+
+async function submitSolo(){
+  const btn=document.getElementById('ar-gen-btn');
+  btn.disabled=true;btn.textContent='Generating…';
+  const answered=NODES.filter(n=>scores[n.id]!==undefined);
+  const effs=answered.map(n=>n.reversed?(6-scores[n.id]):scores[n.id]);
+  const avg=effs.reduce((a,b)=>a+b,0)/effs.length;
+  const bs=parseFloat(((avg-3)/2*5).toFixed(1));
+  const aiScore=Math.round((avg-1)/4*100);
+  const byCode={NARC:[],SIST:[],YARC:[],'Øll':[]};
+  NODES.forEach(n=>{if(scores[n.id]!==undefined){const eff=n.reversed?(6-scores[n.id]):scores[n.id];byCode[n.code].push(eff);}});
+  const totals={};Object.entries(byCode).forEach(([k,v])=>{totals[k]=v.reduce((a,b)=>a+b,0)||0.001;});
+  const grand=Object.values(totals).reduce((a,b)=>a+b,0)||1;
+  const narc=Math.round(totals.NARC/grand*100),sist=Math.round(totals.SIST/grand*100),yarc=Math.round(totals.YARC/grand*100),oll=100-narc-sist-yarc;
+  const conN=NODES.filter(n=>n.layer==='Conscious'&&scores[n.id]!==undefined);
+  const subN=NODES.filter(n=>n.layer==='Subconscious'&&scores[n.id]!==undefined);
+  const conA=conN.map(n=>scores[n.id]);const subA=subN.map(n=>6-scores[n.id]);
+  const conAvg=conA.length?conA.reduce((a,b)=>a+b,0)/conA.length:0;
+  const subAvg=subA.length?subA.reduce((a,b)=>a+b,0)/subA.length:0;
+  const drift=Math.abs(conAvg-subAvg).toFixed(1);
+  const lvl=getLevel(bs);
+  const ENCODE={1:'K',2:'M',3:'R',4:'T',5:'W'};
+  const encoded=NODES.map(n=>ENCODE[scores[n.id]||3]||'R').join('');
+  const name=document.getElementById('solo-name')?.value.trim()||'';
+  const ctx=[selectedAge,selectedCtx,document.getElementById('solo-most')?.value.trim(),document.getElementById('solo-least')?.value.trim()].filter(Boolean).join(' | ');
+  let aiReport=null;
+  try{
+    const sys=`You are generating a PsyTectrics™ Awareness Index™ profile. Second person, direct, clinical but human. No therapy-speak. Return ONLY valid JSON:
+{"keyword_identity":"<1-3 words>","keyword_description":"<1 sentence>","report_sections":{"who_you_are":"<2 paragraphs>","primary_pattern":"<1 paragraph>","under_pressure":"<1 paragraph>","in_relationships":"<1 paragraph>","next_move":"<1 paragraph>"}}`;
+    const msg=`${name?'Name: '+name+'\n':''}${ctx?'Context: '+ctx+'\n':''}Awareness Index: ${aiScore}% | Level ${lvl.level}: ${lvl.name} | BS: ${bs>0?'+':''}${bs}
+SC Blueprint™: NARC ${narc}% | SIST ${sist}% | YARC ${yarc}% | Øll ${oll}% | Drift: ${drift}`;
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1200,system:sys,messages:[{role:'user',content:msg}]})});
+    const d=await res.json();
+    aiReport=JSON.parse((d.content?.[0]?.text||'').replace(/```json|```/g,'').trim());
+  }catch(e){console.warn('AI fallback',e);}
+  renderResults({bs,aiScore,narc,sist,yarc,oll,drift,lvl,encoded},aiReport,name);
+  btn.disabled=false;btn.textContent='Generate full profile →';
+}
+
+function renderResults(r,ai,name){
+  document.getElementById('solo-questions').style.display='none';
+  const wrap=document.getElementById('solo-results');wrap.style.display='block';
+  document.getElementById('solo-body').scrollTop=0;
+  let interp='';
+  if(ai){
+    if(ai.keyword_identity)interp+=`<div style="margin-bottom:1rem;padding-bottom:0.8rem;border-bottom:1px solid rgba(0,0,0,0.08)"><div class="r-section-lbl">Awareness keyword</div><div style="font-family:'Montserrat',sans-serif;font-size:1.4rem;font-weight:300;color:#0B1020;margin-bottom:0.3rem">${ai.keyword_identity}</div><div style="font-size:0.76rem;color:#6B7280;line-height:1.65">${ai.keyword_description||''}</div></div>`;
+    const rs=ai.report_sections||{};
+    [['who_you_are','Who you are'],['primary_pattern','Primary pattern'],['under_pressure','Under pressure'],['in_relationships','In relationships'],['next_move','Next move']].forEach(([k,t])=>{
+      const txt=rs[k]||'';if(!txt)return;
+      interp+=`<div style="margin-bottom:1rem"><div class="r-section-lbl">${t}</div><div class="r-interp">${txt.split('\n\n').map(p=>`<p style="margin:0 0 0.5rem">${p}</p>`).join('')}</div></div>`;
+    });
+  }
+  wrap.innerHTML=`
+    <div class="r-section" style="text-align:center">
+      <span class="r-section-lbl">Awareness Index™${name?' · '+name:''}</span>
+      <div class="r-level-big" style="color:${r.lvl.col}">${r.lvl.level}</div>
+      <div class="r-level-name" style="color:${r.lvl.col}">${r.lvl.name}</div>
+      <div class="r-bar-wrap"><div class="r-bar" style="width:${(r.lvl.level-1)/9*100}%;background:${r.lvl.col}"></div></div>
+      <div style="display:flex;gap:1.5rem;justify-content:center;margin-top:0.5rem">
+        <div><div style="font-family:'Space Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;color:#6B7280">AI Score</div><div style="font-family:'Montserrat',sans-serif;font-size:1.3rem;font-weight:300;color:${r.lvl.col}">${r.aiScore}%</div></div>
+        <div><div style="font-family:'Space Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;color:#6B7280">Drift</div><div style="font-family:'Montserrat',sans-serif;font-size:1.3rem;font-weight:300;color:${parseFloat(r.drift)>=2.5?'#C4622D':'#1D9E75'}">${r.drift}</div></div>
+      </div>
+    </div>
+    <div class="r-section">
+      <span class="r-section-lbl">SC Blueprint™ ratio</span>
+      ${[['NARC',r.narc,'#C4622D'],['SIST',r.sist,'#534AB7'],['YARC',r.yarc,'#1D9E75'],['Øll',r.oll,'#A0426B']].map(([n,p,c])=>`
+        <div class="r-oc-row"><div class="r-oc-name" style="color:${c}">${n}</div><div class="r-oc-trk"><div class="r-oc-fill" style="width:${p}%;background:${c}"></div></div><div class="r-oc-pct" style="color:${c}">${p}%</div></div>
+      `).join('')}
+    </div>
+    ${interp?`<div class="r-section">${interp}</div>`:''}
+    <div class="r-section">
+      <span class="r-section-lbl">Your assessment code</span>
+      <div class="r-code-box">${r.encoded}</div>
+      <div style="font-size:0.72rem;color:#6B7280;line-height:1.65;margin-bottom:0.75rem">Save this code — it unlocks Profile Chat and stores your profile.</div>
+      <div class="r-action-row">
+        <a href="chat.html?code=${r.encoded}" class="r-btn r-btn-primary">Open Profile Chat →</a>
+        <button onclick="resetSolo()" class="r-btn r-btn-outline">Retake</button>
+      </div>
+    </div>`;
+}
+
+function resetSolo(){
+  scores={};currentStep=1;
+  document.getElementById('solo-results').style.display='none';
+  document.getElementById('solo-intro').style.display='block';
+  document.getElementById('solo-questions').style.display='none';
+  document.getElementById('diag-prog').style.display='none';
+  document.getElementById('q-prog-fill').style.width='0%';
+  document.querySelectorAll('[id^="node-"]').forEach(el=>el.style.opacity='0');
+  ['node-narc','node-sist','node-yarc','node-oll'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.opacity='0.12';});
+  document.getElementById('diag-layer-badge').textContent='SC Blueprint™ map';
+  ['narc','sist','yarc','oll'].forEach(k=>{
+    const b=document.getElementById('oc-'+k);if(b)b.style.width='25%';
+    const l=document.getElementById('ocp-'+k);if(l)l.textContent='25%';
+  });
+}
+
+async function submitObs(e){
+  e.preventDefault();
+  const btn=document.getElementById('obs-btn');
+  btn.disabled=true;btn.textContent='Submitting…';
+  try{
+    const res=await fetch('https://formspree.io/f/mreorpre',{method:'POST',body:new FormData(e.target),headers:{Accept:'application/json'}});
+    if(res.ok){document.getElementById('obs-success').classList.add('visible');e.target.style.display='none';}
+    else throw new Error();
+  }catch{btn.disabled=false;btn.textContent='Submit for Observer Report →';}
+}
+
+async function submitBiz(e){
+  e.preventDefault();
+  const btn=document.getElementById('biz-btn');
+  btn.disabled=true;btn.textContent='Submitting…';
+  try{
+    const res=await fetch('https://formspree.io/f/mreorpre',{method:'POST',body:new FormData(e.target),headers:{Accept:'application/json'}});
+    if(res.ok){document.getElementById('biz-success').classList.add('visible');e.target.style.display='none';}
+    else throw new Error();
+  }catch{btn.disabled=false;btn.textContent='Request a Business Report →';}
+}
+
+function showTT(id,event){
+  const info=TT_INFO[id];if(!info)return;
+  document.getElementById('nt-name').textContent=info.name;
+  document.getElementById('nt-desc').textContent=info.desc;
+  const tt=document.getElementById('node-tooltip');
+  const rect=document.querySelector('.diag-svg-wrap').getBoundingClientRect();
+  tt.style.display='block';
+  tt.style.left=Math.min(event.clientX-rect.left+12,rect.width-210)+'px';
+  tt.style.top=Math.max(event.clientY-rect.top-50,4)+'px';
+}
+function hideTT(){document.getElementById('node-tooltip').style.display='none';}
+</script>
+</body>
+</html>

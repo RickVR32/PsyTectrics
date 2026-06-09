@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<link rel="icon" href="pt_icon.png" type="image/png"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Admin · PsyTectrics™</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+ --bg:#0B1020;
+ --bg-soft:#121417;
+ --bg-soft2:#1c2030;
+ --panel:rgba(0,212,255,0.04);
+ --text:#FAFAF9;
+ --muted:#71717A;
+ --muted2:#3F3F46;
+ --accent:#00D4FF;
+ --accent-soft:rgba(0,212,255,0.07);
+ --accent-border:rgba(0,212,255,0.22);
+ --line:rgba(255,255,255,0.07);
+ --line-strong:rgba(255,255,255,0.14);
+ --shadow:0 4px 24px rgba(0,0,0,0.4);
+ --success:#00C27A;
+ --danger:#ef4444;
+ --narc:#C4622D;--yarc:#1D9E75;--sist:#534AB7;--oll:#A0426B;
+ --mono:'Space Mono',monospace;
+ --sans:'Inter',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:100vh;
+ background-image:linear-gradient(180deg,rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px);
+ background-size:44px 44px;
+}
+/* nav overridden by canonical */
+.nav-brand{display:flex;align-items:center;gap:1rem;text-decoration:none}
+.nav-brand img{height:52px;width:auto;display:block}
+.nav-badge{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line-strong);padding:3px 8px}
+.nav-right{display:flex;gap:8px;align-items:center}
+.btn{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;padding:7px 16px;border:1px solid var(--line-strong);background:transparent;color:var(--muted);cursor:pointer;transition:all 0.2s;text-decoration:none;border-radius:0}
+.btn:hover{color:var(--text);border-color:var(--accent)}
+.btn-primary{background:var(--accent);color:var(--bg);border-color:var(--accent);font-weight:700}
+.btn-primary:hover{opacity:0.85}
+.btn-danger{border-color:rgba(239,68,68,0.3);color:var(--danger)}
+.btn-danger:hover{background:rgba(239,68,68,0.08);border-color:var(--danger)}
+
+/* AUTH */
+.auth-screen{display:flex;align-items:center;justify-content:center;min-height:calc(100vh - 65px);padding:24px}
+.auth-card{background:var(--bg-soft);border:1px solid var(--line-strong);padding:40px;max-width:380px;width:100%;text-align:center}
+.auth-eyebrow{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;display:block}
+.auth-title{font-family:var(--mono);font-size:0.95rem;font-weight:700;margin-bottom:8px;color:var(--text)}
+.auth-desc{font-size:0.82rem;color:var(--muted);margin-bottom:28px;line-height:1.65}
+.auth-input{width:100%;font-family:var(--mono);font-size:0.82rem;padding:12px 16px;border:1px solid var(--line-strong);background:rgba(255,255,255,0.04);color:var(--text);outline:none;transition:border-color 0.2s;letter-spacing:0.1em;text-align:center;border-radius:0}
+.auth-input:focus{border-color:var(--accent-border)}
+.auth-btn{width:100%;margin-top:12px;padding:13px;background:var(--accent);color:var(--bg);border:none;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:opacity 0.2s;font-weight:700;border-radius:0}
+.auth-btn:hover{opacity:0.85}
+.auth-error{font-family:var(--mono);font-size:0.65rem;color:var(--danger);margin-top:10px;display:none}
+
+/* MAIN */
+.main{display:none;padding:28px 24px;max-width:1200px;margin:0 auto}
+
+/* STATS BAR */
+.stats-bar{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:28px}
+.stat-card{background:var(--bg-soft);border:1px solid var(--line);padding:18px 20px}
+.stat-label{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.stat-val{font-family:var(--mono);font-size:1.4rem;font-weight:700;color:var(--text)}
+.stat-sub{font-size:0.72rem;color:var(--muted);margin-top:2px}
+
+/* FILTERS */
+.filter-bar{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center}
+.filter-label{font-family:var(--mono);font-size:0.62rem;color:var(--muted);letter-spacing:0.06em}
+.filter-input{font-family:var(--mono);font-size:0.72rem;padding:7px 12px;border:1px solid var(--line-strong);background:rgba(255,255,255,0.04);color:var(--text);outline:none;transition:border-color 0.2s;width:180px;border-radius:0}
+.filter-input:focus{border-color:var(--accent-border)}
+.filter-select{font-family:var(--mono);font-size:0.72rem;padding:7px 12px;border:1px solid var(--line-strong);background:var(--bg-soft);color:var(--text);outline:none;cursor:pointer;border-radius:0}
+
+/* TABLE */
+.table-wrap{background:var(--bg-soft);border:1px solid var(--line);overflow:hidden;margin-bottom:20px}
+.table-head{display:grid;grid-template-columns:140px 80px 60px 60px 60px 1fr 100px 80px;gap:0;border-bottom:1px solid var(--line);background:rgba(0,212,255,0.04)}
+.th{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);padding:10px 14px}
+.table-body{max-height:60vh;overflow-y:auto}
+.table-body::-webkit-scrollbar{width:3px}
+.table-body::-webkit-scrollbar-thumb{background:var(--accent-border);border-radius:0}
+.tr{display:grid;grid-template-columns:140px 80px 60px 60px 60px 1fr 100px 80px;gap:0;border-bottom:1px solid var(--line);transition:background 0.15s;cursor:pointer}
+.tr:hover{background:var(--accent-soft)}
+.tr:last-child{border-bottom:none}
+.td{font-family:var(--mono);font-size:0.72rem;padding:10px 14px;display:flex;align-items:center;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.td-name{color:var(--text);font-weight:700}
+.td-muted{color:var(--muted)}
+.td-accent{color:var(--accent)}
+.oc-dot{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:3px;flex-shrink:0}
+.level-badge{font-family:var(--mono);font-size:0.58rem;padding:2px 8px;border:1px solid var(--accent-border);color:var(--accent)}
+.empty-state{padding:48px;text-align:center;color:var(--muted);font-family:var(--mono);font-size:0.75rem;letter-spacing:0.06em}
+
+/* DETAIL PANEL */
+.detail-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:200;display:none;align-items:flex-start;justify-content:flex-end;padding:20px}
+.detail-overlay.open{display:flex}
+.detail-panel{background:var(--bg-soft);border:1px solid var(--line-strong);width:min(520px,90vw);max-height:90vh;overflow-y:auto;padding:28px;display:flex;flex-direction:column;gap:16px;box-shadow:var(--shadow)}
+.detail-panel::-webkit-scrollbar{width:3px}
+.detail-panel::-webkit-scrollbar-thumb{background:var(--accent-border)}
+.dp-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.dp-name{font-family:var(--mono);font-size:1rem;font-weight:700}
+.dp-date{font-family:var(--mono);font-size:0.62rem;color:var(--muted)}
+.dp-close{background:none;border:none;color:var(--muted);cursor:pointer;font-size:1.2rem;line-height:1;padding:2px}
+.dp-close:hover{color:var(--text)}
+.dp-section{background:var(--panel);border:1px solid var(--line);padding:14px 16px}
+.dp-section-label{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.dp-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.dp-item-label{font-family:var(--mono);font-size:0.62rem;color:var(--muted)}
+.dp-item-val{font-family:var(--mono);font-size:0.78rem;color:var(--text)}
+.oc-bars{display:flex;flex-direction:column;gap:6px}
+.oc-row{display:flex;align-items:center;gap:8px}
+.oc-name{font-family:var(--mono);font-size:0.65rem;min-width:36px}
+.oc-track{flex:1;height:2px;background:var(--line);overflow:hidden}
+.oc-fill{height:100%}
+.oc-pct{font-family:var(--mono);font-size:0.65rem;min-width:32px;text-align:right}
+.dp-code{font-family:var(--mono);font-size:0.65rem;word-break:break-all;color:var(--muted);line-height:1.6;background:var(--panel);border:1px solid var(--line);padding:10px 12px}
+.dp-ctx{font-size:0.78rem;color:var(--text);line-height:1.65;font-style:italic}
+.dp-actions{display:flex;gap:8px;flex-wrap:wrap}
+.export-note{font-family:var(--mono);font-size:0.62rem;color:var(--muted);text-align:right;margin-bottom:8px}
+
+@media(max-width:900px){
+ .stats-bar{grid-template-columns:repeat(3,1fr)}
+ .table-head,.tr{grid-template-columns:120px 70px 54px 54px 54px 1fr 90px 70px}
+ .main{padding:16px}
+}
+@media(max-width:640px){
+ .stats-bar{grid-template-columns:1fr 1fr}
+ .table-head{display:none}
+ .tr{grid-template-columns:1fr;padding:12px 14px;gap:4px}
+ .td{padding:0;font-size:0.68rem;white-space:normal}
+ .nav{padding:0.8rem 1rem}
+}
+
+body { padding-top: 70px !important; }
+
+nav, .nav {
+ position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+ display: flex; align-items: center; justify-content: space-between;
+ padding: 0.85rem 2.5rem;
+ border-bottom: 1px solid rgba(0,212,255,0.13);
+ background: #060B18;
+ backdrop-filter: blur(20px);
+ -webkit-backdrop-filter: blur(20px);
+ height: 70px;
+ box-sizing: border-box;
+}
+nav a.nav-brand, nav a.nav-logo, .nav a.nav-brand {
+ display: flex; align-items: center; gap: 0; text-decoration: none;
+ background: none; border: none; padding: 0; outline: none;
+ line-height: 1;
+}
+nav a.nav-brand img, nav a.nav-logo img, .nav a.nav-brand img {
+ height: 52px; width: auto; display: block;
+ background: transparent; border: none; outline: none;
+}
+
+ nav.pt-nav .nav-links { display: none; } }
+
+
+/* === PT CANONICAL THEME === */
+:root {
+  --nav-bg: #060B18;
+  --bg: #FFFFFF;
+  --bg-soft: #F4F6F9;
+  --bg-soft2: #E8ECF2;
+  --input-bg: rgba(0,0,0,0.03);
+  --text: #0B1020;
+  --muted: #6B7280;
+  --muted2: #9CA3AF;
+  --accent: #00D4FF;
+  --accent-dark: #0099BB;
+  --accent-soft: rgba(0,212,255,0.08);
+  --accent-border: rgba(0,212,255,0.25);
+  --line: rgba(0,0,0,0.08);
+  --line-strong: rgba(0,0,0,0.14);
+  --silver: #C7D0D9;
+  --emerald: #00C27A;
+  --serif: 'Montserrat', sans-serif;
+  --mono: 'Space Mono', monospace;
+  --sans: 'Inter', sans-serif;
+  --narc:#C4622D; --yarc:#1D9E75; --sist:#534AB7; --oll:#A0426B;
+}
+/* body intentionally dark for admin - see override below */
+/* NAV */
+nav.pt-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.85rem 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: #060B18 !important; height: 70px;
+}
+nav.pt-nav .nav-logo-wrap { display: flex; align-items: center; text-decoration: none; }
+nav.pt-nav .nav-logo-img { height: 52px; width: auto; display: block; }
+nav.pt-nav .nav-links { display: flex; gap: 2rem; list-style: none; }
+nav.pt-nav .nav-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-family: 'Space Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+nav.pt-nav .nav-links a:hover, nav.pt-nav .nav-links a.active { color: #FFFFFF; }
+nav.pt-nav .nav-cta { background: #00D4FF; color: #060B18; padding: 0.6rem 1.4rem; font-family: 'Space Mono', monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s; border: none; cursor: pointer; }
+nav.pt-nav .nav-cta:hover { opacity: 0.85; }
+nav.pt-nav .nav-tag { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: #00D4FF; background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.22); padding: 0.28rem 0.75rem; }
+nav.pt-nav .nav-btn { font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.45rem 1rem; border: 1px solid rgba(255,255,255,0.15); background: transparent; color: rgba(255,255,255,0.55); cursor: pointer; transition: all 0.2s; text-decoration: none; }
+nav.pt-nav .nav-btn:hover { color: #fff; border-color: rgba(0,212,255,0.4); }
+/* FOOTER */
+footer.sch-footer, .assess-footer { background: #060B18; border-top: 1px solid rgba(255,255,255,0.08); padding: 2rem 2.5rem; }
+footer.sch-footer .sch-footer-inner { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }
+footer.sch-footer .sch-footer-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+footer.sch-footer .sch-logo-link { opacity: 0.7; transition: opacity 0.2s; text-decoration: none; display: inline-block; }
+footer.sch-footer .sch-logo-link:hover { opacity: 1; }
+footer.sch-footer .sch-logo { height: 36px; width: auto; display: block; }
+footer.sch-footer .sch-logo-light { display: none; }
+footer.sch-footer .sch-footer-copy { font-family: 'Space Mono', monospace; font-size: 0.56rem; color: rgba(255,255,255,0.25); letter-spacing: 0.12em; text-transform: uppercase; }
+/* Fix oversized logo images anywhere */
+.sch-logo { max-height: 40px !important; width: auto !important; }
+img.sch-logo { max-height: 40px !important; width: auto !important; }
+/* ADMIN stays dark */
+@media (max-width: 768px) { nav.pt-nav { padding: 0.8rem 1.2rem; } nav.pt-nav .nav-links { display: none; } }
+
+/* Admin - dark theme intentional */
+body { background: #0B1020; color: #FAFAF9; padding-top: 70px; }
+
+</style>
+
+</head>
+<body>
+
+<nav class="pt-nav">
+  <a href="index.html" class="nav-logo-wrap">
+    <img src="pt_logo.png" alt="PsyTectrics" class="nav-logo-img"/>
+  </a>
+  <div style="display:flex;align-items:center;gap:0.75rem">
+    <span class="nav-tag">Admin</span>
+    <a href="reports.html" class="nav-btn">← Assess</a>
+  </div>
+</nav>
+
+<!-- AUTH -->
+<div class="auth-screen" id="authScreen">
+ <div class="auth-card">
+ <span class="auth-eyebrow">PsyTectrics™ · Restricted Access</span>
+ <div class="auth-title">Admin Portal</div>
+ <p class="auth-desc">Assessment log and profile data. Enter the admin password to continue.</p>
+ <input class="auth-input" id="passInput" type="password" placeholder="Password" onkeydown="if(event.key==='Enter')checkPass()"/>
+ <button class="auth-btn" onclick="checkPass()">Continue →</button>
+ <div class="auth-error" id="authError">Incorrect password</div>
+ </div>
+</div>
+
+<!-- MAIN -->
+<div class="main" id="mainContent">
+
+ <div class="stats-bar" id="statsBar"></div>
+
+ <div class="filter-bar">
+ <span class="filter-label">Filter:</span>
+ <input class="filter-input" id="searchInput" placeholder="Search name…" oninput="renderTable()"/>
+ <select class="filter-select" id="levelFilter" onchange="renderTable()">
+ <option value="">All levels</option>
+ <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+ <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+ </select>
+ <select class="filter-select" id="dominantFilter" onchange="renderTable()">
+ <option value="">All codes</option>
+ <option>NARC</option><option>SIST</option><option>YARC</option><option>Øll</option>
+ </select>
+ <select class="filter-select" id="sortFilter" onchange="renderTable()">
+ <option value="newest">Newest first</option>
+ <option value="oldest">Oldest first</option>
+ <option value="level_desc">Level (high→low)</option>
+ <option value="level_asc">Level (low→high)</option>
+ <option value="drift_desc">Drift (high→low)</option>
+ </select>
+ </div>
+ <div class="export-note" id="exportNote"></div>
+
+ <div class="table-wrap">
+ <div class="table-head">
+ <div class="th">Name / Date</div>
+ <div class="th">Age band</div>
+ <div class="th">Level</div>
+ <div class="th">BS</div>
+ <div class="th">Drift</div>
+ <div class="th">SC Blueprints™</div>
+ <div class="th">Context</div>
+ <div class="th">Context fields</div>
+ </div>
+ <div class="table-body" id="tableBody"></div>
+ </div>
+
+</div>
+
+<!-- DETAIL PANEL -->
+<div class="detail-overlay" id="detailOverlay" onclick="closeDetail(event)">
+ <div class="detail-panel" id="detailPanel"></div>
+</div>
+
+<script>
+// ── CONFIG ──
+// Change this password before deploying
+const ADMIN_PASSWORD = 'sch-admin-2026';
+const STORAGE_KEY = 'sch_assessment_log';
+
+// ── AUTH ──
+let authed = false;
+
+function checkPass() {
+ const val = document.getElementById('passInput').value;
+ if (val === ADMIN_PASSWORD) {
+ authed = true;
+ document.getElementById('authScreen').style.display = 'none';
+ document.getElementById('mainContent').style.display = 'block';
+ document.getElementById('clearBtn').style.display = '';
+ document.getElementById('exportBtn').style.display = '';
+ document.getElementById('logoutBtn').style.display = '';
+ renderStats();
+ renderTable();
+ } else {
+ document.getElementById('authError').style.display = 'block';
+ document.getElementById('passInput').value = '';
+ document.getElementById('passInput').focus();
+ }
+}
+
+function logout() {
+ authed = false;
+ document.getElementById('authScreen').style.display = 'flex';
+ document.getElementById('mainContent').style.display = 'none';
+ document.getElementById('clearBtn').style.display = 'none';
+ document.getElementById('exportBtn').style.display = 'none';
+ document.getElementById('logoutBtn').style.display = 'none';
+ document.getElementById('passInput').value = '';
+}
+
+// ── DATA ──
+function getLogs() {
+ try {
+ return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+ } catch { return []; }
+}
+
+function saveLogs(logs) {
+ localStorage.setItem(STORAGE_KEY, JSON.stringify(logs));
+}
+
+// ── STATS ──
+const LEVELS = ['','Non-Conscious','Sub-Conscious','Conscious','Aware','Choice','Integration','Expression','Connection','Mastery','Creator/Source'];
+
+function renderStats() {
+ const logs = getLogs();
+ if (!logs.length) {
+ document.getElementById('statsBar').innerHTML = '<div class="stat-card"><div class="stat-label">Total assessments</div><div class="stat-val">0</div><div class="stat-sub">No data yet</div></div>';
+ return;
+ }
+
+ const avgLevel = (logs.reduce((s,l) => s + (l.level||0), 0) / logs.length).toFixed(1);
+ const avgDrift = (logs.reduce((s,l) => s + (l.drift||0), 0) / logs.length).toFixed(1);
+ const avgBS = (logs.reduce((s,l) => s + (l.bs||0), 0) / logs.length).toFixed(1);
+
+ // Dominant code distribution
+ const codeCounts = {NARC:0, SIST:0, YARC:0, 'Øll':0};
+ logs.forEach(l => { if(l.dominant && codeCounts[l.dominant]!==undefined) codeCounts[l.dominant]++; });
+ const topCode = Object.entries(codeCounts).sort((a,b)=>b[1]-a[1])[0];
+
+ // Latest
+ const latest = logs[logs.length-1];
+ const latestDate = latest ? new Date(latest.timestamp).toLocaleDateString('en-GB') : '—';
+
+ document.getElementById('statsBar').innerHTML = `
+ <div class="stat-card"><div class="stat-label">Total assessments</div><div class="stat-val">${logs.length}</div><div class="stat-sub">Latest: ${latestDate}</div></div>
+ <div class="stat-card"><div class="stat-label">Avg awareness level</div><div class="stat-val">${avgLevel}</div><div class="stat-sub">${LEVELS[Math.round(parseFloat(avgLevel))]||'—'}</div></div>
+ <div class="stat-card"><div class="stat-label">Avg balance scale</div><div class="stat-val">${parseFloat(avgBS)>0?'+':''}${avgBS}</div><div class="stat-sub">Across all profiles</div></div>
+ <div class="stat-card"><div class="stat-label">Avg drift</div><div class="stat-val">${avgDrift}</div><div class="stat-sub">Conscious/sub gap</div></div>
+ <div class="stat-card"><div class="stat-label">Most common code</div><div class="stat-val" style="color:var(--accent)">${topCode[0]}</div><div class="stat-sub">${topCode[1]} of ${logs.length}</div></div>
+ `;
+ document.getElementById('exportNote').textContent = `${logs.length} record${logs.length!==1?'s':''} · Click any row to expand`;
+}
+
+// ── TABLE ──
+const OC_COLS = {NARC:'#C4622D', SIST:'#534AB7', YARC:'#1D9E75', 'Øll':'#A0426B'};
+
+function getFiltered() {
+ let logs = getLogs();
+ const search = document.getElementById('searchInput').value.toLowerCase();
+ const levelF = document.getElementById('levelFilter').value;
+ const domF = document.getElementById('dominantFilter').value;
+ const sort = document.getElementById('sortFilter').value;
+
+ if (search) logs = logs.filter(l => (l.name||'').toLowerCase().includes(search));
+ if (levelF) logs = logs.filter(l => String(l.level) === levelF);
+ if (domF) logs = logs.filter(l => l.dominant === domF);
+
+ if (sort === 'oldest') logs = [...logs];
+ else if (sort === 'newest') logs = [...logs].reverse();
+ else if (sort === 'level_desc') logs = [...logs].sort((a,b) => (b.level||0)-(a.level||0));
+ else if (sort === 'level_asc') logs = [...logs].sort((a,b) => (a.level||0)-(b.level||0));
+ else if (sort === 'drift_desc') logs = [...logs].sort((a,b) => (b.drift||0)-(a.drift||0));
+ else logs = [...logs].reverse();
+
+ return logs;
+}
+
+function renderTable() {
+ const logs = getFiltered();
+ const body = document.getElementById('tableBody');
+ if (!logs.length) {
+ body.innerHTML = '<div class="empty-state">No assessments match the current filter</div>';
+ return;
+ }
+
+ body.innerHTML = logs.map((l, i) => {
+ const date = l.timestamp ? new Date(l.timestamp).toLocaleDateString('en-GB',{day:'2-digit',month:'short'}) : '—';
+ const bs = l.bs !== undefined ? (l.bs > 0 ? '+' : '') + l.bs : '—';
+ const oc = l.oc || {};
+ const ocStr = Object.entries(oc).map(([k,v]) =>
+ `<span class="oc-dot" style="background:${OC_COLS[k]||'#888'}"></span>${v}%`
+ ).join(' ');
+ const hasCtx = l.ctxBest || l.ctxWorst;
+ return `<div class="tr" onclick="showDetail('${l.id||i}')">
+ <div class="td td-name" style="flex-direction:column;align-items:flex-start;gap:2px">
+ <span>${l.name||'Anonymous'}</span>
+ <span style="font-size:0.58rem;color:var(--muted);font-weight:400">${date}</span>
+ </div>
+ <div class="td td-muted">${l.ageBand||'—'}</div>
+ <div class="td"><span class="level-badge">L${l.level||'?'}</span></div>
+ <div class="td td-accent">${bs}</div>
+ <div class="td td-muted">${l.drift||'—'}</div>
+ <div class="td" style="gap:4px">${ocStr}</div>
+ <div class="td td-muted" style="font-size:0.65rem">${l.lifeCtx||'—'}</div>
+ <div class="td td-muted" style="font-size:0.65rem">${hasCtx?'✓ filled':'—'}</div>
+ </div>`;
+ }).join('');
+}
+
+// ── DETAIL ──
+function showDetail(id) {
+ const logs = getLogs();
+ const l = logs.find(x => x.id === id) || logs[parseInt(id)];
+ if (!l) return;
+
+ const oc = l.oc || {};
+ const bs = l.bs !== undefined ? (l.bs > 0 ? '+' : '') + l.bs : '—';
+ const date = l.timestamp ? new Date(l.timestamp).toLocaleString('en-GB') : '—';
+
+ const ocBars = Object.entries(oc).map(([k,v]) => `
+ <div class="oc-row">
+ <div class="oc-name" style="color:${OC_COLS[k]||'#888'}">${k}</div>
+ <div class="oc-track"><div class="oc-fill" style="width:${v}%;background:${OC_COLS[k]||'#888'}"></div></div>
+ <div class="oc-pct" style="color:${OC_COLS[k]||'#888'}">${v}%</div>
+ </div>`).join('');
+
+ document.getElementById('detailPanel').innerHTML = `
+ <div class="dp-header">
+ <div>
+ <div class="dp-name">${l.name||'Anonymous'}</div>
+ <div class="dp-date">${date}${l.ageBand?' · '+l.ageBand:''}${l.lifeCtx?' · '+l.lifeCtx:''}</div>
+ </div>
+ <button class="dp-close" onclick="document.getElementById('detailOverlay').classList.remove('open')">✕</button>
+ </div>
+
+ <div class="dp-section">
+ <div class="dp-section-label">Core metrics</div>
+ <div class="dp-grid">
+ <div><div class="dp-item-label">Awareness level</div><div class="dp-item-val">Level ${l.level||'?'} — ${LEVELS[l.level]||'—'}</div></div>
+ <div><div class="dp-item-label">Balance Scale</div><div class="dp-item-val" style="color:var(--accent)">${bs}</div></div>
+ <div><div class="dp-item-label">Drift</div><div class="dp-item-val">${l.drift||'—'} ${l.drift>=3?'⚠ HIGH':l.drift>=1.5?'↑ MOD':''}</div></div>
+ <div><div class="dp-item-label">Dominant code</div><div class="dp-item-val" style="color:${OC_COLS[l.dominant]||'var(--accent)'}">${l.dominant||'—'}</div></div>
+ <div><div class="dp-item-label">Conscious avg</div><div class="dp-item-val">${l.conAvg||'—'}</div></div>
+ <div><div class="dp-item-label">Subconscious avg</div><div class="dp-item-val">${l.subAvg||'—'}</div></div>
+ </div>
+ </div>
+
+ <div class="dp-section">
+ <div class="dp-section-label">Blueprint ratio</div>
+ <div class="oc-bars">${ocBars}</div>
+ </div>
+
+ ${l.ctxBest||l.ctxWorst||l.ageBand||l.lifeCtx ? `
+ <div class="dp-section">
+ <div class="dp-section-label">Context provided</div>
+ ${l.ageBand?`<div style="margin-bottom:8px"><div class="dp-item-label">Age band</div><div class="dp-item-val">${l.ageBand}</div></div>`:''}
+ ${l.lifeCtx?`<div style="margin-bottom:8px"><div class="dp-item-label">Life context</div><div class="dp-item-val">${l.lifeCtx}</div></div>`:''}
+ ${l.ctxBest?`<div style="margin-bottom:8px"><div class="dp-item-label">Most like themselves</div><div class="dp-ctx">"${l.ctxBest}"</div></div>`:''}
+ ${l.ctxWorst?`<div><div class="dp-item-label">Least like themselves</div><div class="dp-ctx">"${l.ctxWorst}"</div></div>`:''}
+ </div>` : ''}
+
+ <div class="dp-section">
+ <div class="dp-section-label">Assessment code</div>
+ <div class="dp-code">${l.encodedCode||l.code||'—'}</div>
+ </div>
+
+ <div class="dp-actions">
+ <a href="chat.html?code=${encodeURIComponent(l.code||'')}" target="_blank" class="btn btn-primary">Open in chat →</a>
+ <button class="btn" onclick="copyCode('${l.code||''}')">Copy raw code</button>
+ <button class="btn btn-danger" onclick="deleteEntry('${l.id}')">Delete entry</button>
+ </div>
+ `;
+ document.getElementById('detailOverlay').classList.add('open');
+}
+
+function closeDetail(e) {
+ if (e.target === document.getElementById('detailOverlay')) {
+ document.getElementById('detailOverlay').classList.remove('open');
+ }
+}
+
+function copyCode(code) {
+ navigator.clipboard.writeText(code).then(() => alert('Code copied to clipboard'));
+}
+
+function deleteEntry(id) {
+ if (!confirm('Delete this assessment entry?')) return;
+ const logs = getLogs().filter(l => l.id !== id);
+ saveLogs(logs);
+ document.getElementById('detailOverlay').classList.remove('open');
+ renderStats();
+ renderTable();
+}
+
+// ── EXPORT ──
+function exportCSV() {
+ const logs = getLogs();
+ if (!logs.length) { alert('No data to export'); return; }
+
+ const headers = ['Name','Date','Age Band','Life Context','Level','Level Name','Balance Scale','Drift','Conscious Avg','Subconscious Avg','NARC%','SIST%','YARC%','Øll%','Dominant Code','Most Like Self','Least Like Self','Encoded Code','Raw Code'];
+ const rows = logs.map(l => [
+ l.name||'',
+ l.timestamp ? new Date(l.timestamp).toLocaleDateString('en-GB') : '',
+ l.ageBand||'',
+ l.lifeCtx||'',
+ l.level||'',
+ LEVELS[l.level]||'',
+ l.bs||'',
+ l.drift||'',
+ l.conAvg||'',
+ l.subAvg||'',
+ l.oc?.NARC||'',
+ l.oc?.SIST||'',
+ l.oc?.YARC||'',
+ l.oc?.['Øll']||'',
+ l.dominant||'',
+ l.ctxBest||'',
+ l.ctxWorst||'',
+ l.encodedCode||'',
+ l.code||'',
+ ].map(v => `"${String(v).replace(/"/g,'""')}"`));
+
+ const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+ const blob = new Blob([csv], {type:'text/csv'});
+ const url = URL.createObjectURL(blob);
+ const a = document.createElement('a');
+ a.href = url;
+ a.download = `psytectrics-assessments-${new Date().toISOString().slice(0,10)}.csv`;
+ a.click();
+ URL.revokeObjectURL(url);
+}
+
+// ── CLEAR ──
+function confirmClear() {
+ if (!confirm('Delete ALL assessment logs? This cannot be undone.')) return;
+ localStorage.removeItem(STORAGE_KEY);
+ renderStats();
+ renderTable();
+}
+
+
+</script>
+</body>
+</html>

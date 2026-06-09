@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Observer Report — PsyTectrics™</title>
+<link rel="icon" href="pt_icon.png" type="image/png"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FFFFFF;--bg-soft:#F4F6F9;
+  --text:#0B1020;--muted:#6B7280;--muted2:#9CA3AF;
+  --accent:#00D4FF;--accent-soft:rgba(0,212,255,0.08);--accent-border:rgba(0,212,255,0.25);
+  --line:rgba(0,0,0,0.08);--line-strong:rgba(0,0,0,0.14);
+  --serif:'Montserrat',sans-serif;--sans:'Inter',sans-serif;--mono:'Space Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased;padding-top:70px;min-height:100vh}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;border-bottom:1px solid rgba(255,255,255,0.06);background:#060B18;height:70px}
+.nav-logo-wrap{display:flex;align-items:center;text-decoration:none}
+.nav-logo-img{height:46px;width:auto;display:block}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.nav-badge{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-border);padding:0.28rem 0.75rem}
+.nav-back{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s}
+.nav-back:hover{color:rgba(255,255,255,0.8)}
+
+.page{max-width:760px;margin:0 auto;padding:4rem 2rem 6rem}
+.eyebrow{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:1rem}
+.page-title{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,4vw,3rem);line-height:1.1;margin-bottom:0.75rem}
+.page-title em{font-style:italic;color:var(--accent)}
+.page-desc{font-size:0.9rem;color:var(--muted);line-height:1.85;margin-bottom:1.2rem}
+.tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:2rem}
+.tag{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.28rem 0.75rem;background:var(--accent-soft);border:1px solid var(--accent-border);color:var(--accent)}
+.form-section{margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--line)}
+.section-lbl{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem;display:block}
+.field{margin-bottom:1.1rem}
+.field label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:0.4rem}
+.field input,.field select,.field textarea{width:100%;font-family:var(--sans);font-size:0.88rem;color:var(--text);background:#fff;border:1px solid var(--line-strong);padding:0.8rem 1rem;outline:none;transition:border-color 0.2s;border-radius:0;-webkit-appearance:none}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent)}
+.field input::placeholder,.field textarea::placeholder{color:var(--muted2)}
+.field textarea{resize:vertical;line-height:1.65;min-height:140px}
+.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;background-color:#fff;padding-right:2.5rem;cursor:pointer}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.context-note{font-size:0.84rem;color:var(--muted);line-height:1.8;padding:1rem 1.2rem;background:var(--bg-soft);border-left:2px solid var(--accent);margin-bottom:1.2rem}
+.price-note{font-size:0.84rem;color:var(--muted);line-height:1.7;padding:1rem 1.2rem;border:1px solid var(--line);margin-bottom:1.5rem}
+.price-note strong{color:var(--text);font-weight:500}
+.submit-btn{width:100%;font-family:var(--mono);font-size:0.74rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--accent);color:#060B18;padding:1rem;border:none;cursor:pointer;font-weight:700;border-radius:0;transition:opacity 0.2s}
+.submit-btn:hover{opacity:0.85}
+.submit-btn:disabled{opacity:0.4;cursor:not-allowed}
+.disclaimer{font-family:var(--mono);font-size:0.6rem;color:var(--muted2);line-height:1.65;margin-top:1.2rem;text-align:center}
+.success{background:rgba(0,194,122,0.06);border:1px solid rgba(0,194,122,0.25);padding:2rem;text-align:center;display:none;margin-top:1.5rem}
+.success.visible{display:block}
+.success-title{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:#00C27A;margin-bottom:0.5rem}
+.success-body{font-size:0.86rem;color:var(--muted);line-height:1.75}
+
+.pt-footer{background:#060B18;border-top:1px solid rgba(255,255,255,0.07);padding:2rem 3rem}
+.pt-footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.pt-footer-logo{font-family:var(--mono);font-size:0.78rem;letter-spacing:0.16em;color:rgba(255,255,255,0.5);font-weight:700}
+.pt-footer-links{display:flex;gap:1.8rem}
+.pt-footer-links a{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none}
+.pt-footer-links a:hover{color:rgba(255,255,255,0.7)}
+.pt-footer-note{font-family:var(--mono);font-size:0.58rem;color:rgba(255,255,255,0.2)}
+@media(max-width:768px){nav{padding:0.8rem 1.2rem}.field-row{grid-template-columns:1fr}.page{padding:3rem 1.5rem 5rem}.pt-footer{padding:2rem 1.5rem}.pt-footer-inner{flex-direction:column;text-align:center;align-items:center}.pt-footer-links{justify-content:center}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo-wrap">
+    <img src="pt_logo.png" alt="PsyTectrics" class="nav-logo-img"/>
+  </a>
+  <div class="nav-right">
+    <span class="nav-badge">Observer Report · £75</span>
+    <a href="reports.html" class="nav-back">← Reports</a>
+  </div>
+</nav>
+
+<div class="page">
+  <span class="eyebrow">Observer Report · PsyTectrics™</span>
+  <h1 class="page-title">Profile someone<br/><em>from their messages.</em></h1>
+  <p class="page-desc">Submit conversation data — WhatsApp exports, message history, or written behavioural descriptions. The framework maps their SC Blueprint™ pattern, identifies behavioural dynamics, and produces a structured interpretive report. Delivered within 48 hours.</p>
+  <div class="tags">
+    <span class="tag">Co-parenting documentation</span>
+    <span class="tag">Family court</span>
+    <span class="tag">Workplace dynamics</span>
+    <span class="tag">Relationship analysis</span>
+  </div>
+
+  <form id="obs-form" onsubmit="submitForm(event)">
+    <div class="form-section">
+      <span class="section-lbl">Your details</span>
+      <div class="field-row">
+        <div class="field"><label>Your name</label><input type="text" name="your_name" placeholder="Your full name" required/></div>
+        <div class="field"><label>Your contact</label><input type="text" name="your_contact" placeholder="Email or Telegram" required/></div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <span class="section-lbl">The subject</span>
+      <div class="field"><label>Subject — name or initials</label><input type="text" name="subject_name" placeholder="Who is being profiled" required/></div>
+      <div class="field"><label>Your relationship to them</label><input type="text" name="relationship" placeholder="e.g. co-parent, ex-partner, colleague, manager" required/></div>
+    </div>
+
+    <div class="form-section">
+      <span class="section-lbl">The data</span>
+      <div class="context-note">The more data you provide, the more accurate the report. Natural conversation over time is more reliable than a single exchange. Include specific language they use, how they respond to conflict, and patterns you have observed repeatedly.</div>
+      <div class="field"><label>Conversation data or behavioural description</label><textarea name="conversation_data" placeholder="Paste message exchanges, WhatsApp exports, or describe behavioural patterns you have observed over time. Include specific language, communication style under pressure, how they handle accountability, recurring themes." required></textarea></div>
+      <div class="field"><label>Context — what you need the report to address</label><textarea name="context" placeholder="What is the situation? What are you trying to understand, document, or prepare for? If this is for legal or professional use, note that here." style="min-height:100px"></textarea></div>
+      <div class="field"><label>Report type</label>
+        <select name="report_type">
+          <option value="standard">Standard Observer Report</option>
+          <option value="court">Court-Ready (Co-Parenting / Legal Documentation)</option>
+          <option value="workplace">Workplace / Professional Context</option>
+        </select>
+      </div>
+    </div>
+
+    <input type="hidden" name="_subject" value="Observer Report Request — PsyTectrics™"/>
+    <div class="price-note"><strong>£75</strong> — You will receive a Stripe payment link via email once we have reviewed your submission. No charge until your report is confirmed.</div>
+    <button type="submit" class="submit-btn" id="submit-btn">Submit for Observer Report →</button>
+    <p class="disclaimer">Observer Reports are structured interpretive instruments · Not a clinical diagnostic · PsyTectrics™ · All submissions reviewed directly · Reports delivered within 48 hours</p>
+  </form>
+
+  <div class="success" id="success">
+    <div class="success-title">Received.</div>
+    <p class="success-body">Your Observer Report request has been submitted. We will review your submission and send a payment link within 24 hours. Your report will be delivered within 48 hours of payment.</p>
+  </div>
+</div>
+
+<footer class="pt-footer">
+  <div class="pt-footer-inner">
+    <span class="pt-footer-logo">PSYTECTRICS™</span>
+    <div class="pt-footer-links">
+      <a href="index.html">Home</a>
+      <a href="reports.html">Reports</a>
+      <a href="prototypes.html">Prototypes</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <span class="pt-footer-note">© 2026 PsyTectrics Technologies Ltd · All rights reserved</span>
+  </div>
+</footer>
+
+<script>
+async function submitForm(e){
+  e.preventDefault();
+  const btn=document.getElementById('submit-btn');
+  btn.disabled=true;btn.textContent='Submitting…';
+  try{
+    const res=await fetch('https://formspree.io/f/mreorpre',{method:'POST',body:new FormData(e.target),headers:{Accept:'application/json'}});
+    if(res.ok){
+      document.getElementById('obs-form').style.display='none';
+      document.getElementById('success').classList.add('visible');
+    } else throw new Error();
+  } catch{btn.disabled=false;btn.textContent='Submit for Observer Report →';}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Awareness Architecture — PsyTectrics™</title>
+<meta name="description" content="The Awareness Architecture — a proprietary behavioural mapping system developed by PsyTectrics Technologies Ltd. SC Blueprints™, Awareness Index™, Drift, and the hierarchical scoring engine explained."/>
+<link rel="icon" href="pt_icon.png" type="image/png"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+ --nav-bg:#0B1020;
+ --nav-border:rgba(255,255,255,0.08);
+ --black:#FFFFFF;--surface:#F4F6F9;--surface2:#E8ECF2;
+ --white:#0B1020;--muted:#6B7280;--muted2:#9CA3AF;
+ --gold:#00D4FF;--gold-dim:#0099BB;
+ --gold-bg:rgba(0,212,255,0.07);--gold-border:rgba(0,212,255,0.22);
+ --line:rgba(0,0,0,0.08);--line2:rgba(0,0,0,0.05);
+ --narc:#C4622D;--yarc:#1D9E75;--sist:#534AB7;--oll:#A0426B;
+ --serif:'Montserrat',sans-serif;
+ --sans:'Inter',system-ui,sans-serif;
+ --mono:'Space Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:#FFFFFF;color:#0B1020;font-family:var(--sans);font-weight:300;padding-top:70px;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0.85rem 2.5rem;border-bottom:1px solid rgba(255,255,255,0.06);background:#060B18;height:70px}
+.nav-logo-wrap{display:flex;align-items:center;text-decoration:none}
+.nav-logo-img{height:52px;width:auto;display:block}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-family:var(--mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.nav-cta{background:#00D4FF;color:#060B18;padding:0.6rem 1.4rem;font-family:var(--mono);font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s}
+.nav-cta:hover{opacity:0.85}
+
+/* HERO */
+.page-hero{padding:10rem 3rem 6rem;position:relative;overflow:hidden;border-bottom:1px solid var(--line);max-width:1200px;margin:0 auto}
+.page-hero::before{content:'';position:absolute;top:0;right:0;width:600px;height:600px;background:radial-gradient(ellipse,rgba(0,212,255,0.05) 0%,transparent 70%);pointer-events:none}
+.eyebrow{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:1.5rem}
+.hero-title{font-family:var(--serif);font-size:clamp(3rem,6vw,5.5rem);font-weight:300;line-height:1.05;margin-bottom:1.5rem;max-width:800px}
+.hero-title em{font-style:italic;color:var(--gold)}
+.hero-desc{color:var(--muted);font-size:1rem;line-height:1.85;max-width:600px;margin-bottom:2.5rem}
+.hero-principle{background:#F4F6F9;border:1px solid var(--gold-border);border-left:2px solid var(--gold);padding:2rem 2.5rem;max-width:700px}
+.hero-principle blockquote{font-family:var(--serif);font-style:italic;font-size:clamp(1.2rem,2vw,1.6rem);font-weight:300;line-height:1.4;color:#0B1020;margin-bottom:0.75rem}
+.hero-principle cite{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)}
+
+/* LAYOUT */
+.container{max-width:1200px;margin:0 auto;padding:0 3rem}
+section{padding:6rem 0;border-top:1px solid var(--line)}
+.section-label{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:#00D4FF;margin-bottom:1rem}
+.section-title{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3.2rem);font-weight:300;line-height:1.1;margin-bottom:1rem}
+.section-title em{font-style:italic}
+.section-desc{color:var(--muted);font-size:0.9rem;line-height:1.8;max-width:620px;margin-bottom:3rem}
+.body-text{color:var(--muted);font-size:0.9rem;line-height:1.85;max-width:680px}
+.body-text+.body-text{margin-top:1rem}
+
+/* TWO LAYERS */
+.layers-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(0,0,0,0.08);border:1px solid rgba(0,0,0,0.08)}
+.layer-card{background:#FFFFFF;padding:2.8rem;transition:background 0.3s}
+.layer-card:hover{background:#F4F6F9}
+.layer-num{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;display:block}
+.layer-card h3{font-family:var(--serif);font-size:1.6rem;font-weight:300;color:#0B1020;margin-bottom:0.75rem;line-height:1.15}
+.layer-card h3 em{font-style:italic;color:var(--gold)}
+.layer-card p{color:var(--muted);font-size:0.88rem;line-height:1.75;margin-bottom:1.2rem}
+.layer-items{list-style:none;display:flex;flex-direction:column;gap:0}
+.layer-items li{display:flex;align-items:center;gap:0.75rem;padding:0.55rem 0;border-bottom:1px solid var(--line2);font-family:var(--mono);font-size:0.72rem;color:var(--muted)}
+.layer-items li:last-child{border-bottom:none}
+.layer-items li::before{content:'—';color:var(--gold);flex-shrink:0}
+.drift-card{background:#F4F6F9;border:1px solid var(--gold-border);padding:2.8rem;margin-top:1px}
+.drift-card h3{font-family:var(--serif);font-size:1.6rem;font-weight:300;color:#0B1020;margin-bottom:0.75rem}
+.drift-card h3 em{font-style:italic;color:var(--gold)}
+.drift-card p{color:var(--muted);font-size:0.88rem;line-height:1.75;margin-bottom:1rem}
+.drift-formula{font-family:var(--mono);font-size:0.78rem;color:var(--gold);background:var(--gold-bg);border:1px solid var(--gold-border);padding:0.8rem 1.2rem;display:inline-block;margin-top:0.5rem}
+
+/* OBSERVER CODES */
+.codes-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(0,0,0,0.08);border:1px solid rgba(0,0,0,0.08)}
+.code-card{background:#FFFFFF;padding:2.5rem;transition:background 0.3s}
+.code-card:hover{background:#F4F6F9}
+.code-name{font-family:var(--mono);font-size:1.1rem;font-weight:700;margin-bottom:0.3rem}
+.code-subtitle{font-family:var(--serif);font-size:1rem;font-weight:300;font-style:italic;color:var(--muted);margin-bottom:1rem}
+.code-card p{color:var(--muted);font-size:0.86rem;line-height:1.75;margin-bottom:1.2rem}
+.code-specs{list-style:none;border-top:1px solid var(--line2);padding-top:1rem;display:flex;flex-direction:column;gap:0}
+.code-specs li{display:flex;justify-content:space-between;padding:0.45rem 0;border-bottom:1px solid var(--line2);font-size:0.8rem}
+.code-specs li:last-child{border-bottom:none}
+.cs-label{color:var(--muted);font-family:var(--mono);font-size:0.68rem;letter-spacing:0.04em}
+.cs-val{color:#0B1020;text-align:right;font-size:0.82rem}
+.zero-point-bar{margin-top:2rem;padding:2rem;background:#E8ECF2;border:1px solid var(--line);text-align:center}
+.zero-point-label{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;display:block}
+.zero-point-eq{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:#0B1020}
+.zero-point-eq em{font-style:italic;color:var(--gold)}
+
+/* HIERARCHY */
+.hierarchy-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.hierarchy-visual{display:flex;flex-direction:column;gap:1px}
+.h-tier{background:#F4F6F9;border:1px solid var(--line);padding:1.2rem 1.5rem;display:flex;align-items:center;gap:1rem;transition:background 0.2s}
+.h-tier:hover{background:#E8ECF2}
+.h-tier-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);min-width:80px}
+.h-tier-name{font-family:var(--serif);font-size:1rem;font-weight:300;color:#0B1020;flex:1}
+.h-tier-name em{font-style:italic;color:var(--gold)}
+.h-tier-score{font-family:var(--mono);font-size:0.65rem;color:var(--muted2)}
+.h-arrow{text-align:center;font-family:var(--mono);font-size:0.7rem;color:var(--gold);padding:0.3rem 0;background:var(--gold-bg)}
+.hierarchy-text h3{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:#0B1020;margin-bottom:0.75rem}
+.hierarchy-text h3 em{font-style:italic;color:var(--gold)}
+.hierarchy-text p{color:var(--muted);font-size:0.86rem;line-height:1.8;margin-bottom:1rem}
+
+/* CLARITY INDEX */
+.ci-scale{background:#F4F6F9;border:1px solid var(--line);padding:2.5rem;margin-bottom:1px}
+.ci-track-wrap{position:relative;margin:2rem 0 0.75rem}
+.ci-track{height:1px;background:var(--line-strong);position:relative}
+.ci-pip{position:absolute;top:50%;transform:translate(-50%,-50%);width:8px;height:8px;border-radius:50%}
+.ci-pip.solid{background:var(--gold)}
+.ci-pip.empty{background:transparent;border:1px solid var(--line-strong)}
+.ci-ends{display:flex;justify-content:space-between;font-family:var(--mono);font-size:0.62rem;color:var(--muted);letter-spacing:0.06em}
+.ci-rows{display:flex;flex-direction:column;margin-top:1.5rem;border-top:1px solid var(--line)}
+.ci-row{display:grid;grid-template-columns:60px 1fr 1fr;gap:1rem;padding:0.85rem 0;border-bottom:1px solid var(--line2);align-items:baseline}
+.ci-row:last-child{border-bottom:none}
+.ci-score{font-family:var(--serif);font-size:1.1rem;font-weight:300;color:#0B1020}
+.ci-state{font-size:0.86rem;color:#0B1020}
+.ci-note{font-family:var(--mono);font-size:0.66rem;color:var(--muted);text-align:right}
+.levels-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(0,0,0,0.08);border:1px solid rgba(0,0,0,0.08);margin-top:1px}
+.level-card{background:#FFFFFF;padding:1.2rem;transition:background 0.2s}
+.level-card:hover{background:#F4F6F9}
+.level-num{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;color:var(--gold);display:block;margin-bottom:0.4rem}
+.level-name{font-family:var(--serif);font-size:0.92rem;font-weight:300;color:#0B1020}
+
+/* IP SECTION */
+.ip-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(0,0,0,0.08);border:1px solid rgba(0,0,0,0.08)}
+.ip-card{background:#FFFFFF;padding:2rem;transition:background 0.2s}
+.ip-card:hover{background:#F4F6F9}
+.ip-icon{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;display:block}
+.ip-card h3{font-family:var(--serif);font-size:1.05rem;font-weight:300;color:#0B1020;margin-bottom:0.5rem}
+.ip-card p{color:var(--muted);font-size:0.8rem;line-height:1.65}
+
+/* CTA */
+.cta-strip{padding:5rem 3rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem;background:#F4F6F9}
+.cta-strip h2{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300}
+.cta-strip h2 em{font-style:italic;color:var(--gold)}
+.cta-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:var(--black);padding:0.9rem 2rem;font-family:var(--mono);font-size:0.74rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s}
+.btn-primary:hover{opacity:0.85}
+.btn-ghost{border:1px solid var(--line-strong);color:var(--muted);padding:0.9rem 2rem;font-family:var(--mono);font-size:0.74rem;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:all 0.2s}
+.btn-ghost:hover{border-color:var(--gold-border);color:#0B1020}
+
+
+footer{border-top:1px solid var(--line);background:var(--nav-bg,#0B1020);padding:2.5rem 3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-logo{font-family:var(--mono);font-size:0.8rem;letter-spacing:0.16em;color:#9CA3AF;font-weight:700}
+.footer-logo span{color:var(--gold)}
+.footer-links{display:flex;gap:2rem}
+.footer-links a{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:#6B7280;text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--muted)}
+.footer-note{font-family:var(--mono);font-size:0.62rem;color:#6B7280;letter-spacing:0.06em}
+
+@media(max-width:1024px){.hierarchy-layout,.layers-grid{grid-template-columns:1fr}.codes-grid{grid-template-columns:1fr}.levels-grid{grid-template-columns:repeat(5,1fr)}.ip-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){nav{padding:1rem 1.5rem}.nav-links{display:none}.page-hero{padding:8rem 1.5rem 3rem}.container{padding:0 1.5rem}.levels-grid{grid-template-columns:repeat(2,1fr)}.ip-grid{grid-template-columns:1fr}.cta-strip{flex-direction:column;padding:3rem 1.5rem}.codes-grid{grid-template-columns:1fr}footer{flex-direction:column;text-align:center}.footer-links{justify-content:center}}
+/* ── PSYTECTRICS NAV – CANONICAL ── */
+nav, .nav {
+ position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+ display: flex; align-items: center; justify-content: space-between;
+ padding: 0.85rem 2.5rem;
+ border-bottom: 1px solid rgba(0,212,255,0.13);
+ background: #060B18;
+ backdrop-filter: blur(20px);
+ -webkit-backdrop-filter: blur(20px);
+ height: 70px;
+ box-sizing: border-box;
+}
+nav a.nav-brand, nav a.nav-logo, .nav a.nav-brand {
+ display: flex; align-items: center; gap: 0; text-decoration: none;
+ background: none; border: none; padding: 0; outline: none;
+ line-height: 1;
+}
+nav a.nav-brand img, nav a.nav-logo img, .nav a.nav-brand img {
+ height: 52px; width: auto; display: block;
+ background: transparent; border: none; outline: none;
+}
+
+/* === CANONICAL PT NAV === */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.85rem 2.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: #060B18;
+  height: 70px;
+}
+nav .nav-logo-wrap { display: flex; align-items: center; text-decoration: none; }
+nav .nav-logo-img { height: 52px; width: auto; display: block; }
+nav .nav-links { display: flex; gap: 2rem; list-style: none; }
+nav .nav-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-family: 'Space Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+nav .nav-links a:hover, nav .nav-links a.active { color: #FFFFFF; }
+nav .nav-cta { background: #00D4FF; color: #060B18; padding: 0.6rem 1.4rem; font-family: 'Space Mono', monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s; border: none; cursor: pointer; }
+nav .nav-cta:hover { opacity: 0.85; }
+nav .nav-tag { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: #00D4FF; background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.22); padding: 0.28rem 0.75rem; }
+nav .nav-btn { font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.45rem 1rem; border: 1px solid rgba(255,255,255,0.15); background: transparent; color: rgba(255,255,255,0.55); cursor: pointer; transition: all 0.2s; text-decoration: none; }
+nav .nav-btn:hover { color: #fff; border-color: rgba(0,212,255,0.4); }
+body { padding-top: 70px; }
+@media (max-width: 768px) { nav { padding: 0.8rem 1.2rem; } nav .nav-links { display: none; } }
+
+
+
+
+
+/* === PT FOOTER === */
+.pt-footer{background:#060B18;border-top:1px solid rgba(255,255,255,0.07);padding:2rem 3rem}
+.pt-footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.pt-footer-logo{font-family:'Space Mono',monospace;font-size:0.78rem;letter-spacing:0.16em;color:rgba(255,255,255,0.5);font-weight:700}
+.pt-footer-links{display:flex;gap:1.8rem;flex-wrap:wrap}
+.pt-footer-links a{font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s}
+.pt-footer-links a:hover{color:rgba(255,255,255,0.7)}
+.pt-footer-note{font-family:'Space Mono',monospace;font-size:0.58rem;color:rgba(255,255,255,0.2);letter-spacing:0.06em}
+@media(max-width:768px){.pt-footer-inner{flex-direction:column;text-align:center;align-items:center}.pt-footer-links{justify-content:center}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo-wrap">
+    <img src="pt_logo.png" alt="PsyTectrics" class="nav-logo-img"/>
+  </a>
+  <ul class="nav-links">
+    <li><a href="reports.html">Reports</a></li>
+    <li><a href="prototypes.html">Prototypes</a></li>
+    <li><a href="store_index.html">Store</a></li>
+    <li><a href="framework.html" class="active">Framework</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div style="border-bottom:1px solid var(--line)">
+<div class="page-hero">
+ <span class="eyebrow">Awareness Architecture · PsyTectrics Technologies Ltd · Proprietary IP</span>
+ <h1 class="hero-title">Not types.<br/><em>Percentages.</em><br/>Not fixed.<br/><em>Measured.</em></h1>
+ <p class="hero-desc">The Awareness Architecture is a proprietary behavioural mapping system developed by PsyTectrics Technologies Ltd. It classifies individual and organisational patterns across four SC Blueprints™ — not as fixed personality types, but as dynamic percentages that reflect the current distribution of awareness energy.</p>
+ <div class="hero-principle">
+ <blockquote>"Everything in existence must coincide with its polar opposite — or cease to exist."</blockquote>
+ <cite>The founding principle · PsyTectrics Technologies Ltd · Awareness Architecture v3.0</cite>
+ </div>
+</div>
+</div>
+
+<!-- THE TWO LAYERS -->
+<section>
+ <div class="container">
+ <p class="section-label">01 — Structure</p>
+ <h2 class="section-title">Two layers.<br/><em>One system.</em></h2>
+ <p class="section-desc">Every person operates across two simultaneous awareness layers — conscious and subconscious. The framework reads both, measures the gap between them, and produces a unified profile from the interaction.</p>
+
+ <div class="layers-grid">
+ <div class="layer-card">
+ <span class="layer-num">Layer 01 — Conscious</span>
+ <h3>The presented<br/><em>self.</em></h3>
+ <p>The external, observable layer. What a person shows — their behaviour, decisions, communication, and patterns under normal conditions. The conscious layer is what people believe about themselves.</p>
+ <ul class="layer-items">
+ <li>16 Source Code questions</li>
+ <li>8 App integration scores</li>
+ <li>4 SC Blueprint™ direct questions</li>
+ <li>Observable behaviour and output</li>
+ <li>Self-reported awareness state</li>
+ </ul>
+ </div>
+ <div class="layer-card">
+ <span class="layer-num">Layer 02 — Subconscious</span>
+ <h3>The operating<br/><em>layer.</em></h3>
+ <p>The internal, hidden layer running simultaneously. What drives the conscious layer without the person's awareness — fear, memory, desire, instinct, attachment. Scored through reversed polarity questions.</p>
+ <ul class="layer-items">
+ <li>16 reversed Source Code questions</li>
+ <li>8 subconscious App scores</li>
+ <li>4 subconscious SC Blueprint™ questions</li>
+ <li>Emotional patterns and loops</li>
+ <li>The inverse awareness state</li>
+ </ul>
+ </div>
+ </div>
+
+ <div class="drift-card">
+ <span class="layer-num">The gap — Drift</span>
+ <h3>The distance<br/><em>between layers.</em></h3>
+ <p>Drift measures the divergence between what a person consciously presents and what is actually running underneath. A person can appear perfectly regulated while running a destabilising subconscious programme. Drift catches it.</p>
+ <p>Low Drift (below 1.0) means the layers are largely aligned — what you show is close to what runs. High Drift (above 2.5) means there is significant divergence — a gap between the presented self and the operating self that is likely producing cost, friction, or loops the person doesn't fully see.</p>
+ <div class="drift-formula">Drift = |Conscious average − Subconscious average|</div>
+ </div>
+ </div>
+</section>
+
+<!-- OBSERVER CODES -->
+<section>
+ <div class="container">
+ <p class="section-label">02 — SC Blueprints™</p>
+ <h2 class="section-title">Four codes.<br/><em>Always present.</em></h2>
+ <p class="section-desc">Every person carries all four SC Blueprints™ simultaneously — always summing to 100%. The ratio between them determines current state, communication style, conflict response, and blind spots. No single code is inherently positive or negative. The goal is balance — 25% across all four simultaneously.</p>
+
+ <div class="codes-grid">
+ <div class="code-card">
+ <div class="code-name" style="color:var(--narc)">NARC</div>
+ <div class="code-subtitle">Self-reference · Survival · Protection</div>
+ <p>Extractive, self-protective, survival-oriented energy. Not inherently harmful — at 25% it provides necessary self-preservation, boundary maintenance, and identity anchoring. When dominant it becomes zero-sum — taking energy, attention, and resource from everything around it.</p>
+ <ul class="code-specs">
+ <li><span class="cs-label">Polar opposite</span><span class="cs-val">YARC</span></li>
+ <li><span class="cs-label">At 25% (balanced)</span><span class="cs-val">Healthy self-interest</span></li>
+ <li><span class="cs-label">When dominant</span><span class="cs-val">Extractive, manipulative</span></li>
+ <li><span class="cs-label">Source Codes</span><span class="cs-val">Intention · Presence</span></li>
+ <li><span class="cs-label">Apps</span><span class="cs-val">A1 · A2</span></li>
+ </ul>
+ </div>
+ <div class="code-card">
+ <div class="code-name" style="color:var(--yarc)">YARC</div>
+ <div class="code-subtitle">Other-directed · Empathy · Giving</div>
+ <p>Giving, other-directed energy. The polar opposite of NARC. At 25% it produces genuine empathy, authentic connection, and the capacity to hold another person's experience without losing the self. When dominant — self-abandoning, boundary-less, running on empty.</p>
+ <ul class="code-specs">
+ <li><span class="cs-label">Polar opposite</span><span class="cs-val">NARC</span></li>
+ <li><span class="cs-label">At 25% (balanced)</span><span class="cs-val">Empathy · Connection</span></li>
+ <li><span class="cs-label">When dominant</span><span class="cs-val">Self-abandoning</span></li>
+ <li><span class="cs-label">Source Codes</span><span class="cs-val">Balance · Connection</span></li>
+ <li><span class="cs-label">Apps</span><span class="cs-val">A5 · A6</span></li>
+ </ul>
+ </div>
+ <div class="code-card">
+ <div class="code-name" style="color:var(--sist)">SIST</div>
+ <div class="code-subtitle">Regulation · Structure · Integration</div>
+ <p>The integration code. Holds NARC and YARC in conscious regulation simultaneously — does not eliminate either, contains both. The most stable self-aware state available below Zero-Point. SIST is what allows a person to be simultaneously self-protective and other-connected without one collapsing the other.</p>
+ <ul class="code-specs">
+ <li><span class="cs-label">Polar opposite</span><span class="cs-val">Øll</span></li>
+ <li><span class="cs-label">At 25% (balanced)</span><span class="cs-val">Stable · Grounded</span></li>
+ <li><span class="cs-label">When dominant</span><span class="cs-val">Rigid · Over-analytical</span></li>
+ <li><span class="cs-label">Source Codes</span><span class="cs-val">Core Self · Integrity</span></li>
+ <li><span class="cs-label">Apps</span><span class="cs-val">A3 · A4</span></li>
+ </ul>
+ </div>
+ <div class="code-card">
+ <div class="code-name" style="color:var(--oll)">Øll</div>
+ <div class="code-subtitle">Volatility · Threshold · Intensity</div>
+ <p>Pure potential in both directions simultaneously. The code of creative intensity, transformational energy, and reset states. At 25% it provides the force needed for genuine change and creative output. When dominant — total volatility, all-or-nothing behaviour, implosion or explosion.</p>
+ <ul class="code-specs">
+ <li><span class="cs-label">Polar opposite</span><span class="cs-val">SIST</span></li>
+ <li><span class="cs-label">At 25% (balanced)</span><span class="cs-val">Creative intensity</span></li>
+ <li><span class="cs-label">When dominant</span><span class="cs-val">Implosion · Explosion</span></li>
+ <li><span class="cs-label">Source Codes</span><span class="cs-val">Purpose · Pattern</span></li>
+ <li><span class="cs-label">Apps</span><span class="cs-val">A7 · A8</span></li>
+ </ul>
+ </div>
+ </div>
+
+ <div class="zero-point-bar">
+ <span class="zero-point-label">Zero-Point — The goal state</span>
+ <div class="zero-point-eq">NARC 25% · YARC 25% · SIST 25% · Øll 25% = <em>Zero-Point</em></div>
+ </div>
+ </div>
+</section>
+
+<!-- HIERARCHICAL SCORING -->
+<section>
+ <div class="container">
+ <p class="section-label">03 — Scoring Engine</p>
+ <h2 class="section-title">Hierarchical.<br/><em>Not flat.</em></h2>
+ <p class="section-desc">The Awareness Architecture uses a hierarchical scoring engine — not a flat average. Source Codes feed into Apps. Apps feed into SC Blueprints™. Each layer inherits and refines the layer below it.</p>
+
+ <div class="hierarchy-layout">
+ <div class="hierarchy-visual">
+ <div class="h-tier">
+ <span class="h-tier-label">Layer 1</span>
+ <span class="h-tier-name">Source <em>Codes</em></span>
+ <span class="h-tier-score">28 con · 28 sub · scored 1–5</span>
+ </div>
+ <div class="h-arrow">↓ average of 2 Source Codes</div>
+ <div class="h-tier">
+ <span class="h-tier-label">Layer 2</span>
+ <span class="h-tier-name">App <em>Scores</em></span>
+ <span class="h-tier-score">8 conscious · 8 subconscious</span>
+ </div>
+ <div class="h-arrow">↓ 70% apps · 30% direct OC question</div>
+ <div class="h-tier">
+ <span class="h-tier-label">Layer 3</span>
+ <span class="h-tier-name">Observer <em>Code</em></span>
+ <span class="h-tier-score">Final integrated score</span>
+ </div>
+ <div class="h-arrow">↓ proportional share of total</div>
+ <div class="h-tier" style="background:var(--gold-bg);border-color:var(--gold-border)">
+ <span class="h-tier-label" style="color:var(--gold)">Output</span>
+ <span class="h-tier-name">OC <em>Ratio</em></span>
+ <span class="h-tier-score" style="color:var(--gold)">25/25/25/25 = Zero-Point</span>
+ </div>
+ </div>
+
+ <div class="hierarchy-text">
+ <h3>Why <em>hierarchical?</em></h3>
+ <p>A flat scoring system treats every question with equal weight. The Awareness Architecture treats questions as building blocks — two Source Codes produce an App score, two Apps produce an SC Blueprint™. Each level of aggregation dampens outliers and produces a more structurally honest result.</p>
+ <p>The 70/30 split between hierarchical App scores and direct SC Blueprint™ questions means the score is both bottom-up (built from granular Source Code data) and top-down (validated by direct gut-check responses). Where these diverge significantly, the Drift reading increases.</p>
+ <h3 style="margin-top:1.5rem">The <em>integration model</em></h3>
+ <p>The OC ratio uses an integration model — not a dominance model. A higher score means more of that code is expressed and available, not more activated or problematic. 25/25/25/25 at full integration is the peak — all four codes equally expressed and accessible. This means higher scores are always positive, and the goal is equal distribution, not suppression of any code.</p>
+ <div style="margin-top:1.5rem;padding:1.2rem 1.5rem;background:#F4F6F9;border:1px solid var(--line)">
+ <div style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem">Score band reference</div>
+ <div style="display:flex;flex-direction:column;gap:0.3rem">
+ <div style="font-family:var(--mono);font-size:0.72rem;color:var(--muted)"><span style="color:var(--narc)">1–2</span> — Activated · high load · cost or blind spot</div>
+ <div style="font-family:var(--mono);font-size:0.72rem;color:var(--muted)"><span style="color:var(--gold)">3</span>&nbsp;&nbsp;&nbsp;— Balanced · moderate · functional</div>
+ <div style="font-family:var(--mono);font-size:0.72rem;color:var(--muted)"><span style="color:var(--yarc)">4–5</span> — Regulated · resource · integrated</div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+</section>
+
+<!-- CLARITY INDEX -->
+<section>
+ <div class="container">
+ <p class="section-label">04 — Awareness Index™</p>
+ <h2 class="section-title">Where you are<br/><em>on the scale.</em></h2>
+ <p class="section-desc">The Awareness Index™ maps awareness to a universal measurement axis running from −5 to +5. Zero is Zero-Point — perfect alignment of both awareness layers with a balanced Blueprint ratio. Every profile produces a Awareness Index™ score and a corresponding Awareness Level (1–10).</p>
+
+ <div class="ci-scale">
+ <div style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem">Awareness Index™ axis</div>
+ <div class="ci-track-wrap">
+ <div class="ci-track">
+ <div class="ci-pip solid" style="left:0%"></div>
+ <div class="ci-pip empty" style="left:50%"></div>
+ <div class="ci-pip solid" style="left:100%"></div>
+ </div>
+ </div>
+ <div class="ci-ends"><span>−5 · Collapse</span><span>0 · Zero-Point</span><span>+5 · Peak expression</span></div>
+ <div class="ci-rows">
+ <div class="ci-row"><div class="ci-score">+5</div><div class="ci-state">Peak expression</div><div class="ci-note">25/25/25/25 · both layers aligned</div></div>
+ <div class="ci-row"><div class="ci-score">+3/+4</div><div class="ci-state">Conscious expansion</div><div class="ci-note">SIST rising · low Drift</div></div>
+ <div class="ci-row"><div class="ci-score">+1/+2</div><div class="ci-state">Stability emerging</div><div class="ci-note">SIST present · NARC regulated</div></div>
+ <div class="ci-row"><div class="ci-score" style="color:var(--gold)">0</div><div class="ci-state" style="color:var(--gold)">Zero-Point</div><div class="ci-note">Perfect 25/25/25/25 balance</div></div>
+ <div class="ci-row"><div class="ci-score">−1/−2</div><div class="ci-state">Drift activated</div><div class="ci-note">NARC or Øll beginning to rise</div></div>
+ <div class="ci-row"><div class="ci-score">−3/−4</div><div class="ci-state">Subconscious dominant</div><div class="ci-note">NARC or Øll dominant</div></div>
+ <div class="ci-row"><div class="ci-score">−5</div><div class="ci-state">Collapse</div><div class="ci-note">Øll dominant · implosion or explosion</div></div>
+ </div>
+ </div>
+
+ <div class="levels-grid">
+ <div class="level-card"><span class="level-num">Level 01</span><div class="level-name">Non-Conscious</div></div>
+ <div class="level-card"><span class="level-num">Level 02</span><div class="level-name">Sub-Conscious</div></div>
+ <div class="level-card"><span class="level-num">Level 03</span><div class="level-name">Conscious</div></div>
+ <div class="level-card"><span class="level-num">Level 04</span><div class="level-name">Aware</div></div>
+ <div class="level-card"><span class="level-num">Level 05</span><div class="level-name">Choice</div></div>
+ <div class="level-card"><span class="level-num">Level 06</span><div class="level-name">Integration</div></div>
+ <div class="level-card"><span class="level-num">Level 07</span><div class="level-name">Expression</div></div>
+ <div class="level-card"><span class="level-num">Level 08</span><div class="level-name">Connection</div></div>
+ <div class="level-card"><span class="level-num">Level 09</span><div class="level-name">Mastery</div></div>
+ <div class="level-card" style="background:var(--gold-bg);border-color:var(--gold-border)"><span class="level-num" style="color:var(--gold)">Level 10</span><div class="level-name" style="color:var(--gold)">Creator / Source</div></div>
+ </div>
+ </div>
+</section>
+
+<!-- IP -->
+<section>
+ <div class="container">
+ <p class="section-label">05 — Intellectual Property</p>
+ <h2 class="section-title">The framework<br/><em>is the asset.</em></h2>
+ <p class="section-desc">The Awareness Architecture — including all terminology, SC Blueprint™ classifications, scoring methodology, and the hierarchical engine — is the exclusive intellectual property of PsyTectrics Technologies Ltd. PsyTectrics™ operates as the primary commercial licensee.</p>
+
+ <div class="ip-grid">
+ <div class="ip-card">
+ <span class="ip-icon">Framework · v3.0</span>
+ <h3>Awareness Architecture</h3>
+ <p>The full 4×4+4 architecture. Four SC Blueprints™, eight Apps, 32 Source Codes across two layers. Conscious and subconscious scoring with hierarchical aggregation. Developed from lived human experience and reverse-engineered from behavioural pattern analysis.</p>
+ </div>
+ <div class="ip-card">
+ <span class="ip-icon">Terminology · Proprietary</span>
+ <h3>SC Blueprint™ System</h3>
+ <p>NARC, YARC, SIST, and Øll are proprietary classifications. The Blueprint ratio model, the integration model, and the Zero-Point concept are original intellectual property. All terminology is trademarked and may not be reproduced without a signed licensing agreement.</p>
+ </div>
+ <div class="ip-card">
+ <span class="ip-icon">Licensing · Three tiers</span>
+ <h3>Commercial Licensing</h3>
+ <p>Tier 1 — Consumer: assessment products and reports via PsyTectrics™. Tier 2 — Practitioner: coaches, therapists, and educators. Tier 3 — Enterprise: corporate, healthcare, legal. All licensing enquiries to PsyTectrics Technologies Ltd directly.</p>
+ </div>
+ </div>
+ </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-strip">
+ <h2>Ready to run<br/><em>your profile?</em></h2>
+ <div class="cta-actions">
+ <a href="reports.html" class="btn-primary">Begin free assessment →</a>
+ <a href="reports.html" class="btn-ghost">View reports</a>
+ <a href="contact.html" class="btn-ghost">Licensing enquiries</a>
+ </div>
+</div>
+
+
+
+<footer class="pt-footer">
+  <div class="pt-footer-inner">
+    <span class="pt-footer-logo">PSYTECTRICS™</span>
+    <div class="pt-footer-links">
+      <a href="index.html">Home</a>
+      <a href="reports.html">Assess</a>
+      <a href="reports.html">Reports</a>
+      <a href="prototypes.html">Prototypes</a>
+      <a href="store_index.html">Store</a>
+      <a href="framework.html">Framework</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <span class="pt-footer-note">© 2026 PsyTectrics Technologies Ltd · All rights reserved</span>
+  </div>
+</footer>
+</body>
+</html>

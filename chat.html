@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Profile Chat — PsyTectrics™</title>
+<meta name="description" content="Talk to your PsyTectrics™ awareness profile. Mirror mode reflects your own patterns. Subject mode simulates how a profiled person operates."/>
+<link rel="icon" href="pt_icon.png" type="image/png"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+ --black:#0B1020;--surface:#121417;--surface2:#1c2030;
+ --white:#FAFAF9;--muted:#71717A;--muted2:#3F3F46;
+ --gold:#00D4FF;--gold-dim:#0099BB;
+ --gold-bg:rgba(0,212,255,0.06);--gold-border:rgba(0,212,255,0.18);
+ --line:rgba(255,255,255,0.07);--line-strong:rgba(255,255,255,0.14);
+ --narc:#C4622D;--yarc:#1D9E75;--sist:#534AB7;--oll:#A0426B;
+ --serif:'Montserrat',sans-serif;
+ --sans:'Inter',system-ui,sans-serif;
+ --mono:'Space Mono',monospace;
+}
+html,body{height:100%}
+body{background:#FFFFFF;color:#0B1020;font-family:var(--sans);font-weight:300;padding-top:70px;overflow:hidden;display:flex;flex-direction:column}
+
+/* NAV */
+nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;border-bottom:1px solid var(--line);background:var(--nav-bg,#0B1020);backdrop-filter:blur(16px);flex-shrink:0;z-index:100}
+.nav-logo{display:flex;align-items:center;gap:0.8rem;text-decoration:none}
+.nav-logo img{height:52px;width:auto}
+.nav-logo-text{font-family:var(--mono);font-size:0.74rem;letter-spacing:0.18em;color:#0B1020;font-weight:700}
+.nav-logo-text span{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.nav-tag{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);background:var(--gold-bg);border:1px solid var(--gold-border);padding:0.3rem 0.8rem}
+.nav-btn{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.45rem 1rem;border:1px solid var(--line-strong);background:transparent;color:var(--muted);cursor:pointer;transition:all 0.2s;text-decoration:none}
+.nav-btn:hover{color:#0B1020;border-color:var(--gold-border)}
+
+/* SCREENS */
+.screen{display:none;flex:1;flex-direction:column;overflow:hidden}
+.screen.active{display:flex}
+
+/* ── LANDING ── */
+.landing{flex:1;display:flex;align-items:center;justify-content:center;padding:2rem;overflow-y:auto}
+.landing-inner{max-width:580px;width:100%}
+.landing-eyebrow{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:1.8rem}
+.landing-title{font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);font-weight:300;line-height:1.1;margin-bottom:1rem}
+.landing-title em{font-style:italic;color:var(--gold)}
+.landing-desc{font-size:0.88rem;color:var(--muted);line-height:1.8;margin-bottom:2.5rem}
+
+/* MODE CARDS */
+.mode-cards{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(0,0,0,0.08);border:1px solid rgba(0,0,0,0.08);margin-bottom:2rem}
+.mode-card{background:#FFFFFF;padding:1.8rem;cursor:pointer;transition:background 0.2s;border:2px solid transparent}
+.mode-card:hover{background:#F4F6F9}
+.mode-card.selected{background:var(--gold-bg);border-color:var(--gold-border)}
+.mode-tag{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:0.6rem}
+.mode-name{font-family:var(--serif);font-size:1.15rem;font-weight:300;margin-bottom:0.5rem}
+.mode-name em{font-style:italic;color:var(--gold)}
+.mode-desc{font-size:0.78rem;color:var(--muted);line-height:1.6}
+
+/* CODE INPUT */
+.code-section{margin-bottom:1.5rem}
+.code-label{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:0.6rem}
+.code-input-wrap{position:relative}
+.code-input{width:100%;font-family:var(--mono);font-size:0.74rem;letter-spacing:0.06em;padding:0.9rem 3rem 0.9rem 1rem;border:1px solid var(--line-strong);background:#F4F6F9;color:#0B1020;outline:none;transition:border-color 0.2s}
+.code-input:focus{border-color:var(--gold-border)}
+.code-input::placeholder{color:var(--muted);opacity:0.5}
+.code-clear{position:absolute;right:1rem;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:0.6rem;color:var(--muted);cursor:pointer;display:none}
+.code-status{font-family:var(--mono);font-size:0.65rem;margin-top:0.5rem;padding:0.6rem 0.8rem;display:none}
+.code-status.valid{display:block;background:rgba(29,158,117,0.08);border:1px solid rgba(29,158,117,0.2);color:var(--yarc)}
+.code-status.invalid{display:block;background:rgba(196,98,45,0.08);border:1px solid rgba(196,98,45,0.2);color:var(--narc)}
+
+/* PROFILE MINI */
+.profile-mini{display:none;background:#F4F6F9;border:1px solid var(--line);padding:1.2rem;margin-top:0.75rem}
+.profile-mini.visible{display:block}
+.pm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.8rem;margin-bottom:0.8rem}
+.pm-item{display:flex;flex-direction:column;gap:3px}
+.pm-label{font-family:var(--mono);font-size:7px;letter-spacing:0.08em;text-transform:uppercase}
+.pm-track{height:1.5px;background:var(--line-strong)}
+.pm-fill{height:100%}
+.pm-pct{font-family:var(--mono);font-size:8px;color:var(--muted)}
+.pm-meta{font-family:var(--mono);font-size:0.65rem;color:var(--muted);display:flex;gap:1.2rem;flex-wrap:wrap}
+.pm-meta span{color:#0B1020}
+
+.start-btn{width:100%;padding:1rem;background:var(--gold);color:var(--black);border:none;font-family:var(--mono);font-size:0.74rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:opacity 0.2s;opacity:0.35;pointer-events:none}
+.start-btn.ready{opacity:1;pointer-events:auto}
+.start-btn:hover{opacity:0.85}
+
+/* ── CHAT SCREEN ── */
+.chat-screen{flex:1;display:flex;flex-direction:column;overflow:hidden}
+
+/* PROFILE STRIP */
+.profile-strip{padding:0.75rem 1.5rem;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:1.2rem;flex-shrink:0;flex-wrap:wrap;background:#F4F6F9}
+.ps-mode{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.25rem 0.7rem;border:1px solid var(--gold-border);color:var(--gold)}
+.ps-oc{display:flex;gap:0.8rem}
+.ps-oc-item{font-family:var(--mono);font-size:0.65rem}
+.ps-meta{font-family:var(--mono);font-size:0.65rem;color:var(--muted);margin-left:auto}
+.ps-reset{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.06em;color:var(--muted2);cursor:pointer;text-decoration:underline;text-underline-offset:2px;transition:color 0.2s}
+.ps-reset:hover{color:var(--muted)}
+
+/* MESSAGES */
+.messages{flex:1;overflow-y:auto;padding:1.5rem;display:flex;flex-direction:column;gap:1rem;scroll-behavior:smooth}
+.messages::-webkit-scrollbar{width:2px}
+.messages::-webkit-scrollbar-thumb{background:var(--line-strong)}
+
+.msg{display:flex;gap:0.75rem;max-width:78%;animation:msg-in 0.22s ease}
+@keyframes msg-in{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.msg.user{align-self:flex-end;flex-direction:row-reverse}
+.msg.ai{align-self:flex-start}
+.msg-avatar{width:26px;height:26px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:0.5rem;font-weight:700;margin-top:2px;border:1px solid var(--line-strong)}
+.msg.user .msg-avatar{background:var(--gold);color:var(--black);border-color:var(--gold)}
+.msg.ai .msg-avatar{background:#F4F6F9;color:var(--muted)}
+.msg-bubble{padding:0.9rem 1.1rem;font-size:0.86rem;line-height:1.7}
+.msg.user .msg-bubble{background:var(--gold);color:var(--black)}
+.msg.ai .msg-bubble{background:#F4F6F9;color:#0B1020;border:1px solid var(--line)}
+
+/* TYPING */
+.typing{align-self:flex-start;display:flex;gap:0.75rem}
+.typing-dots{background:#F4F6F9;border:1px solid var(--line);padding:1rem 1.1rem;display:flex;gap:4px;align-items:center}
+.typing-dot{width:5px;height:5px;background:var(--muted);animation:dot-bounce 1.2s infinite}
+.typing-dot:nth-child(2){animation-delay:0.2s}
+.typing-dot:nth-child(3){animation-delay:0.4s}
+@keyframes dot-bounce{0%,60%,100%{transform:translateY(0);opacity:0.4}30%{transform:translateY(-4px);opacity:1}}
+
+/* PAYWALL */
+.paywall-banner{margin:0 1.5rem 1rem;background:var(--gold-bg);border:1px solid var(--gold-border);border-left:2px solid var(--gold);padding:1.2rem 1.4rem;display:none}
+.paywall-banner.visible{display:block}
+.pw-title{font-family:var(--mono);font-size:0.74rem;font-weight:700;margin-bottom:0.4rem;color:#0B1020}
+.pw-desc{font-size:0.8rem;color:var(--muted);line-height:1.65;margin-bottom:1rem}
+.pw-btn{display:inline-block;padding:0.7rem 1.6rem;background:var(--gold);color:var(--black);border:none;font-family:var(--mono);font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:opacity 0.2s;text-decoration:none}
+.pw-btn:hover{opacity:0.85}
+
+/* INPUT BAR */
+.input-bar{padding:1rem 1.5rem;border-top:1px solid var(--line);display:flex;gap:0.75rem;align-items:flex-end;flex-shrink:0;background:var(--black)}
+.chat-input{flex:1;font-family:var(--sans);font-size:0.86rem;padding:0.8rem 1rem;border:1px solid var(--line-strong);background:#F4F6F9;color:#0B1020;outline:none;resize:none;transition:border-color 0.2s;line-height:1.5;max-height:120px;overflow-y:auto}
+.chat-input:focus{border-color:var(--gold-border)}
+.chat-input::placeholder{color:var(--muted);opacity:0.5}
+.chat-input:disabled{opacity:0.35}
+.send-btn{width:40px;height:40px;background:var(--gold);color:var(--black);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:opacity 0.2s;flex-shrink:0}
+.send-btn:hover{opacity:0.85}
+.send-btn:disabled{opacity:0.3;cursor:not-allowed}
+.send-btn svg{width:15px;height:15px}
+.msg-count{font-family:var(--mono);font-size:0.6rem;color:var(--muted2);text-align:center;padding:4px 0;letter-spacing:0.06em}
+
+@media(max-width:600px){
+ .mode-cards{grid-template-columns:1fr}
+ .msg{max-width:92%}
+ .landing{padding:1rem}
+ .messages{padding:1rem}
+ .input-bar{padding:0.75rem 1rem}
+ nav{padding:0.8rem 1rem}
+}
+/* ── PSYTECTRICS NAV – CANONICAL ── */
+nav, .nav {
+ position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+ display: flex; align-items: center; justify-content: space-between;
+ padding: 0.85rem 2.5rem;
+ border-bottom: 1px solid rgba(0,212,255,0.13);
+ background: #060B18;
+ backdrop-filter: blur(20px);
+ -webkit-backdrop-filter: blur(20px);
+ height: 70px;
+ box-sizing: border-box;
+}
+nav a.nav-brand, nav a.nav-logo, .nav a.nav-brand {
+ display: flex; align-items: center; gap: 0; text-decoration: none;
+ background: none; border: none; padding: 0; outline: none;
+ line-height: 1;
+}
+nav a.nav-brand img, nav a.nav-logo img, .nav a.nav-brand img {
+ height: 52px; width: auto; display: block;
+ background: transparent; border: none; outline: none;
+}
+
+/* === CANONICAL PT NAV === */
+nav.pt-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.85rem 2.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: #060B18;
+  height: 70px;
+}
+nav.pt-nav .nav-logo-wrap { display: flex; align-items: center; text-decoration: none; }
+nav.pt-nav .nav-logo-img { height: 52px; width: auto; display: block; }
+nav.pt-nav .nav-links { display: flex; gap: 2rem; list-style: none; }
+nav.pt-nav .nav-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-family: 'Space Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+nav.pt-nav .nav-links a:hover, nav.pt-nav .nav-links a.active { color: #FFFFFF; }
+nav.pt-nav .nav-cta { background: #00D4FF; color: #060B18; padding: 0.6rem 1.4rem; font-family: 'Space Mono', monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s; border: none; cursor: pointer; }
+nav.pt-nav .nav-cta:hover { opacity: 0.85; }
+nav.pt-nav .nav-tag { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: #00D4FF; background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.22); padding: 0.28rem 0.75rem; }
+nav.pt-nav .nav-btn { font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.45rem 1rem; border: 1px solid rgba(255,255,255,0.15); background: transparent; color: rgba(255,255,255,0.55); cursor: pointer; transition: all 0.2s; text-decoration: none; }
+nav.pt-nav .nav-btn:hover { color: #fff; border-color: rgba(0,212,255,0.4); }
+body { padding-top: 70px; }
+@media (max-width: 768px) { nav.pt-nav { padding: 0.8rem 1.2rem; } nav.pt-nav .nav-links { display: none; } }
+
+
+
+
+
+/* === PT FOOTER === */
+.pt-footer{background:#060B18;border-top:1px solid rgba(255,255,255,0.07);padding:2rem 3rem}
+.pt-footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.pt-footer-logo{font-family:'Space Mono',monospace;font-size:0.78rem;letter-spacing:0.16em;color:rgba(255,255,255,0.5);font-weight:700}
+.pt-footer-links{display:flex;gap:1.8rem;flex-wrap:wrap}
+.pt-footer-links a{font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s}
+.pt-footer-links a:hover{color:rgba(255,255,255,0.7)}
+.pt-footer-note{font-family:'Space Mono',monospace;font-size:0.58rem;color:rgba(255,255,255,0.2);letter-spacing:0.06em}
+@media(max-width:768px){.pt-footer-inner{flex-direction:column;text-align:center;align-items:center}.pt-footer-links{justify-content:center}}
+</style>
+</head>
+<body>
+
+<nav class="pt-nav">
+ <a href="index.html" class="nav-logo">
+ <img src="pt_logo.png" alt="PsyTectrics™" />
+ 
+ </a>
+ <div class="nav-right">
+ <span class="nav-tag">Profile Chat</span>
+ <a href="reports.html" class="nav-btn">← Reports</a>
+ <a href="reports.html" class="nav-btn">Take assessment</a>
+ </div>
+</nav>
+
+<!-- SCREEN: LANDING -->
+<div class="screen active" id="screen-landing">
+ <div class="landing">
+ <div class="landing-inner">
+ <span class="landing-eyebrow">Profile Chat · PsyTectrics™</span>
+ <h2 class="landing-title">Talk to the profile.<br/><em>Not a generic chatbot.</em></h2>
+ <p class="landing-desc">Paste your 56-character assessment code. The profile is decoded instantly — your SC Blueprints™, Awareness Index™, Drift, and all 56 node scores become the intelligence layer behind every response. Five messages free. Full session unlocks via email.</p>
+
+ <div class="mode-cards">
+ <div class="mode-card" id="card-mirror" onclick="selectMode('mirror')">
+ <span class="mode-tag">Solo · Self</span>
+ <div class="mode-name"><em>Mirror</em> Mode</div>
+ <p class="mode-desc">The AI reflects your own profile back — your patterns, blind spots, and subconscious drivers, speaking as your awareness profile.</p>
+ </div>
+ <div class="mode-card" id="card-subject" onclick="selectMode('subject')">
+ <span class="mode-tag">Observer · Other</span>
+ <div class="mode-name"><em>Subject</em> Mode</div>
+ <p class="mode-desc">The AI simulates how the profiled person operates — how they respond, what drives their behaviour, what their blind spots look like in conversation.</p>
+ </div>
+ </div>
+
+ <div class="code-section">
+ <label class="code-label" for="codeInput">Assessment code — 56 characters</label>
+ <div class="code-input-wrap">
+ <input class="code-input" id="codeInput" type="text" maxlength="72" placeholder="Paste your encoded assessment code here" oninput="onCodeInput()" autocomplete="off" spellcheck="false"/>
+ <span class="code-clear" id="codeClear" onclick="clearCode()">✕</span>
+ </div>
+ <div class="code-status" id="codeStatus"></div>
+ <div class="profile-mini" id="profileMini">
+ <div class="pm-grid" id="pmGrid"></div>
+ <div class="pm-meta" id="pmMeta"></div>
+ </div>
+ </div>
+
+ <button class="start-btn" id="startBtn" onclick="startChat()">Begin session →</button>
+ </div>
+ </div>
+</div>
+
+<!-- SCREEN: CHAT -->
+<div class="screen" id="screen-chat">
+ <div class="chat-screen">
+ <div class="profile-strip" id="profileStrip">
+ <span class="ps-mode" id="psMode">—</span>
+ <div class="ps-oc" id="psOC"></div>
+ <div class="ps-meta" id="psMeta"></div>
+ <span class="ps-reset" onclick="resetToLanding()">Change profile</span>
+ </div>
+ <div class="messages" id="messages"></div>
+ <div class="paywall-banner" id="paywallBanner">
+ <div class="pw-title">You've used your 5 free messages.</div>
+ <p class="pw-desc">To unlock a full session, email your assessment code to hello@psytectrics.com with the subject "Profile Chat Unlock". You'll receive a payment link to continue.</p>
+ <button class="pw-btn" onclick="emailUnlock()">Request full session →</button>
+ </div>
+ <div class="input-bar">
+ <textarea class="chat-input" id="chatInput" placeholder="Ask something…" rows="1" onkeydown="onKey(event)" oninput="autoResize(this)"></textarea>
+ <button class="send-btn" id="sendBtn" onclick="sendMessage()" disabled>
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+ </button>
+ </div>
+ <div class="msg-count" id="msgCount"></div>
+ </div>
+</div>
+
+<script>
+const FREE_LIMIT=5;
+const NODES=[
+ {id:'sc1',name:'Intention',code:'NARC',layer:'Conscious',reversed:false},
+ {id:'sc2',name:'Intention',code:'NARC',layer:'Conscious',reversed:false},
+ {id:'sc3',name:'Presence',code:'NARC',layer:'Conscious',reversed:false},
+ {id:'sc4',name:'Presence',code:'NARC',layer:'Conscious',reversed:false},
+ {id:'sc5',name:'Core Self',code:'SIST',layer:'Conscious',reversed:false},
+ {id:'sc6',name:'Core Self',code:'SIST',layer:'Conscious',reversed:false},
+ {id:'sc7',name:'Integrity',code:'SIST',layer:'Conscious',reversed:false},
+ {id:'sc8',name:'Integrity',code:'SIST',layer:'Conscious',reversed:false},
+ {id:'sc9',name:'Balance',code:'YARC',layer:'Conscious',reversed:false},
+ {id:'sc10',name:'Balance',code:'YARC',layer:'Conscious',reversed:false},
+ {id:'sc11',name:'Connection',code:'YARC',layer:'Conscious',reversed:false},
+ {id:'sc12',name:'Connection',code:'YARC',layer:'Conscious',reversed:false},
+ {id:'sc13',name:'Purpose',code:'Øll',layer:'Conscious',reversed:false},
+ {id:'sc14',name:'Purpose',code:'Øll',layer:'Conscious',reversed:false},
+ {id:'sc15',name:'Pattern',code:'Øll',layer:'Conscious',reversed:false},
+ {id:'sc16',name:'Pattern',code:'Øll',layer:'Conscious',reversed:false},
+ {id:'ap1',name:'A1',code:'NARC',layer:'Conscious',reversed:false},
+ {id:'ap2',name:'A2',code:'NARC',layer:'Conscious',reversed:false},
+ {id:'ap3',name:'A3',code:'SIST',layer:'Conscious',reversed:false},
+ {id:'ap4',name:'A4',code:'SIST',layer:'Conscious',reversed:false},
+ {id:'ap5',name:'A5',code:'YARC',layer:'Conscious',reversed:false},
+ {id:'ap6',name:'A6',code:'YARC',layer:'Conscious',reversed:false},
+ {id:'ap7',name:'A7',code:'Øll',layer:'Conscious',reversed:false},
+ {id:'ap8',name:'A8',code:'Øll',layer:'Conscious',reversed:false},
+ {id:'oc1',name:'NARC OC',code:'NARC',layer:'Conscious',reversed:false},
+ {id:'oc2',name:'SIST OC',code:'SIST',layer:'Conscious',reversed:false},
+ {id:'oc3',name:'YARC OC',code:'YARC',layer:'Conscious',reversed:false},
+ {id:'oc4',name:'Øll OC',code:'Øll',layer:'Conscious',reversed:false},
+ {id:'sc17',name:'Intention',code:'NARC',layer:'Subconscious',reversed:true},
+ {id:'sc18',name:'Intention',code:'NARC',layer:'Subconscious',reversed:true},
+ {id:'sc19',name:'Presence',code:'NARC',layer:'Subconscious',reversed:true},
+ {id:'sc20',name:'Presence',code:'NARC',layer:'Subconscious',reversed:true},
+ {id:'sc21',name:'Core Self',code:'SIST',layer:'Subconscious',reversed:true},
+ {id:'sc22',name:'Core Self',code:'SIST',layer:'Subconscious',reversed:true},
+ {id:'sc23',name:'Integrity',code:'SIST',layer:'Subconscious',reversed:true},
+ {id:'sc24',name:'Integrity',code:'SIST',layer:'Subconscious',reversed:true},
+ {id:'sc25',name:'Balance',code:'YARC',layer:'Subconscious',reversed:true},
+ {id:'sc26',name:'Balance',code:'YARC',layer:'Subconscious',reversed:true},
+ {id:'sc27',name:'Connection',code:'YARC',layer:'Subconscious',reversed:true},
+ {id:'sc28',name:'Connection',code:'YARC',layer:'Subconscious',reversed:true},
+ {id:'sc29',name:'Purpose',code:'Øll',layer:'Subconscious',reversed:true},
+ {id:'sc30',name:'Purpose',code:'Øll',layer:'Subconscious',reversed:true},
+ {id:'sc31',name:'Pattern',code:'Øll',layer:'Subconscious',reversed:true},
+ {id:'sc32',name:'Pattern',code:'Øll',layer:'Subconscious',reversed:true},
+ {id:'ap9',name:'A1 sub',code:'NARC',layer:'Subconscious',reversed:true},
+ {id:'ap10',name:'A2 sub',code:'NARC',layer:'Subconscious',reversed:true},
+ {id:'ap11',name:'A3 sub',code:'SIST',layer:'Subconscious',reversed:true},
+ {id:'ap12',name:'A4 sub',code:'SIST',layer:'Subconscious',reversed:true},
+ {id:'ap13',name:'A5 sub',code:'YARC',layer:'Subconscious',reversed:true},
+ {id:'ap14',name:'A6 sub',code:'YARC',layer:'Subconscious',reversed:true},
+ {id:'ap15',name:'A7 sub',code:'Øll',layer:'Subconscious',reversed:true},
+ {id:'ap16',name:'A8 sub',code:'Øll',layer:'Subconscious',reversed:true},
+ {id:'oc5',name:'NARC sub',code:'NARC',layer:'Subconscious',reversed:true},
+ {id:'oc6',name:'SIST sub',code:'SIST',layer:'Subconscious',reversed:true},
+ {id:'oc7',name:'YARC sub',code:'YARC',layer:'Subconscious',reversed:true},
+ {id:'oc8',name:'Øll sub',code:'Øll',layer:'Subconscious',reversed:true},
+];
+const LEVELS=[
+ {level:1,name:'Non-Conscious'},{level:2,name:'Sub-Conscious'},
+ {level:3,name:'Conscious'},{level:4,name:'Aware'},
+ {level:5,name:'Choice'},{level:6,name:'Integration'},
+ {level:7,name:'Expression'},{level:8,name:'Connection'},
+ {level:9,name:'Mastery'},{level:10,name:'Creator/Source'},
+];
+const OC_COLS={NARC:'#C4622D',SIST:'#534AB7',YARC:'#1D9E75','Øll':'#A0426B'};
+const DECODE_MAP={'K':'1','M':'2','R':'3','T':'4','W':'5'};
+
+let selectedMode=null,profile=null,conversation=[],msgCount=0,paywallShown=false,isLoading=false;
+
+// ── URL PARAM AUTO-LOAD ──
+(function(){
+ const p=new URLSearchParams(window.location.search);
+ const code=p.get('code');
+ if(code){
+ const input=document.getElementById('codeInput');
+ input.value=code;
+ onCodeInput();
+ setTimeout(()=>document.querySelector('.mode-cards').scrollIntoView({behavior:'smooth',block:'center'}),300);
+ }
+})();
+
+function decodeLetterCode(input){
+ const clean=input.replace(/[-\s]/g,'').toUpperCase();
+ if(/^[1-5]{56}$/.test(clean))return clean;
+ if(/^[KMRTW]{56}$/.test(clean))return clean.split('').map(l=>DECODE_MAP[l]||l).join('');
+ return null;
+}
+
+function nodeEff(n,raw){return n.reversed?(6-raw):raw}
+function avg(...vals){const v=vals.filter(x=>x!==null&&x!==undefined);return v.length?v.reduce((a,b)=>a+b,0)/v.length:null}
+
+function decodeCode(rawInput){
+ const stripped=rawInput.replace(/[-\s]/g,'').toUpperCase();
+ const decoded=decodeLetterCode(stripped);
+ if(!decoded)return null;
+ const digits=decoded.split('').map(Number);
+ if(digits.some(d=>isNaN(d)||d<1||d>5))return null;
+ const scores={};
+ NODES.forEach((n,i)=>{scores[n.id]=digits[i]});
+ const answered=NODES.map(n=>({node:n,eff:nodeEff(n,scores[n.id])}));
+ const avgEff=answered.reduce((s,x)=>s+x.eff,0)/answered.length;
+ const bs=parseFloat(((avgEff-3)/2*5).toFixed(1));
+ const awareness=Math.round(((avgEff-1)/4)*100);
+ const conN=answered.filter(x=>x.node.layer==='Conscious');
+ const subN=answered.filter(x=>x.node.layer==='Subconscious');
+ const conAvg=parseFloat((conN.reduce((s,x)=>s+x.eff,0)/conN.length).toFixed(2));
+ const subAvg=parseFloat((subN.reduce((s,x)=>s+x.eff,0)/subN.length).toFixed(2));
+ const drift=parseFloat(Math.abs(conAvg-subAvg).toFixed(1));
+ const byCode={NARC:[],SIST:[],YARC:[],'Øll':[]};
+ answered.forEach(x=>{if(byCode[x.node.code])byCode[x.node.code].push(x.eff)});
+ const totals={};
+ Object.entries(byCode).forEach(([k,v])=>{totals[k]=v.reduce((a,b)=>a+b,0)||0.001});
+ const grand=Object.values(totals).reduce((a,b)=>a+b,0)||1;
+ const narcPct=Math.round(totals.NARC/grand*100);
+ const sistPct=Math.round(totals.SIST/grand*100);
+ const yarcPct=Math.round(totals.YARC/grand*100);
+ const ollPct=100-narcPct-sistPct-yarcPct;
+ const oc={NARC:narcPct,SIST:sistPct,YARC:yarcPct,'Øll':ollPct};
+ let level;
+ if(bs<=-4.5)level=LEVELS[0];else if(bs<=-2.5)level=LEVELS[1];
+ else if(bs<=-0.5)level=LEVELS[2];else if(bs<=0.5)level=LEVELS[3];
+ else if(bs<=1.5)level=LEVELS[4];else if(bs<=2.5)level=LEVELS[5];
+ else if(bs<=3.2)level=LEVELS[6];else if(bs<=3.8)level=LEVELS[7];
+ else if(bs<=4.5)level=LEVELS[8];else level=LEVELS[9];
+ const dominantCode=Object.entries(oc).sort((a,b)=>b[1]-a[1])[0][0];
+ const lowNodes=[...new Set(answered.filter(x=>x.eff<=2).map(x=>x.node.name))];
+ const highNodes=[...new Set(answered.filter(x=>x.eff>=4).map(x=>x.node.name))];
+ return{scores,bs,drift,conAvg,subAvg,oc,level,awareness,dominantCode,lowNodes,highNodes,code:decoded};
+}
+
+function selectMode(mode){
+ selectedMode=mode;
+ document.getElementById('card-mirror').classList.toggle('selected',mode==='mirror');
+ document.getElementById('card-subject').classList.toggle('selected',mode==='subject');
+ checkReady();
+}
+
+function onCodeInput(){
+ const val=document.getElementById('codeInput').value;
+ const stripped=val.replace(/[-\s]/g,'').toUpperCase();
+ document.getElementById('codeClear').style.display=val?'block':'none';
+ const status=document.getElementById('codeStatus');
+ const mini=document.getElementById('profileMini');
+ if(!stripped){status.className='code-status';mini.classList.remove('visible');profile=null;checkReady();return}
+ if(stripped.length<56){status.className='code-status invalid';status.textContent=`${stripped.length}/56 — keep going`;mini.classList.remove('visible');profile=null;checkReady();return}
+ const decoded=decodeCode(stripped);
+ if(!decoded){status.className='code-status invalid';status.textContent='Invalid code — characters must be K M R T W only (or digits 1–5)';mini.classList.remove('visible');profile=null;checkReady();return}
+ profile=decoded;
+ status.className='code-status valid';
+ status.textContent=`✓ Decoded — Level ${decoded.level.level} ${decoded.level.name} · CI ${decoded.bs>0?'+':''}${decoded.bs} · Drift ${decoded.drift} · Awareness ${decoded.awareness}%`;
+ renderProfileMini(decoded);
+ checkReady();
+}
+
+function clearCode(){document.getElementById('codeInput').value='';onCodeInput()}
+
+function renderProfileMini(p){
+ document.getElementById('pmGrid').innerHTML=Object.entries(p.oc).map(([k,v])=>`
+ <div class="pm-item">
+ <div class="pm-label" style="color:${OC_COLS[k]}">${k}</div>
+ <div class="pm-track"><div class="pm-fill" style="width:${v}%;background:${OC_COLS[k]}"></div></div>
+ <div class="pm-pct">${v}%</div>
+ </div>`).join('');
+ document.getElementById('pmMeta').innerHTML=
+ `<span>CI <span>${p.bs>0?'+':''}${p.bs}</span></span>
+ <span>Drift <span>${p.drift}</span></span>
+ <span>Level <span>${p.level.level} — ${p.level.name}</span></span>
+ <span>Dominant <span style="color:${OC_COLS[p.dominantCode]}">${p.dominantCode}</span></span>`;
+ document.getElementById('profileMini').classList.add('visible');
+}
+
+function checkReady(){
+ document.getElementById('startBtn').classList.toggle('ready',!!(selectedMode&&profile));
+}
+
+function buildSystemPrompt(p,mode){
+ const ocStr=Object.entries(p.oc).map(([k,v])=>`${k}:${v}%`).join(' | ');
+ const nodeScores=NODES.map((n,i)=>{
+ const raw=Object.values(p.scores)[i];
+ const e=nodeEff(n,raw);
+ const band=e>=4?'Regulated':e>=3?'Balanced':'Activated';
+ return `${n.name}(${n.layer.slice(0,3)}/${n.code}):${e}[${band}]`;
+ }).join(', ');
+ const lowStr=p.lowNodes.length?p.lowNodes.join(', '):'none';
+ const highStr=p.highNodes.length?p.highNodes.join(', '):'none';
+ if(mode==='mirror'){return`You are operating as a Mirror — reflecting the user's own PsyTectrics™ awareness profile back at them. You speak AS the awareness profile, not ABOUT it.
+
+FRAMEWORK:
+NARC=self-reference/survival/protection (polar:YARC). YARC=other-directed/empathy/giving (polar:NARC). SIST=regulation/structure/integration (polar:Øll). Øll=volatility/threshold/intensity (polar:SIST).
+Score 1-2=Activated(high load). Score 3=Balanced. Score 4-5=Regulated(resource).
+Awareness Index™: -5(collapse) → 0(Zero-Point) → +5(peak). Drift=gap between conscious and subconscious layers.
+
+THIS PROFILE:
+SC Blueprints™: ${ocStr}
+Awareness Index™: ${p.bs>0?'+':''}${p.bs} — Level ${p.level.level}: ${p.level.name} — Awareness: ${p.awareness}%
+Drift: ${p.drift} (Conscious avg ${p.conAvg} / Subconscious avg ${p.subAvg})${p.drift>=2.5?' — SIGNIFICANT GAP':''}
+Dominant: ${p.dominantCode}
+High load nodes (1-2): ${lowStr}
+Regulated nodes (4-5): ${highStr}
+
+RULES: Speak first person as the profile. Be specific to the actual scores. Direct, honest, non-generic. Never therapy-speak. 2-4 paragraphs max. Reference actual node names and code values where relevant.`}
+ return`You are a Subject Simulation — embodying how a profiled person operates based on their PsyTectrics™ awareness profile.
+
+FRAMEWORK:
+NARC=self-reference/survival/protection (polar:YARC). YARC=other-directed/empathy (polar:NARC). SIST=regulation/structure (polar:Øll). Øll=volatility/threshold (polar:SIST).
+High drift=subconscious patterns contradict conscious presentation. Activated nodes(1-2)=friction points.
+
+THE PROFILED PERSON:
+SC Blueprints™: ${ocStr}
+Awareness Index™: ${p.bs>0?'+':''}${p.bs} — Level ${p.level.level}: ${p.level.name}
+Drift: ${p.drift}${p.drift>=2.5?' — SIGNIFICANT: subconscious and conscious are substantially diverging':''}
+Dominant: ${p.dominantCode}
+High load nodes: ${lowStr}
+Regulated nodes: ${highStr}
+
+RULES: Stay in character as this profile. Respond as they would — weighted by dominant codes and activated nodes. High-NARC=more self-referential. High-Øll=more volatile/avoidant. High drift=surface contradicts subconscious. Do not break character unless directly asked. 1-3 paragraphs, natural language.`}
+
+function startChat(){
+ if(!selectedMode||!profile)return;
+ msgCount=0;paywallShown=false;conversation=[];
+ document.getElementById('psMode').textContent=selectedMode==='mirror'?'Mirror Mode — Self':'Subject Mode — Observer';
+ document.getElementById('psOC').innerHTML=Object.entries(profile.oc).map(([k,v])=>`<span class="ps-oc-item" style="color:${OC_COLS[k]}">${k} ${v}%</span>`).join('');
+ document.getElementById('psMeta').innerHTML=`CI ${profile.bs>0?'+':''}${profile.bs} · Drift ${profile.drift} · L${profile.level.level}`;
+ document.getElementById('messages').innerHTML='';
+ document.getElementById('paywallBanner').classList.remove('visible');
+ updateMsgCount();
+ showScreen('screen-chat');
+ const opening=selectedMode==='mirror'
+ ?`Profile loaded. Awareness Index™ ${profile.bs>0?'+':''}${profile.bs} — Level ${profile.level.level}: ${profile.level.name}. Awareness ${profile.awareness}%. Drift ${profile.drift}.\n\nDominant: ${profile.dominantCode} at ${profile.oc[profile.dominantCode]}%. ${profile.lowNodes.length?`High-load nodes: ${profile.lowNodes.slice(0,3).join(', ')}.`:''}\n\nWhat do you want to look at?`
+ :`Subject profile loaded. Level ${profile.level.level}: ${profile.level.name}. Awareness Index™ ${profile.bs>0?'+':''}${profile.bs}. Drift ${profile.drift}.\n\nDominant: ${profile.dominantCode} at ${profile.oc[profile.dominantCode]}%. ${profile.drift>=2.5?'Significant drift — subconscious is diverging from conscious presentation.':'Moderate drift — layers reasonably aligned.'}\n\nAsk me anything. I'll respond as this profile.`;
+ addMessage('ai',opening);
+ document.getElementById('chatInput').focus();
+}
+
+function showScreen(id){
+ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+}
+function resetToLanding(){showScreen('screen-landing');conversation=[];msgCount=0}
+
+function addMessage(role,text){
+ const msgs=document.getElementById('messages');
+ const div=document.createElement('div');
+ div.className=`msg ${role}`;
+ const initials=role==='user'?'YOU':selectedMode==='mirror'?'MIR':'SIM';
+ div.innerHTML=`<div class="msg-avatar">${initials}</div><div class="msg-bubble">${text.replace(/\n/g,'<br>')}</div>`;
+ msgs.appendChild(div);
+ msgs.scrollTop=msgs.scrollHeight;
+}
+
+function showTyping(){
+ const msgs=document.getElementById('messages');
+ const div=document.createElement('div');
+ div.className='typing';div.id='typingIndicator';
+ div.innerHTML=`<div class="msg-avatar" style="background:#F4F6F9;border:1px solid var(--line-strong);color:var(--muted);width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:0.5rem">${selectedMode==='mirror'?'MIR':'SIM'}</div><div class="typing-dots"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>`;
+ msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;
+}
+function removeTyping(){const el=document.getElementById('typingIndicator');if(el)el.remove()}
+
+function updateMsgCount(){
+ const remaining=Math.max(0,FREE_LIMIT-msgCount);
+ const el=document.getElementById('msgCount');
+ if(paywallShown){el.textContent=''}
+ else if(msgCount===0){el.textContent=`${FREE_LIMIT} free messages`}
+ else{el.textContent=`${remaining} free message${remaining!==1?'s':''} remaining`}
+}
+
+async function sendMessage(){
+ if(isLoading||paywallShown)return;
+ const input=document.getElementById('chatInput');
+ const text=input.value.trim();
+ if(!text)return;
+ msgCount++;input.value='';autoResize(input);
+ input.disabled=true;document.getElementById('sendBtn').disabled=true;isLoading=true;
+ addMessage('user',text);
+ conversation.push({role:'user',content:text});
+ showTyping();updateMsgCount();
+ try{
+ const res=await fetch('https://api.anthropic.com/v1/messages',{
+ method:'POST',
+ headers:{'Content-Type':'application/json','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+ body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:buildSystemPrompt(profile,selectedMode),messages:conversation})
+ });
+ const data=await res.json();
+ const reply=data.content?.[0]?.text||'Something went wrong. Try again.';
+ removeTyping();addMessage('ai',reply);
+ conversation.push({role:'assistant',content:reply});
+ }catch(err){removeTyping();addMessage('ai','Connection error. Check your network and try again.')}
+ isLoading=false;updateMsgCount();
+ if(msgCount>=FREE_LIMIT){
+ paywallShown=true;
+ document.getElementById('paywallBanner').classList.add('visible');
+ input.disabled=true;document.getElementById('sendBtn').disabled=true;
+ updateMsgCount();
+ }else{input.disabled=false;document.getElementById('sendBtn').disabled=false;input.focus()}
+}
+
+function emailUnlock(){
+ const code=profile?.code||'—';
+ const mode=selectedMode==='mirror'?'Mirror Mode':'Subject Mode';
+ const subject=encodeURIComponent(`Profile Chat Unlock — ${mode} — Level ${profile?.level?.level||'?'}`);
+ const body=encodeURIComponent(`Hi,\n\nI'd like to unlock a full Profile Chat session.\n\nMode: ${mode}\nLevel: ${profile?.level?.level||'?'} — ${profile?.level?.name||'?'}\nAwareness Index™: ${profile?.bs||'?'}\n\nAssessment Code:\n${code}\n\nPlease send me a payment link.\n\nThank you.`);
+ window.location.href=`mailto:hello@psytectrics.com?subject=${subject}&body=${body}`;
+}
+
+function onKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();if(!document.getElementById('sendBtn').disabled)sendMessage()}}
+function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,120)+'px';document.getElementById('sendBtn').disabled=!el.value.trim()||isLoading||paywallShown}
+document.getElementById('chatInput').addEventListener('input',function(){document.getElementById('sendBtn').disabled=!this.value.trim()||isLoading||paywallShown});
+</script>
+<footer class="pt-footer">
+  <div class="pt-footer-inner">
+    <span class="pt-footer-logo">PSYTECTRICS™</span>
+    <div class="pt-footer-links">
+      <a href="index.html">Home</a>
+      <a href="reports.html">Assess</a>
+      <a href="reports.html">Reports</a>
+      <a href="prototypes.html">Prototypes</a>
+      <a href="store_index.html">Store</a>
+      <a href="framework.html">Framework</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <span class="pt-footer-note">© 2026 PsyTectrics Technologies Ltd · All rights reserved</span>
+  </div>
+</footer>
+</body>
+</html>
