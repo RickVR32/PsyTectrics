@@ -38,7 +38,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .diag-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted)}
 .diag-header{display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
 .diag-svg-wrap{flex:1;display:flex;align-items:center;justify-content:center;position:relative;min-height:0;overflow:hidden;padding:0.5rem}
-#main-diagram{width:100%;height:100%;display:block}
+#main-diagram,#sub-diagram{width:100%;height:100%;display:block}
+#sub-diagram{display:none}
+.show-sub #main-diagram{display:none}
+.show-sub #sub-diagram{display:block}
+#sub-diagram line{stroke-dasharray:4 6!important}
+#sub-diagram polygon,#sub-diagram ellipse{stroke-dasharray:3 4!important}
+@keyframes flip-out{0%{transform:rotateY(0)}100%{transform:rotateY(90deg)}}
+@keyframes flip-in{0%{transform:rotateY(90deg)}100%{transform:rotateY(0)}}
+.diag-flip-out{animation:flip-out 0.45s ease forwards}
+.diag-flip-in{animation:flip-in 0.45s ease forwards}
 .diag-layer-badge{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--sist);text-align:center;flex-shrink:0}
 .oc-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;flex-shrink:0}
 .oc-mini{display:flex;flex-direction:column;gap:2px}
@@ -239,6 +248,56 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
         <g id="node-sc16" style="opacity:0;transition:opacity 0.4s"><polygon points="205.5,298.7 185.9,287.4 205.2,276.1" fill="transparent" stroke="#A0426B" stroke-width="2"/><text x="185.2" y="268" text-anchor="middle" font-size="6.5" fill="#A0426B" font-family="monospace">Pattern</text></g>
         <g id="node-bs" style="opacity:0;transition:opacity 0.5s"><polygon points="424,642 476,642 450,674" fill="none" stroke="#D4D0C8" stroke-width="1.3"/><text x="450" y="657" text-anchor="middle" font-size="7" fill="#6B7280" font-family="monospace">AI</text><text id="v-bs" x="450" y="669" text-anchor="middle" font-size="8" fill="#6B7280" font-family="monospace">—</text></g>
       </svg>
+      <!-- SUBCONSCIOUS FACE -->
+      <svg id="sub-diagram" viewBox="120 120 660 660" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="450,302 598,450 450,598 302,450" fill="none" stroke="#B8B2A8" stroke-width="1.2" opacity="0.7"/>
+        <circle cx="450" cy="450" r="220" fill="none" stroke="#C8C4BC" stroke-width="0.6" stroke-dasharray="3 9" opacity="0.14"/>
+        <circle cx="450" cy="450" r="70" fill="none" stroke="#C8C4BC" stroke-width="0.5" opacity="0.25"/>
+        <line x1="450" y1="106" x2="450" y2="794" stroke="#C8C4BC" stroke-width="0.5" stroke-dasharray="4 8" opacity="0.35"/>
+        <line x1="106" y1="450" x2="794" y2="450" stroke="#C8C4BC" stroke-width="0.5" stroke-dasharray="4 8" opacity="0.35"/>
+        <line x1="450" y1="302" x2="367.6" y2="246" stroke="#C4622D" stroke-width="1.2" opacity="0.35"/><line x1="367.6" y1="246" x2="286.6" y2="198.4" stroke="#C4622D" stroke-width="1" opacity="0.28"/><line x1="367.6" y1="246" x2="392.8" y2="155.5" stroke="#C4622D" stroke-width="1" opacity="0.28"/>
+        <line x1="450" y1="302" x2="532.4" y2="246" stroke="#C4622D" stroke-width="1.2" opacity="0.35"/><line x1="532.4" y1="246" x2="507.2" y2="155.5" stroke="#C4622D" stroke-width="1" opacity="0.28"/><line x1="532.4" y1="246" x2="613.4" y2="198.4" stroke="#C4622D" stroke-width="1" opacity="0.28"/>
+        <line x1="598" y1="450" x2="654" y2="367.6" stroke="#534AB7" stroke-width="1.2" opacity="0.35"/><line x1="654" y1="367.6" x2="701.6" y2="286.6" stroke="#534AB7" stroke-width="1" opacity="0.28"/><line x1="654" y1="367.6" x2="744.5" y2="392.8" stroke="#534AB7" stroke-width="1" opacity="0.28"/>
+        <line x1="598" y1="450" x2="654" y2="532.4" stroke="#534AB7" stroke-width="1.2" opacity="0.35"/><line x1="654" y1="532.4" x2="744.5" y2="507.2" stroke="#534AB7" stroke-width="1" opacity="0.28"/><line x1="654" y1="532.4" x2="701.6" y2="613.4" stroke="#534AB7" stroke-width="1" opacity="0.28"/>
+        <line x1="450" y1="598" x2="532.4" y2="654" stroke="#1D9E75" stroke-width="1.2" opacity="0.35"/><line x1="532.4" y1="654" x2="613.4" y2="701.6" stroke="#1D9E75" stroke-width="1" opacity="0.28"/><line x1="532.4" y1="654" x2="507.2" y2="744.5" stroke="#1D9E75" stroke-width="1" opacity="0.28"/>
+        <line x1="450" y1="598" x2="367.6" y2="654" stroke="#1D9E75" stroke-width="1.2" opacity="0.35"/><line x1="367.6" y1="654" x2="392.8" y2="744.5" stroke="#1D9E75" stroke-width="1" opacity="0.28"/><line x1="367.6" y1="654" x2="286.6" y2="701.6" stroke="#1D9E75" stroke-width="1" opacity="0.28"/>
+        <line x1="302" y1="450" x2="246" y2="532.4" stroke="#A0426B" stroke-width="1.2" opacity="0.35"/><line x1="246" y1="532.4" x2="198.4" y2="613.4" stroke="#A0426B" stroke-width="1" opacity="0.28"/><line x1="246" y1="532.4" x2="155.5" y2="507.2" stroke="#A0426B" stroke-width="1" opacity="0.28"/>
+        <line x1="302" y1="450" x2="246" y2="367.6" stroke="#A0426B" stroke-width="1.2" opacity="0.35"/><line x1="246" y1="367.6" x2="155.5" y2="392.8" stroke="#A0426B" stroke-width="1" opacity="0.28"/><line x1="246" y1="367.6" x2="198.4" y2="286.6" stroke="#A0426B" stroke-width="1" opacity="0.28"/>
+        <circle cx="450" cy="450" r="52" fill="white" stroke="#B0ABA0" stroke-width="1.8"/>
+        <circle cx="450" cy="450" r="3" fill="#6B7280" opacity="0.4"/>
+        <text id="sub-obs-label" x="450" y="455" text-anchor="middle" font-size="11" fill="#6B7280" font-family="monospace" opacity="0.7">—</text>
+        <g id="sub-node-narc" style="opacity:0.12;transition:opacity 0.5s"><polygon points="450,272 480,302 450,332 420,302" fill="none" stroke="#C4622D" stroke-width="2.2"/><text x="450" y="301" text-anchor="middle" font-size="10" fill="#C4622D" font-family="monospace">NARC</text><text id="sub-v-narc" x="450" y="315" text-anchor="middle" font-size="9" fill="#C4622D" font-family="monospace" opacity="0.7">—</text></g>
+        <g id="sub-node-sist" style="opacity:0.12;transition:opacity 0.5s"><polygon points="598,420 628,450 598,480 568,450" fill="none" stroke="#534AB7" stroke-width="2.2"/><text x="598" y="449" text-anchor="middle" font-size="10" fill="#534AB7" font-family="monospace">SIST</text><text id="sub-v-sist" x="598" y="463" text-anchor="middle" font-size="9" fill="#534AB7" font-family="monospace" opacity="0.7">—</text></g>
+        <g id="sub-node-yarc" style="opacity:0.12;transition:opacity 0.5s"><polygon points="450,568 480,598 450,628 420,598" fill="none" stroke="#1D9E75" stroke-width="2.2"/><text x="450" y="597" text-anchor="middle" font-size="10" fill="#1D9E75" font-family="monospace">YARC</text><text id="sub-v-yarc" x="450" y="611" text-anchor="middle" font-size="9" fill="#1D9E75" font-family="monospace" opacity="0.7">—</text></g>
+        <g id="sub-node-oll" style="opacity:0.12;transition:opacity 0.5s"><polygon points="302,420 332,450 302,480 272,450" fill="none" stroke="#A0426B" stroke-width="2.2"/><text x="302" y="449" text-anchor="middle" font-size="10" fill="#A0426B" font-family="monospace">Øll</text><text id="sub-v-oll" x="302" y="463" text-anchor="middle" font-size="9" fill="#A0426B" font-family="monospace" opacity="0.7">—</text></g>
+        <!-- Sub App ellipses -->
+        <g id="sub-node-a1" style="opacity:0;transition:opacity 0.5s"><ellipse cx="367.6" cy="246" rx="20" ry="11" transform="rotate(-22,367.6,246)" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="367.6" y="250" text-anchor="middle" font-size="8" fill="#C4622D" font-family="monospace">A1</text></g>
+        <g id="sub-node-a2" style="opacity:0;transition:opacity 0.5s"><ellipse cx="532.4" cy="246" rx="20" ry="11" transform="rotate(22,532.4,246)" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="532.4" y="250" text-anchor="middle" font-size="8" fill="#C4622D" font-family="monospace">A2</text></g>
+        <g id="sub-node-a3" style="opacity:0;transition:opacity 0.5s"><ellipse cx="654" cy="367.6" rx="20" ry="11" transform="rotate(68,654,367.6)" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="654" y="371.6" text-anchor="middle" font-size="8" fill="#534AB7" font-family="monospace">A3</text></g>
+        <g id="sub-node-a4" style="opacity:0;transition:opacity 0.5s"><ellipse cx="654" cy="532.4" rx="20" ry="11" transform="rotate(112,654,532.4)" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="654" y="536.4" text-anchor="middle" font-size="8" fill="#534AB7" font-family="monospace">A4</text></g>
+        <g id="sub-node-a5" style="opacity:0;transition:opacity 0.5s"><ellipse cx="532.4" cy="654" rx="20" ry="11" transform="rotate(158,532.4,654)" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="532.4" y="658" text-anchor="middle" font-size="8" fill="#1D9E75" font-family="monospace">A5</text></g>
+        <g id="sub-node-a6" style="opacity:0;transition:opacity 0.5s"><ellipse cx="367.6" cy="654" rx="20" ry="11" transform="rotate(202,367.6,654)" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="367.6" y="658" text-anchor="middle" font-size="8" fill="#1D9E75" font-family="monospace">A6</text></g>
+        <g id="sub-node-a7" style="opacity:0;transition:opacity 0.5s"><ellipse cx="246" cy="532.4" rx="20" ry="11" transform="rotate(248,246,532.4)" fill="transparent" stroke="#A0426B" stroke-width="2"/><text x="246" y="536.4" text-anchor="middle" font-size="8" fill="#A0426B" font-family="monospace">A7</text></g>
+        <g id="sub-node-a8" style="opacity:0;transition:opacity 0.5s"><ellipse cx="246" cy="367.6" rx="20" ry="11" transform="rotate(292,246,367.6)" fill="transparent" stroke="#A0426B" stroke-width="2"/><text x="246" y="371.6" text-anchor="middle" font-size="8" fill="#A0426B" font-family="monospace">A8</text></g>
+        <!-- Sub SC nodes -->
+        <g id="sub-sc1"  style="opacity:0;transition:opacity 0.4s"><polygon points="298.7,205.5 276.1,205.2 287.4,185.9" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="264" y="189" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Intention</text></g>
+        <g id="sub-sc2"  style="opacity:0;transition:opacity 0.4s"><polygon points="389,169 383.5,147.1 405.1,153.1" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="399.8" y="135" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Intention</text></g>
+        <g id="sub-sc3"  style="opacity:0;transition:opacity 0.4s"><polygon points="511,169 494.9,153.1 516.5,147.1" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="500.2" y="135" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Presence</text></g>
+        <g id="sub-sc4"  style="opacity:0;transition:opacity 0.4s"><polygon points="601.3,205.5 612.6,185.9 623.9,205.2" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="635.8" y="189" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Presence</text></g>
+        <g id="sub-sc5"  style="opacity:0;transition:opacity 0.4s"><polygon points="694.5,298.7 694.8,276.1 714.1,287.4" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="714.8" y="268" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Core Self</text></g>
+        <g id="sub-sc6"  style="opacity:0;transition:opacity 0.4s"><polygon points="731,389 752.9,383.5 746.9,405.1" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="769.5" y="404" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Core Self</text></g>
+        <g id="sub-sc7"  style="opacity:0;transition:opacity 0.4s"><polygon points="731,511 746.9,494.9 752.9,516.5" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="769.5" y="504" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Integrity</text></g>
+        <g id="sub-sc8"  style="opacity:0;transition:opacity 0.4s"><polygon points="694.5,601.3 714.1,612.6 694.8,623.9" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="714.8" y="640" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Integrity</text></g>
+        <g id="sub-sc9"  style="opacity:0;transition:opacity 0.4s"><polygon points="601.3,694.5 623.9,694.8 612.6,714.1" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="635.8" y="719" text-anchor="middle" font-size="6.5" fill="#1D9E75" font-family="monospace">Balance</text></g>
+        <g id="sub-sc10" style="opacity:0;transition:opacity 0.4s"><polygon points="511,731 516.5,752.9 494.9,746.9" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="500.2" y="774" text-anchor="middle" font-size="6.5" fill="#1D9E75" font-family="monospace">Balance</text></g>
+        <g id="sub-sc11" style="opacity:0;transition:opacity 0.4s"><polygon points="389,731 405.1,746.9 383.5,752.9" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="399.8" y="774" text-anchor="middle" font-size="6.5" fill="#1D9E75" font-family="monospace">Connection</text></g>
+        <g id="sub-sc12" style="opacity:0;transition:opacity 0.4s"><polygon points="298.7,694.5 287.4,714.1 276.1,694.8" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="264.2" y="719" text-anchor="middle" font-size="6.5" fill="#1D9E75" font-family="monospace">Connection</text></g>
+        <g id="sub-sc13" style="opacity:0;transition:opacity 0.4s"><polygon points="205.5,601.3 205.2,623.9 185.9,612.6" fill="transparent" stroke="#A0426B" stroke-width="2"/><text x="185.2" y="640" text-anchor="middle" font-size="6.5" fill="#A0426B" font-family="monospace">Purpose</text></g>
+        <g id="sub-sc14" style="opacity:0;transition:opacity 0.4s"><polygon points="169,511 147.1,516.5 153.1,494.9" fill="transparent" stroke="#A0426B" stroke-width="2"/><text x="130.5" y="504" text-anchor="middle" font-size="6.5" fill="#A0426B" font-family="monospace">Purpose</text></g>
+        <g id="sub-sc15" style="opacity:0;transition:opacity 0.4s"><polygon points="169,389 153.1,405.1 147.1,383.5" fill="transparent" stroke="#A0426B" stroke-width="2"/><text x="130.5" y="404" text-anchor="middle" font-size="6.5" fill="#A0426B" font-family="monospace">Pattern</text></g>
+        <g id="sub-sc16" style="opacity:0;transition:opacity 0.4s"><polygon points="205.5,298.7 185.9,287.4 205.2,276.1" fill="transparent" stroke="#A0426B" stroke-width="2"/><text x="185.2" y="268" text-anchor="middle" font-size="6.5" fill="#A0426B" font-family="monospace">Pattern</text></g>
+        <g id="sub-node-bs" style="opacity:0;transition:opacity 0.5s"><polygon points="424,642 476,642 450,674" fill="none" stroke="#D4D0C8" stroke-width="1.3"/><text x="450" y="657" text-anchor="middle" font-size="7" fill="#6B7280" font-family="monospace">AI</text><text id="sub-v-bs" x="450" y="669" text-anchor="middle" font-size="8" fill="#6B7280" font-family="monospace">—</text></g>
+      </svg>
       <div class="node-tooltip" id="node-tooltip">
         <div id="nt-name" style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:#0B1020;margin-bottom:2px">—</div>
         <div id="nt-desc" style="font-size:9px;color:#6B7280;line-height:1.5">—</div>
@@ -356,46 +415,46 @@ const NODES=[
   {id:'sc14',name:'Purpose',    code:'Øll', slot:'A7',col:'#A0426B',svgId:'node-sc14',appId:'node-a7',ocId:'node-oll', layer:'Conscious',reversed:false,q:"I regularly think about my long-term purpose."},
   {id:'sc15',name:'Pattern',    code:'Øll', slot:'A8',col:'#A0426B',svgId:'node-sc15',appId:'node-a8',ocId:'node-oll', layer:'Conscious',reversed:false,q:"I notice recurring patterns in my behaviour over time."},
   {id:'sc16',name:'Pattern',    code:'Øll', slot:'A8',col:'#A0426B',svgId:'node-sc16',appId:'node-a8',ocId:'node-oll', layer:'Conscious',reversed:false,q:"I can identify cycles that repeatedly appear in my life."},
-  {id:'ap1', name:'A1 Applied', code:'NARC',slot:'A1',col:'#C4622D',svgId:'node-sc1', appId:'node-a1',ocId:'node-narc',layer:'Conscious',reversed:false,q:"I follow through on my intentions even when it becomes inconvenient."},
-  {id:'ap2', name:'A2 Applied', code:'NARC',slot:'A2',col:'#C4622D',svgId:'node-sc3', appId:'node-a2',ocId:'node-narc',layer:'Conscious',reversed:false,q:"I am aware of my impact on others in real time."},
-  {id:'ap3', name:'A3 Applied', code:'SIST',slot:'A3',col:'#534AB7',svgId:'node-sc5', appId:'node-a3',ocId:'node-sist',layer:'Conscious',reversed:false,q:"I behave consistently whether or not I am being observed."},
-  {id:'ap4', name:'A4 Applied', code:'SIST',slot:'A4',col:'#534AB7',svgId:'node-sc7', appId:'node-a4',ocId:'node-sist',layer:'Conscious',reversed:false,q:"I can justify my decisions honestly to myself."},
-  {id:'ap5', name:'A5 Applied', code:'YARC',slot:'A5',col:'#1D9E75',svgId:'node-sc9', appId:'node-a5',ocId:'node-yarc',layer:'Conscious',reversed:false,q:"I can think clearly when emotions are high."},
-  {id:'ap6', name:'A6 Applied', code:'YARC',slot:'A6',col:'#1D9E75',svgId:'node-sc11',appId:'node-a6',ocId:'node-yarc',layer:'Conscious',reversed:false,q:"I can be fully present with someone without losing my own emotional footing."},
-  {id:'ap7', name:'A7 Applied', code:'Øll', slot:'A7',col:'#A0426B',svgId:'node-sc13',appId:'node-a7',ocId:'node-oll', layer:'Conscious',reversed:false,q:"The way I show up for others reflects something genuine rather than obligation."},
-  {id:'ap8', name:'A8 Applied', code:'Øll', slot:'A8',col:'#A0426B',svgId:'node-sc15',appId:'node-a8',ocId:'node-oll', layer:'Conscious',reversed:false,q:"I am actively working to break my own cycles rather than just recognising them."},
-  {id:'oc1', name:'NARC Direct',code:'NARC',slot:'OC',col:'#C4622D',svgId:'node-sc1', appId:'node-a1',ocId:'node-narc',layer:'Conscious',reversed:false,q:"I prioritise my own needs when resources are limited."},
-  {id:'oc2', name:'SIST Direct',code:'SIST',slot:'OC',col:'#534AB7',svgId:'node-sc5', appId:'node-a3',ocId:'node-sist',layer:'Conscious',reversed:false,q:"I naturally bring structure and stability to situations."},
-  {id:'oc3', name:'YARC Direct',code:'YARC',slot:'OC',col:'#1D9E75',svgId:'node-sc9', appId:'node-a5',ocId:'node-yarc',layer:'Conscious',reversed:false,q:"I naturally orient toward others' needs before my own."},
-  {id:'oc4', name:'Øll Direct', code:'Øll', slot:'OC',col:'#A0426B',svgId:'node-sc13',appId:'node-a7',ocId:'node-oll', layer:'Conscious',reversed:false,q:"I tend toward intense, all-or-nothing responses under pressure."},
-  {id:'sc17',name:'Intention',  code:'NARC',slot:'A1',col:'#C4622D',svgId:'node-sc2', appId:'node-a1',ocId:'node-narc',layer:'Subconscious',reversed:true, q:"I often pursue things to prove something to someone from my past."},
-  {id:'sc18',name:'Intention',  code:'NARC',slot:'A1',col:'#C4622D',svgId:'node-sc1', appId:'node-a1',ocId:'node-narc',layer:'Subconscious',reversed:true, q:"My drive comes from fear of failure more than genuine desire."},
-  {id:'sc19',name:'Presence',   code:'NARC',slot:'A2',col:'#C4622D',svgId:'node-sc4', appId:'node-a2',ocId:'node-narc',layer:'Subconscious',reversed:true, q:"My mind frequently replays past events or rehearses future ones."},
-  {id:'sc20',name:'Presence',   code:'NARC',slot:'A2',col:'#C4622D',svgId:'node-sc3', appId:'node-a2',ocId:'node-narc',layer:'Subconscious',reversed:true, q:"I react before I know why."},
-  {id:'sc21',name:'Core Self',  code:'SIST',slot:'A3',col:'#534AB7',svgId:'node-sc6', appId:'node-a3',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"I often feel like a different person in different settings."},
-  {id:'sc22',name:'Core Self',  code:'SIST',slot:'A3',col:'#534AB7',svgId:'node-sc5', appId:'node-a3',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"I adapt my personality significantly depending on who I am with."},
-  {id:'sc23',name:'Integrity',  code:'SIST',slot:'A4',col:'#534AB7',svgId:'node-sc8', appId:'node-a4',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"I sometimes act against my stated values without fully understanding why."},
-  {id:'sc24',name:'Integrity',  code:'SIST',slot:'A4',col:'#534AB7',svgId:'node-sc7', appId:'node-a4',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"I tell myself stories that protect my self-image even when they are not true."},
-  {id:'sc25',name:'Balance',    code:'YARC',slot:'A5',col:'#1D9E75',svgId:'node-sc10',appId:'node-a5',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"My emotional reactions often feel disproportionate to the trigger."},
-  {id:'sc26',name:'Balance',    code:'YARC',slot:'A5',col:'#1D9E75',svgId:'node-sc9', appId:'node-a5',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"I make decisions I later regret when I am emotionally activated."},
-  {id:'sc27',name:'Connection', code:'YARC',slot:'A6',col:'#1D9E75',svgId:'node-sc12',appId:'node-a6',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"I feel responsible for other people's emotional states."},
-  {id:'sc28',name:'Connection', code:'YARC',slot:'A6',col:'#1D9E75',svgId:'node-sc11',appId:'node-a6',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"I find it difficult to receive without feeling indebted."},
-  {id:'sc29',name:'Purpose',    code:'Øll', slot:'A7',col:'#A0426B',svgId:'node-sc14',appId:'node-a7',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"I am often unsure whether my purpose is genuinely mine or inherited from others."},
-  {id:'sc30',name:'Purpose',    code:'Øll', slot:'A7',col:'#A0426B',svgId:'node-sc13',appId:'node-a7',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"I feel a quiet sense of meaninglessness that persists beneath surface satisfaction."},
-  {id:'sc31',name:'Pattern',    code:'Øll', slot:'A8',col:'#A0426B',svgId:'node-sc16',appId:'node-a8',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"I recognise patterns in myself but feel unable to stop repeating them."},
-  {id:'sc32',name:'Pattern',    code:'Øll', slot:'A8',col:'#A0426B',svgId:'node-sc15',appId:'node-a8',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"My most significant life events seem to follow the same underlying script."},
-  {id:'ap9', name:'A1 Sub',     code:'NARC',slot:'A1',col:'#C4622D',svgId:'node-sc2', appId:'node-a1',ocId:'node-narc',layer:'Subconscious',reversed:true, q:"I abandon things when they stop feeling meaningful."},
-  {id:'ap10',name:'A2 Sub',     code:'NARC',slot:'A2',col:'#C4622D',svgId:'node-sc4', appId:'node-a2',ocId:'node-narc',layer:'Subconscious',reversed:true, q:"I am often unaware of my impact on others until after the fact."},
-  {id:'ap11',name:'A3 Sub',     code:'SIST',slot:'A3',col:'#534AB7',svgId:'node-sc6', appId:'node-a3',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"My behaviour changes when I feel I am being judged."},
-  {id:'ap12',name:'A4 Sub',     code:'SIST',slot:'A4',col:'#534AB7',svgId:'node-sc8', appId:'node-a4',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"I avoid examining decisions that might show I acted wrongly."},
-  {id:'ap13',name:'A5 Sub',     code:'YARC',slot:'A5',col:'#1D9E75',svgId:'node-sc10',appId:'node-a5',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"Logic leaves me when emotion enters."},
-  {id:'ap14',name:'A6 Sub',     code:'YARC',slot:'A6',col:'#1D9E75',svgId:'node-sc12',appId:'node-a6',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"I lose myself when someone I care about is struggling."},
-  {id:'ap15',name:'A7 Sub',     code:'Øll', slot:'A7',col:'#A0426B',svgId:'node-sc14',appId:'node-a7',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"What I give to others often comes from fear of being rejected rather than genuine care."},
-  {id:'ap16',name:'A8 Sub',     code:'Øll', slot:'A8',col:'#A0426B',svgId:'node-sc16',appId:'node-a8',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"I understand my patterns intellectually but they continue regardless."},
-  {id:'oc5', name:'NARC Sub',   code:'NARC',slot:'OC',col:'#C4622D',svgId:'node-sc2', appId:'node-a1',ocId:'node-narc',layer:'Subconscious',reversed:true, q:"Under pressure I become focused on self-protection above all else."},
-  {id:'oc6', name:'SIST Sub',   code:'SIST',slot:'OC',col:'#534AB7',svgId:'node-sc6', appId:'node-a3',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"I become rigid or controlling when I feel uncertain."},
-  {id:'oc7', name:'YARC Sub',   code:'YARC',slot:'OC',col:'#1D9E75',svgId:'node-sc12',appId:'node-a5',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"I habitually prioritise others at the expense of my own wellbeing."},
-  {id:'oc8', name:'Øll Sub',    code:'Øll', slot:'OC',col:'#A0426B',svgId:'node-sc16',appId:'node-a7',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"My reactions tend toward extremes — all in or completely withdrawn."},
+  {id:'ap1', name:'A1',appNum:1, code:'NARC',slot:'APP',col:'#C4622D',svgId:'node-a1', subId:'sub-node-a1',appId:'node-a1',ocId:'node-narc',layer:'Conscious',reversed:false,q:"I follow through on my intentions even when it becomes inconvenient."},
+  {id:'ap2', name:'A2',appNum:2, code:'NARC',slot:'APP',col:'#C4622D',svgId:'node-a2', subId:'sub-node-a2',appId:'node-a2',ocId:'node-narc',layer:'Conscious',reversed:false,q:"I am aware of my impact on others in real time."},
+  {id:'ap3', name:'A3',appNum:3, code:'SIST',slot:'APP',col:'#534AB7',svgId:'node-a3', subId:'sub-node-a3',appId:'node-a3',ocId:'node-sist',layer:'Conscious',reversed:false,q:"I behave consistently whether or not I am being observed."},
+  {id:'ap4', name:'A4',appNum:4, code:'SIST',slot:'APP',col:'#534AB7',svgId:'node-a4', subId:'sub-node-a4',appId:'node-a4',ocId:'node-sist',layer:'Conscious',reversed:false,q:"I can justify my decisions honestly to myself."},
+  {id:'ap5', name:'A5',appNum:5, code:'YARC',slot:'APP',col:'#1D9E75',svgId:'node-a5', subId:'sub-node-a5',appId:'node-a5',ocId:'node-yarc',layer:'Conscious',reversed:false,q:"I can think clearly when emotions are high."},
+  {id:'ap6', name:'A6',appNum:6, code:'YARC',slot:'APP',col:'#1D9E75',svgId:'node-a6', subId:'sub-node-a6',appId:'node-a6',ocId:'node-yarc',layer:'Conscious',reversed:false,q:"I can be fully present with someone without losing my own emotional footing."},
+  {id:'ap7', name:'A7',appNum:7, code:'Øll', slot:'APP',col:'#A0426B',svgId:'node-a7', subId:'sub-node-a7',appId:'node-a7',ocId:'node-oll', layer:'Conscious',reversed:false,q:"The way I show up for others reflects something genuine rather than obligation."},
+  {id:'ap8', name:'A8',appNum:8, code:'Øll', slot:'APP',col:'#A0426B',svgId:'node-a8', subId:'sub-node-a8',appId:'node-a8',ocId:'node-oll', layer:'Conscious',reversed:false,q:"I am actively working to break my own cycles rather than just recognising them."},
+  {id:'oc1', name:'NARC',       code:'NARC',slot:'OC', col:'#C4622D',svgId:'node-narc',subId:'sub-node-narc',appId:'node-narc',ocId:'node-narc',layer:'Conscious',reversed:false,q:"I prioritise my own needs when resources are limited."},
+  {id:'oc2', name:'SIST',       code:'SIST',slot:'OC', col:'#534AB7',svgId:'node-sist',subId:'sub-node-sist',appId:'node-sist',ocId:'node-sist',layer:'Conscious',reversed:false,q:"I naturally bring structure and stability to situations."},
+  {id:'oc3', name:'YARC',       code:'YARC',slot:'OC', col:'#1D9E75',svgId:'node-yarc',subId:'sub-node-yarc',appId:'node-yarc',ocId:'node-yarc',layer:'Conscious',reversed:false,q:"I naturally orient toward others' needs before my own."},
+  {id:'oc4', name:'Øll',        code:'Øll', slot:'OC', col:'#A0426B',svgId:'node-oll', subId:'sub-node-oll', appId:'node-oll', ocId:'node-oll', layer:'Conscious',reversed:false,q:"I tend toward intense, all-or-nothing responses under pressure."},
+  {id:'sc17',name:'Intention',  code:'NARC',slot:'A1',col:'#C4622D',svgId:'node-sc2', subId:'sub-sc2', appId:'node-a1',ocId:'node-narc',layer:'Subconscious',reversed:true, q:"I often pursue things to prove something to someone from my past."},
+  {id:'sc18',name:'Intention',  code:'NARC',slot:'A1',col:'#C4622D',svgId:'node-sc1', subId:'sub-sc1', appId:'node-a1',ocId:'node-narc',layer:'Subconscious',reversed:true, q:"My drive comes from fear of failure more than genuine desire."},
+  {id:'sc19',name:'Presence',   code:'NARC',slot:'A2',col:'#C4622D',svgId:'node-sc4', subId:'sub-sc4', appId:'node-a2',ocId:'node-narc',layer:'Subconscious',reversed:true, q:"My mind frequently replays past events or rehearses future ones."},
+  {id:'sc20',name:'Presence',   code:'NARC',slot:'A2',col:'#C4622D',svgId:'node-sc3', subId:'sub-sc3', appId:'node-a2',ocId:'node-narc',layer:'Subconscious',reversed:true, q:"I react before I know why."},
+  {id:'sc21',name:'Core Self',  code:'SIST',slot:'A3',col:'#534AB7',svgId:'node-sc6', subId:'sub-sc6', appId:'node-a3',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"I often feel like a different person in different settings."},
+  {id:'sc22',name:'Core Self',  code:'SIST',slot:'A3',col:'#534AB7',svgId:'node-sc5', subId:'sub-sc5', appId:'node-a3',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"I adapt my personality significantly depending on who I am with."},
+  {id:'sc23',name:'Integrity',  code:'SIST',slot:'A4',col:'#534AB7',svgId:'node-sc8', subId:'sub-sc8', appId:'node-a4',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"I sometimes act against my stated values without fully understanding why."},
+  {id:'sc24',name:'Integrity',  code:'SIST',slot:'A4',col:'#534AB7',svgId:'node-sc7', subId:'sub-sc7', appId:'node-a4',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"I tell myself stories that protect my self-image even when they are not true."},
+  {id:'sc25',name:'Balance',    code:'YARC',slot:'A5',col:'#1D9E75',svgId:'node-sc10',subId:'sub-sc10',appId:'node-a5',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"My emotional reactions often feel disproportionate to the trigger."},
+  {id:'sc26',name:'Balance',    code:'YARC',slot:'A5',col:'#1D9E75',svgId:'node-sc9', subId:'sub-sc9', appId:'node-a5',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"I make decisions I later regret when I am emotionally activated."},
+  {id:'sc27',name:'Connection', code:'YARC',slot:'A6',col:'#1D9E75',svgId:'node-sc12',subId:'sub-sc12',appId:'node-a6',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"I feel responsible for other people's emotional states."},
+  {id:'sc28',name:'Connection', code:'YARC',slot:'A6',col:'#1D9E75',svgId:'node-sc11',subId:'sub-sc11',appId:'node-a6',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"I find it difficult to receive without feeling indebted."},
+  {id:'sc29',name:'Purpose',    code:'Øll', slot:'A7',col:'#A0426B',svgId:'node-sc14',subId:'sub-sc14',appId:'node-a7',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"I am often unsure whether my purpose is genuinely mine or inherited from others."},
+  {id:'sc30',name:'Purpose',    code:'Øll', slot:'A7',col:'#A0426B',svgId:'node-sc13',subId:'sub-sc13',appId:'node-a7',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"I feel a quiet sense of meaninglessness that persists beneath surface satisfaction."},
+  {id:'sc31',name:'Pattern',    code:'Øll', slot:'A8',col:'#A0426B',svgId:'node-sc16',subId:'sub-sc16',appId:'node-a8',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"I recognise patterns in myself but feel unable to stop repeating them."},
+  {id:'sc32',name:'Pattern',    code:'Øll', slot:'A8',col:'#A0426B',svgId:'node-sc15',subId:'sub-sc15',appId:'node-a8',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"My most significant life events seem to follow the same underlying script."},
+  {id:'ap9', name:'A1',appNum:1, code:'NARC',slot:'APP',col:'#C4622D',svgId:'node-a1', subId:'sub-node-a1',appId:'node-a1',ocId:'node-narc',layer:'Subconscious',reversed:true, q:"I abandon things when they stop feeling meaningful."},
+  {id:'ap10',name:'A2',appNum:2, code:'NARC',slot:'APP',col:'#C4622D',svgId:'node-a2', subId:'sub-node-a2',appId:'node-a2',ocId:'node-narc',layer:'Subconscious',reversed:true, q:"I am often unaware of my impact on others until after the fact."},
+  {id:'ap11',name:'A3',appNum:3, code:'SIST',slot:'APP',col:'#534AB7',svgId:'node-a3', subId:'sub-node-a3',appId:'node-a3',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"My behaviour changes when I feel I am being judged."},
+  {id:'ap12',name:'A4',appNum:4, code:'SIST',slot:'APP',col:'#534AB7',svgId:'node-a4', subId:'sub-node-a4',appId:'node-a4',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"I avoid examining decisions that might show I acted wrongly."},
+  {id:'ap13',name:'A5',appNum:5, code:'YARC',slot:'APP',col:'#1D9E75',svgId:'node-a5', subId:'sub-node-a5',appId:'node-a5',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"Logic leaves me when emotion enters."},
+  {id:'ap14',name:'A6',appNum:6, code:'YARC',slot:'APP',col:'#1D9E75',svgId:'node-a6', subId:'sub-node-a6',appId:'node-a6',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"I lose myself when someone I care about is struggling."},
+  {id:'ap15',name:'A7',appNum:7, code:'Øll', slot:'APP',col:'#A0426B',svgId:'node-a7', subId:'sub-node-a7',appId:'node-a7',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"What I give to others often comes from fear of being rejected rather than genuine care."},
+  {id:'ap16',name:'A8',appNum:8, code:'Øll', slot:'APP',col:'#A0426B',svgId:'node-a8', subId:'sub-node-a8',appId:'node-a8',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"I understand my patterns intellectually but they continue regardless."},
+  {id:'oc5', name:'NARC',       code:'NARC',slot:'OC', col:'#C4622D',svgId:'node-narc',subId:'sub-node-narc',appId:'node-narc',ocId:'node-narc',layer:'Subconscious',reversed:true, q:"Under pressure I become focused on self-protection above all else."},
+  {id:'oc6', name:'SIST',       code:'SIST',slot:'OC', col:'#534AB7',svgId:'node-sist',subId:'sub-node-sist',appId:'node-sist',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"I become rigid or controlling when I feel uncertain."},
+  {id:'oc7', name:'YARC',       code:'YARC',slot:'OC', col:'#1D9E75',svgId:'node-yarc',subId:'sub-node-yarc',appId:'node-yarc',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"I habitually prioritise others at the expense of my own wellbeing."},
+  {id:'oc8', name:'Øll',        code:'Øll', slot:'OC', col:'#A0426B',svgId:'node-oll', subId:'sub-node-oll', appId:'node-oll', ocId:'node-oll', layer:'Subconscious',reversed:true, q:"My reactions tend toward extremes — all in or completely withdrawn."},
 ];
 const ANSWERS=["Strongly disagree","Disagree","Neutral / unsure","Agree","Strongly agree"];
 const LEVELS=[
@@ -425,8 +484,16 @@ function updateLabel(){const n=document.getElementById('solo-name')?.value.trim(
 function startAssessment(){
   scores={};currentStep=1;
   NODES.forEach(n=>{scores[n.id]=undefined;});
-  document.querySelectorAll('[id^="node-"]').forEach(el=>el.style.opacity='0');
-  ['node-narc','node-sist','node-yarc','node-oll'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.opacity='0.12';});
+  // Reset both diagrams
+  ['main-diagram','sub-diagram'].forEach(diagId=>{
+    const svg=document.getElementById(diagId);if(!svg)return;
+    svg.querySelectorAll('[id^="node-"],[id^="sub-"]').forEach(el=>{el.style.opacity='0';el.classList.remove('node-active-pulse');});
+    ['node-narc','node-sist','node-yarc','node-oll','sub-node-narc','sub-node-sist','sub-node-yarc','sub-node-oll'].forEach(id=>{
+      const el=svg.querySelector('#'+id);if(el)el.style.opacity='0.12';
+    });
+  });
+  document.getElementById('diag-svg-wrap').classList.remove('show-sub');
+  prevPulseEl=null;
   document.getElementById('screen-intro').style.display='none';
   document.getElementById('screen-questions').style.display='block';
   document.getElementById('nav-prog').style.display='block';
@@ -443,19 +510,32 @@ function showStep(step){
   const n=NODES[step-1];
   document.getElementById('diag-layer-badge').textContent=n.layer+' layer';
   document.getElementById('q-card-wrap').style.display='block';
-  const cur=scores[n.id];const isLast=step===total;
+  const cur=scores[n.id];const isLast=step===total;const isFlip=step===29;
   const answersHtml=ANSWERS.map((ans,di)=>{const raw=di+1;const sel=cur===raw;return `<button class="q-answer-btn${sel?' selected':''}" onclick="selectAnswer('${n.id}',${raw},this,'${n.col}')" data-raw="${raw}" style="${sel?`border-color:${n.col};background:${n.col}18`:''}"><span class="q-answer-num" style="${sel?`background:${n.col};color:#fff`:''}">${raw}</span><span>${ans}</span></button>`;}).join('');
-  document.getElementById('q-card-wrap').innerHTML=`<div class="q-step active" style="animation:step-in 0.25s ease"><div class="q-meta-row"><div class="q-dot" style="background:${n.col}"></div><span class="q-code-lbl" style="color:${n.col}">${n.code} · ${n.slot}</span><span class="q-layer-lbl">${n.layer}</span></div><div class="q-node-name">${n.name}</div><div class="q-question">${n.q}</div><div class="q-answers">${answersHtml}</div><div class="q-nav-row"><button class="q-btn q-btn-ghost" onclick="goToQ(${step-1})" ${step===1?'style="visibility:hidden"':''}>← Back</button><button class="q-btn q-btn-primary" id="q-next-btn" onclick="${isLast?'finishAssessment()':'goToQ('+(step+1)+')'}" ${cur===undefined?'disabled':''}>${isLast?'Complete →':'Next →'}</button></div></div>`;
+  const nextFn=isLast?'finishAssessment()':isFlip?`flipDiagram(${step+1})`:`goToQ(${step+1})`;
+  const nextLbl=isLast?'Complete →':isFlip?'Continue to Part 2 →':'Next →';
+  document.getElementById('q-card-wrap').innerHTML=`<div class="q-step active" style="animation:step-in 0.25s ease"><div class="q-meta-row"><div class="q-dot" style="background:${n.col}"></div><span class="q-code-lbl" style="color:${n.col}">${n.code} · ${n.slot}</span><span class="q-layer-lbl">${n.layer}</span></div><div class="q-node-name">${n.name}</div><div class="q-question">${n.q}</div><div class="q-answers">${answersHtml}</div><div class="q-nav-row"><button class="q-btn q-btn-ghost" onclick="goToQ(${step-1})" ${step===1?'style="visibility:hidden"':''}>← Back</button><button class="q-btn q-btn-primary" id="q-next-btn" onclick="${nextFn}" ${cur===undefined?'disabled':''}>${nextLbl}</button></div></div>`;
   activateNode(n);
 }
 function goToQ(s){if(s<1)return;showStep(s);}
 function finishAssessment(){showStep(NODES.length+1);}
 
 function activateNode(n){
+  const isSub=n.layer==='Subconscious';
+  const diagId=isSub?'sub-diagram':'main-diagram';
+  const svg=document.getElementById(diagId);
+  const nodeId=isSub?(n.subId||n.svgId):n.svgId;
   if(prevPulseEl){prevPulseEl.classList.remove('node-active-pulse');}
-  const el=document.getElementById(n.svgId);if(el){el.style.opacity='0.9';el.classList.add('node-active-pulse');prevPulseEl=el;}
-  const appEl=document.getElementById(n.appId);if(appEl&&parseFloat(appEl.style.opacity||0)<0.35)appEl.style.opacity='0.35';
-  const ocEl=document.getElementById(n.ocId);if(ocEl&&parseFloat(ocEl.style.opacity||0.12)<0.45)ocEl.style.opacity='0.45';
+  const el=svg?svg.querySelector('#'+nodeId):document.getElementById(nodeId);
+  if(el){el.style.opacity='0.9';el.classList.add('node-active-pulse');prevPulseEl=el;}
+  // Brighten OC diamond on correct face
+  const ocId=isSub?n.ocId.replace('node-','sub-node-'):n.ocId;
+  const ocEl=svg?svg.querySelector('#'+ocId):document.getElementById(ocId);
+  if(ocEl){const op=parseFloat(ocEl.style.opacity||0.12);if(op<0.45)ocEl.style.opacity='0.45';}
+  // Brighten app ellipse on correct face
+  const appNodeId=isSub?n.appId.replace('node-','sub-node-'):n.appId;
+  const appEl=svg?svg.querySelector('#'+appNodeId):document.getElementById(appNodeId);
+  if(appEl){const op=parseFloat(appEl.style.opacity||0);if(op<0.35)appEl.style.opacity='0.35';}
 }
 
 function selectAnswer(nodeId,raw,btn,col){
@@ -464,16 +544,50 @@ function selectAnswer(nodeId,raw,btn,col){
   document.getElementById('q-next-btn')?.removeAttribute('disabled');
   const n=NODES.find(x=>x.id===nodeId);if(n){lightNode(n);updateOCBars();}
 }
-function lightNode(n){const raw=scores[n.id];if(!raw)return;const eff=n.reversed?(6-raw):raw;const el=document.getElementById(n.svgId);if(el)el.style.opacity=(0.2+(eff/5)*0.7).toFixed(2);}
+function lightNode(n){const raw=scores[n.id];if(!raw)return;const effScore=n.reversed?(6-raw):raw;
+  const isSub=n.layer==='Subconscious';
+  const svg=document.getElementById(isSub?'sub-diagram':'main-diagram');
+  const nodeId=isSub?(n.subId||n.svgId):n.svgId;
+  const el=(svg&&svg.querySelector('#'+nodeId))||document.getElementById(nodeId);
+  if(el)el.style.opacity=(0.2+(effScore/5)*0.7).toFixed(2);
+}
 function updateOCBars(){
   const byCode={NARC:[],SIST:[],YARC:[],'Øll':[]};
-  NODES.forEach(n=>{if(scores[n.id]!==undefined){const eff=n.reversed?(6-scores[n.id]):scores[n.id];byCode[n.code].push(eff);}});
+  NODES.forEach(n=>{if(scores[n.id]!==undefined){const effScore=n.reversed?(6-scores[n.id]):scores[n.id];byCode[n.code].push(effScore);}});
   const totals={};Object.entries(byCode).forEach(([k,v])=>{totals[k]=v.reduce((a,b)=>a+b,0)||0.001;});
   const grand=Object.values(totals).reduce((a,b)=>a+b,0)||1;
   const km={NARC:'narc',SIST:'sist',YARC:'yarc','Øll':'oll'};
-  Object.entries(totals).forEach(([k,t])=>{const key=km[k];const pct=Math.round(t/grand*100);const bar=document.getElementById('oc-'+key);const lbl=document.getElementById('ocp-'+key);if(bar)bar.style.width=pct+'%';if(lbl)lbl.textContent=pct+'%';const vEl=document.getElementById('v-'+key);if(vEl)vEl.textContent=pct+'%';const effs=byCode[k];const effAvg=effs.length?effs.reduce((a,b)=>a+b,0)/effs.length:0;const ocEl=document.getElementById('node-'+key);if(ocEl)ocEl.style.opacity=(0.15+(effAvg/5)*0.75).toFixed(2);});
+  Object.entries(totals).forEach(([k,t])=>{
+    const key=km[k];const pct=Math.round(t/grand*100);
+    const bar=document.getElementById('oc-'+key);const lbl=document.getElementById('ocp-'+key);
+    if(bar)bar.style.width=pct+'%';if(lbl)lbl.textContent=pct+'%';
+    ['v-'+key,'sub-v-'+key].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=pct+'%';});
+    const effs=byCode[k];const effAvg=effs.length?effs.reduce((a,b)=>a+b,0)/effs.length:0;
+    ['node-'+key,'sub-node-'+key].forEach(id=>{const el=document.getElementById(id);if(el)el.style.opacity=(0.15+(effAvg/5)*0.75).toFixed(2);});
+  });
   const answered=NODES.filter(n=>scores[n.id]!==undefined);
-  if(answered.length){const effs=answered.map(n=>n.reversed?(6-scores[n.id]):scores[n.id]);const avg=effs.reduce((a,b)=>a+b,0)/effs.length;const aiPct=Math.round((avg-1)/4*100);const bsEl=document.getElementById('v-bs');if(bsEl)bsEl.textContent=aiPct+'%';const bsNode=document.getElementById('node-bs');if(bsNode)bsNode.style.opacity=(answered.length/NODES.length*0.8).toFixed(2);}
+  if(answered.length){const effs=answered.map(n=>n.reversed?(6-scores[n.id]):scores[n.id]);const avg=effs.reduce((a,b)=>a+b,0)/effs.length;const aiPct=Math.round((avg-1)/4*100);['v-bs','sub-v-bs'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=aiPct+'%';});['node-bs','sub-node-bs'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.opacity=(answered.length/NODES.length*0.8).toFixed(2);});}
+}
+
+function flipDiagram(nextStep){
+  const wrap=document.getElementById('diag-svg-wrap');
+  if(prevPulseEl){prevPulseEl.classList.remove('node-active-pulse');prevPulseEl=null;}
+  wrap.classList.add('diag-flip-out');
+  setTimeout(()=>{
+    // Reset sub-diagram fresh
+    const subSvg=document.getElementById('sub-diagram');
+    if(subSvg){
+      subSvg.querySelectorAll('[id^="sub-"]').forEach(el=>{el.style.opacity='0';el.classList.remove('node-active-pulse');});
+      ['sub-node-narc','sub-node-sist','sub-node-yarc','sub-node-oll'].forEach(id=>{const el=subSvg.querySelector('#'+id);if(el)el.style.opacity='0.12';});
+    }
+    // Sync sub obs label
+    const name=document.getElementById('obs-label')?.textContent||'—';
+    const subLbl=document.getElementById('sub-obs-label');if(subLbl)subLbl.textContent=name;
+    wrap.classList.add('show-sub');
+    wrap.classList.remove('diag-flip-out');
+    wrap.classList.add('diag-flip-in');
+    setTimeout(()=>{wrap.classList.remove('diag-flip-in');goToQ(nextStep);},450);
+  },450);
 }
 function showReveal(){
   document.getElementById('q-card-wrap').style.display='none';
