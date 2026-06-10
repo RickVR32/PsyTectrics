@@ -70,7 +70,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
     <img src="pt_logo.png" alt="PsyTectrics" class="nav-logo-img"/>
   </a>
   <div class="nav-right">
-    <span class="nav-badge">Business Audit · From £250</span>
+    <span class="nav-badge">Business Audit · From £125</span>
     <a href="reports.html" class="nav-back">← Reports</a>
   </div>
 </nav>
@@ -78,7 +78,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 <div class="page">
   <span class="eyebrow">Business Audit · PsyTectrics™</span>
   <h1 class="page-title">A full awareness audit<br/><em>for your team or individual.</em></h1>
-  <p class="page-desc">A structured behavioural audit drawing on the proprietary Observer Code™ framework — mapping awareness levels, patterns, and dynamic friction points across individuals or teams. Delivered as a premium, branded PDF report with strategic recommendations. Bespoke scope agreed before work begins.</p>
+  <p class="page-desc">A structured behavioural audit drawing on the SC Blueprint™ framework — mapping awareness levels, patterns, and dynamic friction points across individuals or teams. Delivered as a written report with interpretive commentary. Bespoke scope agreed before work begins.</p>
   <div class="tags">
     <span class="tag">Team dynamics</span>
     <span class="tag">Leadership assessment</span>
@@ -101,44 +101,60 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
       <span class="section-lbl">Scope</span>
       <div class="field"><label>Number of individuals to be assessed</label>
         <select name="scope">
-          <option value="2-5">2–5 people (Standard Team Bundle)</option>
           <option value="1">1 individual</option>
+          <option value="2-5">2–5 people</option>
           <option value="6-10">6–10 people</option>
           <option value="10+">More than 10</option>
         </select>
       </div>
-      <div class="context-note">
-        <strong>Inclusions with your audit:</strong> Up to 5 individual profiles mapped under the Observer Code™ framework, a comprehensive written summary with strategic recommendations, a fully branded PDF report, and an optional follow-up evaluation review call.
-      </div>
     </div>
 
     <div class="form-section">
-      <span class="section-lbl">Objectives & Details</span>
-      <div class="field">
-        <label>Primary goals</label>
-        <textarea name="goals" placeholder="What are the main outcomes or dynamics you want to evaluate? (e.g. alignment, communication bottlenecks, leadership scaling)"></textarea>
-      </div>
-      
-      <div class="price-note">
-        Base engagement tier begins at <strong>£250</strong>. Final project scope and tailored assessment pricing will be confirmed during your alignment review.
-      </div>
-      
-      <button type="submit" class="submit-btn" id="submit-btn">Request Engagement Scope</button>
-      <div class="disclaimer">Submitting does not commit you to an order. We will reach out within 24 business hours to formalise your assessment roadmap.</div>
+      <span class="section-lbl">The brief</span>
+      <div class="context-note">Business Reports are scoped individually. After submitting this form, you will receive a brief scope summary and price confirmation before any work begins. Starting from £125 per individual.</div>
+      <div class="field"><label>What are you trying to understand or resolve?</label><textarea name="brief" placeholder="Describe the situation — team friction, leadership gap, onboarding challenge, or any context driving this audit." required></textarea></div>
+      <div class="field"><label>Any relevant background or supporting materials?</label><textarea name="background" placeholder="Previous assessments, HR reports, specific incidents, or anything that would help frame the work." style="min-height:100px"></textarea></div>
     </div>
+
+    <input type="hidden" name="_subject" value="Business Audit Enquiry — PsyTectrics™"/>
+    <div class="price-note"><strong>From £125</strong> — Scope and price confirmed via email before work begins. No charge until you approve the brief.</div>
+    <button type="submit" class="submit-btn" id="submit-btn">Request a Business Report →</button>
+    <p class="disclaimer">Business Reports are structured interpretive instruments · Not a clinical diagnostic · PsyTectrics™ · Scope confirmed before work begins</p>
   </form>
 
-  <div class="success" id="success-block">
-    <div class="success-title">Engagement Request Received</div>
-    <div class="success-body">Thank you. We have received your structural context details and will review them against the Observer Code™ framework parameters. Expect a direct contact within 24 hours to secure your strategy call.</div>
+  <div class="success" id="success">
+    <div class="success-title">Received.</div>
+    <p class="success-body">Your Business Audit enquiry has been submitted. You will receive a scope summary and price confirmation within 48 hours of submission.</p>
   </div>
 </div>
 
 <footer class="pt-footer">
   <div class="pt-footer-inner">
-    <div class="pt-footer-logo">PsyTectrics™</div>
+    <span class="pt-footer-logo">PSYTECTRICS™</span>
     <div class="pt-footer-links">
       <a href="index.html">Home</a>
       <a href="reports.html">Reports</a>
-      <a href="terms.html">Terms</a>
+      <a href="prototypes.html">Prototypes</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy</a>
     </div>
+    <span class="pt-footer-note">© 2026 PsyTectrics Technologies Ltd · All rights reserved</span>
+  </div>
+</footer>
+
+<script>
+async function submitForm(e){
+  e.preventDefault();
+  const btn=document.getElementById('submit-btn');
+  btn.disabled=true;btn.textContent='Submitting…';
+  try{
+    const res=await fetch('https://formspree.io/f/mreorpre',{method:'POST',body:new FormData(e.target),headers:{Accept:'application/json'}});
+    if(res.ok){
+      document.getElementById('biz-form').style.display='none';
+      document.getElementById('success').classList.add('visible');
+    } else throw new Error();
+  } catch{btn.disabled=false;btn.textContent='Request a Business Report →';}
+}
+</script>
+</body>
+</html>
