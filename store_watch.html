@@ -170,8 +170,9 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
       <img id="mainWatchImg" class="watch-main-img" src="psytec_health_watch_grey.webp" alt="PsyTec Health Watch"/>
       <div class="watch-thumb-row">
         <img class="watch-thumb active" src="psytec_health_watch_grey.webp" onclick="switchImg(this,'psytec_health_watch_grey.webp')" alt="Storm Grey"/>
-        <img class="watch-thumb" src="psytec_health_watch_white.webp" onclick="switchImg(this,'psytec_health_watch_white.webp')" alt="Obsidian Black"/>
-        <img class="watch-thumb" src="psytec_health_watch_hero%20%283%29.webp" onclick="switchImg(this,'psytec_health_watch_hero%20%283%29.webp')" alt="Charging"/>
+        <img class="watch-thumb" src="psytec_health_watch_white.webp" onclick="switchImg(this,'psytec_health_watch_white.webp')" alt="White"/>
+        <img class="watch-thumb" src="psytec_health_watch_pink.webp" onclick="switchImg(this,'psytec_health_watch_pink.webp')" alt="Rose"/>
+        <img class="watch-thumb" src="psytec_health_watch_blue.webp" onclick="switchImg(this,'psytec_health_watch_blue.webp')" alt="Blue"/>
       </div>
     </div>
   </div>
@@ -192,6 +193,8 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
     <div class="colour-row">
       <div class="colour-swatch active" style="background:linear-gradient(135deg,#2a2a2a,#4a4a4a)" onclick="selectColour(this,'Obsidian Black','black')" title="Obsidian Black"></div>
       <div class="colour-swatch" style="background:linear-gradient(135deg,#8a8a8a,#d0d0d0)" onclick="selectColour(this,'Storm Grey','grey')" title="Storm Grey"></div>
+      <div class="colour-swatch" style="background:linear-gradient(135deg,#e8a0b0,#f5c6d0)" onclick="selectColour(this,'Rose Pink','pink')" title="Rose Pink"></div>
+      <div class="colour-swatch" style="background:linear-gradient(135deg,#3a4a7a,#5a6aaa)" onclick="selectColour(this,'Navy Blue','blue')" title="Navy Blue"></div>
     </div>
     <div class="colour-name-display" id="colourDisplay">Obsidian Black</div>
 
@@ -301,6 +304,14 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
   </div>
 </section>
 
+<!-- HERO IMAGES ROW -->
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border-top:1px solid var(--line)">
+  <img style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;background:var(--bg-soft)" src="psytec_health_watch_hero%20%281%29.webp" alt="MAI Health Assessment"/>
+  <img style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;background:var(--bg-soft)" src="psytec_health_watch_hero%20%282%29.webp" alt="Health Monitoring"/>
+  <img style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;background:var(--bg-soft)" src="psytec_health_watch_hero%20%283%29.webp" alt="Runmefit OS"/>
+  <img style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;background:var(--bg-soft)" src="psytec_health_watch_hero%20%284%29.webp" alt="Magnetic Charging"/>
+</div>
+
 <!-- CTA -->
 <div style="background:#060B18;padding:5rem 3rem;text-align:center;position:relative;overflow:hidden">
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(0,212,255,0.06) 0%,transparent 65%);pointer-events:none"></div>
@@ -351,9 +362,16 @@ function selectColour(swatch, name, variant) {
   document.querySelectorAll('.colour-swatch').forEach(s => s.classList.remove('active'));
   swatch.classList.add('active');
   document.getElementById('colourDisplay').textContent = name;
-  const src = variant === 'black' ? 'psytec_health_watch_grey.webp' : 'psytec_health_watch_white.webp';
-  document.getElementById('mainWatchImg').src = src;
-  document.querySelectorAll('.watch-thumb')[variant === 'black' ? 0 : 1].classList.add('active');
+  const imgs = {
+    black: 'psytec_health_watch_grey.webp',
+    grey:  'psytec_health_watch_white.webp',
+    pink:  'psytec_health_watch_pink.webp',
+    blue:  'psytec_health_watch_blue.webp'
+  };
+  document.getElementById('mainWatchImg').src = imgs[variant];
+  document.querySelectorAll('.watch-thumb').forEach(t => t.classList.remove('active'));
+  const idx = {black:0, grey:1, pink:2, blue:3};
+  document.querySelectorAll('.watch-thumb')[idx[variant]].classList.add('active');
 }
 
 async function handleBuy() {
