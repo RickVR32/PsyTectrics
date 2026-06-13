@@ -21,10 +21,10 @@
   --serif:'Montserrat',sans-serif;--sans:'Inter',sans-serif;--mono:'Space Mono',monospace;
 }
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-top:70px}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-top:70px;max-width:100vw}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0.85rem 2.5rem;border-bottom:1px solid rgba(255,255,255,0.06);background:#060B18;height:70px}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0.85rem 1.2rem;max-width:100vw;border-bottom:1px solid rgba(255,255,255,0.06);background:#060B18;height:70px}
 .nav-logo-wrap{display:flex;align-items:center;text-decoration:none}
 .nav-logo-img{height:52px;width:auto;display:block}
 .nav-links{display:flex;gap:2rem;list-style:none}
@@ -160,24 +160,33 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 
 @media(max-width:1024px){.hero{grid-template-columns:1fr}.hero-geo{display:none}.bp-grid{grid-template-columns:repeat(2,1fr)}.what-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:768px){
-  nav{padding:0.8rem 1.2rem}
+  nav{padding:0.8rem 1.2rem;width:100%}
   .nav-links,.nav-cta{display:none}
   .nav-hamburger{display:flex}
+  .hero{grid-template-columns:1fr;overflow-x:hidden}
   .hero-copy{padding:3rem 1.5rem}
   .container{padding:0 1.5rem}
   .blueprints-inner{padding:0 1.5rem}
-  .assess-feature,.ring-feature{grid-template-columns:1fr}
+  .assess-feature{grid-template-columns:1fr}
   .assess-geo-side{min-height:280px}
   .products-strip{grid-template-columns:1fr}
   .what-grid,.bp-grid{grid-template-columns:1fr}
-  .cta-banner,.investor-strip{padding:4rem 1.5rem}
+  .cta-banner{padding:4rem 1.5rem}
+  .investor-strip{padding:4rem 1.5rem}
   .pt-footer{padding:2rem 1.5rem}
   .pt-footer-inner{flex-direction:column;text-align:center;align-items:center}
   .pt-footer-links{justify-content:center;gap:1.2rem}
   .hero-stat-row{gap:1.5rem;flex-wrap:wrap}
   .blueprints-header{flex-direction:column;align-items:flex-start}
+  .testimonials-grid{grid-template-columns:1fr!important}
+  .geo-label-narc,.geo-label-sist,.geo-label-yarc,.geo-label-oll{display:none}
+  .nav-drawer{width:100%;left:0;right:0}
 }
-@media(max-width:480px){.hero-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}}
+@media(max-width:480px){
+  .hero-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+  .hero-actions{flex-direction:column;align-items:stretch}
+  .hero-actions a{text-align:center}
+}
 </style>
 </head>
 <body>
@@ -379,21 +388,18 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
     <div class="products-strip">
       <a href="reports.html" class="product-strip-card">
         <span class="ps-tag">Personal · Solo</span>
-        <div class="ps-price">£50</div>
         <h3>Solo <em>Assessment</em></h3>
         <p>Complete the 56-question assessment and receive your full written AI profile — Observer Code ratio, Awareness Index™, Drift score, and interpretive report.</p>
         <span class="ps-link">Start free →</span>
       </a>
       <a href="reports.html#observer" class="product-strip-card">
         <span class="ps-tag">Third-party · Observer</span>
-        <div class="ps-price">£75</div>
         <h3>Observer <em>Report</em></h3>
         <p>Submit message history, emails, or a written description. Full SC Blueprint™ profile of someone else — no subject participation required. Delivered within 48 hours.</p>
         <span class="ps-link">Commission →</span>
       </a>
       <a href="reports.html#business" class="product-strip-card">
         <span class="ps-tag">Organisation · Enterprise</span>
-        <div class="ps-price">£250</div>
         <h3>Business <em>Audit</em></h3>
         <p>Digital footprint audit, brand tone mapping, and SC Blueprint™ for your organisation. Delivered within 5 working days. Scope confirmed before payment.</p>
         <span class="ps-link">Start audit →</span>
@@ -455,7 +461,7 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 </div>
 
 <!-- TESTIMONIALS -->
-<div style="border-top:1px solid var(--line);padding:5rem 3rem;background:#fff;text-align:center">
+<div style="border-top:1px solid var(--line);padding:5rem 1.5rem;background:#fff;text-align:center;overflow-x:hidden">
   <p style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted2);margin-bottom:2.5rem">What people have said</p>
   <div class="testimonials-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:var(--line);max-width:960px;margin:0 auto">
     <div style="background:#fff;padding:2rem 1.8rem;text-align:left">
@@ -476,7 +482,7 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 <!-- CTA -->
 <div class="cta-banner">
   <h2>Start with the<br/><em>free assessment.</em></h2>
-  <p>56 questions. Two layers. Your full SC Blueprint™ profile shown immediately. The written report unlocks at £50.</p>
+  <p>56 questions. Two layers. Your full SC Blueprint™ profile shown immediately. Results generated instantly.</p>
   <div class="cta-actions">
     <a href="reports.html" class="btn-primary">Begin assessment — free →</a>
     <a href="framework.html" class="btn-outline">Explore the Blueprint</a>
