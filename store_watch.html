@@ -79,11 +79,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .secure-note{text-align:center;color:rgba(255,255,255,0.2);font-family:var(--mono);font-size:0.58rem;letter-spacing:0.06em;margin-top:0.8rem}
 .stripe-loading{text-align:center;padding:0.8rem;color:rgba(255,255,255,0.35);font-family:var(--mono);font-size:0.65rem;display:none}
 
-/* ALSO AVAILABLE BANNER */
-.also-banner{background:rgba(0,212,255,0.05);border:1px solid var(--accent-border);padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-.also-banner p{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;color:rgba(255,255,255,0.4)}
-.also-banner a{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-border);padding-bottom:1px}
-
 section{padding:6rem 0;border-top:1px solid var(--line)}
 .container{max-width:1200px;margin:0 auto;padding:0 3rem}
 .section-label{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;display:block}
@@ -179,7 +174,7 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
   <div class="hero-copy">
     <div class="hero-eyebrow">PsyTectrics™ · PT-HW-001</div>
     <h1>PsyTec<br/><em>Health Watch.</em></h1>
-    <p class="hero-desc">Full health dashboard on your wrist. Heart rate, blood oxygen, blood pressure, and sleep — tracked continuously. Bluetooth calling included. No subscription.</p>
+    <p class="hero-desc">Your health. Your wrist. The PsyTec Health Watch delivers a full biometric dashboard — heart rate, blood oxygen, blood pressure, and sleep — tracked around the clock. Bluetooth calling built in. No subscription, ever.</p>
 
     <div class="hero-stats">
       <div class="hero-stat"><div class="hero-stat-num">7</div><div class="hero-stat-label">Day battery</div></div>
@@ -209,11 +204,6 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
       <li>60-day returns · 1-year warranty</li>
     </ul>
 
-    <div class="also-banner">
-      <p>Also available — PsyTec Health Ring · £60</p>
-      <a href="store_index.html">View Ring →</a>
-    </div>
-
     <button class="btn-buy" id="buyBtn" onclick="handleBuy()" style="margin-top:1rem">Order Now — £70 →</button>
     <div class="stripe-loading" id="stripeLoading">Redirecting to secure checkout…</div>
     <p class="secure-note">Secure payment via Stripe · Receipt by email</p>
@@ -224,38 +214,38 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 <section id="features">
   <div class="container">
     <span class="section-label">What it does</span>
-    <h2 class="section-title">More data.<br/><em>On your wrist.</em></h2>
-    <p class="section-desc">The PsyTec Health Watch goes beyond passive monitoring — it connects, calls, and gives you a full health dashboard at a glance. Everything tracked. Nothing missed.</p>
+    <h2 class="section-title">Complete health.<br/><em>Always on.</em></h2>
+    <p class="section-desc">The PsyTec Health Watch monitors what matters — continuously, accurately, and without a subscription. Six core health functions, one device, on your wrist every day.</p>
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon">♡</div>
         <h3>Heart Rate Monitoring</h3>
-        <p>Continuous 24-hour heart rate tracking. Real-time readouts on the watch face, full history in the Runmefit app. Resting, active, and overnight all logged.</p>
+        <p>Continuous 24-hour heart rate tracking with real-time readouts on the watch face. Resting, active, and overnight data all logged and visible in the Runmefit app.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">◈</div>
         <h3>Blood Oxygen (SpO₂)</h3>
-        <p>All-day blood oxygen saturation monitoring. Accuracy comparable to a dedicated oximeter — displayed live on the watch and tracked over time in the app.</p>
+        <p>All-day blood oxygen saturation monitoring via dual-channel PPG sensor. Live readings on the watch and full trend history in the app — no separate oximeter needed.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">◎</div>
         <h3>Blood Pressure</h3>
-        <p>Wrist-based blood pressure measurement on demand. Track trends over time and understand your cardiovascular baseline — straight from the watch.</p>
+        <p>On-demand wrist-based blood pressure measurement. Track systolic and diastolic trends over time to understand your cardiovascular baseline without a clinic visit.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">◑</div>
         <h3>Sleep Monitoring</h3>
-        <p>Automatic overnight sleep tracking. Stages, duration, and quality scored every morning. Wake up knowing exactly how well you recovered.</p>
+        <p>Automatic overnight sleep tracking — stages, total duration, and a quality score every morning. Wake up with a clear picture of exactly how well your body recovered.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">☏</div>
         <h3>Bluetooth Calling</h3>
-        <p>Make and receive calls directly from your wrist. Built-in mic and speaker — leave your phone in your pocket and stay connected without breaking stride.</p>
+        <p>Make and receive calls directly from your wrist via the built-in mic and speaker. Stay connected without breaking stride — your phone stays in your pocket.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">△</div>
         <h3>MAI Health Score</h3>
-        <p>The MAI Health Assessment System converts your biometric data into a single daily score — giving you a clear read on your physical strength and readiness level.</p>
+        <p>The MAI Health Assessment System converts your daily biometric data into a single readiness score — giving you a clear, immediate read on your physical status each morning.</p>
       </div>
     </div>
   </div>
@@ -276,18 +266,17 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
   </div>
 </section>
 
-<!-- HERO IMAGES SECTION -->
+<!-- HERO IMAGES SECTION — 4 images only, no blank slot -->
 <section style="background:var(--bg-soft)">
   <div class="container">
     <span class="section-label">In detail</span>
     <h2 class="section-title">Built to<br/><em>perform.</em></h2>
     <p class="section-desc">AMOLED display, dual-channel PPG sensor, rotating crown navigation, and 100+ customisable watch faces — all in a metal case rated IP67.</p>
-    <div class="gallery-grid" style="grid-template-columns:repeat(3,1fr)">
+    <div class="gallery-grid" style="grid-template-columns:repeat(4,1fr)">
       <img class="gallery-img" style="aspect-ratio:3/4;object-fit:cover;padding:0" src="psytec_health_watch_hero__1_.webp" alt="Watch faces"/>
       <img class="gallery-img" style="aspect-ratio:3/4;object-fit:cover;padding:0" src="psytec_health_watch_hero__2_.webp" alt="Health sensor"/>
       <img class="gallery-img" style="aspect-ratio:3/4;object-fit:cover;padding:0" src="psytec_health_watch_hero__3_.webp" alt="AMOLED display"/>
       <img class="gallery-img" style="aspect-ratio:3/4;object-fit:cover;padding:0" src="psytec_health_watch_hero__4_.webp" alt="Health dashboard"/>
-      <img class="gallery-img" style="aspect-ratio:3/4;object-fit:cover;padding:0" src="psytec_health_watch_hero__5_.webp" alt="Rotating crown"/>
     </div>
   </div>
 </section>
@@ -325,9 +314,7 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
   <p style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:1rem">PsyTec Health Watch · PT-HW-001</p>
   <h2 style="font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);font-weight:300;color:#fff;margin-bottom:0.5rem">Full health dashboard.<br/><em style="color:var(--accent)">£70. No subscription.</em></h2>
   <p style="color:rgba(255,255,255,0.35);font-size:0.88rem;margin-bottom:2rem">Free UK delivery · Ships in 5–7 working days · 60-day returns</p>
-  <a href="#buy" style="background:var(--accent);color:#060B18;padding:1rem 2.5rem;font-family:var(--mono);font-size:0.74rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;display:inline-block;margin-bottom:1.5rem">Order Now — £70 →</a>
-  <br/>
-  <a href="store_index.html" style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;color:rgba(255,255,255,0.3);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:1px">Also available: PsyTec Health Ring — £60 →</a>
+  <a href="#buy" style="background:var(--accent);color:#060B18;padding:1rem 2.5rem;font-family:var(--mono);font-size:0.74rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;display:inline-block">Order Now — £70 →</a>
 </div>
 
 <footer class="pt-footer">
