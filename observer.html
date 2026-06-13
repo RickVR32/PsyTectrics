@@ -43,12 +43,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;background-color:#fff;padding-right:2.5rem;cursor:pointer}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .context-note{font-size:0.84rem;color:var(--muted);line-height:1.8;padding:1rem 1.2rem;background:var(--bg-soft);border-left:2px solid var(--accent);margin-bottom:1.2rem}
-.price-note{font-size:0.84rem;color:var(--muted);line-height:1.7;padding:1rem 1.2rem;border:1px solid var(--line);margin-bottom:1.5rem}
-.price-note strong{color:var(--text);font-weight:500}
+.price-note{font-size:0.84rem;color:var(--muted);line-height:1.7;padding:1rem 1.2rem;border:1px solid var(--line);margin-bottom:1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.price-note strong{color:var(--text);font-weight:500;font-size:1.1rem}
 .submit-btn{width:100%;font-family:var(--mono);font-size:0.74rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--accent);color:#060B18;padding:1rem;border:none;cursor:pointer;font-weight:700;border-radius:0;transition:opacity 0.2s}
 .submit-btn:hover{opacity:0.85}
 .submit-btn:disabled{opacity:0.4;cursor:not-allowed}
+.stripe-loading{text-align:center;padding:0.8rem;color:var(--muted);font-family:var(--mono);font-size:0.65rem;display:none}
 .disclaimer{font-family:var(--mono);font-size:0.6rem;color:var(--muted2);line-height:1.65;margin-top:1.2rem;text-align:center}
+.secure-note{text-align:center;color:var(--muted2);font-family:var(--mono);font-size:0.58rem;letter-spacing:0.06em;margin-top:0.6rem}
+
+/* SUCCESS */
 .success{background:rgba(0,194,122,0.06);border:1px solid rgba(0,194,122,0.25);padding:2rem;text-align:center;display:none;margin-top:1.5rem}
 .success.visible{display:block}
 .success-title{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:#00C27A;margin-bottom:0.5rem}
@@ -79,7 +83,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 <div class="page">
   <span class="eyebrow">Observer Report · PsyTectrics™</span>
   <h1 class="page-title">Profile someone<br/><em>from their messages.</em></h1>
-  <p class="page-desc">Submit conversation data — WhatsApp exports, message history, or written behavioural descriptions. The framework maps their SC Blueprint™ pattern, identifies behavioural dynamics, and produces a structured interpretive report. Delivered within 48 hours.</p>
+  <p class="page-desc">Submit conversation data — WhatsApp exports, message history, or written behavioural descriptions. The framework maps their SC Blueprint™ pattern, identifies behavioural dynamics, and produces a structured interpretive report. Delivered within 48 hours of payment.</p>
 
   <div style="background:#FFF8ED;border-left:2px solid #F59E0B;padding:1rem 1.2rem;margin-bottom:1.5rem;font-size:0.82rem;color:#6B7280;line-height:1.75">
     <strong style="color:#0B1020;font-weight:500">Data &amp; Privacy Notice</strong> — You are responsible for ensuring you have a legitimate basis to submit third-party data. This service is designed for lawful purposes including legal documentation, professional analysis, and personal decision-making. All submitted data is processed under our <a href="privacy.html" style="color:#00D4FF;text-decoration:none">Privacy Policy</a> in accordance with UK GDPR. Data is used solely to produce your report and is not retained beyond 90 days. Observer Reports are interpretive instruments — not clinical, legal, or forensic assessments.
@@ -92,51 +96,58 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
     <span class="tag">Relationship analysis</span>
   </div>
 
-  <form id="obs-form" onsubmit="submitForm(event)">
+  <div id="obs-form">
     <div class="form-section">
       <span class="section-lbl">Your details</span>
       <div class="field-row">
-        <div class="field"><label>Your name</label><input type="text" name="your_name" placeholder="Your full name" required/></div>
-        <div class="field"><label>Your contact</label><input type="text" name="your_contact" placeholder="Email or Telegram" required/></div>
+        <div class="field"><label>Your name</label><input type="text" id="your_name" placeholder="Your full name" required/></div>
+        <div class="field"><label>Your contact</label><input type="text" id="your_contact" placeholder="Email or Telegram" required/></div>
       </div>
     </div>
 
     <div class="form-section">
       <span class="section-lbl">The subject</span>
-      <div class="field"><label>Subject — name or initials</label><input type="text" name="subject_name" placeholder="Who is being profiled" required/></div>
-      <div class="field"><label>Your relationship to them</label><input type="text" name="relationship" placeholder="e.g. co-parent, ex-partner, colleague, manager" required/></div>
+      <div class="field"><label>Subject — name or initials</label><input type="text" id="subject_name" placeholder="Who is being profiled" required/></div>
+      <div class="field"><label>Your relationship to them</label><input type="text" id="relationship" placeholder="e.g. co-parent, ex-partner, colleague, manager" required/></div>
     </div>
 
     <div class="form-section">
       <span class="section-lbl">The data</span>
       <div class="context-note">The more data you provide, the more accurate the report. Natural conversation over time is more reliable than a single exchange. Include specific language they use, how they respond to conflict, and patterns you have observed repeatedly.</div>
-      <div class="field"><label>Conversation data or behavioural description</label><textarea name="conversation_data" placeholder="Paste message exchanges, WhatsApp exports, or describe behavioural patterns you have observed over time. Include specific language, communication style under pressure, how they handle accountability, recurring themes." required></textarea></div>
-      <div class="field"><label>Context — what you need the report to address</label><textarea name="context" placeholder="What is the situation? What are you trying to understand, document, or prepare for? If this is for legal or professional use, note that here." style="min-height:100px"></textarea></div>
+      <div class="field"><label>Conversation data or behavioural description</label><textarea id="conversation_data" placeholder="Paste message exchanges, WhatsApp exports, or describe behavioural patterns you have observed over time. Include specific language, communication style under pressure, how they handle accountability, recurring themes." required></textarea></div>
+      <div class="field"><label>Context — what you need the report to address</label><textarea id="context_field" placeholder="What is the situation? What are you trying to understand, document, or prepare for? If this is for legal or professional use, note that here." style="min-height:100px"></textarea></div>
       <div class="field"><label>Report type</label>
-        <select name="report_type">
-          <option value="standard">Standard Observer Report</option>
-          <option value="court">Court-Ready (Co-Parenting / Legal Documentation)</option>
-          <option value="workplace">Workplace / Professional Context</option>
+        <select id="report_type">
+          <option value="Standard Observer Report">Standard Observer Report</option>
+          <option value="Court-Ready (Co-Parenting / Legal Documentation)">Court-Ready (Co-Parenting / Legal Documentation)</option>
+          <option value="Workplace / Professional Context">Workplace / Professional Context</option>
         </select>
       </div>
     </div>
 
-    <input type="hidden" name="_subject" value="Observer Report Request — PsyTectrics™"/>
-    <div class="price-note"><strong>£75</strong> — You will receive a Stripe payment link via email once we have reviewed your submission. No charge until your report is confirmed.</div>
-    <button type="submit" class="submit-btn" id="submit-btn">Submit for Observer Report →</button>
-    <p class="disclaimer">Observer Reports are structured interpretive instruments · Not a clinical diagnostic · PsyTectrics™ · All submissions reviewed directly · Reports delivered within 48 hours</p>
-  </form>
+    <div class="price-note">
+      <div>
+        <strong>£75</strong> — one-time payment<br/>
+        <span style="font-size:0.78rem">Pay now via Stripe. Your submission details are saved and sent to us automatically on payment. Report delivered within 48 hours.</span>
+      </div>
+    </div>
+
+    <button class="submit-btn" id="submit-btn" onclick="handleSubmit()">Pay &amp; Submit — £75 →</button>
+    <div class="stripe-loading" id="stripeLoading">Saving your submission and redirecting to secure checkout…</div>
+    <p class="secure-note">Secure payment via Stripe · Receipt by email</p>
+    <p class="disclaimer">Observer Reports are structured interpretive instruments · Not a clinical diagnostic · PsyTectrics™ · All submissions reviewed directly · Reports delivered within 48 hours of payment</p>
+  </div>
 
   <div class="success" id="success">
-    <div class="success-title">Received.</div>
-    <p class="success-body">Your Observer Report request has been submitted. We will review your submission and send a payment link within 24 hours. Your report will be delivered within 48 hours of payment.</p>
+    <div class="success-title">Payment received.</div>
+    <p class="success-body">Your Observer Report request has been submitted and payment confirmed. We will review your submission and deliver your report within 48 hours.</p>
   </div>
 </div>
 
 <footer class="pt-footer">
   <div class="pt-footer-inner">
     <span class="pt-footer-logo">PSYTECTRICS™</span>
-        <div class="pt-footer-links">
+    <div class="pt-footer-links">
       <a href="index.html">Home</a>
       <a href="reports.html">Reports</a>
       <a href="prototypes.html">Prototypes</a>
@@ -149,18 +160,84 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
   </div>
 </footer>
 
+<script src="https://js.stripe.com/v3/"></script>
 <script>
-async function submitForm(e){
-  e.preventDefault();
-  const btn=document.getElementById('submit-btn');
-  btn.disabled=true;btn.textContent='Submitting…';
-  try{
-    const res=await fetch('https://formspree.io/f/mreorpre',{method:'POST',body:new FormData(e.target),headers:{Accept:'application/json'}});
-    if(res.ok){
-      document.getElementById('obs-form').style.display='none';
-      document.getElementById('success').classList.add('visible');
-    } else throw new Error();
-  } catch{btn.disabled=false;btn.textContent='Submit for Observer Report →';}
+const STRIPE_PUBLISHABLE_KEY = 'pk_live_51ThnQyBb2S75affdhU11ovPt7pYoAGbAAwwUZBxNi5ZpKrR2BafzrrT7GbLYV9oxvowHfjvPJTPoC8dSg9qIZgsy00a2nB2kqW';
+const OBSERVER_PRICE_ID = 'price_1ThuECBb2S75affdGtsHdPnp';
+const SUCCESS_URL = window.location.origin + '/observer.html?paid=1';
+const CANCEL_URL = window.location.href;
+
+let stripe;
+try { stripe = Stripe(STRIPE_PUBLISHABLE_KEY); } catch(e) {}
+
+// On return from Stripe success
+window.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('paid') === '1') {
+    // Forward saved submission to Formspree in the background
+    const saved = sessionStorage.getItem('pt_observer_submission');
+    if (saved) {
+      const data = JSON.parse(saved);
+      const fd = new FormData();
+      Object.entries(data).forEach(([k, v]) => fd.append(k, v));
+      fetch('https://formspree.io/f/mreorpre', { method: 'POST', body: fd, headers: { Accept: 'application/json' } })
+        .catch(() => {}); // fire and forget
+      sessionStorage.removeItem('pt_observer_submission');
+    }
+    document.getElementById('obs-form').style.display = 'none';
+    document.getElementById('success').classList.add('visible');
+    history.replaceState({}, '', window.location.pathname);
+  }
+});
+
+function validate() {
+  const required = ['your_name', 'your_contact', 'subject_name', 'relationship', 'conversation_data'];
+  for (const id of required) {
+    if (!document.getElementById(id).value.trim()) {
+      document.getElementById(id).focus();
+      return false;
+    }
+  }
+  return true;
+}
+
+async function handleSubmit() {
+  if (!validate()) { alert('Please fill in all required fields before proceeding.'); return; }
+  if (!stripe) { alert('Stripe not loaded. Please refresh and try again.'); return; }
+
+  // Save submission to sessionStorage before redirect
+  const submission = {
+    _subject: 'Observer Report Request — PsyTectrics™',
+    your_name:         document.getElementById('your_name').value.trim(),
+    your_contact:      document.getElementById('your_contact').value.trim(),
+    subject_name:      document.getElementById('subject_name').value.trim(),
+    relationship:      document.getElementById('relationship').value.trim(),
+    report_type:       document.getElementById('report_type').value,
+    conversation_data: document.getElementById('conversation_data').value.trim(),
+    context:           document.getElementById('context_field').value.trim(),
+  };
+  sessionStorage.setItem('pt_observer_submission', JSON.stringify(submission));
+
+  const btn = document.getElementById('submit-btn');
+  const loading = document.getElementById('stripeLoading');
+  btn.disabled = true; btn.style.display = 'none'; loading.style.display = 'block';
+
+  try {
+    const { error } = await stripe.redirectToCheckout({
+      lineItems: [{ price: OBSERVER_PRICE_ID, quantity: 1 }],
+      mode: 'payment',
+      successUrl: SUCCESS_URL,
+      cancelUrl: CANCEL_URL,
+      clientReferenceId: ('Observer-' + submission.your_name).substring(0, 200)
+    });
+    if (error) {
+      loading.style.display = 'none'; btn.style.display = 'block'; btn.disabled = false;
+      alert('Checkout error: ' + error.message);
+    }
+  } catch(err) {
+    loading.style.display = 'none'; btn.style.display = 'block'; btn.disabled = false;
+    alert('Something went wrong. Please try again.');
+  }
 }
 </script>
 </body>
