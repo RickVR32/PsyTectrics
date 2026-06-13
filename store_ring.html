@@ -19,8 +19,6 @@
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;padding-top:70px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-
-/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0.85rem 2.5rem;border-bottom:1px solid rgba(255,255,255,0.06);background:#060B18;height:70px}
 .nav-logo-wrap{display:flex;align-items:center;text-decoration:none}
 .nav-logo-img{height:52px;width:auto;display:block}
@@ -40,8 +38,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .nav-drawer a:last-child{border-bottom:none}
 .nav-drawer a:hover{color:#fff}
 .nav-drawer .drawer-cta{background:var(--accent);color:#060B18;padding:0.75rem 1.2rem;font-weight:700;margin-top:0.8rem;text-align:center;border-bottom:none}
-
-/* HERO */
 .hero{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 70px);background:var(--navy)}
 .hero-visual{display:flex;align-items:center;justify-content:center;padding:4rem;position:relative;border-right:1px solid rgba(0,0,0,0.08);background:#ffffff;overflow:hidden}
 .hero-visual::before{display:none}
@@ -51,7 +47,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .thumb-row{display:flex;gap:0.6rem}
 .thumb{width:58px;height:58px;object-fit:contain;border:1px solid rgba(0,0,0,0.1);cursor:pointer;transition:border-color 0.2s;background:#ffffff;padding:4px}
 .thumb:hover,.thumb.active{border-color:var(--accent)}
-
 .hero-copy{padding:4rem;display:flex;flex-direction:column;justify-content:center;gap:1.2rem;position:relative;z-index:2}
 .eyebrow{display:inline-flex;align-items:center;gap:0.5rem;background:var(--accent-soft);border:1px solid var(--accent-border);padding:0.35rem 1rem;font-family:var(--mono);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);align-self:flex-start}
 .hero h1{font-family:var(--serif);font-size:clamp(2.4rem,4vw,3.8rem);font-weight:300;line-height:1.08;color:#fff}
@@ -60,8 +55,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .hero-stats{display:flex;gap:2rem;padding:1.5rem 0;border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);flex-wrap:wrap}
 .hero-stat-num{font-family:var(--serif);font-size:1.6rem;font-weight:300;color:#fff;line-height:1}
 .hero-stat-label{font-family:var(--mono);font-size:0.56rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:0.2rem}
-
-/* SELECTORS */
 .selector-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:0.6rem;display:block}
 .colour-row{display:flex;gap:0.6rem;margin-bottom:0.3rem}
 .colour-swatch{width:28px;height:28px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:all 0.2s;position:relative}
@@ -74,8 +67,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .size-btn:hover{border-color:var(--accent-border);color:#fff}
 .size-btn.active{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
 .size-guide-link{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.06em;color:rgba(255,255,255,0.25);text-decoration:underline;text-underline-offset:3px;cursor:pointer;display:block;margin-bottom:1.5rem}
-
-/* PRICE & BUY */
 .price-block{display:flex;align-items:baseline;gap:0.3rem}
 .price-main{font-family:var(--serif);font-size:3.5rem;font-weight:300;color:#fff;line-height:1}
 .price-note{color:rgba(255,255,255,0.3);font-size:0.75rem;font-style:italic;margin-bottom:1.5rem}
@@ -90,16 +81,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .also-banner a{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-border);padding-bottom:1px}
 .secure-note{text-align:center;color:rgba(255,255,255,0.2);font-family:var(--mono);font-size:0.58rem;letter-spacing:0.06em;margin-top:0.8rem}
 .stripe-loading{text-align:center;padding:0.8rem;color:rgba(255,255,255,0.35);font-family:var(--mono);font-size:0.65rem;display:none}
-
-/* SECTIONS */
 section{padding:5rem 0;border-top:1px solid var(--line)}
 .container{max-width:1200px;margin:0 auto;padding:0 3rem}
 .section-label{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;display:block}
 .section-title{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;line-height:1.1;margin-bottom:0.8rem}
 .section-title em{font-style:italic;color:var(--accent)}
 .section-desc{color:var(--muted);font-size:0.88rem;line-height:1.75;max-width:560px;margin-bottom:2.5rem}
-
-/* FEATURES */
 .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
 .feature-card{background:#fff;padding:2.2rem;transition:background 0.2s;display:flex;flex-direction:column;gap:0.8rem}
 .feature-card:hover{background:var(--bg-soft)}
@@ -107,21 +94,15 @@ section{padding:5rem 0;border-top:1px solid var(--line)}
 .feature-card h3{font-family:var(--serif);font-size:1.05rem;font-weight:300;color:var(--text)}
 .feature-card h3 em{font-style:italic;color:var(--accent)}
 .feature-card p{color:var(--muted);font-size:0.82rem;line-height:1.65;flex:1}
-
-/* GALLERY */
 .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
 .gallery-img{width:100%;aspect-ratio:1;object-fit:contain;display:block;background:var(--bg-soft);padding:1.5rem;transition:transform 0.3s}
 .gallery-img:hover{transform:scale(1.02)}
-
-/* SPECS */
 .specs-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:start}
 .specs-list{list-style:none}
 .specs-list li{display:flex;justify-content:space-between;align-items:baseline;padding:0.9rem 0;border-bottom:1px solid var(--line);font-size:0.86rem}
 .specs-list li:first-child{border-top:1px solid var(--line)}
 .spec-label{color:var(--muted)}
 .spec-value{color:var(--text);text-align:right;font-weight:400}
-
-/* FOOTER */
 .pt-footer{background:#060B18;border-top:1px solid rgba(255,255,255,0.07);padding:2rem 3rem}
 .pt-footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 .pt-footer-logo{font-family:var(--mono);font-size:0.78rem;letter-spacing:0.16em;color:rgba(255,255,255,0.5);font-weight:700}
@@ -129,7 +110,6 @@ section{padding:5rem 0;border-top:1px solid var(--line)}
 .pt-footer-links a{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s}
 .pt-footer-links a:hover{color:rgba(255,255,255,0.7)}
 .pt-footer-note{font-family:var(--mono);font-size:0.58rem;color:rgba(255,255,255,0.2)}
-
 @media(max-width:900px){.hero{grid-template-columns:1fr}.hero-visual{min-height:380px;border-right:none;border-bottom:1px solid rgba(0,0,0,0.08)}.ring-main-img{width:220px;height:220px}}
 @media(max-width:768px){
   nav{padding:0.8rem 1.2rem}
@@ -238,7 +218,7 @@ section{padding:5rem 0;border-top:1px solid var(--line)}
     <p class="secure-note">Secure payment via Stripe · Receipt by email</p>
 
     <div class="also-banner">
-      <p>Also available — PsyTec Health Watch · £65</p>
+      <p>Also available — PsyTec Health Watch · £70</p>
       <a href="store_watch.html">View Watch →</a>
     </div>
   </div>
@@ -337,7 +317,7 @@ section{padding:5rem 0;border-top:1px solid var(--line)}
   <p style="color:rgba(255,255,255,0.35);font-size:0.88rem;margin-bottom:2rem">Free UK delivery · Ships in 5–7 working days · 60-day returns</p>
   <a href="#buy" style="background:var(--accent);color:#060B18;padding:1rem 2.5rem;font-family:var(--mono);font-size:0.74rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;display:inline-block;margin-bottom:1.5rem">Order Now — £60 →</a>
   <br/>
-  <a href="store_watch.html" style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;color:rgba(255,255,255,0.3);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:1px">Also available: PsyTec Health Watch — £65 →</a>
+  <a href="store_watch.html" style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;color:rgba(255,255,255,0.3);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:1px">Also available: PsyTec Health Watch — £70 →</a>
 </div>
 
 <footer class="pt-footer">
