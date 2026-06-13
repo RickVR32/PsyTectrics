@@ -59,8 +59,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 
 .product-card{background:#fff;display:flex;flex-direction:column;transition:background 0.2s}
 .product-card:hover{background:var(--bg-soft)}
-.product-img-wrap{display:flex;align-items:center;justify-content:center;padding:3rem 2rem;background:var(--bg-soft);border-bottom:1px solid var(--line);min-height:280px;position:relative;overflow:hidden}
-.product-img-wrap::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 60%,rgba(0,212,255,0.06) 0%,transparent 65%);pointer-events:none}
+.product-img-wrap{display:flex;align-items:center;justify-content:center;padding:3rem 2rem;background:#ffffff;border-bottom:1px solid var(--line);min-height:280px;position:relative;overflow:hidden}
+.product-img-wrap::before{display:none}
 .product-img{width:200px;height:200px;object-fit:contain;animation:float 6s ease-in-out infinite;position:relative;z-index:1}
 .product-img.watch-img{width:160px;height:200px}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
