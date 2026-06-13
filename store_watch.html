@@ -41,13 +41,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 
 /* HERO */
 .hero{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 70px);background:#060B18}
-.hero-visual{display:flex;align-items:center;justify-content:center;padding:4rem;position:relative;border-right:1px solid rgba(255,255,255,0.06);background:#0d1420;overflow:hidden}
-.hero-visual::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(0,212,255,0.08) 0%,transparent 65%);pointer-events:none}
+.hero-visual{display:flex;align-items:center;justify-content:center;padding:4rem;position:relative;border-right:1px solid rgba(255,255,255,0.06);background:#ffffff;overflow:hidden}
+.hero-visual::before{display:none}
 .watch-showcase{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:1.5rem}
-.watch-main-img{width:300px;height:300px;object-fit:contain;animation:float 6s ease-in-out infinite;filter:drop-shadow(0 20px 40px rgba(0,212,255,0.12))}
+.watch-main-img{width:300px;height:300px;object-fit:contain;animation:float 6s ease-in-out infinite;filter:drop-shadow(0 12px 24px rgba(0,0,0,0.12))}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 .watch-thumb-row{display:flex;gap:0.6rem}
-.watch-thumb{width:60px;height:60px;object-fit:contain;border:1px solid rgba(255,255,255,0.1);cursor:pointer;transition:border-color 0.2s;background:rgba(255,255,255,0.03);padding:4px}
+.watch-thumb{width:60px;height:60px;object-fit:contain;border:1px solid rgba(0,0,0,0.1);cursor:pointer;transition:border-color 0.2s;background:#ffffff;padding:4px}
 .watch-thumb:hover,.watch-thumb.active{border-color:var(--accent)}
 
 .hero-copy{padding:4rem;display:flex;flex-direction:column;justify-content:center;gap:1.2rem}
@@ -172,7 +172,6 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
         <img class="watch-thumb active" src="psytec_health_watch_grey.webp" onclick="switchImg(this,'psytec_health_watch_grey.webp')" alt="Storm Grey"/>
         <img class="watch-thumb" src="psytec_health_watch_white.webp" onclick="switchImg(this,'psytec_health_watch_white.webp')" alt="Obsidian Black"/>
         <img class="watch-thumb" src="psytec_health_watch_hero__3_.webp" onclick="switchImg(this,'psytec_health_watch_hero__3_.webp')" alt="Charging"/>
-        <img class="watch-thumb" src="psytec_health_watch_hero__4_.webp" onclick="switchImg(this,'psytec_health_watch_hero__4_.webp')" alt="MAI system"/>
       </div>
     </div>
   </div>
