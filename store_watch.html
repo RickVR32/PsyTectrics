@@ -42,7 +42,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 /* HERO */
 .hero{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 70px);background:#060B18}
 .hero-visual{display:flex;align-items:center;justify-content:center;padding:4rem;position:relative;border-right:1px solid rgba(255,255,255,0.06);background:#ffffff;overflow:hidden}
-.hero-visual::before{display:none}
 .watch-showcase{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:1.5rem}
 .watch-main-img{width:300px;height:300px;object-fit:contain;animation:float 6s ease-in-out infinite;filter:drop-shadow(0 12px 24px rgba(0,0,0,0.12))}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
@@ -167,12 +166,12 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 <div class="hero" id="buy">
   <div class="hero-visual">
     <div class="watch-showcase">
-      <img id="mainWatchImg" class="watch-main-img" src="psytec_health_watch_grey.webp" alt="PsyTec Health Watch"/>
+      <img id="mainWatchImg" class="watch-main-img" src="psytec_health_watch_black.jpg" alt="PsyTec Health Watch"/>
       <div class="watch-thumb-row">
-        <img class="watch-thumb active" src="psytec_health_watch_grey.webp" onclick="switchImg(this,'psytec_health_watch_grey.webp')" alt="Storm Grey"/>
-        <img class="watch-thumb" src="psytec_health_watch_white.webp" onclick="switchImg(this,'psytec_health_watch_white.webp')" alt="White"/>
-        <img class="watch-thumb" src="psytec_health_watch_pink.webp" onclick="switchImg(this,'psytec_health_watch_pink.webp')" alt="Rose"/>
-        <img class="watch-thumb" src="psytec_health_watch_blue.webp" onclick="switchImg(this,'psytec_health_watch_blue.webp')" alt="Blue"/>
+        <img class="watch-thumb active" src="psytec_health_watch_black.jpg"       onclick="switchImg(this,'psytec_health_watch_black.jpg')"       alt="Obsidian Black"/>
+        <img class="watch-thumb"        src="psytec_health_watch_white.jpg"       onclick="switchImg(this,'psytec_health_watch_white.jpg')"       alt="Storm Grey"/>
+        <img class="watch-thumb"        src="psytec_health_watch_blk_leather.jpg" onclick="switchImg(this,'psytec_health_watch_blk_leather.jpg')" alt="Black Leather"/>
+        <img class="watch-thumb"        src="psytec_health_watch_bwn_leather.jpg" onclick="switchImg(this,'psytec_health_watch_bwn_leather.jpg')" alt="Brown Leather"/>
       </div>
     </div>
   </div>
@@ -189,14 +188,14 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
       <div class="hero-stat"><div class="hero-stat-num">BT</div><div class="hero-stat-label">Calling</div></div>
     </div>
 
-    <span class="selector-label">Colour</span>
+    <span class="selector-label">Strap</span>
     <div class="colour-row">
-      <div class="colour-swatch active" style="background:linear-gradient(135deg,#2a2a2a,#4a4a4a)" onclick="selectColour(this,'Obsidian Black','black')" title="Obsidian Black"></div>
-      <div class="colour-swatch" style="background:linear-gradient(135deg,#8a8a8a,#d0d0d0)" onclick="selectColour(this,'Storm Grey','grey')" title="Storm Grey"></div>
-      <div class="colour-swatch" style="background:linear-gradient(135deg,#e8a0b0,#f5c6d0)" onclick="selectColour(this,'Rose Pink','pink')" title="Rose Pink"></div>
-      <div class="colour-swatch" style="background:linear-gradient(135deg,#3a4a7a,#5a6aaa)" onclick="selectColour(this,'Navy Blue','blue')" title="Navy Blue"></div>
+      <div class="colour-swatch active" style="background:linear-gradient(135deg,#1a1a1a,#3a3a3a)" onclick="selectColour(this,'Obsidian Black · Silicone','psytec_health_watch_black.jpg')" title="Obsidian Black"></div>
+      <div class="colour-swatch" style="background:linear-gradient(135deg,#b0b0b0,#e0e0e0)" onclick="selectColour(this,'Storm Grey · Silicone','psytec_health_watch_white.jpg')" title="Storm Grey"></div>
+      <div class="colour-swatch" style="background:linear-gradient(135deg,#2b1a0e,#4a3020);border:1px solid rgba(255,255,255,0.15)" onclick="selectColour(this,'Obsidian Black · Leather','psytec_health_watch_blk_leather.jpg')" title="Black Leather"></div>
+      <div class="colour-swatch" style="background:linear-gradient(135deg,#8B5E3C,#C4874F)" onclick="selectColour(this,'Tan Brown · Leather','psytec_health_watch_bwn_leather.jpg')" title="Brown Leather"></div>
     </div>
-    <div class="colour-name-display" id="colourDisplay">Obsidian Black</div>
+    <div class="colour-name-display" id="colourDisplay">Obsidian Black · Silicone</div>
 
     <div class="price-block">
       <div class="price-main">£65</div>
@@ -204,7 +203,7 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
     <p class="price-note">Free UK delivery · Ships within 5–7 working days</p>
 
     <ul class="perks">
-      <li>PsyTec Health Watch in your chosen colour</li>
+      <li>PsyTec Health Watch in your chosen strap</li>
       <li>Magnetic charging cable included</li>
       <li>Runmefit companion app — iOS & Android</li>
       <li>60-day returns · 1-year warranty</li>
@@ -266,13 +265,30 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 <section style="background:#fff">
   <div class="container">
     <span class="section-label">The watch</span>
-    <h2 class="section-title">Four colours.<br/><em>One platform.</em></h2>
-    <p class="section-desc">Obsidian Black, Storm Grey, Rose Pink, and Navy Blue — all running the Runmefit OS with the full health suite and Bluetooth calling built in.</p>
+    <h2 class="section-title">Four straps.<br/><em>One platform.</em></h2>
+    <p class="section-desc">Obsidian Black Silicone, Storm Grey Silicone, Black Leather, and Tan Brown Leather — all running the Runmefit OS with the full health suite and Bluetooth calling built in.</p>
     <div class="gallery-grid" style="grid-template-columns:repeat(4,1fr)">
-      <img class="gallery-img" style="aspect-ratio:3/4;object-fit:cover" src="watch_hero_mai.webp" alt="MAI Health Assessment"/>
-      <img class="gallery-img" style="aspect-ratio:3/4;object-fit:cover" src="watch_hero_health.webp" alt="Health Monitoring"/>
-      <img class="gallery-img" style="aspect-ratio:3/4;object-fit:cover" src="watch_hero_runmefit.webp" alt="Runmefit OS"/>
-      <img class="gallery-img" style="aspect-ratio:3/4;object-fit:cover" src="watch_hero_charger.webp" alt="Magnetic Charging"/>
+      <img class="gallery-img" style="aspect-ratio:1;object-fit:contain;padding:1rem" src="psytec_health_watch_black.jpg"       alt="Obsidian Black Silicone"/>
+      <img class="gallery-img" style="aspect-ratio:1;object-fit:contain;padding:1rem" src="psytec_health_watch_white.jpg"       alt="Storm Grey Silicone"/>
+      <img class="gallery-img" style="aspect-ratio:1;object-fit:contain;padding:1rem" src="psytec_health_watch_blk_leather.jpg" alt="Black Leather"/>
+      <img class="gallery-img" style="aspect-ratio:1;object-fit:contain;padding:1rem" src="psytec_health_watch_bwn_leather.jpg" alt="Tan Brown Leather"/>
+    </div>
+  </div>
+</section>
+
+<!-- HERO IMAGES SECTION -->
+<section style="background:var(--bg-soft)">
+  <div class="container">
+    <span class="section-label">In detail</span>
+    <h2 class="section-title">Built to<br/><em>perform.</em></h2>
+    <p class="section-desc">AMOLED display, dual-channel PPG sensor, rotating crown navigation, and 100+ customisable watch faces — all in a metal case rated IP67.</p>
+    <div class="gallery-grid" style="grid-template-columns:repeat(3,1fr)">
+      <img class="gallery-img" style="aspect-ratio:3/4;object-fit:cover;padding:0" src="psytec_health_watch_hero__1_.webp" alt="Watch faces"/>
+      <img class="gallery-img" style="aspect-ratio:3/4;object-fit:cover;padding:0" src="psytec_health_watch_hero__2_.webp" alt="Health sensor"/>
+      <img class="gallery-img" style="aspect-ratio:3/4;object-fit:cover;padding:0" src="psytec_health_watch_hero__3_.webp" alt="AMOLED display"/>
+      <img class="gallery-img" style="aspect-ratio:3/4;object-fit:cover;padding:0" src="psytec_health_watch_hero__4_.webp" alt="Health dashboard"/>
+      <img class="gallery-img" style="aspect-ratio:3/4;object-fit:cover;padding:0" src="psytec_health_watch_hero__5_.webp" alt="Rotating crown"/>
+      <img class="gallery-img" style="aspect-ratio:3/4;object-fit:contain;padding:1rem;background:#fff" src="psytec_health_watch_main_hero.jpg" alt="PsyTec Health Watch"/>
     </div>
   </div>
 </section>
@@ -284,20 +300,20 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
       <div>
         <span class="section-label">Specifications</span>
         <h2 class="section-title">Built to<br/><em>perform.</em></h2>
-        <p style="color:var(--muted);font-size:0.88rem;line-height:1.8;max-width:340px">350mAh battery, touchscreen + button controls, magnetic charging, and the full Runmefit OS — built for daily wear and serious health tracking.</p>
+        <p style="color:var(--muted);font-size:0.88rem;line-height:1.8;max-width:340px">1.96" AMOLED, 368×448 resolution, dual-channel PPG sensor, rotating crown, and the full Runmefit OS — built for daily wear and serious health tracking.</p>
       </div>
       <ul class="specs-list">
         <li><span class="spec-label">Product name</span><span class="spec-value">PsyTec Health Watch</span></li>
         <li><span class="spec-label">Model</span><span class="spec-value">PT-HW-001</span></li>
-        <li><span class="spec-label">Screen</span><span class="spec-value">TFT touchscreen · touch + button</span></li>
-        <li><span class="spec-label">Colours</span><span class="spec-value">Obsidian Black · Storm Grey · Rose Pink · Navy Blue</span></li>
+        <li><span class="spec-label">Screen</span><span class="spec-value">1.96" AMOLED · 368×448 · 2.5D curved</span></li>
+        <li><span class="spec-label">Straps</span><span class="spec-value">Black Silicone · Grey Silicone · Black Leather · Brown Leather</span></li>
         <li><span class="spec-label">Battery</span><span class="spec-value">350mAh · up to 7 days</span></li>
         <li><span class="spec-label">Charging</span><span class="spec-value">Magnetic cable · included</span></li>
         <li><span class="spec-label">Water resistance</span><span class="spec-value">IP67</span></li>
-        <li><span class="spec-label">Sensors</span><span class="spec-value">PPG · SpO₂ · Blood pressure · Accelerometer</span></li>
+        <li><span class="spec-label">Sensors</span><span class="spec-value">Dual-channel PPG · SpO₂ · ECG · Blood pressure · Accelerometer</span></li>
         <li><span class="spec-label">Connectivity</span><span class="spec-value">Bluetooth · calling enabled</span></li>
+        <li><span class="spec-label">Watch faces</span><span class="spec-value">100+ customisable</span></li>
         <li><span class="spec-label">App</span><span class="spec-value">Runmefit — iOS & Android</span></li>
-        <li><span class="spec-label">Compatibility</span><span class="spec-value">iOS & Android</span></li>
         <li><span class="spec-label">In the box</span><span class="spec-value">Watch · Charging cable · Manual</span></li>
       </ul>
     </div>
@@ -341,7 +357,7 @@ const CANCEL_URL  = window.location.href;
 let stripe;
 try { stripe = Stripe(STRIPE_PUBLISHABLE_KEY); } catch(e) {}
 
-let selectedColour = 'Obsidian Black';
+let selectedColour = 'Obsidian Black · Silicone';
 
 function switchImg(thumb, src) {
   document.getElementById('mainWatchImg').src = src;
@@ -349,21 +365,22 @@ function switchImg(thumb, src) {
   thumb.classList.add('active');
 }
 
-function selectColour(swatch, name, variant) {
+function selectColour(swatch, name, src) {
   selectedColour = name;
   document.querySelectorAll('.colour-swatch').forEach(s => s.classList.remove('active'));
   swatch.classList.add('active');
   document.getElementById('colourDisplay').textContent = name;
-  const imgs = {
-    black: 'psytec_health_watch_grey.webp',
-    grey:  'psytec_health_watch_white.webp',
-    pink:  'psytec_health_watch_pink.webp',
-    blue:  'psytec_health_watch_blue.webp'
-  };
-  document.getElementById('mainWatchImg').src = imgs[variant];
-  document.querySelectorAll('.watch-thumb').forEach(t => t.classList.remove('active'));
-  const idx = {black:0, grey:1, pink:2, blue:3};
-  document.querySelectorAll('.watch-thumb')[idx[variant]].classList.add('active');
+  document.getElementById('mainWatchImg').src = src;
+  const thumbs = document.querySelectorAll('.watch-thumb');
+  const srcs = [
+    'psytec_health_watch_black.jpg',
+    'psytec_health_watch_white.jpg',
+    'psytec_health_watch_blk_leather.jpg',
+    'psytec_health_watch_bwn_leather.jpg'
+  ];
+  thumbs.forEach(t => t.classList.remove('active'));
+  const idx = srcs.indexOf(src);
+  if(idx > -1) thumbs[idx].classList.add('active');
 }
 
 async function handleBuy() {
