@@ -33,7 +33,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:2.5rem}
 .tag{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.28rem 0.75rem;background:var(--accent-soft);border:1px solid var(--accent-border);color:var(--accent)}
 
-/* Pricing table */
 .pricing-block{margin-bottom:2.5rem}
 .pricing-block-title{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;display:block}
 .pricing-table{width:100%;border-collapse:collapse;border:1px solid var(--line-strong)}
@@ -61,16 +60,25 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;background-color:#fff;padding-right:2.5rem;cursor:pointer}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .context-note{font-size:0.84rem;color:var(--muted);line-height:1.8;padding:1rem 1.2rem;background:var(--bg-soft);border-left:2px solid var(--accent);margin-bottom:1.2rem}
-.price-note{font-size:0.84rem;color:var(--muted);line-height:1.7;padding:1rem 1.2rem;border:1px solid var(--line);margin-bottom:1.5rem}
-.price-note strong{color:var(--text);font-weight:500}
+
+/* Dynamic price display */
+.price-note{font-size:0.84rem;color:var(--muted);line-height:1.7;padding:1rem 1.2rem;border:1px solid var(--line);margin-bottom:1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.price-note strong{color:var(--text);font-weight:500;font-size:1.1rem}
+#scope-price-display{font-family:var(--mono);font-size:1.3rem;font-weight:700;color:var(--text)}
+#scope-note{font-size:0.78rem;color:var(--muted);margin-top:0.2rem}
+
 .submit-btn{width:100%;font-family:var(--mono);font-size:0.74rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--accent);color:#060B18;padding:1rem;border:none;cursor:pointer;font-weight:700;border-radius:0;transition:opacity 0.2s}
 .submit-btn:hover{opacity:0.85}
 .submit-btn:disabled{opacity:0.4;cursor:not-allowed}
+.stripe-loading{text-align:center;padding:0.8rem;color:var(--muted);font-family:var(--mono);font-size:0.65rem;display:none}
+.secure-note{text-align:center;color:var(--muted2);font-family:var(--mono);font-size:0.58rem;letter-spacing:0.06em;margin-top:0.6rem}
 .disclaimer{font-family:var(--mono);font-size:0.6rem;color:var(--muted2);line-height:1.65;margin-top:1.2rem;text-align:center}
+
 .success{background:rgba(0,194,122,0.06);border:1px solid rgba(0,194,122,0.25);padding:2rem;text-align:center;display:none;margin-top:1.5rem}
 .success.visible{display:block}
 .success-title{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:#00C27A;margin-bottom:0.5rem}
 .success-body{font-size:0.86rem;color:var(--muted);line-height:1.75}
+
 .pt-footer{background:#060B18;border-top:1px solid rgba(255,255,255,0.07);padding:2rem 3rem}
 .pt-footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 .pt-footer-logo{font-family:var(--mono);font-size:0.78rem;letter-spacing:0.16em;color:rgba(255,255,255,0.5);font-weight:700}
@@ -105,7 +113,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
     <span class="tag">Organisational culture</span>
   </div>
 
-  <!-- Pricing table -->
   <div class="pricing-block">
     <span class="pricing-block-title">Pricing guide</span>
     <table class="pricing-table">
@@ -124,12 +131,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
         </tr>
         <tr>
           <td>2–5 people</td>
-          <td class="price-cell">£350 – £500</td>
+          <td class="price-cell">£350</td>
           <td class="note-cell">Individual reports + team dynamics overview</td>
         </tr>
         <tr>
           <td>6–10 people</td>
-          <td class="price-cell">£650 – £900</td>
+          <td class="price-cell">£650</td>
           <td class="note-cell">Individual reports + full team friction map</td>
         </tr>
         <tr>
@@ -139,47 +146,55 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
         </tr>
       </tbody>
     </table>
-    <p class="pricing-includes"><strong>All team reports include a synthesis layer</strong> — a group dynamics overview mapping awareness levels, friction points, and interpersonal patterns across the team. This is what makes a team audit more than the sum of its individual reports.</p>
+    <p class="pricing-includes"><strong>All team reports include a synthesis layer</strong> — a group dynamics overview mapping awareness levels, friction points, and interpersonal patterns across the team.</p>
   </div>
 
-  <form id="biz-form" onsubmit="submitForm(event)">
+  <div id="biz-form">
     <div class="form-section">
       <span class="section-lbl">Your details</span>
       <div class="field-row">
-        <div class="field"><label>Your name</label><input type="text" name="your_name" placeholder="Your full name" required/></div>
-        <div class="field"><label>Your contact</label><input type="text" name="your_contact" placeholder="Email or Telegram" required/></div>
+        <div class="field"><label>Your name</label><input type="text" id="your_name" placeholder="Your full name" required/></div>
+        <div class="field"><label>Your contact</label><input type="text" id="your_contact" placeholder="Email or Telegram" required/></div>
       </div>
-      <div class="field"><label>Organisation / context</label><input type="text" name="organisation" placeholder="Company name or team context"/></div>
+      <div class="field"><label>Organisation / context</label><input type="text" id="organisation" placeholder="Company name or team context"/></div>
     </div>
 
     <div class="form-section">
       <span class="section-lbl">Scope</span>
-      <div class="field"><label>Number of individuals to be assessed</label>
-        <select name="scope">
+      <div class="field">
+        <label>Number of individuals to be assessed</label>
+        <select id="scope" onchange="updateScope()">
           <option value="1">1 individual — £150</option>
-          <option value="2-5">2–5 people — from £350</option>
-          <option value="6-10">6–10 people — from £650</option>
-          <option value="10+">More than 10 — quote</option>
+          <option value="2-5">2–5 people — £350</option>
+          <option value="6-10">6–10 people — £650</option>
+          <option value="10+">More than 10 — enquiry</option>
         </select>
       </div>
     </div>
 
     <div class="form-section">
       <span class="section-lbl">The brief</span>
-      <div class="context-note">Scope and final price are confirmed via email before any work begins. No charge until you approve the brief.</div>
-      <div class="field"><label>What are you trying to understand or resolve?</label><textarea name="brief" placeholder="Describe the situation — team friction, leadership gap, onboarding challenge, or any context driving this audit." required></textarea></div>
-      <div class="field"><label>Any relevant background or supporting materials?</label><textarea name="background" placeholder="Previous assessments, HR reports, specific incidents, or anything that would help frame the work." style="min-height:100px"></textarea></div>
+      <div class="context-note">Scope and final price are confirmed via email before any work begins. For 10+ teams, no charge until you approve the brief.</div>
+      <div class="field"><label>What are you trying to understand or resolve?</label><textarea id="brief" placeholder="Describe the situation — team friction, leadership gap, onboarding challenge, or any context driving this audit." required></textarea></div>
+      <div class="field"><label>Any relevant background or supporting materials?</label><textarea id="background" placeholder="Previous assessments, HR reports, specific incidents, or anything that would help frame the work." style="min-height:100px"></textarea></div>
     </div>
 
-    <input type="hidden" name="_subject" value="Business Audit Enquiry — PsyTectrics™"/>
-    <div class="price-note"><strong>Prices from £150</strong> — Scope and exact price confirmed before work begins. No charge until you approve.</div>
-    <button type="submit" class="submit-btn" id="submit-btn">Request a Business Report →</button>
+    <div class="price-note">
+      <div>
+        <div id="scope-price-display">£150</div>
+        <div id="scope-note">1 individual · Pay now via Stripe · Report within 48 hours</div>
+      </div>
+    </div>
+
+    <button class="submit-btn" id="submit-btn" onclick="handleSubmit()">Pay &amp; Submit →</button>
+    <div class="stripe-loading" id="stripeLoading">Saving your submission and redirecting to secure checkout…</div>
+    <p class="secure-note" id="secure-note">Secure payment via Stripe · Receipt by email</p>
     <p class="disclaimer">Business Reports are structured interpretive instruments · Not a clinical diagnostic · PsyTectrics™ · Scope confirmed before work begins</p>
-  </form>
+  </div>
 
   <div class="success" id="success">
-    <div class="success-title">Received.</div>
-    <p class="success-body">Your Business Audit enquiry has been submitted. You will receive a scope summary and price confirmation within 48 hours of submission.</p>
+    <div class="success-title" id="success-title">Received.</div>
+    <p class="success-body" id="success-body">Your Business Audit submission has been received and payment confirmed. Your report will be delivered within 48 hours.</p>
   </div>
 </div>
 
@@ -199,18 +214,127 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
   </div>
 </footer>
 
+<script src="https://js.stripe.com/v3/"></script>
 <script>
-async function submitForm(e){
-  e.preventDefault();
-  const btn=document.getElementById('submit-btn');
-  btn.disabled=true;btn.textContent='Submitting…';
-  try{
-    const res=await fetch('https://formspree.io/f/mreorpre',{method:'POST',body:new FormData(e.target),headers:{Accept:'application/json'}});
-    if(res.ok){
-      document.getElementById('biz-form').style.display='none';
-      document.getElementById('success').classList.add('visible');
-    } else throw new Error();
-  } catch{btn.disabled=false;btn.textContent='Request a Business Report →';}
+const STRIPE_PUBLISHABLE_KEY = 'pk_live_51ThnQyBb2S75affdhU11ovPt7pYoAGbAAwwUZBxNi5ZpKrR2BafzrrT7GbLYV9oxvowHfjvPJTPoC8dSg9qIZgsy00a2nB2kqW';
+
+const PRICE_MAP = {
+  '1':    { priceId: 'price_1ThuLgBb2S75affdHzaoJSyp', label: '£150', note: '1 individual · Pay now via Stripe · Report within 48 hours' },
+  '2-5':  { priceId: 'price_1ThuNkBb2S75affd4bbjWdQF', label: '£350', note: '2–5 people · Pay now via Stripe · Report within 48 hours' },
+  '6-10': { priceId: 'price_1ThuPUBb2S75affdIDSJRZe1', label: '£650', note: '6–10 people · Pay now via Stripe · Report within 48 hours' },
+  '10+':  { priceId: null, label: 'Enquiry', note: '10+ people · We will confirm scope and price before work begins' },
+};
+
+const SUCCESS_URL = window.location.origin + '/business.html?paid=1';
+const CANCEL_URL  = window.location.href;
+
+let stripe;
+try { stripe = Stripe(STRIPE_PUBLISHABLE_KEY); } catch(e) {}
+
+function updateScope() {
+  const scope = document.getElementById('scope').value;
+  const map = PRICE_MAP[scope];
+  document.getElementById('scope-price-display').textContent = map.label;
+  document.getElementById('scope-note').textContent = map.note;
+  const btn = document.getElementById('submit-btn');
+  const secureNote = document.getElementById('secure-note');
+  if (scope === '10+') {
+    btn.textContent = 'Submit Enquiry →';
+    secureNote.style.display = 'none';
+  } else {
+    btn.textContent = 'Pay & Submit — ' + map.label + ' →';
+    secureNote.style.display = 'block';
+  }
+}
+
+// On return from Stripe success
+window.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('paid') === '1') {
+    const saved = sessionStorage.getItem('pt_biz_submission');
+    if (saved) {
+      const data = JSON.parse(saved);
+      const fd = new FormData();
+      Object.entries(data).forEach(([k, v]) => fd.append(k, v));
+      fetch('https://formspree.io/f/mreorpre', { method: 'POST', body: fd, headers: { Accept: 'application/json' } })
+        .catch(() => {});
+      sessionStorage.removeItem('pt_biz_submission');
+    }
+    document.getElementById('biz-form').style.display = 'none';
+    document.getElementById('success').classList.add('visible');
+    history.replaceState({}, '', window.location.pathname);
+  }
+});
+
+function validate() {
+  const required = ['your_name', 'your_contact', 'brief'];
+  for (const id of required) {
+    if (!document.getElementById(id).value.trim()) {
+      document.getElementById(id).focus();
+      return false;
+    }
+  }
+  return true;
+}
+
+async function handleSubmit() {
+  if (!validate()) { alert('Please fill in all required fields before proceeding.'); return; }
+
+  const scope = document.getElementById('scope').value;
+  const map = PRICE_MAP[scope];
+
+  const submission = {
+    _subject: 'Business Audit Enquiry — PsyTectrics™',
+    your_name:    document.getElementById('your_name').value.trim(),
+    your_contact: document.getElementById('your_contact').value.trim(),
+    organisation: document.getElementById('organisation').value.trim(),
+    scope:        scope,
+    brief:        document.getElementById('brief').value.trim(),
+    background:   document.getElementById('background').value.trim(),
+  };
+
+  // 10+ = enquiry only via Formspree, no Stripe
+  if (scope === '10+') {
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true; btn.textContent = 'Submitting…';
+    try {
+      const fd = new FormData();
+      Object.entries(submission).forEach(([k, v]) => fd.append(k, v));
+      const res = await fetch('https://formspree.io/f/mreorpre', { method: 'POST', body: fd, headers: { Accept: 'application/json' } });
+      if (res.ok) {
+        document.getElementById('biz-form').style.display = 'none';
+        document.getElementById('success-title').textContent = 'Enquiry received.';
+        document.getElementById('success-body').textContent = 'Your Business Audit enquiry has been submitted. We will confirm scope and pricing within 48 hours before any work begins.';
+        document.getElementById('success').classList.add('visible');
+      } else throw new Error();
+    } catch { btn.disabled = false; btn.textContent = 'Submit Enquiry →'; }
+    return;
+  }
+
+  // Stripe for 1, 2-5, 6-10
+  if (!stripe) { alert('Stripe not loaded. Please refresh and try again.'); return; }
+  sessionStorage.setItem('pt_biz_submission', JSON.stringify(submission));
+
+  const btn = document.getElementById('submit-btn');
+  const loading = document.getElementById('stripeLoading');
+  btn.disabled = true; btn.style.display = 'none'; loading.style.display = 'block';
+
+  try {
+    const { error } = await stripe.redirectToCheckout({
+      lineItems: [{ price: map.priceId, quantity: 1 }],
+      mode: 'payment',
+      successUrl: SUCCESS_URL,
+      cancelUrl: CANCEL_URL,
+      clientReferenceId: ('BizAudit-' + scope + '-' + submission.your_name).substring(0, 200)
+    });
+    if (error) {
+      loading.style.display = 'none'; btn.style.display = 'block'; btn.disabled = false;
+      alert('Checkout error: ' + error.message);
+    }
+  } catch(err) {
+    loading.style.display = 'none'; btn.style.display = 'block'; btn.disabled = false;
+    alert('Something went wrong. Please try again.');
+  }
 }
 </script>
 </body>
