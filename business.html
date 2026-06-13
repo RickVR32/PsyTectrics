@@ -30,8 +30,26 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .page-title{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,4vw,3rem);line-height:1.1;margin-bottom:0.75rem}
 .page-title em{font-style:italic;color:var(--accent)}
 .page-desc{font-size:0.9rem;color:var(--muted);line-height:1.85;margin-bottom:1.2rem}
-.tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:2rem}
+.tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:2.5rem}
 .tag{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.28rem 0.75rem;background:var(--accent-soft);border:1px solid var(--accent-border);color:var(--accent)}
+
+/* Pricing table */
+.pricing-block{margin-bottom:2.5rem}
+.pricing-block-title{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;display:block}
+.pricing-table{width:100%;border-collapse:collapse;border:1px solid var(--line-strong)}
+.pricing-table thead tr{background:#060B18}
+.pricing-table thead th{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.45);padding:0.7rem 1rem;text-align:left;font-weight:400;border-right:1px solid rgba(255,255,255,0.06)}
+.pricing-table thead th:last-child{border-right:none}
+.pricing-table tbody tr{border-bottom:1px solid var(--line)}
+.pricing-table tbody tr:last-child{border-bottom:none}
+.pricing-table tbody td{font-size:0.86rem;padding:0.85rem 1rem;vertical-align:middle;border-right:1px solid var(--line)}
+.pricing-table tbody td:last-child{border-right:none}
+.pricing-table tbody td:first-child{font-family:var(--mono);font-size:0.78rem;color:var(--text);font-weight:400}
+.pricing-table .price-cell{font-family:var(--mono);font-size:0.88rem;font-weight:700;color:var(--accent);white-space:nowrap}
+.pricing-table .note-cell{font-size:0.8rem;color:var(--muted);line-height:1.5}
+.pricing-includes{font-size:0.82rem;color:var(--muted);line-height:1.8;margin-top:1rem;padding:0.9rem 1.1rem;background:var(--bg-soft);border-left:2px solid var(--accent)}
+.pricing-includes strong{color:var(--text);font-weight:500}
+
 .form-section{margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--line)}
 .section-lbl{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem;display:block}
 .field{margin-bottom:1.1rem}
@@ -60,7 +78,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .pt-footer-links a{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none}
 .pt-footer-links a:hover{color:rgba(255,255,255,0.7)}
 .pt-footer-note{font-family:var(--mono);font-size:0.58rem;color:rgba(255,255,255,0.2)}
-@media(max-width:768px){nav{padding:0.8rem 1.2rem}.field-row{grid-template-columns:1fr}.page{padding:3rem 1.5rem 5rem}.pt-footer{padding:2rem 1.5rem}.pt-footer-inner{flex-direction:column;text-align:center;align-items:center}.pt-footer-links{justify-content:center}}
+@media(max-width:768px){nav{padding:0.8rem 1.2rem}.field-row{grid-template-columns:1fr}.page{padding:3rem 1.5rem 5rem}.pt-footer{padding:2rem 1.5rem}.pt-footer-inner{flex-direction:column;text-align:center;align-items:center}.pt-footer-links{justify-content:center}.pricing-table .note-cell{display:none}}
 </style>
 </head>
 <body>
@@ -70,7 +88,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
     <img src="pt_logo.png" alt="PsyTectrics" class="nav-logo-img"/>
   </a>
   <div class="nav-right">
-    <span class="nav-badge">Business Audit · From £250</span>
+    <span class="nav-badge">Business Audit · From £150</span>
     <a href="reports.html" class="nav-back">← Reports</a>
   </div>
 </nav>
@@ -87,6 +105,43 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
     <span class="tag">Organisational culture</span>
   </div>
 
+  <!-- Pricing table -->
+  <div class="pricing-block">
+    <span class="pricing-block-title">Pricing guide</span>
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Scope</th>
+          <th>Price</th>
+          <th class="note-cell">What's included</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1 individual</td>
+          <td class="price-cell">£150</td>
+          <td class="note-cell">Individual SC Blueprint™ report + interpretive commentary</td>
+        </tr>
+        <tr>
+          <td>2–5 people</td>
+          <td class="price-cell">£350 – £500</td>
+          <td class="note-cell">Individual reports + team dynamics overview</td>
+        </tr>
+        <tr>
+          <td>6–10 people</td>
+          <td class="price-cell">£650 – £900</td>
+          <td class="note-cell">Individual reports + full team friction map</td>
+        </tr>
+        <tr>
+          <td>10+ people</td>
+          <td class="price-cell">Quote</td>
+          <td class="note-cell">Scoped individually — contact for a brief</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="pricing-includes"><strong>All team reports include a synthesis layer</strong> — a group dynamics overview mapping awareness levels, friction points, and interpersonal patterns across the team. This is what makes a team audit more than the sum of its individual reports.</p>
+  </div>
+
   <form id="biz-form" onsubmit="submitForm(event)">
     <div class="form-section">
       <span class="section-lbl">Your details</span>
@@ -101,23 +156,23 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
       <span class="section-lbl">Scope</span>
       <div class="field"><label>Number of individuals to be assessed</label>
         <select name="scope">
-          <option value="1">1 individual</option>
-          <option value="2-5">2–5 people</option>
-          <option value="6-10">6–10 people</option>
-          <option value="10+">More than 10</option>
+          <option value="1">1 individual — £150</option>
+          <option value="2-5">2–5 people — from £350</option>
+          <option value="6-10">6–10 people — from £650</option>
+          <option value="10+">More than 10 — quote</option>
         </select>
       </div>
     </div>
 
     <div class="form-section">
       <span class="section-lbl">The brief</span>
-      <div class="context-note">Business Reports are scoped individually. After submitting this form, you will receive a brief scope summary and price confirmation before any work begins. Starting from £125 per individual.</div>
+      <div class="context-note">Scope and final price are confirmed via email before any work begins. No charge until you approve the brief.</div>
       <div class="field"><label>What are you trying to understand or resolve?</label><textarea name="brief" placeholder="Describe the situation — team friction, leadership gap, onboarding challenge, or any context driving this audit." required></textarea></div>
       <div class="field"><label>Any relevant background or supporting materials?</label><textarea name="background" placeholder="Previous assessments, HR reports, specific incidents, or anything that would help frame the work." style="min-height:100px"></textarea></div>
     </div>
 
     <input type="hidden" name="_subject" value="Business Audit Enquiry — PsyTectrics™"/>
-    <div class="price-note"><strong>From £125</strong> — Scope and price confirmed via email before work begins. No charge until you approve the brief.</div>
+    <div class="price-note"><strong>Prices from £150</strong> — Scope and exact price confirmed before work begins. No charge until you approve.</div>
     <button type="submit" class="submit-btn" id="submit-btn">Request a Business Report →</button>
     <p class="disclaimer">Business Reports are structured interpretive instruments · Not a clinical diagnostic · PsyTectrics™ · Scope confirmed before work begins</p>
   </form>
@@ -131,7 +186,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 <footer class="pt-footer">
   <div class="pt-footer-inner">
     <span class="pt-footer-logo">PSYTECTRICS™</span>
-        <div class="pt-footer-links">
+    <div class="pt-footer-links">
       <a href="index.html">Home</a>
       <a href="reports.html">Reports</a>
       <a href="prototypes.html">Prototypes</a>
