@@ -83,13 +83,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .ch-link{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.05em;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-border);padding-bottom:1px;transition:border-color 0.2s}
 .ch-link:hover{border-color:var(--accent)}
 
-/* Ric Lee card — dark background, centred */
-.channel-card.riclee{background:#060B18;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2.5rem 2rem}
-.channel-card.riclee:hover{background:#0c1428}
-.channel-card.riclee .ch-label{color:rgba(255,255,255,0.35)}
-.channel-card.riclee .ch-desc{color:rgba(255,255,255,0.4)}
-.channel-card.riclee .ch-link{color:var(--accent);border-color:rgba(0,212,255,0.25)}
-.riclee-logo{width:180px;height:auto;display:block;margin:0.75rem auto 1.25rem}
+/* Ric Lee card — white background, centred */
+.channel-card.riclee{background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2.5rem 2rem}
+.channel-card.riclee:hover{background:var(--bg-soft)}
+.riclee-logo{width:190px;height:auto;display:block;margin:0.75rem auto 1.25rem}
 
 .pt-footer{background:#060B18;border-top:1px solid rgba(255,255,255,0.07);padding:2rem 3rem}
 .pt-footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
@@ -231,7 +228,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 
       <div class="channel-card riclee">
         <span class="ch-label">Built by</span>
-        <img src="ric-lee-logo-light.png" alt="Ric Lee Digital" class="riclee-logo"/>
+        <img src="ric-lee-logo-dark.png" alt="Ric Lee Digital" class="riclee-logo"/>
         <p class="ch-desc">All technology, infrastructure, and digital delivery across PsyTectrics is designed and built by Ric Lee Digital.</p>
         <a href="https://riclee-dc.info" target="_blank" class="ch-link">riclee-dc.info</a>
       </div>
