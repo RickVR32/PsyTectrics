@@ -130,7 +130,7 @@ section{padding:5rem 0;border-top:1px solid var(--line)}
 .pt-footer-links a:hover{color:rgba(255,255,255,0.7)}
 .pt-footer-note{font-family:var(--mono);font-size:0.58rem;color:rgba(255,255,255,0.2)}
 
-@media(max-width:900px){.hero{grid-template-columns:1fr}.hero-visual{min-height:380px;border-right:none;border-bottom:1px solid rgba(255,255,255,0.06)}.ring-main-img{width:220px;height:220px}}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.hero-visual{min-height:380px;border-right:none;border-bottom:1px solid rgba(0,0,0,0.08)}.ring-main-img{width:220px;height:220px}}
 @media(max-width:768px){
   nav{padding:0.8rem 1.2rem}
   .nav-links{display:none}
@@ -182,14 +182,14 @@ section{padding:5rem 0;border-top:1px solid var(--line)}
 <div class="hero" id="buy">
   <div class="hero-visual">
     <div class="ring-showcase">
-      <img id="mainRingImg" class="ring-main-img" src="psytec_health_ring_grey__1_.webp" alt="PsyTec Health Ring"/>
+      <img id="mainRingImg" class="ring-main-img" src="psytec_health_ring_grey%20(1).webp" alt="PsyTec Health Ring"/>
       <div class="thumb-row">
-        <img class="thumb active" src="psytec_health_ring_grey__1_.webp" onclick="switchImg(this,'psytec_health_ring_grey__1_.webp')" alt="Graphite Silver 1"/>
-        <img class="thumb" src="psytec_health_ring_grey__2_.webp" onclick="switchImg(this,'psytec_health_ring_grey__2_.webp')" alt="Graphite Silver 2"/>
-        <img class="thumb" src="psytec_health_ring_grey__3_.webp" onclick="switchImg(this,'psytec_health_ring_grey__3_.webp')" alt="Graphite Silver 3"/>
-        <img class="thumb" src="psytec_health_ring_pink__1_.webp" onclick="switchImg(this,'psytec_health_ring_pink__1_.webp')" alt="Rose Silver 1"/>
-        <img class="thumb" src="psytec_health_ring_pink__2_.webp" onclick="switchImg(this,'psytec_health_ring_pink__2_.webp')" alt="Rose Silver 2"/>
-        <img class="thumb" src="psytec_health_ring_pink__3_.webp" onclick="switchImg(this,'psytec_health_ring_pink__3_.webp')" alt="Rose Silver 3"/>
+        <img class="thumb active" src="psytec_health_ring_grey%20(1).webp" onclick="switchImg(this,'psytec_health_ring_grey%20(1).webp')" alt="Graphite Silver 1"/>
+        <img class="thumb" src="psytec_health_ring_grey%20(2).webp" onclick="switchImg(this,'psytec_health_ring_grey%20(2).webp')" alt="Graphite Silver 2"/>
+        <img class="thumb" src="psytec_health_ring_grey%20(3).webp" onclick="switchImg(this,'psytec_health_ring_grey%20(3).webp')" alt="Graphite Silver 3"/>
+        <img class="thumb" src="psytec_health_ring_pink%20(1).webp" onclick="switchImg(this,'psytec_health_ring_pink%20(1).webp')" alt="Rose Silver 1"/>
+        <img class="thumb" src="psytec_health_ring_pink%20(2).webp" onclick="switchImg(this,'psytec_health_ring_pink%20(2).webp')" alt="Rose Silver 2"/>
+        <img class="thumb" src="psytec_health_ring_pink%20(3).webp" onclick="switchImg(this,'psytec_health_ring_pink%20(3).webp')" alt="Rose Silver 3"/>
       </div>
     </div>
   </div>
@@ -292,12 +292,12 @@ section{padding:5rem 0;border-top:1px solid var(--line)}
     <h2 class="section-title">Two finishes.<br/><em>One platform.</em></h2>
     <p class="section-desc">Graphite Silver and Rose Silver — both available in sizes 8 through 12. Same sensors, same app, same data. Pick the finish that fits.</p>
     <div class="gallery-grid">
-      <img class="gallery-img" src="psytec_health_ring_grey__1_.webp" alt="PsyTec Health Ring Graphite Silver"/>
-      <img class="gallery-img" src="psytec_health_ring_grey__2_.webp" alt="PsyTec Health Ring Graphite Silver interior"/>
-      <img class="gallery-img" src="psytec_health_ring_grey__3_.webp" alt="PsyTec Health Ring Graphite Silver side"/>
-      <img class="gallery-img" src="psytec_health_ring_pink__1_.webp" alt="PsyTec Health Ring Rose Silver"/>
-      <img class="gallery-img" src="psytec_health_ring_pink__2_.webp" alt="PsyTec Health Ring Rose Silver interior"/>
-      <img class="gallery-img" src="psytec_health_ring_pink__3_.webp" alt="PsyTec Health Ring Rose Silver side"/>
+      <img class="gallery-img" src="psytec_health_ring_grey%20(1).webp" alt="PsyTec Health Ring Graphite Silver"/>
+      <img class="gallery-img" src="psytec_health_ring_grey%20(2).webp" alt="PsyTec Health Ring Graphite Silver interior"/>
+      <img class="gallery-img" src="psytec_health_ring_grey%20(3).webp" alt="PsyTec Health Ring Graphite Silver side"/>
+      <img class="gallery-img" src="psytec_health_ring_pink%20(1).webp" alt="PsyTec Health Ring Rose Silver"/>
+      <img class="gallery-img" src="psytec_health_ring_pink%20(2).webp" alt="PsyTec Health Ring Rose Silver interior"/>
+      <img class="gallery-img" src="psytec_health_ring_pink%20(3).webp" alt="PsyTec Health Ring Rose Silver side"/>
     </div>
   </div>
 </section>
@@ -380,7 +380,7 @@ function selectColour(swatch, name, variant) {
   document.querySelectorAll('.colour-swatch').forEach(s => s.classList.remove('active'));
   swatch.classList.add('active');
   document.getElementById('colourDisplay').textContent = name;
-  const src = variant === 'grey' ? 'psytec_health_ring_grey__1_.webp' : 'psytec_health_ring_pink__1_.webp';
+  const src = variant === 'grey' ? 'psytec_health_ring_grey%20(1).webp' : 'psytec_health_ring_pink%20(1).webp';
   document.getElementById('mainRingImg').src = src;
   document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.thumb')[variant === 'grey' ? 0 : 3].classList.add('active');
