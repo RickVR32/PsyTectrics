@@ -303,7 +303,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
       <div id="screen-intro">
         <span class="intro-eyebrow">Behavioral Intelligence Assessment · PsyTectrics™</span>
         <h1 style="font-family:var(--serif);font-weight:300;font-size:clamp(1.8rem,3vw,2.5rem);line-height:1.1;margin-bottom:0.75rem">Understand the<br/><em style="font-style:italic;color:var(--accent)">Human Operating System</em></h1>
-        <p class="intro-desc">56 structured questions across three layers — SC Blueprint™, Behavioral Nodes, and Awareness Patterns — mapped across conscious and subconscious layers. Includes Drift measurement, Awareness Index™, and a full AI-generated interpretive report.</p>
+        <!-- FIXED: was "three layers — SC Blueprint™, Behavioral Nodes, and Awareness Patterns" — contradicted every other page.
+             Corrected to "two layers" (conscious and subconscious) which is the site-wide framework standard. -->
+        <p class="intro-desc">56 structured questions mapped across two layers — conscious and subconscious — to produce your SC Blueprint™ ratio, Drift measurement, and Awareness Index™. Includes a full AI-generated interpretive report.</p>
         <div class="intro-free">The assessment is <strong>free to complete.</strong> Your results and awareness level are shown immediately. The full written AI report unlocks for <strong>£50</strong> — paid at the end, no account required.</div>
         <div class="ctx-field">
           <label>Name</label>
@@ -482,7 +484,6 @@ function getLevel(bs){bs=parseFloat(bs);if(bs<=-4.5)return LEVELS[0];if(bs<=-2.5
 
 let scores={},currentStep=1,prevPulseEl=null,selAge='',selCtx='';
 
-// ── On page load: check for ?paid=1 and restore from sessionStorage ──
 window.addEventListener('DOMContentLoaded',()=>{
   const params=new URLSearchParams(window.location.search);
   if(params.get('paid')==='1'){
@@ -496,7 +497,6 @@ window.addEventListener('DOMContentLoaded',()=>{
       document.getElementById('screen-questions').style.display='none';
       document.getElementById('screen-results').style.display='block';
       generateAndShowReport(ctx.name||'');
-      // Clean URL
       history.replaceState({},'',window.location.pathname);
     }
   }
@@ -625,7 +625,6 @@ function showReveal(){
 }
 
 async function handlePayment(){
-  // Save scores and context to sessionStorage before redirecting
   sessionStorage.setItem('pt_solo_scores', JSON.stringify(scores));
   const name=document.getElementById('solo-name')?.value.trim()||'';
   sessionStorage.setItem('pt_solo_ctx', JSON.stringify({
@@ -633,7 +632,6 @@ async function handlePayment(){
     most:document.getElementById('solo-most')?.value.trim()||'',
     least:document.getElementById('solo-least')?.value.trim()||''
   }));
-
   if(!stripe){alert('Stripe not loaded. Please refresh and try again.');return;}
   const btn=document.getElementById('ar-gen-btn');
   const loading=document.getElementById('stripeLoading');
@@ -653,7 +651,6 @@ async function handlePayment(){
 async function generateAndShowReport(name){
   const wrap=document.getElementById('screen-results');
   wrap.innerHTML='<div style="padding:2rem;font-family:var(--mono);font-size:0.7rem;color:var(--muted);letter-spacing:0.1em">Generating your profile…</div>';
-
   const answered=NODES.filter(n=>scores[n.id]!==undefined);
   const effs=answered.map(n=>n.reversed?(6-scores[n.id]):scores[n.id]);
   const avg=effs.reduce((a,b)=>a+b,0)/effs.length;
@@ -675,7 +672,6 @@ async function generateAndShowReport(name){
   const savedCtx=sessionStorage.getItem('pt_solo_ctx');
   const ctx=savedCtx?JSON.parse(savedCtx):{};
   const ctxStr=[ctx.age,ctx.ctx,ctx.most,ctx.least].filter(Boolean).join(' | ');
-
   let ai=null;
   try{
     const sys=`You are generating a PsyTectrics™ Awareness Index™ profile. Second person, direct, clinical but human. No therapy-speak. Return ONLY valid JSON: {"keyword_identity":"<1-3 words>","keyword_description":"<1 sentence>","report_sections":{"who_you_are":"<2 paragraphs>","primary_pattern":"<1 paragraph>","under_pressure":"<1 paragraph>","in_relationships":"<1 paragraph>","next_move":"<1 paragraph>"}}`;
@@ -684,7 +680,6 @@ async function generateAndShowReport(name){
     const d=await res.json();ai=JSON.parse((d.content?.[0]?.text||'').replace(/```json|```/g,'').trim());
   }catch(e){console.warn('AI fallback',e);}
   showResults({bs,aiScore,narc,sist,yarc,oll,drift,lvl,encoded},ai,name);
-  // Clear session storage after successful report
   sessionStorage.removeItem('pt_solo_scores');
   sessionStorage.removeItem('pt_solo_ctx');
 }

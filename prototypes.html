@@ -10,77 +10,72 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
- --black:#0B1020;
- --surface: #111113;
- --surface2:#1c2030;
- --white: #FAFAF9;
- --muted: #71717A;
- --muted2: #3F3F46;
- --gold: #00D4FF;
- --gold-dim:#0099BB;
- --gold-bg: rgba(0,212,255,0.06);
- --gold-border: rgba(0,212,255,0.2);
- --line: rgba(255,255,255,0.07);
- --line2: rgba(255,255,255,0.04);
- --narc: #C4622D;
- --yarc: #1D9E75;
- --sist: #534AB7;
- --oll: #A0426B;
- --serif: 'Montserrat',sans-serif;
- --sans: 'Inter',system-ui,sans-serif;
- --mono: 'Space Mono', monospace;
+  --black:#0B1020;
+  --surface:#111113;
+  --surface2:#1c2030;
+  --white:#FAFAF9;
+  --muted:#71717A;
+  --muted2:#3F3F46;
+  --gold:#00D4FF;
+  --gold-dim:#0099BB;
+  --gold-bg:rgba(0,212,255,0.06);
+  --gold-border:rgba(0,212,255,0.2);
+  --line:rgba(255,255,255,0.07);
+  --line2:rgba(255,255,255,0.04);
+  --narc:#C4622D;--yarc:#1D9E75;--sist:#534AB7;--oll:#A0426B;
+  --serif:'Montserrat',sans-serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --mono:'Space Mono',monospace;
 }
 html { scroll-behavior: smooth; }
-body { background: var(--black); color: var(--white); font-family: var(--sans); font-weight: 300; padding-top:70px;overflow-x:hidden; }
+body { background: var(--black); color: var(--white); font-family: var(--sans); font-weight: 300; padding-top: 70px; overflow-x: hidden; }
 
 /* NAV */
 nav {
- position: fixed; top: 0; left: 0; right: 0; z-index: 200;
- display: flex; align-items: center; justify-content: space-between;
- padding: 1.1rem 3rem;
- border-bottom: 1px solid var(--line);
- background:var(--nav-bg,#0B1020);
- backdrop-filter: blur(16px);
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.85rem 2.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: #060B18;
+  height: 70px;
 }
-.nav-logo { font-family: var(--serif); font-size: 1.3rem; font-weight: 400; letter-spacing: 0.2em; color: var(--white); text-decoration: none; }
-.nav-logo span { color: var(--gold); }
-.nav-links { display: flex; gap: 2.5rem; list-style: none; }
-.nav-links a { color: var(--muted); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; font-family: var(--mono); }
-.nav-links a:hover, .nav-links a.active { color: var(--white); }
-.nav-cta { background: var(--gold); color: var(--black); padding: 0.5rem 1.3rem; font-family: var(--mono); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s; }
-.nav-cta:hover { opacity: 0.85; }
+.nav-logo-wrap { display: flex; align-items: center; text-decoration: none; }
+.nav-logo-img { height: 52px; width: auto; display: block; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: #fff; }
 
 /* PAGE HERO */
 .page-hero {
- min-height: 60vh; display: flex; flex-direction: column;
- align-items: center; justify-content: center;
- text-align: center; padding: 10rem 2rem 5rem;
- position: relative; overflow: hidden;
+  min-height: 60vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 10rem 2rem 5rem;
+  position: relative; overflow: hidden;
 }
 .page-hero::before {
- content: '';
- position: absolute; top: 0; left: 50%; transform: translateX(-50%);
- width: 800px; height: 400px;
- background: radial-gradient(ellipse, rgba(0,212,255,0.07) 0%, transparent 70%);
- pointer-events: none;
+  content: '';
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 800px; height: 400px;
+  background: radial-gradient(ellipse, rgba(0,212,255,0.07) 0%, transparent 70%);
+  pointer-events: none;
 }
 .page-eyebrow {
- display: inline-flex; align-items: center; gap: 0.5rem;
- background: var(--gold-bg); border: 1px solid var(--gold-border);
- padding: 0.35rem 1rem; margin-bottom: 1.8rem;
- font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold);
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--gold-bg); border: 1px solid var(--gold-border);
+  padding: 0.35rem 1rem; margin-bottom: 1.8rem;
+  font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold);
 }
 .page-eyebrow span { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; }
 .page-hero h1 {
- font-family: var(--serif); font-size: clamp(2.8rem, 6vw, 5.5rem); font-weight: 300;
- line-height: 1.05; color: var(--white); margin-bottom: 1.5rem;
+  font-family: var(--serif); font-size: clamp(2.8rem, 6vw, 5.5rem); font-weight: 300;
+  line-height: 1.05; color: var(--white); margin-bottom: 1.5rem;
 }
 .page-hero h1 em { font-style: italic; color: var(--gold); }
 .page-hero p { color: var(--muted); font-size: 1rem; line-height: 1.75; max-width: 560px; margin-bottom: 2rem; }
 .trl-badge {
- display: inline-flex; align-items: center; gap: 0.6rem;
- border: 1px solid var(--line); padding: 0.5rem 1.2rem;
- font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  border: 1px solid var(--line); padding: 0.5rem 1.2rem;
+  font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
 }
 .trl-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: pulse 2s ease-in-out infinite; }
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
@@ -94,10 +89,10 @@ nav {
 
 /* DP-1 HERO CARD */
 .dp1-hero {
- background: var(--surface);
- border: 1px solid var(--line);
- display: grid; grid-template-columns: 1fr 1fr;
- gap: 0; overflow: hidden; margin-bottom: 1px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0; overflow: hidden; margin-bottom: 1px;
 }
 .dp1-hero-img { position: relative; overflow: hidden; }
 .dp1-hero-img img { width: 100%; height: 100%; object-fit: cover; min-height: 480px; display: block; transition: transform 0.6s ease; }
@@ -114,10 +109,10 @@ nav {
 .spec-label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted2); margin-bottom: 3px; }
 .spec-value { font-size: 0.82rem; color: var(--white); }
 .btn-proto {
- display: inline-flex; align-items: center; gap: 0.6rem;
- border: 1px solid var(--gold-border); padding: 0.75rem 1.5rem;
- font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
- color: var(--gold); text-decoration: none; transition: all 0.2s; margin-top: 1.5rem; align-self: flex-start;
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  border: 1px solid var(--gold-border); padding: 0.75rem 1.5rem;
+  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--gold); text-decoration: none; transition: all 0.2s; margin-top: 1.5rem; align-self: flex-start;
 }
 .btn-proto:hover { background: var(--gold-bg); border-color: var(--gold); }
 .btn-proto::after { content: '↗'; }
@@ -152,153 +147,39 @@ nav {
 .eco-caption span { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted2); white-space: nowrap; }
 
 /* NDA SECTION */
-.nda-bar {
- padding: 4rem 3rem; border-top: 1px solid var(--line);
- background: var(--surface); text-align: center;
-}
+.nda-bar { padding: 4rem 3rem; border-top: 1px solid var(--line); background: var(--surface); text-align: center; }
 .nda-bar h3 { font-family: var(--serif); font-size: 1.8rem; font-weight: 300; margin-bottom: 0.75rem; }
 .nda-bar h3 em { font-style: italic; color: var(--gold); }
 .nda-bar p { color: var(--muted); font-size: 0.88rem; line-height: 1.7; max-width: 500px; margin: 0 auto 2rem; }
 .btn-nda {
- display: inline-flex; align-items: center; gap: 0.6rem;
- background: var(--gold); color: var(--black);
- padding: 0.9rem 2.2rem; font-family: var(--mono); font-size: 0.78rem; font-weight: 700;
- letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
- transition: opacity 0.2s;
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  background: var(--gold); color: var(--black);
+  padding: 0.9rem 2.2rem; font-family: var(--mono); font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s;
 }
 .btn-nda:hover { opacity: 0.85; }
 
-
-footer {
- border-top: 1px solid var(--line); padding: 2rem 3rem;
- display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
-}
-.footer-logo { font-family: var(--serif); font-size: 1rem; letter-spacing: 0.15em; color: var(--muted); }
-.footer-logo span { color: var(--gold); }
-
-
-
-.footer-note { font-family: var(--mono); font-size: 0.62rem; color: var(--muted2); letter-spacing: 0.06em; }
+/* FOOTER */
+.pt-footer { background: #060B18; border-top: 1px solid rgba(255,255,255,0.07); padding: 2rem 3rem; }
+.pt-footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.pt-footer-logo { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.16em; color: rgba(255,255,255,0.5); font-weight: 700; }
+.pt-footer-links { display: flex; gap: 1.8rem; flex-wrap: wrap; }
+.pt-footer-links a { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+.pt-footer-links a:hover { color: rgba(255,255,255,0.7); }
+.pt-footer-note { font-family: var(--mono); font-size: 0.58rem; color: rgba(255,255,255,0.2); letter-spacing: 0.06em; }
 
 @media (max-width: 900px) {
- nav { padding: 1rem 1.5rem; }
- .nav-links { display: none; }
- .dp1-hero { grid-template-columns: 1fr; }
- .dp1-hero-content { border-left: none; border-top: 1px solid var(--line); padding: 2rem; }
- .dp1-hero-img img { min-height: 280px; }
- .device-grid { grid-template-columns: 1fr; }
- .section, .eco-section { padding: 4rem 1.5rem; }
- footer { flex-direction: column; text-align: center; }
- 
+  nav { padding: 0.8rem 1.2rem; }
+  .nav-links { display: none; }
+  .dp1-hero { grid-template-columns: 1fr; }
+  .dp1-hero-content { border-left: none; border-top: 1px solid var(--line); padding: 2rem; }
+  .dp1-hero-img img { min-height: 280px; }
+  .device-grid { grid-template-columns: 1fr; }
+  .section, .eco-section { padding: 4rem 1.5rem; }
+  .pt-footer { padding: 2rem 1.5rem; }
+  .pt-footer-inner { flex-direction: column; text-align: center; align-items: center; }
+  .pt-footer-links { justify-content: center; }
 }
-
-nav, .nav {
- position: fixed; top: 0; left: 0; right: 0; z-index: 200;
- display: flex; align-items: center; justify-content: space-between;
- padding: 0.85rem 2.5rem;
- border-bottom: 1px solid rgba(0,212,255,0.13);
- background: #060B18;
- backdrop-filter: blur(20px);
- -webkit-backdrop-filter: blur(20px);
- height: 70px;
- box-sizing: border-box;
-}
-nav a.nav-brand, nav a.nav-logo, .nav a.nav-brand {
- display: flex; align-items: center; gap: 0; text-decoration: none;
- background: none; border: none; padding: 0; outline: none;
- line-height: 1;
-}
-nav a.nav-brand img, nav a.nav-logo img, .nav a.nav-brand img {
- height: 52px; width: auto; display: block;
- background: transparent; border: none; outline: none;
-}
-
- nav .nav-links { display: none; } }
-
-
-/* === PT CANONICAL THEME === */
-:root {
-  --nav-bg: #060B18;
-  --bg: #FFFFFF;
-  --bg-soft: #F4F6F9;
-  --bg-soft2: #E8ECF2;
-  --input-bg: rgba(0,0,0,0.03);
-  --text: #0B1020;
-  --muted: #6B7280;
-  --muted2: #9CA3AF;
-  --accent: #00D4FF;
-  --accent-dark: #0099BB;
-  --accent-soft: rgba(0,212,255,0.08);
-  --accent-border: rgba(0,212,255,0.25);
-  --line: rgba(0,0,0,0.08);
-  --line-strong: rgba(0,0,0,0.14);
-  --silver: #C7D0D9;
-  --emerald: #00C27A;
-  --serif: 'Montserrat', sans-serif;
-  --mono: 'Space Mono', monospace;
-  --sans: 'Inter', sans-serif;
-  --narc:#C4622D; --yarc:#1D9E75; --sist:#534AB7; --oll:#A0426B;
-}
-body { background: #FFFFFF; color: #0B1020; padding-top: 70px; }
-/* NAV */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0.85rem 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.06);
-  background: #060B18; height: 70px;
-}
-nav .nav-logo-wrap { display: flex; align-items: center; text-decoration: none; }
-nav .nav-logo-img { height: 52px; width: auto; display: block; }
-nav .nav-links { display: flex; gap: 2rem; list-style: none; }
-nav .nav-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-family: 'Space Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
-nav .nav-links a:hover, nav .nav-links a.active { color: #FFFFFF; }
-nav .nav-cta { background: #00D4FF; color: #060B18; padding: 0.6rem 1.4rem; font-family: 'Space Mono', monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s; border: none; cursor: pointer; }
-nav .nav-cta:hover { opacity: 0.85; }
-nav .nav-tag { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: #00D4FF; background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.22); padding: 0.28rem 0.75rem; }
-nav .nav-btn { font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.45rem 1rem; border: 1px solid rgba(255,255,255,0.15); background: transparent; color: rgba(255,255,255,0.55); cursor: pointer; transition: all 0.2s; text-decoration: none; }
-nav .nav-btn:hover { color: #fff; border-color: rgba(0,212,255,0.4); }
-
-footer.sch-footer, .assess-footer { background: #060B18; border-top: 1px solid rgba(255,255,255,0.08); padding: 2rem 2.5rem; }
-footer.sch-footer .sch-footer-inner { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }
-footer.sch-footer .sch-footer-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
-footer.sch-footer .sch-logo-link { opacity: 0.7; transition: opacity 0.2s; text-decoration: none; display: inline-block; }
-footer.sch-footer .sch-logo-link:hover { opacity: 1; }
-footer.sch-footer .sch-logo { height: 36px; width: auto; display: block; }
-footer.sch-footer .sch-logo-light { display: none; }
-footer.sch-footer .sch-footer-copy { font-family: 'Space Mono', monospace; font-size: 0.56rem; color: rgba(255,255,255,0.25); letter-spacing: 0.12em; text-transform: uppercase; }
-/* Fix oversized logo images anywhere */
-.sch-logo { max-height: 40px !important; width: auto !important; }
-img.sch-logo { max-height: 40px !important; width: auto !important; }
-/* ADMIN stays dark */
-@media (max-width: 768px) { nav { padding: 0.8rem 1.2rem; } nav .nav-links { display: none; } }
-
-
-
-
-
-
-/* === PT NAV === */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0.85rem 2.5rem;border-bottom:1px solid rgba(255,255,255,0.06);background:#060B18;height:70px}
-nav .nav-logo-wrap{display:flex;align-items:center;text-decoration:none}
-nav .nav-logo-img{height:52px;width:auto;display:block}
-nav .nav-links{display:flex;gap:2rem;list-style:none}
-nav .nav-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-family:'Space Mono',monospace;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
-nav .nav-links a:hover,nav .nav-links a.active{color:#fff}
-nav .nav-cta{background:#00D4FF;color:#060B18;padding:0.6rem 1.4rem;font-family:'Space Mono',monospace;font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s;border:none;cursor:pointer}
-nav .nav-cta:hover{opacity:0.85}
-body{padding-top:70px}
-@media(max-width:768px){nav{padding:0.8rem 1.2rem}nav .nav-links{display:none}}
-
-/* === PT FOOTER === */
-.pt-footer{background:#060B18;border-top:1px solid rgba(255,255,255,0.07);padding:2rem 3rem}
-.pt-footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
-.pt-footer-logo{font-family:'Space Mono',monospace;font-size:0.78rem;letter-spacing:0.16em;color:rgba(255,255,255,0.5);font-weight:700}
-.pt-footer-links{display:flex;gap:1.8rem;flex-wrap:wrap}
-.pt-footer-links a{font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s}
-.pt-footer-links a:hover{color:rgba(255,255,255,0.7)}
-.pt-footer-note{font-family:'Space Mono',monospace;font-size:0.58rem;color:rgba(255,255,255,0.2);letter-spacing:0.06em}
-@media(max-width:768px){.pt-footer-inner{flex-direction:column;text-align:center;align-items:center}.pt-footer-links{justify-content:center}}
-
 </style>
 </head>
 <body>
@@ -318,174 +199,172 @@ body{padding-top:70px}
 
 <!-- PAGE HERO -->
 <section class="page-hero">
- <div class="page-eyebrow"><span></span>Hardware · TRL 2–3 · In Development</div>
- <h1>The device<br/><em>ecosystem.</em></h1>
- <p>Five hardware blueprints powered by the Awareness Architecture. Each device reads a different layer of behavioural data — together they form the first real-time awareness intelligence system.</p>
- <div class="trl-badge"><div class="trl-dot"></div>All devices currently at concept and prototype stage · Full specs under NDA</div>
+  <div class="page-eyebrow"><span></span>Hardware · TRL 2–3 · In Development</div>
+  <h1>The device<br/><em>ecosystem.</em></h1>
+  <p>Five hardware blueprints powered by the Awareness Architecture. Each device reads a different layer of behavioural data — together they form the first real-time awareness intelligence system.</p>
+  <div class="trl-badge"><div class="trl-dot"></div>All devices currently at concept and prototype stage · Full specs under NDA</div>
 </section>
 
 <!-- DP-1 HERO -->
 <div style="max-width:1200px;margin:0 auto;padding:0 3rem;">
- <div class="dp1-hero">
- <div class="dp1-hero-img">
- <img src="render_dp1_macro.png" alt="DP-1 Duality Processor" />
- </div>
- <div class="dp1-hero-content">
- <div class="device-code">MM-DP1-001 · Core Engine · TRL 2</div>
- <h2>DP-1<br/><em>Duality Processor</em></h2>
- <p>The computational engine at the centre of the PsyTectrics™ device ecosystem. Processes parallel conscious and subconscious data streams through the Awareness Architecture scoring engine — producing real-time Blueprint ratios, Awareness Index™ scores, and Drift readings. Currently deployed as a software implementation. Physical silicon in development.</p>
- <div class="spec-grid">
- <div class="spec-item"><div class="spec-label">Package type</div><div class="spec-value">LQFP-64</div></div>
- <div class="spec-item"><div class="spec-label">Pin count</div><div class="spec-value">64 pins</div></div>
- <div class="spec-item"><div class="spec-label">Body size</div><div class="spec-value">16mm × 16mm</div></div>
- <div class="spec-item"><div class="spec-label">Lead finish</div><div class="spec-value">Gold over Nickel</div></div>
- <div class="spec-item"><div class="spec-label">Material</div><div class="spec-value">Epoxy Mold Compound</div></div>
- <div class="spec-item"><div class="spec-label">Part number</div><div class="spec-value">SCH-MCU-64</div></div>
- </div>
- <a href="dp1_proto.html" class="btn-proto" target="_blank">View interactive prototype</a>
- </div>
- </div>
+  <div class="dp1-hero">
+    <div class="dp1-hero-img">
+      <img src="render_dp1_macro.png" alt="DP-1 Duality Processor" />
+    </div>
+    <div class="dp1-hero-content">
+      <div class="device-code">MM-DP1-001 · Core Engine · TRL 2</div>
+      <h2>DP-1<br/><em>Duality Processor</em></h2>
+      <p>The computational engine at the centre of the PsyTectrics™ device ecosystem. Processes parallel conscious and subconscious data streams through the Awareness Architecture scoring engine — producing real-time Blueprint ratios, Awareness Index™ scores, and Drift readings. Currently deployed as a software implementation. Physical silicon in development.</p>
+      <div class="spec-grid">
+        <div class="spec-item"><div class="spec-label">Package type</div><div class="spec-value">LQFP-64</div></div>
+        <div class="spec-item"><div class="spec-label">Pin count</div><div class="spec-value">64 pins</div></div>
+        <div class="spec-item"><div class="spec-label">Body size</div><div class="spec-value">16mm × 16mm</div></div>
+        <div class="spec-item"><div class="spec-label">Lead finish</div><div class="spec-value">Gold over Nickel</div></div>
+        <div class="spec-item"><div class="spec-label">Material</div><div class="spec-value">Epoxy Mold Compound</div></div>
+        <div class="spec-item"><div class="spec-label">Part number</div><div class="spec-value">SCH-MCU-64</div></div>
+      </div>
+      <a href="dp1_proto.html" class="btn-proto" target="_blank">View interactive prototype</a>
+    </div>
+  </div>
 </div>
 
 <!-- DEVICE GRID -->
 <div class="section" style="padding-top:4rem">
- <p class="section-label">The ecosystem</p>
- <h2 class="section-title">Four devices.<br/><em>One architecture.</em></h2>
- <p class="section-desc">Each device captures a different layer of awareness data and feeds it back to the DP-1 engine. Together they build a continuous, multi-dimensional awareness profile — individual, relational, and environmental.</p>
+  <p class="section-label">The ecosystem</p>
+  <!-- FIXED: was "Four devices. One architecture." — there are five devices (MIRROR, TRACE, FIELD, NEURO-EQ + DP-1). Corrected to match page hero and device count. -->
+  <h2 class="section-title">Five devices.<br/><em>One architecture.</em></h2>
+  <p class="section-desc">Each device captures a different layer of awareness data and feeds it back to the DP-1 engine. Together they build a continuous, multi-dimensional awareness profile — individual, relational, and environmental.</p>
 
- <div class="device-grid">
+  <div class="device-grid">
 
- <!-- MIRROR -->
- <div class="device-card">
- <div class="device-img-wrap">
- <img src="render_trace.png" alt="MIRROR — Biometric Mirror Display" />
- </div>
- <div class="device-body">
- <span class="device-tag">MM-MIR-001 · TRL 3</span>
- <h3>MIRROR<br/><em>Biometric Display</em></h3>
- <p>A 15.6" OLED smart mirror with integrated biometric sensors and camera. Displays your real-time Blueprint ratio, Awareness Index™, and Drift reading. The camera reads facial and environmental signals — the mirror surface feeds them back as structured awareness data. Your daily check-in, made visible.</p>
- <ul class="device-specs">
- <li><span class="sl">Display</span><span class="sv">15.6" OLED 1920×1080</span></li>
- <li><span class="sl">Frame</span><span class="sv">Aluminium · Matte Black + Gold PVD</span></li>
- <li><span class="sl">Glass</span><span class="sv">Mirror-coated · Anti-fingerprint</span></li>
- <li><span class="sl">Sensors</span><span class="sv">Biometric · Environmental · Camera</span></li>
- <li><span class="sl">Touch</span><span class="sv">10-point Capacitive</span></li>
- <li><span class="sl">Weight</span><span class="sv">~2.35kg</span></li>
- </ul>
- <div class="device-actions">
- <a href="mirror_proto.html" class="btn-proto" target="_blank">View prototype</a>
- <span class="dev-trl">TRL 3 · Early prototype</span>
- </div>
- </div>
- </div>
+    <!-- MIRROR -->
+    <div class="device-card">
+      <div class="device-img-wrap">
+        <img src="render_trace.png" alt="MIRROR — Biometric Mirror Display" />
+      </div>
+      <div class="device-body">
+        <span class="device-tag">MM-MIR-001 · TRL 3</span>
+        <h3>MIRROR<br/><em>Biometric Display</em></h3>
+        <p>A 15.6" OLED smart mirror with integrated biometric sensors and camera. Displays your real-time Blueprint ratio, Awareness Index™, and Drift reading. The camera reads facial and environmental signals — the mirror surface feeds them back as structured awareness data. Your daily check-in, made visible.</p>
+        <ul class="device-specs">
+          <li><span class="sl">Display</span><span class="sv">15.6" OLED 1920×1080</span></li>
+          <li><span class="sl">Frame</span><span class="sv">Aluminium · Matte Black + Gold PVD</span></li>
+          <li><span class="sl">Glass</span><span class="sv">Mirror-coated · Anti-fingerprint</span></li>
+          <li><span class="sl">Sensors</span><span class="sv">Biometric · Environmental · Camera</span></li>
+          <li><span class="sl">Touch</span><span class="sv">10-point Capacitive</span></li>
+          <li><span class="sl">Weight</span><span class="sv">~2.35kg</span></li>
+        </ul>
+        <div class="device-actions">
+          <a href="mirror_proto.html" class="btn-proto" target="_blank">View prototype</a>
+          <span class="dev-trl">TRL 3 · Early prototype</span>
+        </div>
+      </div>
+    </div>
 
- <!-- TRACE -->
- <div class="device-card">
- <div class="device-img-wrap">
- <img src="render_mirror.png" alt="TRACE — Awareness Smartwatch" />
- </div>
- <div class="device-body">
- <span class="device-tag">MM-TRC-001 · TRL 2</span>
- <h3>TRACE<br/><em>Awareness Smartwatch</em></h3>
- <p>Awareness intelligence on the wrist. TRACE monitors Drift in real time throughout the day — surfacing signals before they become behavioural events. PPG, EDA, accelerometer, and gyroscope sensors feed the DP-1 engine continuously. The watch that tells you not just the time, but where you are on the scale.</p>
- <ul class="device-specs">
- <li><span class="sl">Display</span><span class="sv">1.78" AMOLED 368×448</span></li>
- <li><span class="sl">Case</span><span class="sv">Aluminium · Antique Bronze PVD</span></li>
- <li><span class="sl">Strap</span><span class="sv">Fluoroelastomer · Olive Green</span></li>
- <li><span class="sl">Sensors</span><span class="sv">PPG · EDA · Accel · Gyro</span></li>
- <li><span class="sl">Water resistance</span><span class="sv">5 ATM</span></li>
- <li><span class="sl">Battery</span><span class="sv">LiPo 300mAh · Magnetic charging</span></li>
- </ul>
- <div class="device-actions">
- <a href="trace_proto.html" class="btn-proto" target="_blank">View prototype</a>
- <span class="dev-trl">TRL 2 · Prototype stage</span>
- </div>
- </div>
- </div>
+    <!-- TRACE -->
+    <div class="device-card">
+      <div class="device-img-wrap">
+        <img src="render_mirror.png" alt="TRACE — Awareness Smartwatch" />
+      </div>
+      <div class="device-body">
+        <span class="device-tag">MM-TRC-001 · TRL 2</span>
+        <h3>TRACE<br/><em>Awareness Smartwatch</em></h3>
+        <p>Awareness intelligence on the wrist. TRACE monitors Drift in real time throughout the day — surfacing signals before they become behavioural events. PPG, EDA, accelerometer, and gyroscope sensors feed the DP-1 engine continuously. The watch that tells you not just the time, but where you are on the scale.</p>
+        <ul class="device-specs">
+          <li><span class="sl">Display</span><span class="sv">1.78" AMOLED 368×448</span></li>
+          <li><span class="sl">Case</span><span class="sv">Aluminium · Antique Bronze PVD</span></li>
+          <li><span class="sl">Strap</span><span class="sv">Fluoroelastomer · Olive Green</span></li>
+          <li><span class="sl">Sensors</span><span class="sv">PPG · EDA · Accel · Gyro</span></li>
+          <li><span class="sl">Water resistance</span><span class="sv">5 ATM</span></li>
+          <li><span class="sl">Battery</span><span class="sv">LiPo 300mAh · Magnetic charging</span></li>
+        </ul>
+        <div class="device-actions">
+          <a href="trace_proto.html" class="btn-proto" target="_blank">View prototype</a>
+          <span class="dev-trl">TRL 2 · Prototype stage</span>
+        </div>
+      </div>
+    </div>
 
- <!-- FIELD -->
- <div class="device-card">
- <div class="device-img-wrap">
- <img src="render_field.png" alt="FIELD — Ambient Awareness Sensor" />
- </div>
- <div class="device-body">
- <span class="device-tag">MM-FLD-001 · TRL 2</span>
- <h3>FIELD<br/><em>Ambient Sensor Array</em></h3>
- <p>Room-level group awareness. FIELD passively maps the collective behavioural state of everyone in a space — producing a group SC Blueprint™ profile and aggregate Awareness Index™. Three form factors: rectangular, round, and horizontal bar. Built for meeting rooms, therapy spaces, and high-conflict environments where the group dynamic matters as much as the individual.</p>
- <ul class="device-specs">
- <li><span class="sl">Form factors</span><span class="sv">Rectangular · Round · Bar</span></li>
- <li><span class="sl">Material</span><span class="sv">ABS UL94 HB · Matte Black</span></li>
- <li><span class="sl">Voltage</span><span class="sv">3.3V DC</span></li>
- <li><span class="sl">Operating temp</span><span class="sv">−10°C to +50°C</span></li>
- <li><span class="sl">Weight</span><span class="sv">110–130g per unit</span></li>
- <li><span class="sl">Part number</span><span class="sv">ABFS-SET-001</span></li>
- </ul>
- <div class="device-actions">
- <a href="field_proto.html" class="btn-proto" target="_blank">View prototype</a>
- <span class="dev-trl">TRL 2 · Concept validated</span>
- </div>
- </div>
- </div>
+    <!-- FIELD -->
+    <div class="device-card">
+      <div class="device-img-wrap">
+        <img src="render_field.png" alt="FIELD — Ambient Awareness Sensor" />
+      </div>
+      <div class="device-body">
+        <span class="device-tag">MM-FLD-001 · TRL 2</span>
+        <h3>FIELD<br/><em>Ambient Sensor Array</em></h3>
+        <p>Room-level group awareness. FIELD passively maps the collective behavioural state of everyone in a space — producing a group SC Blueprint™ profile and aggregate Awareness Index™. Three form factors: rectangular, round, and horizontal bar. Built for meeting rooms, therapy spaces, and high-conflict environments where the group dynamic matters as much as the individual.</p>
+        <ul class="device-specs">
+          <li><span class="sl">Form factors</span><span class="sv">Rectangular · Round · Bar</span></li>
+          <li><span class="sl">Material</span><span class="sv">ABS UL94 HB · Matte Black</span></li>
+          <li><span class="sl">Voltage</span><span class="sv">3.3V DC</span></li>
+          <li><span class="sl">Operating temp</span><span class="sv">−10°C to +50°C</span></li>
+          <li><span class="sl">Weight</span><span class="sv">110–130g per unit</span></li>
+          <li><span class="sl">Part number</span><span class="sv">ABFS-SET-001</span></li>
+        </ul>
+        <div class="device-actions">
+          <a href="field_proto.html" class="btn-proto" target="_blank">View prototype</a>
+          <span class="dev-trl">TRL 2 · Concept validated</span>
+        </div>
+      </div>
+    </div>
 
- <!-- NEURO-EQ -->
- <div class="device-card">
- <div class="device-img-wrap" style="display:flex;align-items:center;justify-content:center;background:#0B1020;min-height:280px;">
- <div style="text-align:center;padding:2rem;">
-   <div style="font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;color:rgba(0,212,255,0.5);text-transform:uppercase;margin-bottom:0.75rem;">MM-NEQ-001</div>
-   <div style="font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;color:rgba(255,255,255,0.25);text-transform:uppercase;">Render · Under NDA</div>
- </div>
- </div>
- <div class="device-body">
- <span class="device-tag">MM-NEQ-001 · TRL 2</span>
- <h3>NEURO-EQ<br/><em>Field Scanner</em></h3>
- <p>A handheld field scanner designed for rapid behavioural assessment in professional contexts. Point-and-read technology built on the Awareness Architecture — producing an immediate SC Blueprint™ snapshot for interviews, mediations, and high-stakes interactions. The clinical tool that brings the framework into the room.</p>
- <ul class="device-specs">
- <li><span class="sl">Form factor</span><span class="sv">Handheld · Ergonomic grip</span></li>
- <li><span class="sl">Finish</span><span class="sv">Matte Black · Gold accent</span></li>
- <li><span class="sl">Output</span><span class="sv">SC Blueprint™ snapshot</span></li>
- <li><span class="sl">Connectivity</span><span class="sv">DP-1 engine sync</span></li>
- <li><span class="sl">Target use</span><span class="sv">Professional · Clinical · Legal</span></li>
- <li><span class="sl">Status</span><span class="sv">Concept · NDA only</span></li>
- </ul>
- <div class="device-actions">
- <a href="contact.html" class="btn-proto">Request NDA briefing</a>
- <span class="dev-trl">TRL 2 · Concept validated</span>
- </div>
- </div>
- </div>
+    <!-- NEURO-EQ -->
+    <div class="device-card">
+      <div class="device-img-wrap" style="display:flex;align-items:center;justify-content:center;background:#0B1020;min-height:280px;">
+        <div style="text-align:center;padding:2rem;">
+          <div style="font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;color:rgba(0,212,255,0.5);text-transform:uppercase;margin-bottom:0.75rem;">MM-NEQ-001</div>
+          <div style="font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;color:rgba(255,255,255,0.25);text-transform:uppercase;">Render · Under NDA</div>
+        </div>
+      </div>
+      <div class="device-body">
+        <span class="device-tag">MM-NEQ-001 · TRL 2</span>
+        <h3>NEURO-EQ<br/><em>Field Scanner</em></h3>
+        <p>A handheld field scanner designed for rapid behavioural assessment in professional contexts. Point-and-read technology built on the Awareness Architecture — producing an immediate SC Blueprint™ snapshot for interviews, mediations, and high-stakes interactions. The clinical tool that brings the framework into the room.</p>
+        <ul class="device-specs">
+          <li><span class="sl">Form factor</span><span class="sv">Handheld · Ergonomic grip</span></li>
+          <li><span class="sl">Finish</span><span class="sv">Matte Black · Gold accent</span></li>
+          <li><span class="sl">Output</span><span class="sv">SC Blueprint™ snapshot</span></li>
+          <li><span class="sl">Connectivity</span><span class="sv">DP-1 engine sync</span></li>
+          <li><span class="sl">Target use</span><span class="sv">Professional · Clinical · Legal</span></li>
+          <li><span class="sl">Status</span><span class="sv">Concept · NDA only</span></li>
+        </ul>
+        <div class="device-actions">
+          <a href="contact.html" class="btn-proto">Request NDA briefing</a>
+          <span class="dev-trl">TRL 2 · Concept validated</span>
+        </div>
+      </div>
+    </div>
 
- </div>
+  </div>
 </div>
 
 <!-- ECOSYSTEM IMAGE -->
 <div class="eco-section">
- <div class="eco-inner">
- <p class="section-label">Full ecosystem</p>
- <h2 class="section-title" style="margin-bottom:2rem">One engine.<br/><em>Five entry points.</em></h2>
- <div class="eco-img-wrap">
- <img src="render_dp1_macro.png" alt="DP-1 device ecosystem diagram" />
- <div class="eco-caption">
- <p>The DP-1 Duality Processor sits at the centre of the ecosystem — receiving data from MIRROR, TRACE, FIELD, and NEURO-EQ simultaneously. Every reading feeds the same Awareness Architecture scoring engine and outputs to the PsyTectrics™ app in real time.</p>
- <span>Ecosystem diagram · TRL 2–3 · Full specs under NDA</span>
- </div>
- </div>
- </div>
+  <div class="eco-inner">
+    <p class="section-label">Full ecosystem</p>
+    <h2 class="section-title" style="margin-bottom:2rem">One engine.<br/><em>Five entry points.</em></h2>
+    <div class="eco-img-wrap">
+      <img src="render_dp1_macro.png" alt="DP-1 device ecosystem diagram" />
+      <div class="eco-caption">
+        <p>The DP-1 Duality Processor sits at the centre of the ecosystem — receiving data from MIRROR, TRACE, FIELD, and NEURO-EQ simultaneously. Every reading feeds the same Awareness Architecture scoring engine and outputs to the PsyTectrics™ app in real time.</p>
+        <span>Ecosystem diagram · TRL 2–3 · Full specs under NDA</span>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- NDA BAR -->
 <div class="nda-bar">
- <h3>Full architecture.<br/><em>Available under NDA.</em></h3>
- <p>Complete technical specifications, engineering drawings, and prototype documentation are available to verified investors, grant bodies, and strategic partners under a signed NDA.</p>
- <a href="contact.html" class="btn-nda">Request NDA briefing →</a>
+  <h3>Full architecture.<br/><em>Available under NDA.</em></h3>
+  <p>Complete technical specifications, engineering drawings, and prototype documentation are available to verified investors, grant bodies, and strategic partners under a signed NDA.</p>
+  <a href="contact.html" class="btn-nda">Request NDA briefing →</a>
 </div>
-
-
-
 
 <footer class="pt-footer">
   <div class="pt-footer-inner">
     <span class="pt-footer-logo">PSYTECTRICS™</span>
-        <div class="pt-footer-links">
+    <div class="pt-footer-links">
       <a href="index.html">Home</a>
       <a href="reports.html">Reports</a>
       <a href="prototypes.html">Prototypes</a>
@@ -497,5 +376,6 @@ body{padding-top:70px}
     <span class="pt-footer-note">© 2026 PsyTectrics Technologies Ltd · All rights reserved</span>
   </div>
 </footer>
+
 </body>
 </html>

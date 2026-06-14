@@ -27,16 +27,14 @@ body{background:#FFFFFF;color:#0B1020;font-family:var(--sans);font-weight:300;pa
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0.85rem 2.5rem;border-bottom:1px solid rgba(255,255,255,0.06);background:#060B18;height:70px}
-.nav-logo-wrap{display:flex;align-items:center;text-decoration:none}
+.nav-logo-wrap{display:flex;align-items:center;text-decoration:none;flex-shrink:0}
 .nav-logo-img{height:52px;width:auto;display:block}
 .nav-links{display:flex;gap:2rem;list-style:none}
 .nav-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-family:var(--mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
 .nav-links a:hover,.nav-links a.active{color:#fff}
-.nav-cta{background:#00D4FF;color:#060B18;padding:0.6rem 1.4rem;font-family:var(--mono);font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s}
-.nav-cta:hover{opacity:0.85}
 
-/* HERO */
-.page-hero{padding:10rem 3rem 6rem;position:relative;overflow:hidden;border-bottom:1px solid var(--line);max-width:1200px;margin:0 auto}
+/* HERO — padding-top reduced from 10rem to 4rem to eliminate blank gap */
+.page-hero{padding:4rem 3rem 6rem;position:relative;overflow:hidden;border-bottom:1px solid var(--line);max-width:1200px;margin:0 auto}
 .page-hero::before{content:'';position:absolute;top:0;right:0;width:600px;height:600px;background:radial-gradient(ellipse,rgba(0,212,255,0.05) 0%,transparent 70%);pointer-events:none}
 .eyebrow{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:1.5rem}
 .hero-title{font-family:var(--serif);font-size:clamp(3rem,6vw,5.5rem);font-weight:300;line-height:1.05;margin-bottom:1.5rem;max-width:800px}
@@ -138,67 +136,12 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 .cta-strip h2{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300}
 .cta-strip h2 em{font-style:italic;color:var(--gold)}
 .cta-actions{display:flex;gap:1rem;flex-wrap:wrap}
-.btn-primary{background:var(--gold);color:var(--black);padding:0.9rem 2rem;font-family:var(--mono);font-size:0.74rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s}
+.btn-primary{background:var(--gold);color:#060B18;padding:0.9rem 2rem;font-family:var(--mono);font-size:0.74rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s}
 .btn-primary:hover{opacity:0.85}
 .btn-ghost{border:1px solid var(--line-strong);color:var(--muted);padding:0.9rem 2rem;font-family:var(--mono);font-size:0.74rem;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:all 0.2s}
 .btn-ghost:hover{border-color:var(--gold-border);color:#0B1020}
 
-
-footer{border-top:1px solid var(--line);background:var(--nav-bg,#0B1020);padding:2.5rem 3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-.footer-logo{font-family:var(--mono);font-size:0.8rem;letter-spacing:0.16em;color:#9CA3AF;font-weight:700}
-.footer-logo span{color:var(--gold)}
-.footer-links{display:flex;gap:2rem}
-.footer-links a{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:#6B7280;text-decoration:none;transition:color 0.2s}
-.footer-links a:hover{color:var(--muted)}
-.footer-note{font-family:var(--mono);font-size:0.62rem;color:#6B7280;letter-spacing:0.06em}
-
-@media(max-width:1024px){.hierarchy-layout,.layers-grid{grid-template-columns:1fr}.codes-grid{grid-template-columns:1fr}.levels-grid{grid-template-columns:repeat(5,1fr)}.ip-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:768px){nav{padding:1rem 1.5rem}.nav-links{display:none}.page-hero{padding:8rem 1.5rem 3rem}.container{padding:0 1.5rem}.levels-grid{grid-template-columns:repeat(2,1fr)}.ip-grid{grid-template-columns:1fr}.cta-strip{flex-direction:column;padding:3rem 1.5rem}.codes-grid{grid-template-columns:1fr}footer{flex-direction:column;text-align:center}.footer-links{justify-content:center}}
-/* ── PSYTECTRICS NAV – CANONICAL ── */
-nav, .nav {
- position: fixed; top: 0; left: 0; right: 0; z-index: 200;
- display: flex; align-items: center; justify-content: space-between;
- padding: 0.85rem 2.5rem;
- border-bottom: 1px solid rgba(0,212,255,0.13);
- background: #060B18;
- backdrop-filter: blur(20px);
- -webkit-backdrop-filter: blur(20px);
- height: 70px;
- box-sizing: border-box;
-}
-nav a.nav-brand, nav a.nav-logo, .nav a.nav-brand {
- display: flex; align-items: center; gap: 0; text-decoration: none;
- background: none; border: none; padding: 0; outline: none;
- line-height: 1;
-}
-nav a.nav-brand img, nav a.nav-logo img, .nav a.nav-brand img {
- height: 52px; width: auto; display: block;
- background: transparent; border: none; outline: none;
-}
-
-/* === CANONICAL PT NAV === */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0.85rem 2.5rem;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  background: #060B18;
-  height: 70px;
-}
-nav .nav-logo-wrap { display: flex; align-items: center; text-decoration: none; }
-nav .nav-logo-img { height: 52px; width: auto; display: block; }
-nav .nav-links { display: flex; gap: 2rem; list-style: none; }
-nav .nav-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-family: 'Space Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
-nav .nav-links a:hover, nav .nav-links a.active { color: #FFFFFF; }
-nav .nav-cta { background: #00D4FF; color: #060B18; padding: 0.6rem 1.4rem; font-family: 'Space Mono', monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s; border: none; cursor: pointer; }
-nav .nav-cta:hover { opacity: 0.85; }
-nav .nav-tag { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: #00D4FF; background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.22); padding: 0.28rem 0.75rem; }
-nav .nav-btn { font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.45rem 1rem; border: 1px solid rgba(255,255,255,0.15); background: transparent; color: rgba(255,255,255,0.55); cursor: pointer; transition: all 0.2s; text-decoration: none; }
-nav .nav-btn:hover { color: #fff; border-color: rgba(0,212,255,0.4); }
-body { padding-top: 70px; }
-@media (max-width: 768px) { nav { padding: 0.8rem 1.2rem; } nav .nav-links { display: none; } }
-
-/* === PT FOOTER === */
+/* FOOTER */
 .pt-footer{background:#060B18;border-top:1px solid rgba(255,255,255,0.07);padding:2rem 3rem}
 .pt-footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 .pt-footer-logo{font-family:'Space Mono',monospace;font-size:0.78rem;letter-spacing:0.16em;color:rgba(255,255,255,0.5);font-weight:700}
@@ -206,7 +149,21 @@ body { padding-top: 70px; }
 .pt-footer-links a{font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s}
 .pt-footer-links a:hover{color:rgba(255,255,255,0.7)}
 .pt-footer-note{font-family:'Space Mono',monospace;font-size:0.58rem;color:rgba(255,255,255,0.2);letter-spacing:0.06em}
-@media(max-width:768px){.pt-footer-inner{flex-direction:column;text-align:center;align-items:center}.pt-footer-links{justify-content:center}}
+
+@media(max-width:1024px){.hierarchy-layout,.layers-grid{grid-template-columns:1fr}.codes-grid{grid-template-columns:1fr}.levels-grid{grid-template-columns:repeat(5,1fr)}.ip-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){
+  nav{padding:0.8rem 1.2rem}
+  .nav-links{display:none}
+  .page-hero{padding:3rem 1.5rem 3rem}
+  .container{padding:0 1.5rem}
+  .levels-grid{grid-template-columns:repeat(2,1fr)}
+  .ip-grid{grid-template-columns:1fr}
+  .cta-strip{flex-direction:column;padding:3rem 1.5rem}
+  .codes-grid{grid-template-columns:1fr}
+  .pt-footer{padding:2rem 1.5rem}
+  .pt-footer-inner{flex-direction:column;text-align:center;align-items:center}
+  .pt-footer-links{justify-content:center}
+}
 </style>
 </head>
 <body>
@@ -521,5 +478,6 @@ body { padding-top: 70px; }
     <span class="pt-footer-note">© 2026 PsyTectrics Technologies Ltd · All rights reserved</span>
   </div>
 </footer>
+
 </body>
 </html>

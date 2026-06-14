@@ -104,7 +104,8 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 .blueprints-inner{max-width:1200px;margin:0 auto;padding:0 3rem}
 .blueprints-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1.5rem}
 .blueprints-header .section-title{color:#FFFFFF;margin-bottom:0}
-.bp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.06)}
+/* 5-column grid for 5 devices */
+.bp-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.06)}
 .bp-card{background:var(--navy2);padding:1.8rem;transition:background 0.2s;text-decoration:none;display:flex;flex-direction:column;gap:0.6rem}
 .bp-card:hover{background:var(--navy3)}
 .bp-code{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);opacity:0.7}
@@ -137,7 +138,8 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 .pt-footer-links a{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;white-space:nowrap;transition:color 0.2s}
 .pt-footer-links a:hover{color:rgba(255,255,255,0.7)}
 .pt-footer-note{font-family:var(--mono);font-size:0.58rem;color:rgba(255,255,255,0.2);letter-spacing:0.06em}
-@media(max-width:1024px){.hero{grid-template-columns:1fr}.hero-geo{display:none}.bp-grid{grid-template-columns:repeat(2,1fr)}.what-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:1200px){.bp-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:1024px){.hero{grid-template-columns:1fr}.hero-geo{display:none}.what-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:768px){
   nav{padding:0.8rem 1.2rem;width:100%}
   .nav-links,.nav-cta{display:none}
@@ -386,13 +388,13 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
   </div>
 </section>
 
-<!-- PROTOTYPES -->
+<!-- PROTOTYPES — five hardware blueprints -->
 <div class="blueprints-section">
   <div class="blueprints-inner">
     <div class="blueprints-header">
       <div>
         <span class="section-label">Hardware · TRL 2–3</span>
-        <h2 class="section-title" style="color:#FFFFFF;margin-bottom:0">The device <em style="color:var(--accent)">ecosystem.</em></h2>
+        <h2 class="section-title" style="color:#FFFFFF;margin-bottom:0">Five hardware <em style="color:var(--accent)">blueprints.</em></h2>
       </div>
       <a href="prototypes.html" class="btn-white-outline">View all prototypes →</a>
     </div>
@@ -423,6 +425,13 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
         <h3>Room <em>Intelligence</em></h3>
         <p>Passive group awareness mapping. Three form factors. Maps the collective behavioral state of everyone in a space — meetings, therapy rooms, high-conflict environments.</p>
         <span class="bp-trl">TRL 2 · Concept validated</span>
+        <span class="bp-link">View prototype →</span>
+      </a>
+      <a href="prototypes.html" class="bp-card">
+        <span class="bp-code">NEURO-EQ · Headset</span>
+        <h3>Neural <em>Equaliser</em></h3>
+        <p>EEG-based brainwave headset mapping cognitive and emotional state directly to the SC Blueprint™ framework. Passive monitoring with real-time awareness feedback.</p>
+        <span class="bp-trl">TRL 2 · Concept stage</span>
         <span class="bp-link">View prototype →</span>
       </a>
     </div>
