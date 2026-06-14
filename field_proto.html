@@ -6,17 +6,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PsyTectrics™ · PsyTec Awareness Field Sensor</title>
 <style>
- @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap');
 
  :root {
- --bg: #08080A;
- --mirror: #0C0C10;
- --mirror2: #10101A;
- --border: #1E1E2A;
- --border2: #2A2A3A;
- --text: #E8E7F0;
- --text2: #9A99A8;
- --text3: #4A4A5A;
+ --bg: #F0F4FB;
+ --mirror: #E8EEF8;
+ --mirror2: #DDE6F5;
+ --border: #C8D4E8;
+ --border2: #A8BCE0;
+ --text: #0D1B3E;
+ --text2: #3A5080;
+ --text3: #7A90B8;
  --amber: #EF9F27;
  --coral: #D85A30;
  --teal: #1D9E75;
@@ -24,12 +24,12 @@
  --purple2: #534AB7;
  --pink: #D4537E;
  --blue: #378ADD;
- --glow-teal: rgba(29,158,117,0.15);
- --glow-amber: rgba(239,159,39,0.15);
- --glow-red: rgba(216,90,48,0.15);
- --mono: 'Geist Mono', monospace;
- --serif: 'DM Serif Display', serif;
- --sans: 'Cormorant', sans-serif;
+ --glow-teal: rgba(29,158,117,0.12);
+ --glow-amber: rgba(239,159,39,0.12);
+ --glow-red: rgba(216,90,48,0.12);
+ --mono: 'Space Mono', monospace;
+ --serif: 'DM Sans', sans-serif;
+ --sans: 'DM Sans', sans-serif;
  }
 
  * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -61,19 +61,19 @@
  position: absolute;
  inset: 0;
  background:
- radial-gradient(ellipse 60% 80% at 50% 40%, #12121E 0%, #08080C 100%);
+ radial-gradient(ellipse 60% 80% at 50% 40%, #D8E5F8 0%, #EDF2FC 100%);
  }
 
  /* MIRROR FRAME */
  .mirror-frame {
  position: absolute;
  inset: 20px;
- border: 1px solid #2A2A3A;
+ border: 1px solid #A8BCE0;
  border-radius: 16px;
  box-shadow:
- inset 0 0 80px rgba(0,0,0,0.8),
- 0 0 0 1px #1A1A28,
- 0 0 60px rgba(0,0,0,0.6);
+ inset 0 0 80px rgba(13,27,62,0.04),
+ 0 0 0 1px #C8D4E8,
+ 0 0 60px rgba(13,27,62,0.06);
  pointer-events: none;
  }
 
@@ -82,7 +82,7 @@
  content: '';
  position: absolute;
  inset: 0;
- background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.008) 3px, rgba(255,255,255,0.008) 6px);
+ background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(13,27,62,0.008) 3px, rgba(13,27,62,0.008) 6px);
  pointer-events: none;
  }
 
@@ -129,7 +129,7 @@
  .tce-wordmark {
  font-family: var(--serif);
  font-size: 13px;
- color: rgba(232,231,240,0.3);
+ color: rgba(13,27,62,0.45);
  letter-spacing: 0.3em;
  text-transform: uppercase;
  }
@@ -282,12 +282,12 @@
  .dialogue-panel.visible { display: flex; }
 
  .dialogue-inner {
- background: rgba(12,12,16,0.88);
- border: 1px solid rgba(255,255,255,0.06);
+ background: rgba(240,244,251,0.96);
+ border: 1px solid rgba(13,27,62,0.12);
  border-radius: 14px;
  padding: 24px 28px;
  backdrop-filter: blur(20px);
- box-shadow: 0 0 60px rgba(0,0,0,0.6);
+ box-shadow: 0 0 60px rgba(13,27,62,0.06);
  }
 
  .dialogue-mode-label {
@@ -413,7 +413,7 @@
  border-radius: 50%; background: rgba(232,231,240,0.4); cursor: pointer;
  transition: background 0.2s;
  }
- input[type=range]::-webkit-slider-thumb:hover { background: var(--amber); }
+ input[type=range]::-webkit-slider-thumb:hover { background: var(--blue); }
  .ipv { font-family: var(--mono); font-size: 9px; color: var(--text3); min-width: 20px; text-align: right; }
 
  .ip-textarea {
@@ -622,7 +622,7 @@ nav.pt-nav .nav-back:hover { color:rgba(255,255,255,0.8); }
  <div class="codes-overlay">
  <div class="overlay-label">observer codes</div>
  <svg id="codes-svg" width="110" height="110" viewBox="0 0 110 110">
- <circle cx="55" cy="55" r="44" fill="#0C0C10" stroke="#1E1E2A" stroke-width="0.5"/>
+ <circle cx="55" cy="55" r="44" fill="#EDF2FC" stroke="#1E1E2A" stroke-width="0.5"/>
  <g id="codes-arcs"></g>
  <circle cx="55" cy="55" r="20" fill="#08080C"/>
  <text x="55" y="52" text-anchor="middle" font-size="7" fill="#4A4A5A" font-family="monospace" id="codes-center-1">ZERO</text>
@@ -1120,7 +1120,7 @@ setTimeout(runScan, 600);
  <div style="text-align:center;padding:2rem;font-family:'Geist Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:#b8b5aa;border-top:1px solid rgba(0,0,0,0.08);margin-top:3rem;">
  Prototype concept · PsyTectrics™ · psytectrics.com · Full architecture under NDA
  </div>
-<footer class="pt-footer" style="background:#060B18;border-top:1px solid rgba(255,255,255,0.07);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-top:0">
+<footer class="pt-footer" style="background:#1A2E5E;border-top:1px solid rgba(255,255,255,0.07);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-top:0">
   <span style="font-family:'Space Mono',monospace;font-size:0.72rem;letter-spacing:0.16em;color:rgba(255,255,255,0.5);font-weight:700">PSYTECTRICS™</span>
   <div style="display:flex;gap:1.5rem">
     <a href="index.html" style="font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none">Home</a>

@@ -9,14 +9,14 @@
  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
 
  :root {
- --bg: #0D0D0B;
- --bg2: #141412;
- --bg3: #1C1C19;
- --border: #2C2C28;
- --border2: #3A3A35;
- --text: #E8E7E0;
- --text2: #9A9990;
- --text3: #5A5A55;
+ --bg: #F4F6FA;
+ --bg2: #EAEFF8;
+ --bg3: #E2E9F5;
+ --border: #C8D4E8;
+ --border2: #A8BCE0;
+ --text: #0D1B3E;
+ --text2: #3A5080;
+ --text3: #7A90B8;
  --amber: #EF9F27;
  --amber-dim: #BA7517;
  --coral: #D85A30;
@@ -27,8 +27,8 @@
  --blue-dim: #185FA5;
  --green: #1D9E75;
  --red: #E24B4A;
- --mono: 'Geist Mono', monospace;
- --sans: 'Cormorant', sans-serif;
+ --mono: 'Space Mono', monospace;
+ --sans: 'DM Sans', sans-serif;
  }
 
  * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -47,7 +47,7 @@
  content: '';
  position: fixed;
  inset: 0;
- background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+ background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(13,27,62,0.02) 2px, rgba(13,27,62,0.02) 4px);
  pointer-events: none;
  z-index: 1000;
  }
@@ -61,7 +61,7 @@
  justify-content: space-between;
  position: sticky;
  top: 0;
- background: rgba(13,13,11,0.92);
+ background: rgba(244,246,250,0.95);
  backdrop-filter: blur(12px);
  z-index: 100;
  }
@@ -184,7 +184,7 @@
  background: var(--bg3);
  }
 
- .stage.active::before { background: var(--amber); }
+ .stage.active::before { background: var(--blue); }
  .stage.done::before { background: var(--teal); }
  .stage.done { border-color: rgba(29,158,117,0.2); }
 
@@ -304,7 +304,7 @@
  }
 
  .tab:hover { color: var(--text2); }
- .tab.active { color: var(--text); border-bottom-color: var(--amber); }
+ .tab.active { color: var(--text); border-bottom-color: var(--blue); }
 
  /* FORM PANEL */
  .form-panel {
@@ -359,7 +359,7 @@
  -webkit-appearance: none;
  width: 14px; height: 14px;
  border-radius: 50%;
- background: var(--amber);
+ background: var(--blue);
  cursor: pointer;
  transition: transform 0.1s;
  }
@@ -376,7 +376,7 @@
 
  textarea, select {
  width: 100%;
- background: var(--bg3);
+ background: #fff;
  border: 1px solid var(--border);
  border-radius: 6px;
  color: var(--text);
@@ -395,8 +395,8 @@
  .run-btn {
  width: 100%;
  padding: 12px;
- background: var(--amber);
- color: #1a1400;
+ background: #1A4FA0;
+ color: #ffffff;
  font-family: var(--mono);
  font-size: 11px;
  letter-spacing: 0.1em;
@@ -409,9 +409,9 @@
  margin-top: 4px;
  }
 
- .run-btn:hover { background: #f5b340; transform: translateY(-1px); }
+ .run-btn:hover { background: #1E5FC2; transform: translateY(-1px); }
  .run-btn:active { transform: translateY(0); }
- .run-btn:disabled { background: var(--border2); color: var(--text3); cursor: not-allowed; transform: none; }
+ .run-btn:disabled { background: #C8D4E8; color: #7A90B8; cursor: not-allowed; transform: none; }
 
  /* CHAT PANEL */
  .chat-panel {
@@ -469,7 +469,7 @@
  .msg-body pre {
  font-family: var(--mono);
  font-size: 11px;
- background: var(--bg3);
+ background: #E2E9F5;
  border: 1px solid var(--border);
  border-radius: 6px;
  padding: 10px 12px;
@@ -510,7 +510,7 @@
 
  .chat-input {
  flex: 1;
- background: var(--bg3);
+ background: #fff;
  border: 1px solid var(--border);
  border-radius: 6px;
  color: var(--text);
@@ -663,101 +663,101 @@ nav.pt-nav .nav-back:hover { color:rgba(255,255,255,0.8); }
  </marker>
  </defs>
  <!-- Chip package -->
- <rect x="130" y="50" width="360" height="400" rx="12" fill="#1C1C19" stroke="#2C2C28" stroke-width="2"/>
+ <rect x="130" y="50" width="360" height="400" rx="12" fill="#E2E9F5" stroke="#C8D4E8" stroke-width="2"/>
  <!-- Left pins -->
- <rect x="108" y="86" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="108" y="104" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="108" y="122" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="108" y="140" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="108" y="158" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="108" y="176" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="108" y="194" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="108" y="212" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="108" y="230" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="108" y="248" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="108" y="266" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="108" y="284" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="108" y="302" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="108" y="320" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="108" y="338" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="108" y="356" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="108" y="374" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="108" y="392" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="108" y="410" width="22" height="8" rx="2" fill="#5A5A55"/>
+ <rect x="108" y="86" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="108" y="104" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="108" y="122" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="108" y="140" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="108" y="158" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="108" y="176" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="108" y="194" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="108" y="212" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="108" y="230" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="108" y="248" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="108" y="266" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="108" y="284" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="108" y="302" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="108" y="320" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="108" y="338" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="108" y="356" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="108" y="374" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="108" y="392" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="108" y="410" width="22" height="8" rx="2" fill="#7A90B8"/>
  <!-- Right pins -->
- <rect x="490" y="86" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="490" y="104" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="490" y="122" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="490" y="140" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="490" y="158" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="490" y="176" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="490" y="194" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="490" y="212" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="490" y="230" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="490" y="248" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="490" y="266" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="490" y="284" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="490" y="302" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="490" y="320" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="490" y="338" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="490" y="356" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="490" y="374" width="22" height="8" rx="2" fill="#5A5A55"/>
- <rect x="490" y="392" width="22" height="8" rx="2" fill="#5A5A55"/>
+ <rect x="490" y="86" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="490" y="104" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="490" y="122" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="490" y="140" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="490" y="158" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="490" y="176" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="490" y="194" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="490" y="212" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="490" y="230" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="490" y="248" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="490" y="266" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="490" y="284" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="490" y="302" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="490" y="320" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="490" y="338" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="490" y="356" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="490" y="374" width="22" height="8" rx="2" fill="#7A90B8"/>
+ <rect x="490" y="392" width="22" height="8" rx="2" fill="#7A90B8"/>
  <!-- Stage 1: Input Ingestion -->
- <rect x="160" y="68" width="300" height="52" rx="4" fill="#141412" stroke="#2C2C28" stroke-width="0.8"/>
- <text x="310" y="89" text-anchor="middle" font-size="9" fill="#5A5A55" font-family="monospace" letter-spacing="0.1em">STAGE 1</text>
- <text x="310" y="107" text-anchor="middle" font-size="11" fill="#9A9990" font-family="monospace">INPUT INGESTION</text>
+ <rect x="160" y="68" width="300" height="52" rx="4" fill="#EAEFF8" stroke="#C8D4E8" stroke-width="0.8"/>
+ <text x="310" y="89" text-anchor="middle" font-size="9" fill="#7A90B8" font-family="monospace" letter-spacing="0.1em">STAGE 1</text>
+ <text x="310" y="107" text-anchor="middle" font-size="11" fill="#3A5080" font-family="monospace">INPUT INGESTION</text>
  <!-- Stage 2: Dual YY -->
- <rect x="160" y="132" width="145" height="70" rx="4" fill="#141412" stroke="#2C2C28" stroke-width="0.8"/>
- <text x="232" y="152" text-anchor="middle" font-size="8" fill="#5A5A55" font-family="monospace" letter-spacing="0.1em">STAGE 2</text>
- <text x="232" y="167" text-anchor="middle" font-size="10" fill="#9A9990" font-family="monospace">DUAL YIN-YANG</text>
- <text x="232" y="182" text-anchor="middle" font-size="9" fill="#5A5A55" font-family="monospace">CONSCIOUS</text>
- <text x="232" y="195" text-anchor="middle" font-size="9" fill="#5A5A55" font-family="monospace">SUBCONSCIOUS</text>
+ <rect x="160" y="132" width="145" height="70" rx="4" fill="#EAEFF8" stroke="#C8D4E8" stroke-width="0.8"/>
+ <text x="232" y="152" text-anchor="middle" font-size="8" fill="#7A90B8" font-family="monospace" letter-spacing="0.1em">STAGE 2</text>
+ <text x="232" y="167" text-anchor="middle" font-size="10" fill="#3A5080" font-family="monospace">DUAL YIN-YANG</text>
+ <text x="232" y="182" text-anchor="middle" font-size="9" fill="#7A90B8" font-family="monospace">CONSCIOUS</text>
+ <text x="232" y="195" text-anchor="middle" font-size="9" fill="#7A90B8" font-family="monospace">SUBCONSCIOUS</text>
  <!-- Stage 3: OC Ratio -->
- <rect x="315" y="132" width="145" height="70" rx="4" fill="#141412" stroke="#2C2C28" stroke-width="0.8"/>
- <text x="387" y="152" text-anchor="middle" font-size="8" fill="#5A5A55" font-family="monospace" letter-spacing="0.1em">STAGE 3</text>
- <text x="387" y="167" text-anchor="middle" font-size="10" fill="#9A9990" font-family="monospace">OBSERVER CODE</text>
- <text x="387" y="182" text-anchor="middle" font-size="10" fill="#9A9990" font-family="monospace">RATIO ENGINE</text>
- <text x="387" y="196" text-anchor="middle" font-size="8" fill="#3A3A35" font-family="monospace">NARC·YARC·SIST·Øll</text>
+ <rect x="315" y="132" width="145" height="70" rx="4" fill="#EAEFF8" stroke="#C8D4E8" stroke-width="0.8"/>
+ <text x="387" y="152" text-anchor="middle" font-size="8" fill="#7A90B8" font-family="monospace" letter-spacing="0.1em">STAGE 3</text>
+ <text x="387" y="167" text-anchor="middle" font-size="10" fill="#3A5080" font-family="monospace">OBSERVER CODE</text>
+ <text x="387" y="182" text-anchor="middle" font-size="10" fill="#3A5080" font-family="monospace">RATIO ENGINE</text>
+ <text x="387" y="196" text-anchor="middle" font-size="8" fill="#A8BCE0" font-family="monospace">NARC·YARC·SIST·Øll</text>
  <!-- Stage 4: Drift -->
- <rect x="160" y="216" width="300" height="52" rx="4" fill="#141412" stroke="#2C2C28" stroke-width="0.8"/>
- <text x="310" y="237" text-anchor="middle" font-size="9" fill="#5A5A55" font-family="monospace" letter-spacing="0.1em">STAGE 4</text>
- <text x="310" y="255" text-anchor="middle" font-size="11" fill="#9A9990" font-family="monospace">DRIFT CALCULATION · D = |C − S|</text>
+ <rect x="160" y="216" width="300" height="52" rx="4" fill="#EAEFF8" stroke="#C8D4E8" stroke-width="0.8"/>
+ <text x="310" y="237" text-anchor="middle" font-size="9" fill="#7A90B8" font-family="monospace" letter-spacing="0.1em">STAGE 4</text>
+ <text x="310" y="255" text-anchor="middle" font-size="11" fill="#3A5080" font-family="monospace">DRIFT CALCULATION · D = |C − S|</text>
  <!-- Stage 5: Balance Scale -->
- <rect x="160" y="282" width="300" height="52" rx="4" fill="#0C2A4A" stroke="#185FA5" stroke-width="0.8"/>
+ <rect x="160" y="282" width="300" height="52" rx="4" fill="#D8EAF8" stroke="#378ADD" stroke-width="0.8"/>
  <text x="310" y="303" text-anchor="middle" font-size="9" fill="#378ADD" font-family="monospace" letter-spacing="0.1em" opacity="0.6">STAGE 5</text>
- <text x="310" y="321" text-anchor="middle" font-size="11" fill="#B5D4F4" font-family="monospace">BALANCE SCALE OUTPUT −5 ——— 0 ——— +5</text>
+ <text x="310" y="321" text-anchor="middle" font-size="11" fill="#0D3A7A" font-family="monospace">BALANCE SCALE OUTPUT −5 ——— 0 ——— +5</text>
  <!-- Connector lines between stages -->
- <line x1="310" y1="120" x2="310" y2="132" stroke="#2C2C28" stroke-width="1"/>
- <line x1="310" y1="202" x2="310" y2="216" stroke="#2C2C28" stroke-width="1"/>
- <line x1="310" y1="268" x2="310" y2="282" stroke="#2C2C28" stroke-width="1"/>
+ <line x1="310" y1="120" x2="310" y2="132" stroke="#C8D4E8" stroke-width="1"/>
+ <line x1="310" y1="202" x2="310" y2="216" stroke="#C8D4E8" stroke-width="1"/>
+ <line x1="310" y1="268" x2="310" y2="282" stroke="#C8D4E8" stroke-width="1"/>
  <!-- Inner connector: S2 → S3 -->
- <line x1="305" y1="167" x2="315" y2="167" stroke="#2C2C28" stroke-width="1"/>
+ <line x1="305" y1="167" x2="315" y2="167" stroke="#C8D4E8" stroke-width="1"/>
  <!-- External labels -->
- <line x1="490" y1="96" x2="530" y2="96" stroke="#3A3A35" stroke-width="0.5" stroke-dasharray="3 2"/>
- <text x="535" y="100" font-size="10" fill="#5A5A55" font-family="monospace">data in</text>
- <line x1="490" y1="170" x2="530" y2="170" stroke="#3A3A35" stroke-width="0.5" stroke-dasharray="3 2"/>
- <text x="535" y="174" font-size="10" fill="#5A5A55" font-family="monospace">C-YY bus</text>
- <line x1="490" y1="210" x2="530" y2="210" stroke="#3A3A35" stroke-width="0.5" stroke-dasharray="3 2"/>
- <text x="535" y="214" font-size="10" fill="#5A5A55" font-family="monospace">SC-YY bus</text>
- <line x1="490" y1="257" x2="530" y2="257" stroke="#3A3A35" stroke-width="0.5" stroke-dasharray="3 2"/>
- <text x="535" y="261" font-size="10" fill="#5A5A55" font-family="monospace">OC ratio</text>
- <line x1="490" y1="308" x2="530" y2="308" stroke="#3A3A35" stroke-width="0.5" stroke-dasharray="3 2"/>
- <text x="535" y="312" font-size="10" fill="#5A5A55" font-family="monospace">drift score</text>
+ <line x1="490" y1="96" x2="530" y2="96" stroke="#A8BCE0" stroke-width="0.5" stroke-dasharray="3 2"/>
+ <text x="535" y="100" font-size="10" fill="#7A90B8" font-family="monospace">data in</text>
+ <line x1="490" y1="170" x2="530" y2="170" stroke="#A8BCE0" stroke-width="0.5" stroke-dasharray="3 2"/>
+ <text x="535" y="174" font-size="10" fill="#7A90B8" font-family="monospace">C-YY bus</text>
+ <line x1="490" y1="210" x2="530" y2="210" stroke="#A8BCE0" stroke-width="0.5" stroke-dasharray="3 2"/>
+ <text x="535" y="214" font-size="10" fill="#7A90B8" font-family="monospace">SC-YY bus</text>
+ <line x1="490" y1="257" x2="530" y2="257" stroke="#A8BCE0" stroke-width="0.5" stroke-dasharray="3 2"/>
+ <text x="535" y="261" font-size="10" fill="#7A90B8" font-family="monospace">OC ratio</text>
+ <line x1="490" y1="308" x2="530" y2="308" stroke="#A8BCE0" stroke-width="0.5" stroke-dasharray="3 2"/>
+ <text x="535" y="312" font-size="10" fill="#7A90B8" font-family="monospace">drift score</text>
  <line x1="490" y1="365" x2="530" y2="365" stroke="#378ADD" stroke-width="0.5" stroke-dasharray="3 2" opacity="0.5"/>
  <text x="535" y="369" font-size="10" fill="#378ADD" font-family="monospace" opacity="0.7">BS output</text>
  <!-- Chip label -->
- <text x="310" y="372" text-anchor="middle" font-size="18" fill="#2C2C28" font-family="monospace" font-weight="bold">DP-1</text>
- <text x="310" y="390" text-anchor="middle" font-size="8" fill="#2C2C28" font-family="monospace" letter-spacing="0.12em">SOURCE CODE HOLDINGS LTD</text>
+ <text x="310" y="372" text-anchor="middle" font-size="18" fill="#C8D4E8" font-family="monospace" font-weight="bold">DP-1</text>
+ <text x="310" y="390" text-anchor="middle" font-size="8" fill="#C8D4E8" font-family="monospace" letter-spacing="0.12em">SOURCE CODE HOLDINGS LTD</text>
  <!-- Device dispatch bottom -->
- <rect x="160" y="405" width="88" height="30" rx="4" fill="#141412" stroke="#2C2C28" stroke-width="0.8"/>
- <text x="204" y="424" text-anchor="middle" font-size="9" fill="#5A5A55" font-family="monospace">→ NES</text>
- <rect x="256" y="405" width="108" height="30" rx="4" fill="#141412" stroke="#2C2C28" stroke-width="0.8"/>
- <text x="310" y="424" text-anchor="middle" font-size="9" fill="#5A5A55" font-family="monospace">→ ABFS</text>
- <rect x="372" y="405" width="88" height="30" rx="4" fill="#141412" stroke="#2C2C28" stroke-width="0.8"/>
- <text x="416" y="424" text-anchor="middle" font-size="9" fill="#5A5A55" font-family="monospace">→ TCE</text>
- <line x1="310" y1="334" x2="310" y2="405" stroke="#2C2C28" stroke-width="0.8" stroke-dasharray="4 2"/>
- <line x1="204" y1="405" x2="416" y2="405" stroke="#2C2C28" stroke-width="0.8"/>
+ <rect x="160" y="405" width="88" height="30" rx="4" fill="#EAEFF8" stroke="#C8D4E8" stroke-width="0.8"/>
+ <text x="204" y="424" text-anchor="middle" font-size="9" fill="#7A90B8" font-family="monospace">→ NES</text>
+ <rect x="256" y="405" width="108" height="30" rx="4" fill="#EAEFF8" stroke="#C8D4E8" stroke-width="0.8"/>
+ <text x="310" y="424" text-anchor="middle" font-size="9" fill="#7A90B8" font-family="monospace">→ ABFS</text>
+ <rect x="372" y="405" width="88" height="30" rx="4" fill="#EAEFF8" stroke="#C8D4E8" stroke-width="0.8"/>
+ <text x="416" y="424" text-anchor="middle" font-size="9" fill="#7A90B8" font-family="monospace">→ TCE</text>
+ <line x1="310" y1="334" x2="310" y2="405" stroke="#C8D4E8" stroke-width="0.8" stroke-dasharray="4 2"/>
+ <line x1="204" y1="405" x2="416" y2="405" stroke="#C8D4E8" stroke-width="0.8"/>
  <!-- Highlight active stage (animated by JS) -->
  <rect id="schematic-highlight" x="160" y="68" width="300" height="52" rx="4" fill="none" stroke="transparent" stroke-width="1.5" opacity="0"/>
  </svg>
@@ -1205,7 +1205,7 @@ function handleChatKey(e) {
  <div style="text-align:center;padding:2rem;font-family:'Geist Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:#b8b5aa;border-top:1px solid rgba(0,0,0,0.08);margin-top:3rem;">
  Prototype concept · PsyTectrics™ · psytectrics.com · Full architecture under NDA
  </div>
-<footer class="pt-footer" style="background:#060B18;border-top:1px solid rgba(255,255,255,0.07);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-top:0">
+<footer class="pt-footer" style="background:#1A2E5E;border-top:1px solid rgba(255,255,255,0.07);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-top:0">
   <span style="font-family:'Space Mono',monospace;font-size:0.72rem;letter-spacing:0.16em;color:rgba(255,255,255,0.5);font-weight:700">PSYTECTRICS™</span>
   <div style="display:flex;gap:1.5rem">
     <a href="index.html" style="font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none">Home</a>
