@@ -17,22 +17,11 @@
   --accent-soft:rgba(0,212,255,0.08);--accent-border:rgba(0,212,255,0.25);
   --line:rgba(0,0,0,0.08);--line-strong:rgba(0,0,0,0.14);
   --line-light:rgba(255,255,255,0.08);
-
-  /* ── POLAR PAIR COLOURS (RGB complementary) ──────────────────────────
-     NARC ↔ YARC  :  Red ↔ Cyan     (direct RGB opposites)
-     SIST ↔ Øll   :  Blue ↔ Amber   (direct RGB opposites)
-  ──────────────────────────────────────────────────────────────────── */
-  --narc:#C4622D;   /* Red-orange  */
-  --yarc:#00C4B4;   /* Cyan-teal — RGB opposite of red */
-  --sist:#3B4FD4;   /* Deep blue   */
-  --oll:#D4920A;    /* Amber-gold — RGB opposite of blue */
-
+  --narc:#C4622D;--yarc:#1D9E75;--sist:#534AB7;--oll:#A0426B;
   --serif:'Montserrat',sans-serif;--sans:'Inter',sans-serif;--mono:'Space Mono',monospace;
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-top:70px;max-width:100vw}
-
-/* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0.85rem 1.2rem;max-width:100vw;border-bottom:1px solid rgba(255,255,255,0.06);background:#060B18;height:70px}
 .nav-logo-wrap{display:flex;align-items:center;text-decoration:none}
 .nav-logo-img{height:52px;width:auto;display:block}
@@ -52,8 +41,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .nav-drawer a:last-child{border-bottom:none}
 .nav-drawer a:hover{color:#fff}
 .nav-drawer .drawer-cta{background:var(--accent);color:#060B18;padding:0.75rem 1.2rem;font-weight:700;margin-top:0.8rem;text-align:center;border-bottom:none}
-
-/* ── HERO ── */
 .hero{min-height:calc(100vh - 70px);background:var(--navy);display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:0;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(0,212,255,0.07) 0%,transparent 60%);pointer-events:none}
 .hero-copy{padding:4rem 3rem 4rem 4rem;position:relative;z-index:2}
@@ -72,22 +59,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .hero-geo{display:flex;align-items:center;justify-content:center;position:relative;height:100%;min-height:500px}
 .geo-diagram-wrap{width:min(500px,90%);aspect-ratio:1;position:relative}
 .geo-diagram-wrap svg{width:100%;height:100%}
-.geo-label-narc{position:absolute;top:6%;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;color:var(--narc);opacity:0.8}
-.geo-label-sist{position:absolute;right:2%;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;color:var(--sist);opacity:0.8}
-.geo-label-yarc{position:absolute;bottom:6%;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;color:var(--yarc);opacity:0.8}
-.geo-label-oll{position:absolute;left:2%;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;color:var(--oll);opacity:0.8}
+.geo-label-narc{position:absolute;top:6%;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;color:#C4622D;opacity:0.7}
+.geo-label-sist{position:absolute;right:2%;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;color:#534AB7;opacity:0.7}
+.geo-label-yarc{position:absolute;bottom:6%;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;color:#1D9E75;opacity:0.7}
+.geo-label-oll{position:absolute;left:2%;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;color:#A0426B;opacity:0.7}
 .geo-cta{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);white-space:nowrap;animation:pulse-text 3s ease-in-out infinite}
 @keyframes pulse-text{0%,100%{opacity:0.3}50%{opacity:0.7}}
-
-/* ── SECTIONS ── */
 section{padding:6rem 0;border-top:1px solid var(--line)}
 .container{max-width:1200px;margin:0 auto;padding:0 3rem}
 .section-label{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;display:block}
 .section-title{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3.2rem);font-weight:300;line-height:1.1;margin-bottom:0.8rem;color:var(--text)}
 .section-title em{font-style:italic;color:var(--accent)}
 .section-desc{color:var(--muted);font-size:0.9rem;line-height:1.8;max-width:580px;margin-bottom:3rem}
-
-/* ── WHAT WE DO ── */
 .what-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
 .what-card{background:#fff;padding:2.5rem;transition:background 0.2s;display:flex;flex-direction:column;gap:1rem}
 .what-card:hover{background:var(--bg-soft)}
@@ -97,38 +80,6 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 .what-card p{color:var(--muted);font-size:0.84rem;line-height:1.7;flex:1}
 .what-link{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-border);padding-bottom:1px;transition:border-color 0.2s;align-self:flex-start}
 .what-link:hover{border-color:var(--accent)}
-
-/* ── CHAT GATE CARD ── */
-.chat-gate-card{background:var(--navy);border:1px solid rgba(0,212,255,0.15);padding:2.5rem;display:flex;flex-direction:column;gap:1rem;position:relative;overflow:hidden}
-.chat-gate-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(0,212,255,0.06) 0%,transparent 65%);pointer-events:none}
-.chat-gate-icon{width:48px;height:48px;background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.2);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:1.1rem;color:var(--accent)}
-.chat-gate-card h3{font-family:var(--serif);font-size:1.2rem;font-weight:400;color:#FFFFFF}
-.chat-gate-card h3 em{font-style:italic;color:var(--accent)}
-.chat-gate-card p{color:rgba(255,255,255,0.45);font-size:0.84rem;line-height:1.7;flex:1}
-.chat-gate-badge{display:inline-flex;align-items:center;gap:0.5rem;font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.2);padding:0.35rem 0.75rem;align-self:flex-start}
-.chat-gate-lock{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.25);display:flex;align-items:center;gap:0.4rem}
-
-/* ── BLUEPRINT COLOUR ── */
-.colour-section{background:var(--navy);padding:5rem 0;border-top:none}
-.colour-inner{max-width:1200px;margin:0 auto;padding:0 3rem}
-.colour-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-.colour-demo{position:relative}
-.colour-swatch-wrap{display:flex;gap:0;height:140px;border:1px solid rgba(255,255,255,0.08);overflow:hidden}
-.colour-swatch{flex:1;transition:flex 0.6s ease;position:relative}
-.colour-swatch-label{position:absolute;bottom:0.5rem;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);white-space:nowrap}
-.colour-result{margin-top:1.5rem;display:flex;align-items:center;gap:1.2rem}
-.colour-hex-box{width:56px;height:56px;border:1px solid rgba(255,255,255,0.1);flex-shrink:0}
-.colour-hex-val{font-family:var(--mono);font-size:1rem;color:#FFFFFF;letter-spacing:0.08em}
-.colour-hex-sub{font-family:var(--mono);font-size:0.6rem;color:rgba(255,255,255,0.3);letter-spacing:0.08em;margin-top:0.25rem}
-.colour-copy-text{color:rgba(255,255,255,0.5);font-size:0.84rem;line-height:1.75}
-.colour-copy-text strong{color:#FFFFFF;font-weight:400}
-.colour-steps{list-style:none;display:flex;flex-direction:column;gap:0;margin-top:2rem;border-top:1px solid rgba(255,255,255,0.07)}
-.colour-step{display:flex;align-items:flex-start;gap:1rem;padding:1rem 0;border-bottom:1px solid rgba(255,255,255,0.06)}
-.colour-step-num{font-family:var(--mono);font-size:0.62rem;color:var(--accent);flex-shrink:0;width:20px;opacity:0.7}
-.colour-step-text{font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.6}
-.colour-step-text strong{color:rgba(255,255,255,0.8);font-weight:400}
-
-/* ── ASSESSMENT FEATURE ── */
 .assess-feature{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--navy);border:none;overflow:hidden}
 .assess-geo-side{background:var(--navy);display:flex;align-items:center;justify-content:center;padding:4rem 2rem;position:relative;min-height:480px}
 .assess-geo-side::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(0,212,255,0.06) 0%,transparent 70%)}
@@ -140,8 +91,6 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 .assess-features-list li::before{content:'◈';color:var(--accent);font-size:0.6rem;flex-shrink:0}
 .assess-price{font-family:var(--serif);font-size:1rem;color:rgba(255,255,255,0.4);margin-bottom:1.5rem}
 .assess-price strong{color:#FFFFFF;font-weight:300;font-size:1.3rem}
-
-/* ── PRODUCTS ── */
 .products-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
 .product-strip-card{background:#fff;padding:2.2rem;transition:background 0.2s;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:0.75rem}
 .product-strip-card:hover{background:var(--bg-soft)}
@@ -151,25 +100,11 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 .product-strip-card h3 em{font-style:italic;color:var(--accent)}
 .product-strip-card p{color:var(--muted);font-size:0.82rem;line-height:1.65;flex:1}
 .ps-link{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-top:auto}
-
-/* ── CHAT UPSELL BANNER ── */
-.chat-upsell{background:var(--navy2);border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);padding:2.5rem 3rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
-.chat-upsell-text{display:flex;flex-direction:column;gap:0.4rem}
-.chat-upsell-eyebrow{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);opacity:0.7}
-.chat-upsell-heading{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:#FFFFFF}
-.chat-upsell-heading em{font-style:italic;color:var(--accent)}
-.chat-upsell-sub{font-size:0.82rem;color:rgba(255,255,255,0.35);max-width:500px;line-height:1.6}
-.chat-upsell-actions{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;flex-shrink:0}
-.chat-upsell-price{font-family:var(--mono);font-size:0.7rem;color:rgba(255,255,255,0.3);letter-spacing:0.06em}
-.chat-upsell-price strong{color:var(--accent);font-size:1.1rem}
-.btn-upsell{background:var(--accent);color:#060B18;padding:0.75rem 1.6rem;font-family:var(--mono);font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s;display:inline-flex;align-items:center;gap:0.4rem}
-.btn-upsell:hover{opacity:0.85}
-
-/* ── BLUEPRINTS ── */
 .blueprints-section{background:var(--navy);border-top:none;padding:6rem 0}
 .blueprints-inner{max-width:1200px;margin:0 auto;padding:0 3rem}
 .blueprints-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1.5rem}
 .blueprints-header .section-title{color:#FFFFFF;margin-bottom:0}
+/* 5-column grid for 5 devices */
 .bp-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.06)}
 .bp-card{background:var(--navy2);padding:1.8rem;transition:background 0.2s;text-decoration:none;display:flex;flex-direction:column;gap:0.6rem}
 .bp-card:hover{background:var(--navy3)}
@@ -180,15 +115,11 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 .bp-trl{font-family:var(--mono);font-size:0.58rem;color:rgba(255,255,255,0.2);letter-spacing:0.08em;text-transform:uppercase}
 .bp-link{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);opacity:0.7;text-decoration:none;margin-top:auto}
 .bp-link:hover{opacity:1}
-
-/* ── INVESTOR ── */
 .investor-strip{background:var(--navy);border-top:none;padding:5rem 3rem;text-align:center;position:relative;overflow:hidden}
 .investor-strip::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:200px;background:radial-gradient(ellipse,rgba(0,212,255,0.05) 0%,transparent 70%);pointer-events:none}
 .investor-strip p{font-family:var(--serif);font-size:clamp(1.1rem,2vw,1.5rem);font-weight:300;color:rgba(255,255,255,0.5);max-width:800px;margin:0 auto 2.5rem;line-height:1.7}
 .investor-strip p strong{color:#FFFFFF;font-weight:300}
 .investor-actions{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
-
-/* ── BUTTONS ── */
 .cta-banner{background:var(--bg-soft);border-top:1px solid var(--line);padding:6rem 3rem;text-align:center}
 .cta-banner h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3.5rem);font-weight:300;margin-bottom:1rem;color:var(--text)}
 .cta-banner h2 em{font-style:italic;color:var(--accent)}
@@ -200,8 +131,6 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 .btn-outline:hover{border-color:var(--accent-border);color:var(--accent)}
 .btn-white-outline{border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.65);padding:0.9rem 2.2rem;font-family:var(--mono);font-size:0.74rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:all 0.2s}
 .btn-white-outline:hover{border-color:var(--accent);color:var(--accent)}
-
-/* ── FOOTER ── */
 .pt-footer{background:#060B18;border-top:1px solid rgba(255,255,255,0.07);padding:2rem 3rem}
 .pt-footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 .pt-footer-logo{font-family:var(--mono);font-size:0.78rem;letter-spacing:0.16em;color:rgba(255,255,255,0.5);font-weight:700}
@@ -209,14 +138,8 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 .pt-footer-links a{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;white-space:nowrap;transition:color 0.2s}
 .pt-footer-links a:hover{color:rgba(255,255,255,0.7)}
 .pt-footer-note{font-family:var(--mono);font-size:0.58rem;color:rgba(255,255,255,0.2);letter-spacing:0.06em}
-
-/* ── RESPONSIVE ── */
 @media(max-width:1200px){.bp-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:1024px){
-  .hero{grid-template-columns:1fr}.hero-geo{display:none}
-  .what-grid{grid-template-columns:1fr 1fr}
-  .colour-grid{grid-template-columns:1fr}
-}
+@media(max-width:1024px){.hero{grid-template-columns:1fr}.hero-geo{display:none}.what-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:768px){
   nav{padding:0.8rem 1.2rem;width:100%}
   .nav-links,.nav-cta{display:none}
@@ -224,12 +147,13 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
   .hero{grid-template-columns:1fr;overflow-x:hidden}
   .hero-copy{padding:3rem 1.5rem}
   .container{padding:0 1.5rem}
-  .blueprints-inner,.colour-inner{padding:0 1.5rem}
+  .blueprints-inner{padding:0 1.5rem}
   .assess-feature{grid-template-columns:1fr}
   .assess-geo-side{min-height:280px}
   .products-strip{grid-template-columns:1fr}
   .what-grid,.bp-grid{grid-template-columns:1fr}
-  .cta-banner,.investor-strip{padding:4rem 1.5rem}
+  .cta-banner{padding:4rem 1.5rem}
+  .investor-strip{padding:4rem 1.5rem}
   .pt-footer{padding:2rem 1.5rem}
   .pt-footer-inner{flex-direction:column;text-align:center;align-items:center}
   .pt-footer-links{justify-content:center;gap:1.2rem}
@@ -238,8 +162,6 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
   .testimonials-grid{grid-template-columns:1fr!important}
   .geo-label-narc,.geo-label-sist,.geo-label-yarc,.geo-label-oll{display:none}
   .nav-drawer{width:100%;left:0;right:0}
-  .chat-upsell{flex-direction:column;padding:2rem 1.5rem}
-  .colour-grid{grid-template-columns:1fr}
 }
 @media(max-width:480px){
   .hero-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
@@ -257,11 +179,9 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
   <ul class="nav-links">
     <li><a href="reports.html">Reports</a></li>
     <li><a href="prototypes.html">Prototypes</a></li>
-    <li><a href="store_index.html">Store</a></li>
     <li><a href="framework.html">Framework</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <a href="reports.html" class="nav-cta">Begin Assessment →</a>
   <button class="nav-hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -271,13 +191,12 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
   <a href="index.html">Home</a>
   <a href="reports.html">Reports</a>
   <a href="prototypes.html">Prototypes</a>
-  <a href="store_index.html">Store</a>
   <a href="framework.html">Framework</a>
   <a href="contact.html">Contact</a>
   <a href="reports.html" class="drawer-cta">Begin Assessment — Free →</a>
 </div>
 
-<!-- ── HERO ── -->
+<!-- HERO -->
 <div class="hero">
   <div class="hero-copy">
     <span class="hero-eyebrow">PsyTectrics Technologies Ltd · Behavioural Intelligence</span>
@@ -294,8 +213,6 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
       <div class="hero-stat"><div class="hero-stat-num">10</div><div class="hero-stat-label">Awareness levels</div></div>
     </div>
   </div>
-
-  <!-- GEO — corrected polar colours: NARC red ↔ YARC cyan | SIST blue ↔ Øll amber -->
   <div class="hero-geo">
     <div class="geo-diagram-wrap">
       <span class="geo-label-narc">NARC</span>
@@ -303,73 +220,58 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
       <span class="geo-label-yarc">YARC</span>
       <span class="geo-label-oll">Øll</span>
       <svg viewBox="120 120 660 660" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
-        <!-- Structure lines -->
-        <polygon points="450,302 598,450 450,598 302,450" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.2"/>
-        <circle cx="450" cy="450" r="220" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.6" stroke-dasharray="3 9"/>
-        <circle cx="450" cy="450" r="70" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
-        <line x1="450" y1="106" x2="450" y2="794" stroke="rgba(255,255,255,0.05)" stroke-width="0.5" stroke-dasharray="4 8"/>
-        <line x1="106" y1="450" x2="794" y2="450" stroke="rgba(255,255,255,0.05)" stroke-width="0.5" stroke-dasharray="4 8"/>
-
-        <!-- NARC arms — Red #C4622D — top -->
-        <line x1="450" y1="302" x2="367.6" y2="246" stroke="#C4622D" stroke-width="1.4" opacity="0.55"/>
+        <polygon points="450,302 598,450 450,598 302,450" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.2"/>
+        <circle cx="450" cy="450" r="220" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.6" stroke-dasharray="3 9"/>
+        <circle cx="450" cy="450" r="70" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+        <line x1="450" y1="106" x2="450" y2="794" stroke="rgba(255,255,255,0.06)" stroke-width="0.5" stroke-dasharray="4 8"/>
+        <line x1="106" y1="450" x2="794" y2="450" stroke="rgba(255,255,255,0.06)" stroke-width="0.5" stroke-dasharray="4 8"/>
+        <line x1="450" y1="302" x2="367.6" y2="246" stroke="#C4622D" stroke-width="1.4" opacity="0.5"/>
         <line x1="367.6" y1="246" x2="286.6" y2="198.4" stroke="#C4622D" stroke-width="1" opacity="0.3"/>
         <line x1="367.6" y1="246" x2="392.8" y2="155.5" stroke="#C4622D" stroke-width="1" opacity="0.3"/>
-        <line x1="450" y1="302" x2="532.4" y2="246" stroke="#C4622D" stroke-width="1.4" opacity="0.55"/>
+        <line x1="450" y1="302" x2="532.4" y2="246" stroke="#C4622D" stroke-width="1.4" opacity="0.5"/>
         <line x1="532.4" y1="246" x2="507.2" y2="155.5" stroke="#C4622D" stroke-width="1" opacity="0.3"/>
         <line x1="532.4" y1="246" x2="613.4" y2="198.4" stroke="#C4622D" stroke-width="1" opacity="0.3"/>
-
-        <!-- SIST arms — Deep Blue #3B4FD4 — right -->
-        <line x1="598" y1="450" x2="654" y2="367.6" stroke="#3B4FD4" stroke-width="1.4" opacity="0.55"/>
-        <line x1="654" y1="367.6" x2="701.6" y2="286.6" stroke="#3B4FD4" stroke-width="1" opacity="0.3"/>
-        <line x1="654" y1="367.6" x2="744.5" y2="392.8" stroke="#3B4FD4" stroke-width="1" opacity="0.3"/>
-        <line x1="598" y1="450" x2="654" y2="532.4" stroke="#3B4FD4" stroke-width="1.4" opacity="0.55"/>
-        <line x1="654" y1="532.4" x2="744.5" y2="507.2" stroke="#3B4FD4" stroke-width="1" opacity="0.3"/>
-        <line x1="654" y1="532.4" x2="701.6" y2="613.4" stroke="#3B4FD4" stroke-width="1" opacity="0.3"/>
-
-        <!-- YARC arms — Cyan #00C4B4 — bottom (polar opposite of NARC red) -->
-        <line x1="450" y1="598" x2="532.4" y2="654" stroke="#00C4B4" stroke-width="1.4" opacity="0.55"/>
-        <line x1="532.4" y1="654" x2="613.4" y2="701.6" stroke="#00C4B4" stroke-width="1" opacity="0.3"/>
-        <line x1="532.4" y1="654" x2="507.2" y2="744.5" stroke="#00C4B4" stroke-width="1" opacity="0.3"/>
-        <line x1="450" y1="598" x2="367.6" y2="654" stroke="#00C4B4" stroke-width="1.4" opacity="0.55"/>
-        <line x1="367.6" y1="654" x2="392.8" y2="744.5" stroke="#00C4B4" stroke-width="1" opacity="0.3"/>
-        <line x1="367.6" y1="654" x2="286.6" y2="701.6" stroke="#00C4B4" stroke-width="1" opacity="0.3"/>
-
-        <!-- Øll arms — Amber #D4920A — left (polar opposite of SIST blue) -->
-        <line x1="302" y1="450" x2="246" y2="532.4" stroke="#D4920A" stroke-width="1.4" opacity="0.55"/>
-        <line x1="246" y1="532.4" x2="198.4" y2="613.4" stroke="#D4920A" stroke-width="1" opacity="0.3"/>
-        <line x1="246" y1="532.4" x2="155.5" y2="507.2" stroke="#D4920A" stroke-width="1" opacity="0.3"/>
-        <line x1="302" y1="450" x2="246" y2="367.6" stroke="#D4920A" stroke-width="1.4" opacity="0.55"/>
-        <line x1="246" y1="367.6" x2="155.5" y2="392.8" stroke="#D4920A" stroke-width="1" opacity="0.3"/>
-        <line x1="246" y1="367.6" x2="198.4" y2="286.6" stroke="#D4920A" stroke-width="1" opacity="0.3"/>
-
-        <!-- Zero-point core -->
-        <circle cx="450" cy="450" r="52" fill="rgba(6,11,24,0.85)" stroke="rgba(0,212,255,0.3)" stroke-width="1.8"/>
-        <circle cx="450" cy="450" r="39" fill="none" stroke="rgba(0,212,255,0.08)" stroke-width="0.5"/>
-        <circle cx="450" cy="450" r="3" fill="#00D4FF" opacity="0.7"/>
+        <line x1="598" y1="450" x2="654" y2="367.6" stroke="#534AB7" stroke-width="1.4" opacity="0.5"/>
+        <line x1="654" y1="367.6" x2="701.6" y2="286.6" stroke="#534AB7" stroke-width="1" opacity="0.3"/>
+        <line x1="654" y1="367.6" x2="744.5" y2="392.8" stroke="#534AB7" stroke-width="1" opacity="0.3"/>
+        <line x1="598" y1="450" x2="654" y2="532.4" stroke="#534AB7" stroke-width="1.4" opacity="0.5"/>
+        <line x1="654" y1="532.4" x2="744.5" y2="507.2" stroke="#534AB7" stroke-width="1" opacity="0.3"/>
+        <line x1="654" y1="532.4" x2="701.6" y2="613.4" stroke="#534AB7" stroke-width="1" opacity="0.3"/>
+        <line x1="450" y1="598" x2="532.4" y2="654" stroke="#1D9E75" stroke-width="1.4" opacity="0.5"/>
+        <line x1="532.4" y1="654" x2="613.4" y2="701.6" stroke="#1D9E75" stroke-width="1" opacity="0.3"/>
+        <line x1="532.4" y1="654" x2="507.2" y2="744.5" stroke="#1D9E75" stroke-width="1" opacity="0.3"/>
+        <line x1="450" y1="598" x2="367.6" y2="654" stroke="#1D9E75" stroke-width="1.4" opacity="0.5"/>
+        <line x1="367.6" y1="654" x2="392.8" y2="744.5" stroke="#1D9E75" stroke-width="1" opacity="0.3"/>
+        <line x1="367.6" y1="654" x2="286.6" y2="701.6" stroke="#1D9E75" stroke-width="1" opacity="0.3"/>
+        <line x1="302" y1="450" x2="246" y2="532.4" stroke="#A0426B" stroke-width="1.4" opacity="0.5"/>
+        <line x1="246" y1="532.4" x2="198.4" y2="613.4" stroke="#A0426B" stroke-width="1" opacity="0.3"/>
+        <line x1="246" y1="532.4" x2="155.5" y2="507.2" stroke="#A0426B" stroke-width="1" opacity="0.3"/>
+        <line x1="302" y1="450" x2="246" y2="367.6" stroke="#A0426B" stroke-width="1.4" opacity="0.5"/>
+        <line x1="246" y1="367.6" x2="155.5" y2="392.8" stroke="#A0426B" stroke-width="1" opacity="0.3"/>
+        <line x1="246" y1="367.6" x2="198.4" y2="286.6" stroke="#A0426B" stroke-width="1" opacity="0.3"/>
+        <circle cx="450" cy="450" r="52" fill="rgba(6,11,24,0.8)" stroke="rgba(0,212,255,0.3)" stroke-width="1.8"/>
+        <circle cx="450" cy="450" r="39" fill="none" stroke="rgba(0,212,255,0.1)" stroke-width="0.5"/>
+        <circle cx="450" cy="450" r="3" fill="#00D4FF" opacity="0.6"/>
         <text x="450" y="454" text-anchor="middle" font-size="9" fill="rgba(0,212,255,0.5)" font-family="monospace" letter-spacing="1">ZERO-POINT</text>
-
-        <!-- OC node diamonds -->
-        <polygon points="450,272 480,302 450,332 420,302" fill="rgba(196,98,45,0.1)" stroke="#C4622D" stroke-width="2"/>
-        <polygon points="598,420 628,450 598,480 568,450" fill="rgba(59,79,212,0.1)" stroke="#3B4FD4" stroke-width="2"/>
-        <polygon points="450,568 480,598 450,628 420,598" fill="rgba(0,196,180,0.1)" stroke="#00C4B4" stroke-width="2"/>
-        <polygon points="302,420 332,450 302,480 272,450" fill="rgba(212,146,10,0.1)" stroke="#D4920A" stroke-width="2"/>
-
-        <!-- App node ellipses -->
-        <ellipse cx="367.6" cy="246" rx="18" ry="10" transform="rotate(-22,367.6,246)" fill="none" stroke="#C4622D" stroke-width="1.8" opacity="0.55"/>
-        <ellipse cx="532.4" cy="246" rx="18" ry="10" transform="rotate(22,532.4,246)" fill="none" stroke="#C4622D" stroke-width="1.8" opacity="0.55"/>
-        <ellipse cx="654" cy="367.6" rx="18" ry="10" transform="rotate(68,654,367.6)" fill="none" stroke="#3B4FD4" stroke-width="1.8" opacity="0.55"/>
-        <ellipse cx="654" cy="532.4" rx="18" ry="10" transform="rotate(112,654,532.4)" fill="none" stroke="#3B4FD4" stroke-width="1.8" opacity="0.55"/>
-        <ellipse cx="532.4" cy="654" rx="18" ry="10" transform="rotate(158,532.4,654)" fill="none" stroke="#00C4B4" stroke-width="1.8" opacity="0.55"/>
-        <ellipse cx="367.6" cy="654" rx="18" ry="10" transform="rotate(202,367.6,654)" fill="none" stroke="#00C4B4" stroke-width="1.8" opacity="0.55"/>
-        <ellipse cx="246" cy="532.4" rx="18" ry="10" transform="rotate(248,246,532.4)" fill="none" stroke="#D4920A" stroke-width="1.8" opacity="0.55"/>
-        <ellipse cx="246" cy="367.6" rx="18" ry="10" transform="rotate(292,246,367.6)" fill="none" stroke="#D4920A" stroke-width="1.8" opacity="0.55"/>
+        <polygon points="450,272 480,302 450,332 420,302" fill="rgba(196,98,45,0.08)" stroke="#C4622D" stroke-width="2"/>
+        <polygon points="598,420 628,450 598,480 568,450" fill="rgba(83,74,183,0.08)" stroke="#534AB7" stroke-width="2"/>
+        <polygon points="450,568 480,598 450,628 420,598" fill="rgba(29,158,117,0.08)" stroke="#1D9E75" stroke-width="2"/>
+        <polygon points="302,420 332,450 302,480 272,450" fill="rgba(160,66,107,0.08)" stroke="#A0426B" stroke-width="2"/>
+        <ellipse cx="367.6" cy="246" rx="18" ry="10" transform="rotate(-22,367.6,246)" fill="none" stroke="#C4622D" stroke-width="1.8" opacity="0.6"/>
+        <ellipse cx="532.4" cy="246" rx="18" ry="10" transform="rotate(22,532.4,246)" fill="none" stroke="#C4622D" stroke-width="1.8" opacity="0.6"/>
+        <ellipse cx="654" cy="367.6" rx="18" ry="10" transform="rotate(68,654,367.6)" fill="none" stroke="#534AB7" stroke-width="1.8" opacity="0.6"/>
+        <ellipse cx="654" cy="532.4" rx="18" ry="10" transform="rotate(112,654,532.4)" fill="none" stroke="#534AB7" stroke-width="1.8" opacity="0.6"/>
+        <ellipse cx="532.4" cy="654" rx="18" ry="10" transform="rotate(158,532.4,654)" fill="none" stroke="#1D9E75" stroke-width="1.8" opacity="0.6"/>
+        <ellipse cx="367.6" cy="654" rx="18" ry="10" transform="rotate(202,367.6,654)" fill="none" stroke="#1D9E75" stroke-width="1.8" opacity="0.6"/>
+        <ellipse cx="246" cy="532.4" rx="18" ry="10" transform="rotate(248,246,532.4)" fill="none" stroke="#A0426B" stroke-width="1.8" opacity="0.6"/>
+        <ellipse cx="246" cy="367.6" rx="18" ry="10" transform="rotate(292,246,367.6)" fill="none" stroke="#A0426B" stroke-width="1.8" opacity="0.6"/>
       </svg>
       <span class="geo-cta">The SC Blueprint™ · 56 nodes · 2 layers</span>
     </div>
   </div>
 </div>
 
-<!-- ── WHAT WE DO ── -->
+<!-- WHAT WE DO -->
 <section>
   <div class="container">
     <span class="section-label">What we do</span>
@@ -379,7 +281,7 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
       <div class="what-card">
         <div class="what-icon">◈</div>
         <h3>SC <em>Blueprint™</em></h3>
-        <p>A proprietary awareness framework mapping four concurrent behavioural codes — NARC, YARC, SIST, and Øll — across conscious and subconscious layers. The operating system underneath every human behaviour pattern.</p>
+        <p>A proprietary awareness framework mapping four concurrent behavioural codes — NARC, SIST, YARC, and Øll — across conscious and subconscious layers. The operating system underneath every human behaviour pattern.</p>
         <a href="framework.html" class="what-link">Explore the framework →</a>
       </div>
       <div class="what-card">
@@ -388,119 +290,74 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
         <p>A hierarchical psychometric scoring engine producing an Awareness Index score, Drift measurement, and full Observer Code ratio. 56 structured questions. Two layers. One unified profile — free to complete.</p>
         <a href="reports.html" class="what-link">Take the assessment →</a>
       </div>
-      <!-- Awareness AI — gated card -->
-      <div class="chat-gate-card">
-        <div class="chat-gate-icon">◐</div>
+      <div class="what-card">
+        <div class="what-icon">◐</div>
         <h3>Awareness <em>AI™</em></h3>
-        <p>AI-powered profile interpretation. Chat with your decoded assessment — Mirror mode reflects your own patterns back. Subject mode simulates how a profiled person operates. Intelligence that knows exactly who it's talking about.</p>
-        <div class="chat-gate-badge">🔒 Unlocks after Solo or Observer Report · +£10</div>
-        <div class="chat-gate-lock">Available at checkout — purchase a report first</div>
+        <p>AI-powered profile interpretation. Chat with your decoded assessment — Mirror mode reflects your own patterns, Subject mode simulates how a profiled person operates. Intelligence that knows who it's talking about.</p>
+        <a href="chat.html" class="what-link">Try Profile Chat →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── YOUR BLUEPRINT COLOUR ── -->
-<div class="colour-section">
-  <div class="colour-inner">
-    <div class="colour-grid">
-      <div>
-        <span class="section-label" style="color:var(--accent)">Your Blueprint Colour</span>
-        <h2 class="section-title" style="color:#FFFFFF">Every profile is<br/><em>a unique colour.</em></h2>
-        <p class="colour-copy-text">Your exact Observer Code percentages are blended into a single unique hex colour — your <strong>Blueprint Colour</strong>. No two profiles produce the same shade. It's yours to keep, share, and use.</p>
-        <ul class="colour-steps">
-          <li class="colour-step"><span class="colour-step-num">01</span><span class="colour-step-text">Complete the <strong>free 56-question assessment</strong></span></li>
-          <li class="colour-step"><span class="colour-step-num">02</span><span class="colour-step-text">Your <strong>Blueprint Colour</strong> is generated instantly from your NARC / YARC / SIST / Øll percentages</span></li>
-          <li class="colour-step"><span class="colour-step-num">03</span><span class="colour-step-text">Shown on your results screen — <strong>shareable, downloadable, yours</strong></span></li>
-          <li class="colour-step"><span class="colour-step-num">04</span><span class="colour-step-text">Re-assess when something shifts — watch your colour <strong>evolve over time</strong></span></li>
-        </ul>
-      </div>
-      <div class="colour-demo">
-        <!-- Example swatch — proportional to NARC/SIST/YARC/Øll (example: 35/30/20/15) -->
-        <div class="colour-swatch-wrap" id="demoSwatch">
-          <div class="colour-swatch" style="background:#C4622D;flex:35" id="sw-narc"><span class="colour-swatch-label" style="color:rgba(255,255,255,0.6)">NARC 35%</span></div>
-          <div class="colour-swatch" style="background:#3B4FD4;flex:30" id="sw-sist"><span class="colour-swatch-label" style="color:rgba(255,255,255,0.6)">SIST 30%</span></div>
-          <div class="colour-swatch" style="background:#00C4B4;flex:20" id="sw-yarc"><span class="colour-swatch-label" style="color:rgba(255,255,255,0.6)">YARC 20%</span></div>
-          <div class="colour-swatch" style="background:#D4920A;flex:15" id="sw-oll"><span class="colour-swatch-label" style="color:rgba(255,255,255,0.6)">Øll 15%</span></div>
-        </div>
-        <div class="colour-result" id="colourResult">
-          <div class="colour-hex-box" id="colourBox" style="background:#7B6442"></div>
-          <div>
-            <div class="colour-hex-val" id="colourHex">#7B6442</div>
-            <div class="colour-hex-sub">Example profile · NARC 35 · SIST 30 · YARC 20 · Øll 15</div>
-          </div>
-        </div>
-        <p style="font-family:var(--mono);font-size:0.6rem;color:rgba(255,255,255,0.2);letter-spacing:0.08em;margin-top:1.2rem;text-transform:uppercase">Example shown · your colour generated after assessment</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ── ASSESSMENT FEATURE ── -->
+<!-- ASSESSMENT FEATURE -->
 <div class="assess-feature">
   <div class="assess-geo-side">
-    <!-- Same geo, same corrected colours -->
     <svg viewBox="120 120 660 660" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
       <polygon points="450,302 598,450 450,598 302,450" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.2"/>
       <circle cx="450" cy="450" r="220" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.6" stroke-dasharray="3 9"/>
       <line x1="450" y1="106" x2="450" y2="794" stroke="rgba(255,255,255,0.05)" stroke-width="0.5" stroke-dasharray="4 8"/>
       <line x1="106" y1="450" x2="794" y2="450" stroke="rgba(255,255,255,0.05)" stroke-width="0.5" stroke-dasharray="4 8"/>
-      <!-- NARC red -->
       <line x1="450" y1="302" x2="367.6" y2="246" stroke="#C4622D" stroke-width="1.4" opacity="0.6"/>
       <line x1="367.6" y1="246" x2="286.6" y2="198.4" stroke="#C4622D" stroke-width="1" opacity="0.35"/>
       <line x1="367.6" y1="246" x2="392.8" y2="155.5" stroke="#C4622D" stroke-width="1" opacity="0.35"/>
       <line x1="450" y1="302" x2="532.4" y2="246" stroke="#C4622D" stroke-width="1.4" opacity="0.6"/>
       <line x1="532.4" y1="246" x2="507.2" y2="155.5" stroke="#C4622D" stroke-width="1" opacity="0.35"/>
       <line x1="532.4" y1="246" x2="613.4" y2="198.4" stroke="#C4622D" stroke-width="1" opacity="0.35"/>
-      <!-- SIST blue -->
-      <line x1="598" y1="450" x2="654" y2="367.6" stroke="#3B4FD4" stroke-width="1.4" opacity="0.6"/>
-      <line x1="654" y1="367.6" x2="701.6" y2="286.6" stroke="#3B4FD4" stroke-width="1" opacity="0.35"/>
-      <line x1="654" y1="367.6" x2="744.5" y2="392.8" stroke="#3B4FD4" stroke-width="1" opacity="0.35"/>
-      <line x1="598" y1="450" x2="654" y2="532.4" stroke="#3B4FD4" stroke-width="1.4" opacity="0.6"/>
-      <line x1="654" y1="532.4" x2="744.5" y2="507.2" stroke="#3B4FD4" stroke-width="1" opacity="0.35"/>
-      <line x1="654" y1="532.4" x2="701.6" y2="613.4" stroke="#3B4FD4" stroke-width="1" opacity="0.35"/>
-      <!-- YARC cyan -->
-      <line x1="450" y1="598" x2="532.4" y2="654" stroke="#00C4B4" stroke-width="1.4" opacity="0.6"/>
-      <line x1="532.4" y1="654" x2="613.4" y2="701.6" stroke="#00C4B4" stroke-width="1" opacity="0.35"/>
-      <line x1="532.4" y1="654" x2="507.2" y2="744.5" stroke="#00C4B4" stroke-width="1" opacity="0.35"/>
-      <line x1="450" y1="598" x2="367.6" y2="654" stroke="#00C4B4" stroke-width="1.4" opacity="0.6"/>
-      <line x1="367.6" y1="654" x2="392.8" y2="744.5" stroke="#00C4B4" stroke-width="1" opacity="0.35"/>
-      <line x1="367.6" y1="654" x2="286.6" y2="701.6" stroke="#00C4B4" stroke-width="1" opacity="0.35"/>
-      <!-- Øll amber -->
-      <line x1="302" y1="450" x2="246" y2="532.4" stroke="#D4920A" stroke-width="1.4" opacity="0.6"/>
-      <line x1="246" y1="532.4" x2="198.4" y2="613.4" stroke="#D4920A" stroke-width="1" opacity="0.35"/>
-      <line x1="246" y1="532.4" x2="155.5" y2="507.2" stroke="#D4920A" stroke-width="1" opacity="0.35"/>
-      <line x1="302" y1="450" x2="246" y2="367.6" stroke="#D4920A" stroke-width="1.4" opacity="0.6"/>
-      <line x1="246" y1="367.6" x2="155.5" y2="392.8" stroke="#D4920A" stroke-width="1" opacity="0.35"/>
-      <line x1="246" y1="367.6" x2="198.4" y2="286.6" stroke="#D4920A" stroke-width="1" opacity="0.35"/>
-      <!-- Core -->
+      <line x1="598" y1="450" x2="654" y2="367.6" stroke="#534AB7" stroke-width="1.4" opacity="0.6"/>
+      <line x1="654" y1="367.6" x2="701.6" y2="286.6" stroke="#534AB7" stroke-width="1" opacity="0.35"/>
+      <line x1="654" y1="367.6" x2="744.5" y2="392.8" stroke="#534AB7" stroke-width="1" opacity="0.35"/>
+      <line x1="598" y1="450" x2="654" y2="532.4" stroke="#534AB7" stroke-width="1.4" opacity="0.6"/>
+      <line x1="654" y1="532.4" x2="744.5" y2="507.2" stroke="#534AB7" stroke-width="1" opacity="0.35"/>
+      <line x1="654" y1="532.4" x2="701.6" y2="613.4" stroke="#534AB7" stroke-width="1" opacity="0.35"/>
+      <line x1="450" y1="598" x2="532.4" y2="654" stroke="#1D9E75" stroke-width="1.4" opacity="0.6"/>
+      <line x1="532.4" y1="654" x2="613.4" y2="701.6" stroke="#1D9E75" stroke-width="1" opacity="0.35"/>
+      <line x1="532.4" y1="654" x2="507.2" y2="744.5" stroke="#1D9E75" stroke-width="1" opacity="0.35"/>
+      <line x1="450" y1="598" x2="367.6" y2="654" stroke="#1D9E75" stroke-width="1.4" opacity="0.6"/>
+      <line x1="367.6" y1="654" x2="392.8" y2="744.5" stroke="#1D9E75" stroke-width="1" opacity="0.35"/>
+      <line x1="367.6" y1="654" x2="286.6" y2="701.6" stroke="#1D9E75" stroke-width="1" opacity="0.35"/>
+      <line x1="302" y1="450" x2="246" y2="532.4" stroke="#A0426B" stroke-width="1.4" opacity="0.6"/>
+      <line x1="246" y1="532.4" x2="198.4" y2="613.4" stroke="#A0426B" stroke-width="1" opacity="0.35"/>
+      <line x1="246" y1="532.4" x2="155.5" y2="507.2" stroke="#A0426B" stroke-width="1" opacity="0.35"/>
+      <line x1="302" y1="450" x2="246" y2="367.6" stroke="#A0426B" stroke-width="1.4" opacity="0.6"/>
+      <line x1="246" y1="367.6" x2="155.5" y2="392.8" stroke="#A0426B" stroke-width="1" opacity="0.35"/>
+      <line x1="246" y1="367.6" x2="198.4" y2="286.6" stroke="#A0426B" stroke-width="1" opacity="0.35"/>
       <circle cx="450" cy="450" r="52" fill="rgba(6,11,24,0.9)" stroke="rgba(0,212,255,0.35)" stroke-width="1.8"/>
       <circle cx="450" cy="450" r="3" fill="#00D4FF" opacity="0.8"/>
       <text x="450" y="454" text-anchor="middle" font-size="9" fill="rgba(0,212,255,0.6)" font-family="monospace" letter-spacing="1">ZERO-POINT</text>
       <polygon points="450,272 480,302 450,332 420,302" fill="rgba(196,98,45,0.1)" stroke="#C4622D" stroke-width="2" opacity="0.8"/>
-      <polygon points="598,420 628,450 598,480 568,450" fill="rgba(59,79,212,0.1)" stroke="#3B4FD4" stroke-width="2" opacity="0.8"/>
-      <polygon points="450,568 480,598 450,628 420,598" fill="rgba(0,196,180,0.1)" stroke="#00C4B4" stroke-width="2" opacity="0.8"/>
-      <polygon points="302,420 332,450 302,480 272,450" fill="rgba(212,146,10,0.1)" stroke="#D4920A" stroke-width="2" opacity="0.8"/>
+      <polygon points="598,420 628,450 598,480 568,450" fill="rgba(83,74,183,0.1)" stroke="#534AB7" stroke-width="2" opacity="0.8"/>
+      <polygon points="450,568 480,598 450,628 420,598" fill="rgba(29,158,117,0.1)" stroke="#1D9E75" stroke-width="2" opacity="0.8"/>
+      <polygon points="302,420 332,450 302,480 272,450" fill="rgba(160,66,107,0.1)" stroke="#A0426B" stroke-width="2" opacity="0.8"/>
     </svg>
   </div>
   <div class="assess-copy-side">
     <span class="section-label">The assessment</span>
     <h2 class="section-title">56 questions.<br/><em>One profile.</em></h2>
-    <p class="section-desc" style="color:rgba(255,255,255,0.45)">The SC Blueprint™ assessment maps your behavioural signature across two simultaneous layers — conscious and subconscious. Your Observer Code ratio, Awareness Index™, Drift score, and Blueprint Colour are generated instantly.</p>
+    <p class="section-desc" style="color:rgba(255,255,255,0.45)">The SC Blueprint™ assessment maps your behavioural signature across two simultaneous layers — conscious and subconscious. Your Observer Code ratio, Awareness Index™, and Drift score are generated instantly.</p>
     <ul class="assess-features-list">
       <li>Free to complete — results shown immediately</li>
       <li>Hierarchical scoring — not a flat average</li>
       <li>Conscious + subconscious dual layer</li>
-      <li>Your unique Blueprint Colour generated</li>
-      <li>Full AI-written interpretive report available</li>
+      <li>Full AI-written interpretive report</li>
       <li>56-character encoded assessment code</li>
-      <li>Profile Chat available after report purchase (+£10)</li>
+      <li>Profile Chat integration</li>
     </ul>
-    <a href="reports.html" class="btn-hero-primary" style="align-self:flex-start">Begin Assessment — Free →</a>
+    <a href="reports.html" class="btn-hero-primary" style="align-self:flex-start">Begin Assessment →</a>
   </div>
 </div>
 
-<!-- ── REPORTS ── -->
+<!-- REPORTS -->
 <section>
   <div class="container">
     <span class="section-label">Reports</span>
@@ -510,7 +367,7 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
       <a href="reports.html" class="product-strip-card">
         <span class="ps-tag">Personal · Solo</span>
         <h3>Solo <em>Assessment</em></h3>
-        <p>Complete the 56-question assessment and receive your full written AI profile — Observer Code ratio, Awareness Index™, Drift score, Blueprint Colour, and interpretive report.</p>
+        <p>Complete the 56-question assessment and receive your full written AI profile — Observer Code ratio, Awareness Index™, Drift score, and interpretive report.</p>
         <span class="ps-link">Start free →</span>
       </a>
       <a href="reports.html#observer" class="product-strip-card">
@@ -529,29 +386,13 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
   </div>
 </section>
 
-<!-- ── AWARENESS AI UPSELL BANNER ── -->
-<div class="chat-upsell">
-  <div class="chat-upsell-text">
-    <span class="chat-upsell-eyebrow">Awareness AI™ · Profile Chat</span>
-    <h3 class="chat-upsell-heading">Chat with your <em>Blueprint.</em></h3>
-    <p class="chat-upsell-sub">Available after purchasing a Solo or Observer Report. Mirror mode reflects your own profile back. Subject mode lets you explore how a profiled person operates. Not a generic chatbot — it knows exactly who it's talking about.</p>
-  </div>
-  <div class="chat-upsell-actions">
-    <div style="text-align:right">
-      <div class="chat-upsell-price">Add at checkout · <strong>+£10</strong></div>
-      <div style="font-family:var(--mono);font-size:0.58rem;color:rgba(255,255,255,0.2);margin-top:0.2rem;text-transform:uppercase;letter-spacing:0.06em">Requires Solo or Observer Report</div>
-    </div>
-    <a href="reports.html" class="btn-upsell">Get a Report First →</a>
-  </div>
-</div>
-
-<!-- ── HARDWARE BLUEPRINTS ── -->
+<!-- PROTOTYPES — five hardware prototypes -->
 <div class="blueprints-section">
   <div class="blueprints-inner">
     <div class="blueprints-header">
       <div>
         <span class="section-label">Hardware · TRL 2–3</span>
-        <h2 class="section-title" style="color:#FFFFFF;margin-bottom:0">Five hardware <em style="color:var(--accent)">blueprints.</em></h2>
+        <h2 class="section-title" style="color:#FFFFFF;margin-bottom:0">Five hardware <em style="color:var(--accent)">prototypes.</em></h2>
       </div>
       <a href="prototypes.html" class="btn-white-outline">View all prototypes →</a>
     </div>
@@ -595,7 +436,7 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
   </div>
 </div>
 
-<!-- ── INVESTOR ── -->
+<!-- INVESTOR -->
 <div class="investor-strip">
   <p><strong>PsyTectrics is building the next generation of behavioural intelligence technology</strong> — combining psychometrics, awareness science, and artificial intelligence to help people and organisations understand how humans think, decide, communicate, and perform.</p>
   <div class="investor-actions">
@@ -604,7 +445,7 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
   </div>
 </div>
 
-<!-- ── TESTIMONIALS ── -->
+<!-- TESTIMONIALS -->
 <div style="border-top:1px solid var(--line);padding:5rem 1.5rem;background:#fff;text-align:center;overflow-x:hidden">
   <p style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted2);margin-bottom:2.5rem">What people have said</p>
   <div class="testimonials-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:var(--line);max-width:960px;margin:0 auto">
@@ -623,13 +464,13 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
   </div>
 </div>
 
-<!-- ── CTA ── -->
+<!-- CTA -->
 <div class="cta-banner">
   <h2>Start with the<br/><em>free assessment.</em></h2>
-  <p>56 questions. Two layers. Your full SC Blueprint™ profile and unique Blueprint Colour shown immediately.</p>
+  <p>56 questions. Two layers. Your full SC Blueprint™ profile shown immediately. Results generated instantly.</p>
   <div class="cta-actions">
     <a href="reports.html" class="btn-primary">Begin assessment — free →</a>
-    <a href="prototypes.html" class="btn-outline">Explore the Prototypes</a>
+    <a href="framework.html" class="btn-outline">Explore the Blueprint</a>
   </div>
 </div>
 
@@ -640,7 +481,6 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
       <a href="index.html">Home</a>
       <a href="reports.html">Reports</a>
       <a href="prototypes.html">Prototypes</a>
-      <a href="store_index.html">Store</a>
       <a href="framework.html">Framework</a>
       <a href="contact.html">Contact</a>
       <a href="privacy.html">Privacy</a>
@@ -650,7 +490,6 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 </footer>
 
 <script>
-// ── Nav hamburger ──────────────────────────────────────────────────────────
 const hamburger = document.getElementById('hamburger');
 const drawer = document.getElementById('navDrawer');
 hamburger.addEventListener('click', function() {
@@ -663,51 +502,6 @@ drawer.querySelectorAll('a').forEach(function(link) {
     drawer.classList.remove('open');
   });
 });
-
-// ── Blueprint Colour generator ─────────────────────────────────────────────
-// Blends NARC/YARC/SIST/Øll base colours proportionally by percentage
-// NARC=#C4622D  SIST=#3B4FD4  YARC=#00C4B4  Øll=#D4920A
-function hexToRgb(hex) {
-  const r = parseInt(hex.slice(1,3),16);
-  const g = parseInt(hex.slice(3,5),16);
-  const b = parseInt(hex.slice(5,7),16);
-  return [r,g,b];
-}
-function rgbToHex(r,g,b) {
-  return '#' + [r,g,b].map(v => Math.round(v).toString(16).padStart(2,'0')).join('').toUpperCase();
-}
-function blendBlueprintColour(narc, yarc, sist, oll) {
-  const total = narc + yarc + sist + oll;
-  if (total === 0) return '#888888';
-  const colours = [
-    { rgb: hexToRgb('#C4622D'), pct: narc / total },
-    { rgb: hexToRgb('#00C4B4'), pct: yarc / total },
-    { rgb: hexToRgb('#3B4FD4'), pct: sist / total },
-    { rgb: hexToRgb('#D4920A'), pct: oll  / total },
-  ];
-  let r = 0, g = 0, b = 0;
-  colours.forEach(c => {
-    r += c.rgb[0] * c.pct;
-    g += c.rgb[1] * c.pct;
-    b += c.rgb[2] * c.pct;
-  });
-  return rgbToHex(r, g, b);
-}
-
-// Render the demo swatch (example 35/20/30/15)
-function renderDemoColour() {
-  const narc = 35, yarc = 20, sist = 30, oll = 15;
-  const hex = blendBlueprintColour(narc, yarc, sist, oll);
-  const box = document.getElementById('colourBox');
-  const hexEl = document.getElementById('colourHex');
-  if (box) box.style.background = hex;
-  if (hexEl) hexEl.textContent = hex;
-}
-renderDemoColour();
-
-// Expose globally so the reports page can call it after assessment completes:
-// window.generateBlueprintColour(narc%, yarc%, sist%, oll%) → hex string
-window.generateBlueprintColour = blendBlueprintColour;
 </script>
 </body>
 </html>

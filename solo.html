@@ -13,16 +13,7 @@
   --text:#0B1020;--muted:#6B7280;--muted2:#9CA3AF;
   --accent:#00D4FF;--accent-soft:rgba(0,212,255,0.08);--accent-border:rgba(0,212,255,0.25);
   --line:rgba(0,0,0,0.08);--line-strong:rgba(0,0,0,0.14);
-
-  /* ── POLAR PAIR COLOURS (RGB complementary) ──────────────────────────
-     NARC ↔ YARC  :  Red ↔ Cyan-teal   (RGB opposites)
-     SIST ↔ Øll   :  Deep blue ↔ Amber  (RGB opposites)
-  ──────────────────────────────────────────────────────────────────── */
-  --narc:#C4622D;   /* Red-orange */
-  --yarc:#00C4B4;   /* Cyan-teal  */
-  --sist:#3B4FD4;   /* Deep blue  */
-  --oll:#D4920A;    /* Amber-gold */
-
+  --narc:#C4622D;--yarc:#1D9E75;--sist:#534AB7;--oll:#A0426B;
   --serif:'Montserrat',sans-serif;--sans:'Inter',sans-serif;--mono:'Space Mono',monospace;
   --nav-h:70px;
 }
@@ -40,7 +31,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 
 .main{display:grid;grid-template-columns:1fr 1fr;height:calc(100vh - var(--nav-h));margin-top:var(--nav-h)}
 
-/* ── GEO COLUMN ── */
 .geo-col{border-right:1px solid var(--line);padding:1.5rem;display:flex;flex-direction:column;gap:1rem;background:#FAFBFC;overflow:hidden}
 .diag-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted)}
 .diag-header{display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
@@ -56,8 +46,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .diag-flip-out{animation:flip-out 0.45s ease forwards}
 .diag-flip-in{animation:flip-in 0.45s ease forwards}
 .diag-layer-badge{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--sist);text-align:center;flex-shrink:0}
-
-/* OC strip — updated to polar colours */
 .oc-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;flex-shrink:0}
 .oc-mini{display:flex;flex-direction:column;gap:2px}
 .oc-mini-label{font-family:var(--mono);font-size:6.5px;letter-spacing:0.08em}
@@ -65,7 +53,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .oc-mini-fill{height:100%;transition:width 0.6s ease}
 .oc-mini-pct{font-family:var(--mono);font-size:6.5px;color:var(--muted)}
 
-/* ── Q COLUMN ── */
 .q-col{display:flex;flex-direction:column;overflow:hidden}
 .q-progress-bar{height:2px;background:var(--line);flex-shrink:0}
 .q-progress-fill{height:100%;background:var(--accent);transition:width 0.4s ease;width:0%}
@@ -73,13 +60,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .q-body::-webkit-scrollbar{width:2px}
 .q-body::-webkit-scrollbar-thumb{background:var(--line-strong)}
 
-/* INTRO */
 .intro-eyebrow{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:0.75rem}
 .intro-title{font-family:var(--serif);font-weight:300;font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.1;margin-bottom:0.75rem}
 .intro-title em{font-style:italic;color:var(--accent)}
 .intro-desc{font-size:0.86rem;color:var(--muted);line-height:1.8;margin-bottom:0.5rem}
 .intro-free{font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:1.2rem;padding:0.75rem 1rem;background:var(--bg-soft);border-left:2px solid var(--accent)}
 .intro-free strong{color:var(--text);font-weight:500}
+
 .ctx-field{margin-bottom:0.9rem}
 .ctx-field label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:0.4rem}
 .ctx-field input,.ctx-field textarea,.ctx-field select{width:100%;font-family:var(--sans);font-size:0.86rem;color:var(--text);background:#fff;border:1px solid var(--line-strong);padding:0.7rem 1rem;outline:none;transition:border-color 0.2s;border-radius:0;-webkit-appearance:none}
@@ -92,7 +79,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .start-btn{width:100%;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--accent);color:#060B18;padding:0.9rem;border:none;cursor:pointer;font-weight:700;border-radius:0;margin-top:0.75rem;transition:opacity 0.2s}
 .start-btn:hover{opacity:0.85}
 
-/* QUESTIONS */
 .q-step{display:none;flex-direction:column;gap:1rem}
 .q-step.active{display:flex}
 .q-meta-row{display:flex;align-items:center;gap:8px}
@@ -123,16 +109,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .ar-track{height:2px;background:var(--line);width:100%;max-width:240px}
 .ar-fill{height:100%;transition:width 0.8s ease}
 
-/* ── BLUEPRINT COLOUR REVEAL ── */
-.blueprint-colour-reveal{background:#F8FAFB;border:1px solid var(--line);padding:1.2rem;width:100%;max-width:380px;text-align:center}
-.bc-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:0.75rem;display:block}
-.bc-swatch-row{display:flex;height:56px;width:100%;margin-bottom:0.75rem;overflow:hidden}
-.bc-swatch{flex:1;transition:flex 0.6s ease}
-.bc-hex-row{display:flex;align-items:center;gap:0.75rem;justify-content:center;margin-bottom:0.5rem}
-.bc-hex-box{width:36px;height:36px;border:1px solid var(--line-strong);flex-shrink:0}
-.bc-hex-val{font-family:var(--mono);font-size:0.9rem;letter-spacing:0.08em;color:var(--text);font-weight:700}
-.bc-desc{font-size:0.72rem;color:var(--muted);line-height:1.6}
-
 /* PAYMENT GATE */
 .pay-gate{background:var(--bg-soft);border:1px solid var(--line-strong);padding:1.5rem;width:100%;max-width:380px;text-align:center}
 .pay-gate-title{font-family:var(--serif);font-size:1.2rem;font-weight:300;margin-bottom:0.5rem}
@@ -149,22 +125,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .ar-gen-btn:disabled{opacity:0.35;cursor:not-allowed}
 .pay-secure{font-family:var(--mono);font-size:0.56rem;letter-spacing:0.06em;color:var(--muted2);margin-top:0.6rem}
 .stripe-loading{font-family:var(--mono);font-size:0.65rem;color:var(--muted);padding:0.5rem;display:none}
-
-/* ── CHAT ADD-ON GATE ── */
-.chat-addon-gate{background:#060B18;border:1px solid rgba(0,212,255,0.15);padding:1.2rem;width:100%;max-width:380px;text-align:center;position:relative;overflow:hidden}
-.chat-addon-gate::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(0,212,255,0.06) 0%,transparent 70%);pointer-events:none}
-.cag-label{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);opacity:0.7;margin-bottom:0.5rem;display:block}
-.cag-title{font-family:var(--serif);font-size:1.05rem;font-weight:300;color:#FFFFFF;margin-bottom:0.4rem}
-.cag-title em{font-style:italic;color:var(--accent)}
-.cag-desc{font-size:0.76rem;color:rgba(255,255,255,0.4);line-height:1.65;margin-bottom:0.9rem}
-.cag-price-row{display:flex;align-items:center;justify-content:center;gap:0.75rem;margin-bottom:0.9rem}
-.cag-price{font-family:var(--serif);font-size:1.8rem;font-weight:300;color:var(--accent);line-height:1}
-.cag-price-note{font-family:var(--mono);font-size:0.58rem;color:rgba(255,255,255,0.25);text-transform:uppercase;letter-spacing:0.06em;text-align:left}
-.cag-btn{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--accent);color:#060B18;padding:0.75rem 1.5rem;border:none;cursor:pointer;font-weight:700;border-radius:0;transition:opacity 0.2s;width:100%}
-.cag-btn:hover{opacity:0.85}
-.cag-btn:disabled{opacity:0.35;cursor:not-allowed}
-.cag-stripe-loading{font-family:var(--mono);font-size:0.62rem;color:rgba(255,255,255,0.35);padding:0.4rem;display:none}
-.cag-secure{font-family:var(--mono);font-size:0.52rem;letter-spacing:0.06em;color:rgba(255,255,255,0.18);margin-top:0.5rem}
 
 /* RESULTS */
 .results-wrap{padding:0.5rem 0}
@@ -188,15 +148,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .r-btn-outline{background:transparent;color:var(--muted);border:1px solid var(--line-strong)}
 .r-btn-outline:hover{color:var(--text)}
 
-/* ── CHAT GATE ON RESULTS (post-report) ── */
-.r-chat-gate{background:#060B18;border:1px solid rgba(0,212,255,0.15);padding:1.2rem;text-align:center;position:relative;overflow:hidden}
-.r-chat-gate::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(0,212,255,0.05) 0%,transparent 70%);pointer-events:none}
-.r-chat-gate-label{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);opacity:0.7;margin-bottom:0.4rem;display:block}
-.r-chat-gate-title{font-family:var(--serif);font-size:1rem;font-weight:300;color:#FFFFFF;margin-bottom:0.3rem}
-.r-chat-gate-title em{font-style:italic;color:var(--accent)}
-.r-chat-gate-desc{font-size:0.74rem;color:rgba(255,255,255,0.35);line-height:1.6;margin-bottom:0.75rem}
-.r-chat-gate-lock{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;gap:0.4rem}
-
 .pt-footer{background:#060B18;border-top:1px solid rgba(255,255,255,0.07);padding:1.2rem 2.5rem;flex-shrink:0}
 .pt-footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem}
 .pt-footer-logo{font-family:var(--mono);font-size:0.7rem;letter-spacing:0.16em;color:rgba(255,255,255,0.5);font-weight:700}
@@ -208,6 +159,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 @keyframes node-pulse{0%{filter:drop-shadow(0 0 0px currentColor);opacity:0.6}50%{filter:drop-shadow(0 0 8px currentColor);opacity:1}100%{filter:drop-shadow(0 0 0px currentColor);opacity:0.6}}
 .node-active-pulse{animation:node-pulse 1.8s ease-in-out infinite}
 @keyframes step-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
 .page-wrap{display:flex;flex-direction:column;height:100vh}
 .main-area{flex:1;overflow:hidden}
 
@@ -232,71 +184,59 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 <div class="main-area">
 <div class="main">
 
-  <!-- ── GEO COLUMN ── -->
+  <!-- GEO -->
   <div class="geo-col">
     <div class="diag-header">
       <span class="diag-label">SC Blueprint™</span>
     </div>
     <div class="diag-svg-wrap" id="diag-svg-wrap">
-
-      <!-- MAIN DIAGRAM (Conscious layer) — corrected colours -->
       <svg id="main-diagram" viewBox="120 120 660 660" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
         <polygon points="450,302 598,450 450,598 302,450" fill="none" stroke="#B8B2A8" stroke-width="1.2" opacity="0.7"/>
         <circle cx="450" cy="450" r="220" fill="none" stroke="#C8C4BC" stroke-width="0.6" stroke-dasharray="3 9" opacity="0.14"/>
         <circle cx="450" cy="450" r="70" fill="none" stroke="#C8C4BC" stroke-width="0.5" opacity="0.25"/>
         <line x1="450" y1="106" x2="450" y2="794" stroke="#C8C4BC" stroke-width="0.5" stroke-dasharray="4 8" opacity="0.35"/>
         <line x1="106" y1="450" x2="794" y2="450" stroke="#C8C4BC" stroke-width="0.5" stroke-dasharray="4 8" opacity="0.35"/>
-        <!-- NARC red -->
         <line x1="450" y1="302" x2="367.6" y2="246" stroke="#C4622D" stroke-width="1.2" opacity="0.35"/><line x1="367.6" y1="246" x2="286.6" y2="198.4" stroke="#C4622D" stroke-width="1" opacity="0.28"/><line x1="367.6" y1="246" x2="392.8" y2="155.5" stroke="#C4622D" stroke-width="1" opacity="0.28"/>
         <line x1="450" y1="302" x2="532.4" y2="246" stroke="#C4622D" stroke-width="1.2" opacity="0.35"/><line x1="532.4" y1="246" x2="507.2" y2="155.5" stroke="#C4622D" stroke-width="1" opacity="0.28"/><line x1="532.4" y1="246" x2="613.4" y2="198.4" stroke="#C4622D" stroke-width="1" opacity="0.28"/>
-        <!-- SIST deep blue -->
-        <line x1="598" y1="450" x2="654" y2="367.6" stroke="#3B4FD4" stroke-width="1.2" opacity="0.35"/><line x1="654" y1="367.6" x2="701.6" y2="286.6" stroke="#3B4FD4" stroke-width="1" opacity="0.28"/><line x1="654" y1="367.6" x2="744.5" y2="392.8" stroke="#3B4FD4" stroke-width="1" opacity="0.28"/>
-        <line x1="598" y1="450" x2="654" y2="532.4" stroke="#3B4FD4" stroke-width="1.2" opacity="0.35"/><line x1="654" y1="532.4" x2="744.5" y2="507.2" stroke="#3B4FD4" stroke-width="1" opacity="0.28"/><line x1="654" y1="532.4" x2="701.6" y2="613.4" stroke="#3B4FD4" stroke-width="1" opacity="0.28"/>
-        <!-- YARC cyan-teal (polar opposite of NARC red) -->
-        <line x1="450" y1="598" x2="532.4" y2="654" stroke="#00C4B4" stroke-width="1.2" opacity="0.35"/><line x1="532.4" y1="654" x2="613.4" y2="701.6" stroke="#00C4B4" stroke-width="1" opacity="0.28"/><line x1="532.4" y1="654" x2="507.2" y2="744.5" stroke="#00C4B4" stroke-width="1" opacity="0.28"/>
-        <line x1="450" y1="598" x2="367.6" y2="654" stroke="#00C4B4" stroke-width="1.2" opacity="0.35"/><line x1="367.6" y1="654" x2="392.8" y2="744.5" stroke="#00C4B4" stroke-width="1" opacity="0.28"/><line x1="367.6" y1="654" x2="286.6" y2="701.6" stroke="#00C4B4" stroke-width="1" opacity="0.28"/>
-        <!-- Øll amber (polar opposite of SIST blue) -->
-        <line x1="302" y1="450" x2="246" y2="532.4" stroke="#D4920A" stroke-width="1.2" opacity="0.35"/><line x1="246" y1="532.4" x2="198.4" y2="613.4" stroke="#D4920A" stroke-width="1" opacity="0.28"/><line x1="246" y1="532.4" x2="155.5" y2="507.2" stroke="#D4920A" stroke-width="1" opacity="0.28"/>
-        <line x1="302" y1="450" x2="246" y2="367.6" stroke="#D4920A" stroke-width="1.2" opacity="0.35"/><line x1="246" y1="367.6" x2="155.5" y2="392.8" stroke="#D4920A" stroke-width="1" opacity="0.28"/><line x1="246" y1="367.6" x2="198.4" y2="286.6" stroke="#D4920A" stroke-width="1" opacity="0.28"/>
-        <!-- Zero-point -->
+        <line x1="598" y1="450" x2="654" y2="367.6" stroke="#534AB7" stroke-width="1.2" opacity="0.35"/><line x1="654" y1="367.6" x2="701.6" y2="286.6" stroke="#534AB7" stroke-width="1" opacity="0.28"/><line x1="654" y1="367.6" x2="744.5" y2="392.8" stroke="#534AB7" stroke-width="1" opacity="0.28"/>
+        <line x1="598" y1="450" x2="654" y2="532.4" stroke="#534AB7" stroke-width="1.2" opacity="0.35"/><line x1="654" y1="532.4" x2="744.5" y2="507.2" stroke="#534AB7" stroke-width="1" opacity="0.28"/><line x1="654" y1="532.4" x2="701.6" y2="613.4" stroke="#534AB7" stroke-width="1" opacity="0.28"/>
+        <line x1="450" y1="598" x2="532.4" y2="654" stroke="#1D9E75" stroke-width="1.2" opacity="0.35"/><line x1="532.4" y1="654" x2="613.4" y2="701.6" stroke="#1D9E75" stroke-width="1" opacity="0.28"/><line x1="532.4" y1="654" x2="507.2" y2="744.5" stroke="#1D9E75" stroke-width="1" opacity="0.28"/>
+        <line x1="450" y1="598" x2="367.6" y2="654" stroke="#1D9E75" stroke-width="1.2" opacity="0.35"/><line x1="367.6" y1="654" x2="392.8" y2="744.5" stroke="#1D9E75" stroke-width="1" opacity="0.28"/><line x1="367.6" y1="654" x2="286.6" y2="701.6" stroke="#1D9E75" stroke-width="1" opacity="0.28"/>
+        <line x1="302" y1="450" x2="246" y2="532.4" stroke="#A0426B" stroke-width="1.2" opacity="0.35"/><line x1="246" y1="532.4" x2="198.4" y2="613.4" stroke="#A0426B" stroke-width="1" opacity="0.28"/><line x1="246" y1="532.4" x2="155.5" y2="507.2" stroke="#A0426B" stroke-width="1" opacity="0.28"/>
+        <line x1="302" y1="450" x2="246" y2="367.6" stroke="#A0426B" stroke-width="1.2" opacity="0.35"/><line x1="246" y1="367.6" x2="155.5" y2="392.8" stroke="#A0426B" stroke-width="1" opacity="0.28"/><line x1="246" y1="367.6" x2="198.4" y2="286.6" stroke="#A0426B" stroke-width="1" opacity="0.28"/>
         <circle cx="450" cy="450" r="52" fill="white" stroke="#B0ABA0" stroke-width="1.8"/>
         <circle cx="450" cy="450" r="3" fill="#6B7280" opacity="0.4"/>
         <text id="obs-label" x="450" y="455" text-anchor="middle" font-size="11" fill="#6B7280" font-family="monospace" opacity="0.7">—</text>
-        <!-- OC diamonds -->
         <g id="node-narc" style="opacity:0.12;transition:opacity 0.5s"><polygon points="450,272 480,302 450,332 420,302" fill="transparent" stroke="#C4622D" stroke-width="2.2"/><text x="450" y="301" text-anchor="middle" font-size="10" fill="#C4622D" font-family="monospace">NARC</text><text id="v-narc" x="450" y="315" text-anchor="middle" font-size="9" fill="#C4622D" font-family="monospace" opacity="0.7">—</text></g>
-        <g id="node-sist" style="opacity:0.12;transition:opacity 0.5s"><polygon points="598,420 628,450 598,480 568,450" fill="transparent" stroke="#3B4FD4" stroke-width="2.2"/><text x="598" y="449" text-anchor="middle" font-size="10" fill="#3B4FD4" font-family="monospace">SIST</text><text id="v-sist" x="598" y="463" text-anchor="middle" font-size="9" fill="#3B4FD4" font-family="monospace" opacity="0.7">—</text></g>
-        <g id="node-yarc" style="opacity:0.12;transition:opacity 0.5s"><polygon points="450,568 480,598 450,628 420,598" fill="transparent" stroke="#00C4B4" stroke-width="2.2"/><text x="450" y="597" text-anchor="middle" font-size="10" fill="#00C4B4" font-family="monospace">YARC</text><text id="v-yarc" x="450" y="611" text-anchor="middle" font-size="9" fill="#00C4B4" font-family="monospace" opacity="0.7">—</text></g>
-        <g id="node-oll" style="opacity:0.12;transition:opacity 0.5s"><polygon points="302,420 332,450 302,480 272,450" fill="transparent" stroke="#D4920A" stroke-width="2.2"/><text x="302" y="449" text-anchor="middle" font-size="10" fill="#D4920A" font-family="monospace">Øll</text><text id="v-oll" x="302" y="463" text-anchor="middle" font-size="9" fill="#D4920A" font-family="monospace" opacity="0.7">—</text></g>
-        <!-- App nodes -->
+        <g id="node-sist" style="opacity:0.12;transition:opacity 0.5s"><polygon points="598,420 628,450 598,480 568,450" fill="transparent" stroke="#534AB7" stroke-width="2.2"/><text x="598" y="449" text-anchor="middle" font-size="10" fill="#534AB7" font-family="monospace">SIST</text><text id="v-sist" x="598" y="463" text-anchor="middle" font-size="9" fill="#534AB7" font-family="monospace" opacity="0.7">—</text></g>
+        <g id="node-yarc" style="opacity:0.12;transition:opacity 0.5s"><polygon points="450,568 480,598 450,628 420,598" fill="transparent" stroke="#1D9E75" stroke-width="2.2"/><text x="450" y="597" text-anchor="middle" font-size="10" fill="#1D9E75" font-family="monospace">YARC</text><text id="v-yarc" x="450" y="611" text-anchor="middle" font-size="9" fill="#1D9E75" font-family="monospace" opacity="0.7">—</text></g>
+        <g id="node-oll" style="opacity:0.12;transition:opacity 0.5s"><polygon points="302,420 332,450 302,480 272,450" fill="transparent" stroke="#A0426B" stroke-width="2.2"/><text x="302" y="449" text-anchor="middle" font-size="10" fill="#A0426B" font-family="monospace">Øll</text><text id="v-oll" x="302" y="463" text-anchor="middle" font-size="9" fill="#A0426B" font-family="monospace" opacity="0.7">—</text></g>
         <g id="node-a1" style="opacity:0;transition:opacity 0.5s"><ellipse cx="367.6" cy="246" rx="20" ry="11" transform="rotate(-22,367.6,246)" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="367.6" y="250" text-anchor="middle" font-size="8" fill="#C4622D" font-family="monospace">A1</text></g>
         <g id="node-a2" style="opacity:0;transition:opacity 0.5s"><ellipse cx="532.4" cy="246" rx="20" ry="11" transform="rotate(22,532.4,246)" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="532.4" y="250" text-anchor="middle" font-size="8" fill="#C4622D" font-family="monospace">A2</text></g>
-        <g id="node-a3" style="opacity:0;transition:opacity 0.5s"><ellipse cx="654" cy="367.6" rx="20" ry="11" transform="rotate(68,654,367.6)" fill="transparent" stroke="#3B4FD4" stroke-width="2"/><text x="654" y="371.6" text-anchor="middle" font-size="8" fill="#3B4FD4" font-family="monospace">A3</text></g>
-        <g id="node-a4" style="opacity:0;transition:opacity 0.5s"><ellipse cx="654" cy="532.4" rx="20" ry="11" transform="rotate(112,654,532.4)" fill="transparent" stroke="#3B4FD4" stroke-width="2"/><text x="654" y="536.4" text-anchor="middle" font-size="8" fill="#3B4FD4" font-family="monospace">A4</text></g>
-        <g id="node-a5" style="opacity:0;transition:opacity 0.5s"><ellipse cx="532.4" cy="654" rx="20" ry="11" transform="rotate(158,532.4,654)" fill="transparent" stroke="#00C4B4" stroke-width="2"/><text x="532.4" y="658" text-anchor="middle" font-size="8" fill="#00C4B4" font-family="monospace">A5</text></g>
-        <g id="node-a6" style="opacity:0;transition:opacity 0.5s"><ellipse cx="367.6" cy="654" rx="20" ry="11" transform="rotate(202,367.6,654)" fill="transparent" stroke="#00C4B4" stroke-width="2"/><text x="367.6" y="658" text-anchor="middle" font-size="8" fill="#00C4B4" font-family="monospace">A6</text></g>
-        <g id="node-a7" style="opacity:0;transition:opacity 0.5s"><ellipse cx="246" cy="532.4" rx="20" ry="11" transform="rotate(248,246,532.4)" fill="transparent" stroke="#D4920A" stroke-width="2"/><text x="246" y="536.4" text-anchor="middle" font-size="8" fill="#D4920A" font-family="monospace">A7</text></g>
-        <g id="node-a8" style="opacity:0;transition:opacity 0.5s"><ellipse cx="246" cy="367.6" rx="20" ry="11" transform="rotate(292,246,367.6)" fill="transparent" stroke="#D4920A" stroke-width="2"/><text x="246" y="371.6" text-anchor="middle" font-size="8" fill="#D4920A" font-family="monospace">A8</text></g>
-        <!-- SC nodes -->
+        <g id="node-a3" style="opacity:0;transition:opacity 0.5s"><ellipse cx="654" cy="367.6" rx="20" ry="11" transform="rotate(68,654,367.6)" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="654" y="371.6" text-anchor="middle" font-size="8" fill="#534AB7" font-family="monospace">A3</text></g>
+        <g id="node-a4" style="opacity:0;transition:opacity 0.5s"><ellipse cx="654" cy="532.4" rx="20" ry="11" transform="rotate(112,654,532.4)" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="654" y="536.4" text-anchor="middle" font-size="8" fill="#534AB7" font-family="monospace">A4</text></g>
+        <g id="node-a5" style="opacity:0;transition:opacity 0.5s"><ellipse cx="532.4" cy="654" rx="20" ry="11" transform="rotate(158,532.4,654)" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="532.4" y="658" text-anchor="middle" font-size="8" fill="#1D9E75" font-family="monospace">A5</text></g>
+        <g id="node-a6" style="opacity:0;transition:opacity 0.5s"><ellipse cx="367.6" cy="654" rx="20" ry="11" transform="rotate(202,367.6,654)" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="367.6" y="658" text-anchor="middle" font-size="8" fill="#1D9E75" font-family="monospace">A6</text></g>
+        <g id="node-a7" style="opacity:0;transition:opacity 0.5s"><ellipse cx="246" cy="532.4" rx="20" ry="11" transform="rotate(248,246,532.4)" fill="transparent" stroke="#A0426B" stroke-width="2"/><text x="246" y="536.4" text-anchor="middle" font-size="8" fill="#A0426B" font-family="monospace">A7</text></g>
+        <g id="node-a8" style="opacity:0;transition:opacity 0.5s"><ellipse cx="246" cy="367.6" rx="20" ry="11" transform="rotate(292,246,367.6)" fill="transparent" stroke="#A0426B" stroke-width="2"/><text x="246" y="371.6" text-anchor="middle" font-size="8" fill="#A0426B" font-family="monospace">A8</text></g>
         <g id="node-sc1"  style="opacity:0;transition:opacity 0.4s"><polygon points="298.7,205.5 276.1,205.2 287.4,185.9" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="264" y="189" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Intention</text></g>
         <g id="node-sc2"  style="opacity:0;transition:opacity 0.4s"><polygon points="389,169 383.5,147.1 405.1,153.1" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="399.8" y="135" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Intention</text></g>
         <g id="node-sc3"  style="opacity:0;transition:opacity 0.4s"><polygon points="511,169 494.9,153.1 516.5,147.1" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="500.2" y="135" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Presence</text></g>
         <g id="node-sc4"  style="opacity:0;transition:opacity 0.4s"><polygon points="601.3,205.5 612.6,185.9 623.9,205.2" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="635.8" y="189" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Presence</text></g>
-        <g id="node-sc5"  style="opacity:0;transition:opacity 0.4s"><polygon points="694.5,298.7 694.8,276.1 714.1,287.4" fill="transparent" stroke="#3B4FD4" stroke-width="2"/><text x="714.8" y="268" text-anchor="middle" font-size="6.5" fill="#3B4FD4" font-family="monospace">Core Self</text></g>
-        <g id="node-sc6"  style="opacity:0;transition:opacity 0.4s"><polygon points="731,389 752.9,383.5 746.9,405.1" fill="transparent" stroke="#3B4FD4" stroke-width="2"/><text x="769.5" y="404" text-anchor="middle" font-size="6.5" fill="#3B4FD4" font-family="monospace">Core Self</text></g>
-        <g id="node-sc7"  style="opacity:0;transition:opacity 0.4s"><polygon points="731,511 746.9,494.9 752.9,516.5" fill="transparent" stroke="#3B4FD4" stroke-width="2"/><text x="769.5" y="504" text-anchor="middle" font-size="6.5" fill="#3B4FD4" font-family="monospace">Integrity</text></g>
-        <g id="node-sc8"  style="opacity:0;transition:opacity 0.4s"><polygon points="694.5,601.3 714.1,612.6 694.8,623.9" fill="transparent" stroke="#3B4FD4" stroke-width="2"/><text x="714.8" y="640" text-anchor="middle" font-size="6.5" fill="#3B4FD4" font-family="monospace">Integrity</text></g>
-        <g id="node-sc9"  style="opacity:0;transition:opacity 0.4s"><polygon points="601.3,694.5 623.9,694.8 612.6,714.1" fill="transparent" stroke="#00C4B4" stroke-width="2"/><text x="635.8" y="719" text-anchor="middle" font-size="6.5" fill="#00C4B4" font-family="monospace">Balance</text></g>
-        <g id="node-sc10" style="opacity:0;transition:opacity 0.4s"><polygon points="511,731 516.5,752.9 494.9,746.9" fill="transparent" stroke="#00C4B4" stroke-width="2"/><text x="500.2" y="774" text-anchor="middle" font-size="6.5" fill="#00C4B4" font-family="monospace">Balance</text></g>
-        <g id="node-sc11" style="opacity:0;transition:opacity 0.4s"><polygon points="389,731 405.1,746.9 383.5,752.9" fill="transparent" stroke="#00C4B4" stroke-width="2"/><text x="399.8" y="774" text-anchor="middle" font-size="6.5" fill="#00C4B4" font-family="monospace">Connection</text></g>
-        <g id="node-sc12" style="opacity:0;transition:opacity 0.4s"><polygon points="298.7,694.5 287.4,714.1 276.1,694.8" fill="transparent" stroke="#00C4B4" stroke-width="2"/><text x="264.2" y="719" text-anchor="middle" font-size="6.5" fill="#00C4B4" font-family="monospace">Connection</text></g>
-        <g id="node-sc13" style="opacity:0;transition:opacity 0.4s"><polygon points="205.5,601.3 205.2,623.9 185.9,612.6" fill="transparent" stroke="#D4920A" stroke-width="2"/><text x="185.2" y="640" text-anchor="middle" font-size="6.5" fill="#D4920A" font-family="monospace">Purpose</text></g>
-        <g id="node-sc14" style="opacity:0;transition:opacity 0.4s"><polygon points="169,511 147.1,516.5 153.1,494.9" fill="transparent" stroke="#D4920A" stroke-width="2"/><text x="130.5" y="504" text-anchor="middle" font-size="6.5" fill="#D4920A" font-family="monospace">Purpose</text></g>
-        <g id="node-sc15" style="opacity:0;transition:opacity 0.4s"><polygon points="169,389 153.1,405.1 147.1,383.5" fill="transparent" stroke="#D4920A" stroke-width="2"/><text x="130.5" y="404" text-anchor="middle" font-size="6.5" fill="#D4920A" font-family="monospace">Pattern</text></g>
-        <g id="node-sc16" style="opacity:0;transition:opacity 0.4s"><polygon points="205.5,298.7 185.9,287.4 205.2,276.1" fill="transparent" stroke="#D4920A" stroke-width="2"/><text x="185.2" y="268" text-anchor="middle" font-size="6.5" fill="#D4920A" font-family="monospace">Pattern</text></g>
+        <g id="node-sc5"  style="opacity:0;transition:opacity 0.4s"><polygon points="694.5,298.7 694.8,276.1 714.1,287.4" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="714.8" y="268" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Core Self</text></g>
+        <g id="node-sc6"  style="opacity:0;transition:opacity 0.4s"><polygon points="731,389 752.9,383.5 746.9,405.1" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="769.5" y="404" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Core Self</text></g>
+        <g id="node-sc7"  style="opacity:0;transition:opacity 0.4s"><polygon points="731,511 746.9,494.9 752.9,516.5" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="769.5" y="504" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Integrity</text></g>
+        <g id="node-sc8"  style="opacity:0;transition:opacity 0.4s"><polygon points="694.5,601.3 714.1,612.6 694.8,623.9" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="714.8" y="640" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Integrity</text></g>
+        <g id="node-sc9"  style="opacity:0;transition:opacity 0.4s"><polygon points="601.3,694.5 623.9,694.8 612.6,714.1" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="635.8" y="719" text-anchor="middle" font-size="6.5" fill="#1D9E75" font-family="monospace">Balance</text></g>
+        <g id="node-sc10" style="opacity:0;transition:opacity 0.4s"><polygon points="511,731 516.5,752.9 494.9,746.9" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="500.2" y="774" text-anchor="middle" font-size="6.5" fill="#1D9E75" font-family="monospace">Balance</text></g>
+        <g id="node-sc11" style="opacity:0;transition:opacity 0.4s"><polygon points="389,731 405.1,746.9 383.5,752.9" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="399.8" y="774" text-anchor="middle" font-size="6.5" fill="#1D9E75" font-family="monospace">Connection</text></g>
+        <g id="node-sc12" style="opacity:0;transition:opacity 0.4s"><polygon points="298.7,694.5 287.4,714.1 276.1,694.8" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="264.2" y="719" text-anchor="middle" font-size="6.5" fill="#1D9E75" font-family="monospace">Connection</text></g>
+        <g id="node-sc13" style="opacity:0;transition:opacity 0.4s"><polygon points="205.5,601.3 205.2,623.9 185.9,612.6" fill="transparent" stroke="#A0426B" stroke-width="2"/><text x="185.2" y="640" text-anchor="middle" font-size="6.5" fill="#A0426B" font-family="monospace">Purpose</text></g>
+        <g id="node-sc14" style="opacity:0;transition:opacity 0.4s"><polygon points="169,511 147.1,516.5 153.1,494.9" fill="transparent" stroke="#A0426B" stroke-width="2"/><text x="130.5" y="504" text-anchor="middle" font-size="6.5" fill="#A0426B" font-family="monospace">Purpose</text></g>
+        <g id="node-sc15" style="opacity:0;transition:opacity 0.4s"><polygon points="169,389 153.1,405.1 147.1,383.5" fill="transparent" stroke="#A0426B" stroke-width="2"/><text x="130.5" y="404" text-anchor="middle" font-size="6.5" fill="#A0426B" font-family="monospace">Pattern</text></g>
+        <g id="node-sc16" style="opacity:0;transition:opacity 0.4s"><polygon points="205.5,298.7 185.9,287.4 205.2,276.1" fill="transparent" stroke="#A0426B" stroke-width="2"/><text x="185.2" y="268" text-anchor="middle" font-size="6.5" fill="#A0426B" font-family="monospace">Pattern</text></g>
         <g id="node-bs" style="opacity:0;transition:opacity 0.5s"><polygon points="424,642 476,642 450,674" fill="none" stroke="#D4D0C8" stroke-width="1.3"/><text x="450" y="657" text-anchor="middle" font-size="7" fill="#6B7280" font-family="monospace">AI</text><text id="v-bs" x="450" y="669" text-anchor="middle" font-size="8" fill="#6B7280" font-family="monospace">—</text></g>
       </svg>
-
-      <!-- SUB DIAGRAM (Subconscious layer) — same corrected colours -->
       <svg id="sub-diagram" viewBox="120 120 660 660" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
         <polygon points="450,302 598,450 450,598 302,450" fill="none" stroke="#B8B2A8" stroke-width="1.2" opacity="0.7"/>
         <circle cx="450" cy="450" r="220" fill="none" stroke="#C8C4BC" stroke-width="0.6" stroke-dasharray="3 9" opacity="0.14"/>
@@ -305,59 +245,56 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
         <line x1="106" y1="450" x2="794" y2="450" stroke="#C8C4BC" stroke-width="0.5" stroke-dasharray="4 8" opacity="0.35"/>
         <line x1="450" y1="302" x2="367.6" y2="246" stroke="#C4622D" stroke-width="1.2" opacity="0.35"/><line x1="367.6" y1="246" x2="286.6" y2="198.4" stroke="#C4622D" stroke-width="1" opacity="0.28"/><line x1="367.6" y1="246" x2="392.8" y2="155.5" stroke="#C4622D" stroke-width="1" opacity="0.28"/>
         <line x1="450" y1="302" x2="532.4" y2="246" stroke="#C4622D" stroke-width="1.2" opacity="0.35"/><line x1="532.4" y1="246" x2="507.2" y2="155.5" stroke="#C4622D" stroke-width="1" opacity="0.28"/><line x1="532.4" y1="246" x2="613.4" y2="198.4" stroke="#C4622D" stroke-width="1" opacity="0.28"/>
-        <line x1="598" y1="450" x2="654" y2="367.6" stroke="#3B4FD4" stroke-width="1.2" opacity="0.35"/><line x1="654" y1="367.6" x2="701.6" y2="286.6" stroke="#3B4FD4" stroke-width="1" opacity="0.28"/><line x1="654" y1="367.6" x2="744.5" y2="392.8" stroke="#3B4FD4" stroke-width="1" opacity="0.28"/>
-        <line x1="598" y1="450" x2="654" y2="532.4" stroke="#3B4FD4" stroke-width="1.2" opacity="0.35"/><line x1="654" y1="532.4" x2="744.5" y2="507.2" stroke="#3B4FD4" stroke-width="1" opacity="0.28"/><line x1="654" y1="532.4" x2="701.6" y2="613.4" stroke="#3B4FD4" stroke-width="1" opacity="0.28"/>
-        <line x1="450" y1="598" x2="532.4" y2="654" stroke="#00C4B4" stroke-width="1.2" opacity="0.35"/><line x1="532.4" y1="654" x2="613.4" y2="701.6" stroke="#00C4B4" stroke-width="1" opacity="0.28"/><line x1="532.4" y1="654" x2="507.2" y2="744.5" stroke="#00C4B4" stroke-width="1" opacity="0.28"/>
-        <line x1="450" y1="598" x2="367.6" y2="654" stroke="#00C4B4" stroke-width="1.2" opacity="0.35"/><line x1="367.6" y1="654" x2="392.8" y2="744.5" stroke="#00C4B4" stroke-width="1" opacity="0.28"/><line x1="367.6" y1="654" x2="286.6" y2="701.6" stroke="#00C4B4" stroke-width="1" opacity="0.28"/>
-        <line x1="302" y1="450" x2="246" y2="532.4" stroke="#D4920A" stroke-width="1.2" opacity="0.35"/><line x1="246" y1="532.4" x2="198.4" y2="613.4" stroke="#D4920A" stroke-width="1" opacity="0.28"/><line x1="246" y1="532.4" x2="155.5" y2="507.2" stroke="#D4920A" stroke-width="1" opacity="0.28"/>
-        <line x1="302" y1="450" x2="246" y2="367.6" stroke="#D4920A" stroke-width="1.2" opacity="0.35"/><line x1="246" y1="367.6" x2="155.5" y2="392.8" stroke="#D4920A" stroke-width="1" opacity="0.28"/><line x1="246" y1="367.6" x2="198.4" y2="286.6" stroke="#D4920A" stroke-width="1" opacity="0.28"/>
+        <line x1="598" y1="450" x2="654" y2="367.6" stroke="#534AB7" stroke-width="1.2" opacity="0.35"/><line x1="654" y1="367.6" x2="701.6" y2="286.6" stroke="#534AB7" stroke-width="1" opacity="0.28"/><line x1="654" y1="367.6" x2="744.5" y2="392.8" stroke="#534AB7" stroke-width="1" opacity="0.28"/>
+        <line x1="598" y1="450" x2="654" y2="532.4" stroke="#534AB7" stroke-width="1.2" opacity="0.35"/><line x1="654" y1="532.4" x2="744.5" y2="507.2" stroke="#534AB7" stroke-width="1" opacity="0.28"/><line x1="654" y1="532.4" x2="701.6" y2="613.4" stroke="#534AB7" stroke-width="1" opacity="0.28"/>
+        <line x1="450" y1="598" x2="532.4" y2="654" stroke="#1D9E75" stroke-width="1.2" opacity="0.35"/><line x1="532.4" y1="654" x2="613.4" y2="701.6" stroke="#1D9E75" stroke-width="1" opacity="0.28"/><line x1="532.4" y1="654" x2="507.2" y2="744.5" stroke="#1D9E75" stroke-width="1" opacity="0.28"/>
+        <line x1="450" y1="598" x2="367.6" y2="654" stroke="#1D9E75" stroke-width="1.2" opacity="0.35"/><line x1="367.6" y1="654" x2="392.8" y2="744.5" stroke="#1D9E75" stroke-width="1" opacity="0.28"/><line x1="367.6" y1="654" x2="286.6" y2="701.6" stroke="#1D9E75" stroke-width="1" opacity="0.28"/>
+        <line x1="302" y1="450" x2="246" y2="532.4" stroke="#A0426B" stroke-width="1.2" opacity="0.35"/><line x1="246" y1="532.4" x2="198.4" y2="613.4" stroke="#A0426B" stroke-width="1" opacity="0.28"/><line x1="246" y1="532.4" x2="155.5" y2="507.2" stroke="#A0426B" stroke-width="1" opacity="0.28"/>
+        <line x1="302" y1="450" x2="246" y2="367.6" stroke="#A0426B" stroke-width="1.2" opacity="0.35"/><line x1="246" y1="367.6" x2="155.5" y2="392.8" stroke="#A0426B" stroke-width="1" opacity="0.28"/><line x1="246" y1="367.6" x2="198.4" y2="286.6" stroke="#A0426B" stroke-width="1" opacity="0.28"/>
         <circle cx="450" cy="450" r="52" fill="white" stroke="#B0ABA0" stroke-width="1.8"/>
         <circle cx="450" cy="450" r="3" fill="#6B7280" opacity="0.4"/>
         <text id="sub-obs-label" x="450" y="455" text-anchor="middle" font-size="11" fill="#6B7280" font-family="monospace" opacity="0.7">—</text>
         <g id="sub-node-narc" style="opacity:0.12;transition:opacity 0.5s"><polygon points="450,272 480,302 450,332 420,302" fill="none" stroke="#C4622D" stroke-width="2.2"/><text x="450" y="301" text-anchor="middle" font-size="10" fill="#C4622D" font-family="monospace">NARC</text><text id="sub-v-narc" x="450" y="315" text-anchor="middle" font-size="9" fill="#C4622D" font-family="monospace" opacity="0.7">—</text></g>
-        <g id="sub-node-sist" style="opacity:0.12;transition:opacity 0.5s"><polygon points="598,420 628,450 598,480 568,450" fill="none" stroke="#3B4FD4" stroke-width="2.2"/><text x="598" y="449" text-anchor="middle" font-size="10" fill="#3B4FD4" font-family="monospace">SIST</text><text id="sub-v-sist" x="598" y="463" text-anchor="middle" font-size="9" fill="#3B4FD4" font-family="monospace" opacity="0.7">—</text></g>
-        <g id="sub-node-yarc" style="opacity:0.12;transition:opacity 0.5s"><polygon points="450,568 480,598 450,628 420,598" fill="none" stroke="#00C4B4" stroke-width="2.2"/><text x="450" y="597" text-anchor="middle" font-size="10" fill="#00C4B4" font-family="monospace">YARC</text><text id="sub-v-yarc" x="450" y="611" text-anchor="middle" font-size="9" fill="#00C4B4" font-family="monospace" opacity="0.7">—</text></g>
-        <g id="sub-node-oll" style="opacity:0.12;transition:opacity 0.5s"><polygon points="302,420 332,450 302,480 272,450" fill="none" stroke="#D4920A" stroke-width="2.2"/><text x="302" y="449" text-anchor="middle" font-size="10" fill="#D4920A" font-family="monospace">Øll</text><text id="sub-v-oll" x="302" y="463" text-anchor="middle" font-size="9" fill="#D4920A" font-family="monospace" opacity="0.7">—</text></g>
+        <g id="sub-node-sist" style="opacity:0.12;transition:opacity 0.5s"><polygon points="598,420 628,450 598,480 568,450" fill="none" stroke="#534AB7" stroke-width="2.2"/><text x="598" y="449" text-anchor="middle" font-size="10" fill="#534AB7" font-family="monospace">SIST</text><text id="sub-v-sist" x="598" y="463" text-anchor="middle" font-size="9" fill="#534AB7" font-family="monospace" opacity="0.7">—</text></g>
+        <g id="sub-node-yarc" style="opacity:0.12;transition:opacity 0.5s"><polygon points="450,568 480,598 450,628 420,598" fill="none" stroke="#1D9E75" stroke-width="2.2"/><text x="450" y="597" text-anchor="middle" font-size="10" fill="#1D9E75" font-family="monospace">YARC</text><text id="sub-v-yarc" x="450" y="611" text-anchor="middle" font-size="9" fill="#1D9E75" font-family="monospace" opacity="0.7">—</text></g>
+        <g id="sub-node-oll" style="opacity:0.12;transition:opacity 0.5s"><polygon points="302,420 332,450 302,480 272,450" fill="none" stroke="#A0426B" stroke-width="2.2"/><text x="302" y="449" text-anchor="middle" font-size="10" fill="#A0426B" font-family="monospace">Øll</text><text id="sub-v-oll" x="302" y="463" text-anchor="middle" font-size="9" fill="#A0426B" font-family="monospace" opacity="0.7">—</text></g>
         <g id="sub-node-a1" style="opacity:0;transition:opacity 0.5s"><ellipse cx="367.6" cy="246" rx="20" ry="11" transform="rotate(-22,367.6,246)" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="367.6" y="250" text-anchor="middle" font-size="8" fill="#C4622D" font-family="monospace">A1</text></g>
         <g id="sub-node-a2" style="opacity:0;transition:opacity 0.5s"><ellipse cx="532.4" cy="246" rx="20" ry="11" transform="rotate(22,532.4,246)" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="532.4" y="250" text-anchor="middle" font-size="8" fill="#C4622D" font-family="monospace">A2</text></g>
-        <g id="sub-node-a3" style="opacity:0;transition:opacity 0.5s"><ellipse cx="654" cy="367.6" rx="20" ry="11" transform="rotate(68,654,367.6)" fill="transparent" stroke="#3B4FD4" stroke-width="2"/><text x="654" y="371.6" text-anchor="middle" font-size="8" fill="#3B4FD4" font-family="monospace">A3</text></g>
-        <g id="sub-node-a4" style="opacity:0;transition:opacity 0.5s"><ellipse cx="654" cy="532.4" rx="20" ry="11" transform="rotate(112,654,532.4)" fill="transparent" stroke="#3B4FD4" stroke-width="2"/><text x="654" y="536.4" text-anchor="middle" font-size="8" fill="#3B4FD4" font-family="monospace">A4</text></g>
-        <g id="sub-node-a5" style="opacity:0;transition:opacity 0.5s"><ellipse cx="532.4" cy="654" rx="20" ry="11" transform="rotate(158,532.4,654)" fill="transparent" stroke="#00C4B4" stroke-width="2"/><text x="532.4" y="658" text-anchor="middle" font-size="8" fill="#00C4B4" font-family="monospace">A5</text></g>
-        <g id="sub-node-a6" style="opacity:0;transition:opacity 0.5s"><ellipse cx="367.6" cy="654" rx="20" ry="11" transform="rotate(202,367.6,654)" fill="transparent" stroke="#00C4B4" stroke-width="2"/><text x="367.6" y="658" text-anchor="middle" font-size="8" fill="#00C4B4" font-family="monospace">A6</text></g>
-        <g id="sub-node-a7" style="opacity:0;transition:opacity 0.5s"><ellipse cx="246" cy="532.4" rx="20" ry="11" transform="rotate(248,246,532.4)" fill="transparent" stroke="#D4920A" stroke-width="2"/><text x="246" y="536.4" text-anchor="middle" font-size="8" fill="#D4920A" font-family="monospace">A7</text></g>
-        <g id="sub-node-a8" style="opacity:0;transition:opacity 0.5s"><ellipse cx="246" cy="367.6" rx="20" ry="11" transform="rotate(292,246,367.6)" fill="transparent" stroke="#D4920A" stroke-width="2"/><text x="246" y="371.6" text-anchor="middle" font-size="8" fill="#D4920A" font-family="monospace">A8</text></g>
+        <g id="sub-node-a3" style="opacity:0;transition:opacity 0.5s"><ellipse cx="654" cy="367.6" rx="20" ry="11" transform="rotate(68,654,367.6)" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="654" y="371.6" text-anchor="middle" font-size="8" fill="#534AB7" font-family="monospace">A3</text></g>
+        <g id="sub-node-a4" style="opacity:0;transition:opacity 0.5s"><ellipse cx="654" cy="532.4" rx="20" ry="11" transform="rotate(112,654,532.4)" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="654" y="536.4" text-anchor="middle" font-size="8" fill="#534AB7" font-family="monospace">A4</text></g>
+        <g id="sub-node-a5" style="opacity:0;transition:opacity 0.5s"><ellipse cx="532.4" cy="654" rx="20" ry="11" transform="rotate(158,532.4,654)" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="532.4" y="658" text-anchor="middle" font-size="8" fill="#1D9E75" font-family="monospace">A5</text></g>
+        <g id="sub-node-a6" style="opacity:0;transition:opacity 0.5s"><ellipse cx="367.6" cy="654" rx="20" ry="11" transform="rotate(202,367.6,654)" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="367.6" y="658" text-anchor="middle" font-size="8" fill="#1D9E75" font-family="monospace">A6</text></g>
+        <g id="sub-node-a7" style="opacity:0;transition:opacity 0.5s"><ellipse cx="246" cy="532.4" rx="20" ry="11" transform="rotate(248,246,532.4)" fill="transparent" stroke="#A0426B" stroke-width="2"/><text x="246" y="536.4" text-anchor="middle" font-size="8" fill="#A0426B" font-family="monospace">A7</text></g>
+        <g id="sub-node-a8" style="opacity:0;transition:opacity 0.5s"><ellipse cx="246" cy="367.6" rx="20" ry="11" transform="rotate(292,246,367.6)" fill="transparent" stroke="#A0426B" stroke-width="2"/><text x="246" y="371.6" text-anchor="middle" font-size="8" fill="#A0426B" font-family="monospace">A8</text></g>
         <g id="sub-sc1"  style="opacity:0;transition:opacity 0.4s"><polygon points="298.7,205.5 276.1,205.2 287.4,185.9" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="264" y="189" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Intention</text></g>
         <g id="sub-sc2"  style="opacity:0;transition:opacity 0.4s"><polygon points="389,169 383.5,147.1 405.1,153.1" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="399.8" y="135" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Intention</text></g>
         <g id="sub-sc3"  style="opacity:0;transition:opacity 0.4s"><polygon points="511,169 494.9,153.1 516.5,147.1" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="500.2" y="135" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Presence</text></g>
         <g id="sub-sc4"  style="opacity:0;transition:opacity 0.4s"><polygon points="601.3,205.5 612.6,185.9 623.9,205.2" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="635.8" y="189" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Presence</text></g>
-        <g id="sub-sc5"  style="opacity:0;transition:opacity 0.4s"><polygon points="694.5,298.7 694.8,276.1 714.1,287.4" fill="transparent" stroke="#3B4FD4" stroke-width="2"/><text x="714.8" y="268" text-anchor="middle" font-size="6.5" fill="#3B4FD4" font-family="monospace">Core Self</text></g>
-        <g id="sub-sc6"  style="opacity:0;transition:opacity 0.4s"><polygon points="731,389 752.9,383.5 746.9,405.1" fill="transparent" stroke="#3B4FD4" stroke-width="2"/><text x="769.5" y="404" text-anchor="middle" font-size="6.5" fill="#3B4FD4" font-family="monospace">Core Self</text></g>
-        <g id="sub-sc7"  style="opacity:0;transition:opacity 0.4s"><polygon points="731,511 746.9,494.9 752.9,516.5" fill="transparent" stroke="#3B4FD4" stroke-width="2"/><text x="769.5" y="504" text-anchor="middle" font-size="6.5" fill="#3B4FD4" font-family="monospace">Integrity</text></g>
-        <g id="sub-sc8"  style="opacity:0;transition:opacity 0.4s"><polygon points="694.5,601.3 714.1,612.6 694.8,623.9" fill="transparent" stroke="#3B4FD4" stroke-width="2"/><text x="714.8" y="640" text-anchor="middle" font-size="6.5" fill="#3B4FD4" font-family="monospace">Integrity</text></g>
-        <g id="sub-sc9"  style="opacity:0;transition:opacity 0.4s"><polygon points="601.3,694.5 623.9,694.8 612.6,714.1" fill="transparent" stroke="#00C4B4" stroke-width="2"/><text x="635.8" y="719" text-anchor="middle" font-size="6.5" fill="#00C4B4" font-family="monospace">Balance</text></g>
-        <g id="sub-sc10" style="opacity:0;transition:opacity 0.4s"><polygon points="511,731 516.5,752.9 494.9,746.9" fill="transparent" stroke="#00C4B4" stroke-width="2"/><text x="500.2" y="774" text-anchor="middle" font-size="6.5" fill="#00C4B4" font-family="monospace">Balance</text></g>
-        <g id="sub-sc11" style="opacity:0;transition:opacity 0.4s"><polygon points="389,731 405.1,746.9 383.5,752.9" fill="transparent" stroke="#00C4B4" stroke-width="2"/><text x="399.8" y="774" text-anchor="middle" font-size="6.5" fill="#00C4B4" font-family="monospace">Connection</text></g>
-        <g id="sub-sc12" style="opacity:0;transition:opacity 0.4s"><polygon points="298.7,694.5 287.4,714.1 276.1,694.8" fill="transparent" stroke="#00C4B4" stroke-width="2"/><text x="264.2" y="719" text-anchor="middle" font-size="6.5" fill="#00C4B4" font-family="monospace">Connection</text></g>
-        <g id="sub-sc13" style="opacity:0;transition:opacity 0.4s"><polygon points="205.5,601.3 205.2,623.9 185.9,612.6" fill="transparent" stroke="#D4920A" stroke-width="2"/><text x="185.2" y="640" text-anchor="middle" font-size="6.5" fill="#D4920A" font-family="monospace">Purpose</text></g>
-        <g id="sub-sc14" style="opacity:0;transition:opacity 0.4s"><polygon points="169,511 147.1,516.5 153.1,494.9" fill="transparent" stroke="#D4920A" stroke-width="2"/><text x="130.5" y="504" text-anchor="middle" font-size="6.5" fill="#D4920A" font-family="monospace">Purpose</text></g>
-        <g id="sub-sc15" style="opacity:0;transition:opacity 0.4s"><polygon points="169,389 153.1,405.1 147.1,383.5" fill="transparent" stroke="#D4920A" stroke-width="2"/><text x="130.5" y="404" text-anchor="middle" font-size="6.5" fill="#D4920A" font-family="monospace">Pattern</text></g>
-        <g id="sub-sc16" style="opacity:0;transition:opacity 0.4s"><polygon points="205.5,298.7 185.9,287.4 205.2,276.1" fill="transparent" stroke="#D4920A" stroke-width="2"/><text x="185.2" y="268" text-anchor="middle" font-size="6.5" fill="#D4920A" font-family="monospace">Pattern</text></g>
+        <g id="sub-sc5"  style="opacity:0;transition:opacity 0.4s"><polygon points="694.5,298.7 694.8,276.1 714.1,287.4" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="714.8" y="268" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Core Self</text></g>
+        <g id="sub-sc6"  style="opacity:0;transition:opacity 0.4s"><polygon points="731,389 752.9,383.5 746.9,405.1" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="769.5" y="404" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Core Self</text></g>
+        <g id="sub-sc7"  style="opacity:0;transition:opacity 0.4s"><polygon points="731,511 746.9,494.9 752.9,516.5" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="769.5" y="504" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Integrity</text></g>
+        <g id="sub-sc8"  style="opacity:0;transition:opacity 0.4s"><polygon points="694.5,601.3 714.1,612.6 694.8,623.9" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="714.8" y="640" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Integrity</text></g>
+        <g id="sub-sc9"  style="opacity:0;transition:opacity 0.4s"><polygon points="601.3,694.5 623.9,694.8 612.6,714.1" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="635.8" y="719" text-anchor="middle" font-size="6.5" fill="#1D9E75" font-family="monospace">Balance</text></g>
+        <g id="sub-sc10" style="opacity:0;transition:opacity 0.4s"><polygon points="511,731 516.5,752.9 494.9,746.9" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="500.2" y="774" text-anchor="middle" font-size="6.5" fill="#1D9E75" font-family="monospace">Balance</text></g>
+        <g id="sub-sc11" style="opacity:0;transition:opacity 0.4s"><polygon points="389,731 405.1,746.9 383.5,752.9" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="399.8" y="774" text-anchor="middle" font-size="6.5" fill="#1D9E75" font-family="monospace">Connection</text></g>
+        <g id="sub-sc12" style="opacity:0;transition:opacity 0.4s"><polygon points="298.7,694.5 287.4,714.1 276.1,694.8" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="264.2" y="719" text-anchor="middle" font-size="6.5" fill="#1D9E75" font-family="monospace">Connection</text></g>
+        <g id="sub-sc13" style="opacity:0;transition:opacity 0.4s"><polygon points="205.5,601.3 205.2,623.9 185.9,612.6" fill="transparent" stroke="#A0426B" stroke-width="2"/><text x="185.2" y="640" text-anchor="middle" font-size="6.5" fill="#A0426B" font-family="monospace">Purpose</text></g>
+        <g id="sub-sc14" style="opacity:0;transition:opacity 0.4s"><polygon points="169,511 147.1,516.5 153.1,494.9" fill="transparent" stroke="#A0426B" stroke-width="2"/><text x="130.5" y="504" text-anchor="middle" font-size="6.5" fill="#A0426B" font-family="monospace">Purpose</text></g>
+        <g id="sub-sc15" style="opacity:0;transition:opacity 0.4s"><polygon points="169,389 153.1,405.1 147.1,383.5" fill="transparent" stroke="#A0426B" stroke-width="2"/><text x="130.5" y="404" text-anchor="middle" font-size="6.5" fill="#A0426B" font-family="monospace">Pattern</text></g>
+        <g id="sub-sc16" style="opacity:0;transition:opacity 0.4s"><polygon points="205.5,298.7 185.9,287.4 205.2,276.1" fill="transparent" stroke="#A0426B" stroke-width="2"/><text x="185.2" y="268" text-anchor="middle" font-size="6.5" fill="#A0426B" font-family="monospace">Pattern</text></g>
         <g id="sub-node-bs" style="opacity:0;transition:opacity 0.5s"><polygon points="424,642 476,642 450,674" fill="none" stroke="#D4D0C8" stroke-width="1.3"/><text x="450" y="657" text-anchor="middle" font-size="7" fill="#6B7280" font-family="monospace">AI</text><text id="sub-v-bs" x="450" y="669" text-anchor="middle" font-size="8" fill="#6B7280" font-family="monospace">—</text></g>
       </svg>
     </div>
-
     <div class="diag-layer-badge" id="diag-layer-badge">SC Blueprint™ map</div>
-
-    <!-- OC strip — updated to polar colours -->
     <div class="oc-strip">
       <div class="oc-mini"><div class="oc-mini-label" style="color:#C4622D">NARC</div><div class="oc-mini-track"><div class="oc-mini-fill" id="oc-narc" style="width:25%;background:#C4622D"></div></div><div class="oc-mini-pct" id="ocp-narc">25%</div></div>
-      <div class="oc-mini"><div class="oc-mini-label" style="color:#3B4FD4">SIST</div><div class="oc-mini-track"><div class="oc-mini-fill" id="oc-sist" style="width:25%;background:#3B4FD4"></div></div><div class="oc-mini-pct" id="ocp-sist">25%</div></div>
-      <div class="oc-mini"><div class="oc-mini-label" style="color:#00C4B4">YARC</div><div class="oc-mini-track"><div class="oc-mini-fill" id="oc-yarc" style="width:25%;background:#00C4B4"></div></div><div class="oc-mini-pct" id="ocp-yarc">25%</div></div>
-      <div class="oc-mini"><div class="oc-mini-label" style="color:#D4920A">Øll</div><div class="oc-mini-track"><div class="oc-mini-fill" id="oc-oll" style="width:25%;background:#D4920A"></div></div><div class="oc-mini-pct" id="ocp-oll">25%</div></div>
+      <div class="oc-mini"><div class="oc-mini-label" style="color:#534AB7">SIST</div><div class="oc-mini-track"><div class="oc-mini-fill" id="oc-sist" style="width:25%;background:#534AB7"></div></div><div class="oc-mini-pct" id="ocp-sist">25%</div></div>
+      <div class="oc-mini"><div class="oc-mini-label" style="color:#1D9E75">YARC</div><div class="oc-mini-track"><div class="oc-mini-fill" id="oc-yarc" style="width:25%;background:#1D9E75"></div></div><div class="oc-mini-pct" id="ocp-yarc">25%</div></div>
+      <div class="oc-mini"><div class="oc-mini-label" style="color:#A0426B">Øll</div><div class="oc-mini-track"><div class="oc-mini-fill" id="oc-oll" style="width:25%;background:#A0426B"></div></div><div class="oc-mini-pct" id="ocp-oll">25%</div></div>
     </div>
   </div>
 
-  <!-- ── Q COLUMN ── -->
+  <!-- Q COL -->
   <div class="q-col">
     <div class="q-progress-bar"><div class="q-progress-fill" id="q-prog-fill"></div></div>
     <div class="q-body" id="q-body">
@@ -366,8 +303,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
       <div id="screen-intro">
         <span class="intro-eyebrow">Behavioral Intelligence Assessment · PsyTectrics™</span>
         <h1 style="font-family:var(--serif);font-weight:300;font-size:clamp(1.8rem,3vw,2.5rem);line-height:1.1;margin-bottom:0.75rem">Understand the<br/><em style="font-style:italic;color:var(--accent)">Human Operating System</em></h1>
+        <!-- FIXED: was "three layers — SC Blueprint™, Behavioral Nodes, and Awareness Patterns" — contradicted every other page.
+             Corrected to "two layers" (conscious and subconscious) which is the site-wide framework standard. -->
         <p class="intro-desc">56 structured questions mapped across two layers — conscious and subconscious — to produce your SC Blueprint™ ratio, Drift measurement, and Awareness Index™. Includes a full AI-generated interpretive report.</p>
-        <div class="intro-free">The assessment is <strong>free to complete.</strong> Your results and awareness level are shown immediately. The full written AI report unlocks for <strong>£50</strong> — paid at the end, no account required. Add Profile Chat for <strong>+£10</strong> at checkout.</div>
+        <div class="intro-free">The assessment is <strong>free to complete.</strong> Your results and awareness level are shown immediately. The full written AI report unlocks for <strong>£50</strong> — paid at the end, no account required.</div>
         <div class="ctx-field">
           <label>Name</label>
           <input type="text" id="solo-name" placeholder="Your name" oninput="updateLabel()"/>
@@ -406,27 +345,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
       <div id="screen-questions" style="display:none">
         <div id="q-card-wrap"></div>
         <div class="awareness-reveal" id="awareness-reveal">
-          <div class="ar-lbl">Your Awareness Level</div>
+          <div class="ar-lbl">Your Awareness Index™</div>
           <div class="ar-score" id="ar-score">—</div>
           <div class="ar-state" id="ar-state">—</div>
           <div class="ar-desc" id="ar-desc">—</div>
           <div class="ar-track"><div class="ar-fill" id="ar-fill"></div></div>
 
-          <!-- BLUEPRINT COLOUR — shown free after assessment -->
-          <div class="blueprint-colour-reveal" id="bc-reveal" style="display:none">
-            <span class="bc-label">Your Blueprint Colour™</span>
-            <div class="bc-swatch-row" id="bc-swatch-row"></div>
-            <div class="bc-hex-row">
-              <div class="bc-hex-box" id="bc-hex-box"></div>
-              <div class="bc-hex-val" id="bc-hex-val">—</div>
-            </div>
-            <p class="bc-desc">This colour is unique to your exact Blueprint ratio. No two profiles produce the same shade. Save it — it's yours.</p>
-          </div>
-
-          <!-- PAYMENT GATE — report -->
+          <!-- PAYMENT GATE -->
           <div class="pay-gate">
             <div class="pay-gate-title">Full <em>Profile Report</em></div>
-            <p class="pay-gate-desc">Your awareness level and Blueprint Colour are shown above — free. Unlock the full AI-generated written report: your complete SC Blueprint™ breakdown, primary pattern, pressure response, relationship profile, and next move.</p>
+            <p class="pay-gate-desc">Your awareness level is shown above. Unlock the full AI-generated written report — your complete SC Blueprint™ breakdown, primary pattern, pressure response, relationship profile, and next move.</p>
             <div class="pay-gate-price">£50</div>
             <p class="pay-gate-note">One-time payment · No subscription · No account required</p>
             <ul class="pay-gate-perks">
@@ -437,25 +365,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
               <li>Your relationship profile</li>
               <li>Your next move — actionable direction</li>
             </ul>
-            <button class="ar-gen-btn" id="ar-gen-btn" onclick="handlePayment('report')">Unlock full report — £50 →</button>
+            <button class="ar-gen-btn" id="ar-gen-btn" onclick="handlePayment()">Unlock full report — £50 →</button>
             <div class="stripe-loading" id="stripeLoading">Redirecting to secure checkout…</div>
             <p class="pay-secure">Secure payment via Stripe · Receipt by email</p>
           </div>
-
-          <!-- CHAT ADD-ON GATE — shown after report purchase only -->
-          <div class="chat-addon-gate" id="chat-addon-gate" style="display:none">
-            <span class="cag-label">Awareness AI™ · Profile Chat</span>
-            <div class="cag-title">Chat with your <em>Blueprint.</em></div>
-            <p class="cag-desc">Mirror mode reflects your own patterns back. Subject mode simulates how a profiled person operates. This is not a generic chatbot — it knows exactly who it's talking to.</p>
-            <div class="cag-price-row">
-              <div class="cag-price">£10</div>
-              <div class="cag-price-note">Add-on to<br/>your report</div>
-            </div>
-            <button class="cag-btn" id="cag-btn" onclick="handlePayment('chat')">Add Profile Chat — £10 →</button>
-            <div class="cag-stripe-loading" id="cagLoading">Redirecting to secure checkout…</div>
-            <p class="cag-secure">Secure payment via Stripe · One-time · Unlocks instantly after payment</p>
-          </div>
-
         </div>
       </div>
 
@@ -488,113 +401,92 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 
 <script src="https://js.stripe.com/v3/"></script>
 <script>
-// ── Stripe config ──────────────────────────────────────────────────────────
-const STRIPE_PK     = 'pk_live_51ThnQyBb2S75affdhU11ovPt7pYoAGbAAwwUZBxNi5ZpKrR2BafzrrT7GbLYV9oxvowHfjvPJTPoC8dSg9qIZgsy00a2nB2kqW';
-const REPORT_PRICE  = 'price_1ThuC4Bb2S75affdG3NIdc8u';   // £50 Solo Report
-const CHAT_PRICE    = 'price_CHAT_ADDON_ID_HERE';           // £10 Chat add-on — replace with real Stripe price ID
-const SUCCESS_REPORT = window.location.origin + '/solo.html?paid=report';
-const SUCCESS_CHAT   = window.location.origin + '/solo.html?paid=chat';
-const CANCEL_URL     = window.location.href;
+const STRIPE_PUBLISHABLE_KEY = 'pk_live_51ThnQyBb2S75affdhU11ovPt7pYoAGbAAwwUZBxNi5ZpKrR2BafzrrT7GbLYV9oxvowHfjvPJTPoC8dSg9qIZgsy00a2nB2kqW';
+const SOLO_PRICE_ID = 'price_1ThuC4Bb2S75affdG3NIdc8u';
+const SUCCESS_URL = window.location.origin + '/solo.html?paid=1';
+const CANCEL_URL = window.location.href;
 
 let stripe;
-try { stripe = Stripe(STRIPE_PK); } catch(e) {}
+try { stripe = Stripe(STRIPE_PUBLISHABLE_KEY); } catch(e) {}
 
-// ── Blueprint Colour blend ─────────────────────────────────────────────────
-// NARC=#C4622D  YARC=#00C4B4  SIST=#3B4FD4  Øll=#D4920A
-function hexToRgb(h){return[parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)];}
-function rgbToHex(r,g,b){return'#'+[r,g,b].map(v=>Math.round(v).toString(16).padStart(2,'0')).join('').toUpperCase();}
-function blendBlueprintColour(narc,yarc,sist,oll){
-  const total=narc+yarc+sist+oll||1;
-  const cols=[['#C4622D',narc],['#00C4B4',yarc],['#3B4FD4',sist],['#D4920A',oll]];
-  let r=0,g=0,b=0;
-  cols.forEach(([h,p])=>{const[cr,cg,cb]=hexToRgb(h);const w=p/total;r+=cr*w;g+=cg*w;b+=cb*w;});
-  return rgbToHex(r,g,b);
-}
-window.generateBlueprintColour=blendBlueprintColour;
-
-// ── Node definitions ───────────────────────────────────────────────────────
 const NODES=[
   {id:'sc1', name:'Intention',  code:'NARC',slot:'A1',col:'#C4622D',svgId:'node-sc1', appId:'node-a1',ocId:'node-narc',layer:'Conscious',reversed:false,q:"I feel clear about what I genuinely want from life."},
   {id:'sc2', name:'Intention',  code:'NARC',slot:'A1',col:'#C4622D',svgId:'node-sc2', appId:'node-a1',ocId:'node-narc',layer:'Conscious',reversed:false,q:"My goals reflect my personal values rather than outside expectations."},
   {id:'sc3', name:'Presence',   code:'NARC',slot:'A2',col:'#C4622D',svgId:'node-sc3', appId:'node-a2',ocId:'node-narc',layer:'Conscious',reversed:false,q:"I am able to stay mentally present during important moments."},
   {id:'sc4', name:'Presence',   code:'NARC',slot:'A2',col:'#C4622D',svgId:'node-sc4', appId:'node-a2',ocId:'node-narc',layer:'Conscious',reversed:false,q:"I notice my emotional state before reacting impulsively."},
-  {id:'sc5', name:'Core Self',  code:'SIST',slot:'A3',col:'#3B4FD4',svgId:'node-sc5', appId:'node-a3',ocId:'node-sist',layer:'Conscious',reversed:false,q:"I feel connected to who I truly am beneath social roles."},
-  {id:'sc6', name:'Core Self',  code:'SIST',slot:'A3',col:'#3B4FD4',svgId:'node-sc6', appId:'node-a3',ocId:'node-sist',layer:'Conscious',reversed:false,q:"I rarely feel the need to become someone different to gain approval."},
-  {id:'sc7', name:'Integrity',  code:'SIST',slot:'A4',col:'#3B4FD4',svgId:'node-sc7', appId:'node-a4',ocId:'node-sist',layer:'Conscious',reversed:false,q:"My actions usually align with the values I claim to believe in."},
-  {id:'sc8', name:'Integrity',  code:'SIST',slot:'A4',col:'#3B4FD4',svgId:'node-sc8', appId:'node-a4',ocId:'node-sist',layer:'Conscious',reversed:false,q:"I remain honest with myself even when the truth feels uncomfortable."},
-  {id:'sc9', name:'Balance',    code:'YARC',slot:'A5',col:'#00C4B4',svgId:'node-sc9', appId:'node-a5',ocId:'node-yarc',layer:'Conscious',reversed:false,q:"I can usually remain emotionally stable during stressful situations."},
-  {id:'sc10',name:'Balance',    code:'YARC',slot:'A5',col:'#00C4B4',svgId:'node-sc10',appId:'node-a5',ocId:'node-yarc',layer:'Conscious',reversed:false,q:"I consider multiple perspectives before forming conclusions."},
-  {id:'sc11',name:'Connection', code:'YARC',slot:'A6',col:'#00C4B4',svgId:'node-sc11',appId:'node-a6',ocId:'node-yarc',layer:'Conscious',reversed:false,q:"I genuinely try to understand other people's perspectives."},
-  {id:'sc12',name:'Connection', code:'YARC',slot:'A6',col:'#00C4B4',svgId:'node-sc12',appId:'node-a6',ocId:'node-yarc',layer:'Conscious',reversed:false,q:"I value meaningful connection more than status or appearance."},
-  {id:'sc13',name:'Purpose',    code:'Øll', slot:'A7',col:'#D4920A',svgId:'node-sc13',appId:'node-a7',ocId:'node-oll', layer:'Conscious',reversed:false,q:"I feel my life has direction or meaning beyond short-term survival."},
-  {id:'sc14',name:'Purpose',    code:'Øll', slot:'A7',col:'#D4920A',svgId:'node-sc14',appId:'node-a7',ocId:'node-oll', layer:'Conscious',reversed:false,q:"I regularly think about my long-term purpose."},
-  {id:'sc15',name:'Pattern',    code:'Øll', slot:'A8',col:'#D4920A',svgId:'node-sc15',appId:'node-a8',ocId:'node-oll', layer:'Conscious',reversed:false,q:"I notice recurring patterns in my behaviour over time."},
-  {id:'sc16',name:'Pattern',    code:'Øll', slot:'A8',col:'#D4920A',svgId:'node-sc16',appId:'node-a8',ocId:'node-oll', layer:'Conscious',reversed:false,q:"I can identify cycles that repeatedly appear in my life."},
+  {id:'sc5', name:'Core Self',  code:'SIST',slot:'A3',col:'#534AB7',svgId:'node-sc5', appId:'node-a3',ocId:'node-sist',layer:'Conscious',reversed:false,q:"I feel connected to who I truly am beneath social roles."},
+  {id:'sc6', name:'Core Self',  code:'SIST',slot:'A3',col:'#534AB7',svgId:'node-sc6', appId:'node-a3',ocId:'node-sist',layer:'Conscious',reversed:false,q:"I rarely feel the need to become someone different to gain approval."},
+  {id:'sc7', name:'Integrity',  code:'SIST',slot:'A4',col:'#534AB7',svgId:'node-sc7', appId:'node-a4',ocId:'node-sist',layer:'Conscious',reversed:false,q:"My actions usually align with the values I claim to believe in."},
+  {id:'sc8', name:'Integrity',  code:'SIST',slot:'A4',col:'#534AB7',svgId:'node-sc8', appId:'node-a4',ocId:'node-sist',layer:'Conscious',reversed:false,q:"I remain honest with myself even when the truth feels uncomfortable."},
+  {id:'sc9', name:'Balance',    code:'YARC',slot:'A5',col:'#1D9E75',svgId:'node-sc9', appId:'node-a5',ocId:'node-yarc',layer:'Conscious',reversed:false,q:"I can usually remain emotionally stable during stressful situations."},
+  {id:'sc10',name:'Balance',    code:'YARC',slot:'A5',col:'#1D9E75',svgId:'node-sc10',appId:'node-a5',ocId:'node-yarc',layer:'Conscious',reversed:false,q:"I consider multiple perspectives before forming conclusions."},
+  {id:'sc11',name:'Connection', code:'YARC',slot:'A6',col:'#1D9E75',svgId:'node-sc11',appId:'node-a6',ocId:'node-yarc',layer:'Conscious',reversed:false,q:"I genuinely try to understand other people's perspectives."},
+  {id:'sc12',name:'Connection', code:'YARC',slot:'A6',col:'#1D9E75',svgId:'node-sc12',appId:'node-a6',ocId:'node-yarc',layer:'Conscious',reversed:false,q:"I value meaningful connection more than status or appearance."},
+  {id:'sc13',name:'Purpose',    code:'Øll', slot:'A7',col:'#A0426B',svgId:'node-sc13',appId:'node-a7',ocId:'node-oll', layer:'Conscious',reversed:false,q:"I feel my life has direction or meaning beyond short-term survival."},
+  {id:'sc14',name:'Purpose',    code:'Øll', slot:'A7',col:'#A0426B',svgId:'node-sc14',appId:'node-a7',ocId:'node-oll', layer:'Conscious',reversed:false,q:"I regularly think about my long-term purpose."},
+  {id:'sc15',name:'Pattern',    code:'Øll', slot:'A8',col:'#A0426B',svgId:'node-sc15',appId:'node-a8',ocId:'node-oll', layer:'Conscious',reversed:false,q:"I notice recurring patterns in my behaviour over time."},
+  {id:'sc16',name:'Pattern',    code:'Øll', slot:'A8',col:'#A0426B',svgId:'node-sc16',appId:'node-a8',ocId:'node-oll', layer:'Conscious',reversed:false,q:"I can identify cycles that repeatedly appear in my life."},
   {id:'ap1', name:'A1',code:'NARC',slot:'APP',col:'#C4622D',svgId:'node-a1', appId:'node-a1',ocId:'node-narc',layer:'Conscious',reversed:false,q:"I follow through on my intentions even when it becomes inconvenient."},
   {id:'ap2', name:'A2',code:'NARC',slot:'APP',col:'#C4622D',svgId:'node-a2', appId:'node-a2',ocId:'node-narc',layer:'Conscious',reversed:false,q:"I am aware of my impact on others in real time."},
-  {id:'ap3', name:'A3',code:'SIST',slot:'APP',col:'#3B4FD4',svgId:'node-a3', appId:'node-a3',ocId:'node-sist',layer:'Conscious',reversed:false,q:"I behave consistently whether or not I am being observed."},
-  {id:'ap4', name:'A4',code:'SIST',slot:'APP',col:'#3B4FD4',svgId:'node-a4', appId:'node-a4',ocId:'node-sist',layer:'Conscious',reversed:false,q:"I can justify my decisions honestly to myself."},
-  {id:'ap5', name:'A5',code:'YARC',slot:'APP',col:'#00C4B4',svgId:'node-a5', appId:'node-a5',ocId:'node-yarc',layer:'Conscious',reversed:false,q:"I can think clearly when emotions are high."},
-  {id:'ap6', name:'A6',code:'YARC',slot:'APP',col:'#00C4B4',svgId:'node-a6', appId:'node-a6',ocId:'node-yarc',layer:'Conscious',reversed:false,q:"I can be fully present with someone without losing my own emotional footing."},
-  {id:'ap7', name:'A7',code:'Øll', slot:'APP',col:'#D4920A',svgId:'node-a7', appId:'node-a7',ocId:'node-oll', layer:'Conscious',reversed:false,q:"The way I show up for others reflects something genuine rather than obligation."},
-  {id:'ap8', name:'A8',code:'Øll', slot:'APP',col:'#D4920A',svgId:'node-a8', appId:'node-a8',ocId:'node-oll', layer:'Conscious',reversed:false,q:"I am actively working to break my own cycles rather than just recognising them."},
+  {id:'ap3', name:'A3',code:'SIST',slot:'APP',col:'#534AB7',svgId:'node-a3', appId:'node-a3',ocId:'node-sist',layer:'Conscious',reversed:false,q:"I behave consistently whether or not I am being observed."},
+  {id:'ap4', name:'A4',code:'SIST',slot:'APP',col:'#534AB7',svgId:'node-a4', appId:'node-a4',ocId:'node-sist',layer:'Conscious',reversed:false,q:"I can justify my decisions honestly to myself."},
+  {id:'ap5', name:'A5',code:'YARC',slot:'APP',col:'#1D9E75',svgId:'node-a5', appId:'node-a5',ocId:'node-yarc',layer:'Conscious',reversed:false,q:"I can think clearly when emotions are high."},
+  {id:'ap6', name:'A6',code:'YARC',slot:'APP',col:'#1D9E75',svgId:'node-a6', appId:'node-a6',ocId:'node-yarc',layer:'Conscious',reversed:false,q:"I can be fully present with someone without losing my own emotional footing."},
+  {id:'ap7', name:'A7',code:'Øll', slot:'APP',col:'#A0426B',svgId:'node-a7', appId:'node-a7',ocId:'node-oll', layer:'Conscious',reversed:false,q:"The way I show up for others reflects something genuine rather than obligation."},
+  {id:'ap8', name:'A8',code:'Øll', slot:'APP',col:'#A0426B',svgId:'node-a8', appId:'node-a8',ocId:'node-oll', layer:'Conscious',reversed:false,q:"I am actively working to break my own cycles rather than just recognising them."},
   {id:'oc1', name:'NARC',code:'NARC',slot:'OC',col:'#C4622D',svgId:'node-narc',appId:'node-narc',ocId:'node-narc',layer:'Conscious',reversed:false,q:"I prioritise my own needs when resources are limited."},
-  {id:'oc2', name:'SIST',code:'SIST',slot:'OC',col:'#3B4FD4',svgId:'node-sist',appId:'node-sist',ocId:'node-sist',layer:'Conscious',reversed:false,q:"I naturally bring structure and stability to situations."},
-  {id:'oc3', name:'YARC',code:'YARC',slot:'OC',col:'#00C4B4',svgId:'node-yarc',appId:'node-yarc',ocId:'node-yarc',layer:'Conscious',reversed:false,q:"I naturally orient toward others' needs before my own."},
-  {id:'oc4', name:'Øll', code:'Øll', slot:'OC',col:'#D4920A',svgId:'node-oll', appId:'node-oll', ocId:'node-oll', layer:'Conscious',reversed:false,q:"I tend toward intense, all-or-nothing responses under pressure."},
-  // Subconscious layer
+  {id:'oc2', name:'SIST',code:'SIST',slot:'OC',col:'#534AB7',svgId:'node-sist',appId:'node-sist',ocId:'node-sist',layer:'Conscious',reversed:false,q:"I naturally bring structure and stability to situations."},
+  {id:'oc3', name:'YARC',code:'YARC',slot:'OC',col:'#1D9E75',svgId:'node-yarc',appId:'node-yarc',ocId:'node-yarc',layer:'Conscious',reversed:false,q:"I naturally orient toward others' needs before my own."},
+  {id:'oc4', name:'Øll', code:'Øll', slot:'OC',col:'#A0426B',svgId:'node-oll', appId:'node-oll', ocId:'node-oll', layer:'Conscious',reversed:false,q:"I tend toward intense, all-or-nothing responses under pressure."},
   {id:'sc17',name:'Intention',  code:'NARC',slot:'A1',col:'#C4622D',svgId:'node-sc2', subId:'sub-sc2', appId:'node-a1',ocId:'node-narc',layer:'Subconscious',reversed:true, q:"I often pursue things to prove something to someone from my past."},
   {id:'sc18',name:'Intention',  code:'NARC',slot:'A1',col:'#C4622D',svgId:'node-sc1', subId:'sub-sc1', appId:'node-a1',ocId:'node-narc',layer:'Subconscious',reversed:true, q:"My drive comes from fear of failure more than genuine desire."},
   {id:'sc19',name:'Presence',   code:'NARC',slot:'A2',col:'#C4622D',svgId:'node-sc4', subId:'sub-sc4', appId:'node-a2',ocId:'node-narc',layer:'Subconscious',reversed:true, q:"My mind frequently replays past events or rehearses future ones."},
   {id:'sc20',name:'Presence',   code:'NARC',slot:'A2',col:'#C4622D',svgId:'node-sc3', subId:'sub-sc3', appId:'node-a2',ocId:'node-narc',layer:'Subconscious',reversed:true, q:"I react before I know why."},
-  {id:'sc21',name:'Core Self',  code:'SIST',slot:'A3',col:'#3B4FD4',svgId:'node-sc6', subId:'sub-sc6', appId:'node-a3',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"I often feel like a different person in different settings."},
-  {id:'sc22',name:'Core Self',  code:'SIST',slot:'A3',col:'#3B4FD4',svgId:'node-sc5', subId:'sub-sc5', appId:'node-a3',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"I adapt my personality significantly depending on who I am with."},
-  {id:'sc23',name:'Integrity',  code:'SIST',slot:'A4',col:'#3B4FD4',svgId:'node-sc8', subId:'sub-sc8', appId:'node-a4',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"I sometimes act against my stated values without fully understanding why."},
-  {id:'sc24',name:'Integrity',  code:'SIST',slot:'A4',col:'#3B4FD4',svgId:'node-sc7', subId:'sub-sc7', appId:'node-a4',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"I tell myself stories that protect my self-image even when they are not true."},
-  {id:'sc25',name:'Balance',    code:'YARC',slot:'A5',col:'#00C4B4',svgId:'node-sc10',subId:'sub-sc10',appId:'node-a5',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"My emotional reactions often feel disproportionate to the trigger."},
-  {id:'sc26',name:'Balance',    code:'YARC',slot:'A5',col:'#00C4B4',svgId:'node-sc9', subId:'sub-sc9', appId:'node-a5',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"I make decisions I later regret when I am emotionally activated."},
-  {id:'sc27',name:'Connection', code:'YARC',slot:'A6',col:'#00C4B4',svgId:'node-sc12',subId:'sub-sc12',appId:'node-a6',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"I feel responsible for other people's emotional states."},
-  {id:'sc28',name:'Connection', code:'YARC',slot:'A6',col:'#00C4B4',svgId:'node-sc11',subId:'sub-sc11',appId:'node-a6',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"I find it difficult to receive without feeling indebted."},
-  {id:'sc29',name:'Purpose',    code:'Øll', slot:'A7',col:'#D4920A',svgId:'node-sc14',subId:'sub-sc14',appId:'node-a7',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"I am often unsure whether my purpose is genuinely mine or inherited from others."},
-  {id:'sc30',name:'Purpose',    code:'Øll', slot:'A7',col:'#D4920A',svgId:'node-sc13',subId:'sub-sc13',appId:'node-a7',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"I feel a quiet sense of meaninglessness that persists beneath surface satisfaction."},
-  {id:'sc31',name:'Pattern',    code:'Øll', slot:'A8',col:'#D4920A',svgId:'node-sc16',subId:'sub-sc16',appId:'node-a8',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"I recognise patterns in myself but feel unable to stop repeating them."},
-  {id:'sc32',name:'Pattern',    code:'Øll', slot:'A8',col:'#D4920A',svgId:'node-sc15',subId:'sub-sc15',appId:'node-a8',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"My most significant life events seem to follow the same underlying script."},
+  {id:'sc21',name:'Core Self',  code:'SIST',slot:'A3',col:'#534AB7',svgId:'node-sc6', subId:'sub-sc6', appId:'node-a3',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"I often feel like a different person in different settings."},
+  {id:'sc22',name:'Core Self',  code:'SIST',slot:'A3',col:'#534AB7',svgId:'node-sc5', subId:'sub-sc5', appId:'node-a3',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"I adapt my personality significantly depending on who I am with."},
+  {id:'sc23',name:'Integrity',  code:'SIST',slot:'A4',col:'#534AB7',svgId:'node-sc8', subId:'sub-sc8', appId:'node-a4',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"I sometimes act against my stated values without fully understanding why."},
+  {id:'sc24',name:'Integrity',  code:'SIST',slot:'A4',col:'#534AB7',svgId:'node-sc7', subId:'sub-sc7', appId:'node-a4',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"I tell myself stories that protect my self-image even when they are not true."},
+  {id:'sc25',name:'Balance',    code:'YARC',slot:'A5',col:'#1D9E75',svgId:'node-sc10',subId:'sub-sc10',appId:'node-a5',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"My emotional reactions often feel disproportionate to the trigger."},
+  {id:'sc26',name:'Balance',    code:'YARC',slot:'A5',col:'#1D9E75',svgId:'node-sc9', subId:'sub-sc9', appId:'node-a5',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"I make decisions I later regret when I am emotionally activated."},
+  {id:'sc27',name:'Connection', code:'YARC',slot:'A6',col:'#1D9E75',svgId:'node-sc12',subId:'sub-sc12',appId:'node-a6',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"I feel responsible for other people's emotional states."},
+  {id:'sc28',name:'Connection', code:'YARC',slot:'A6',col:'#1D9E75',svgId:'node-sc11',subId:'sub-sc11',appId:'node-a6',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"I find it difficult to receive without feeling indebted."},
+  {id:'sc29',name:'Purpose',    code:'Øll', slot:'A7',col:'#A0426B',svgId:'node-sc14',subId:'sub-sc14',appId:'node-a7',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"I am often unsure whether my purpose is genuinely mine or inherited from others."},
+  {id:'sc30',name:'Purpose',    code:'Øll', slot:'A7',col:'#A0426B',svgId:'node-sc13',subId:'sub-sc13',appId:'node-a7',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"I feel a quiet sense of meaninglessness that persists beneath surface satisfaction."},
+  {id:'sc31',name:'Pattern',    code:'Øll', slot:'A8',col:'#A0426B',svgId:'node-sc16',subId:'sub-sc16',appId:'node-a8',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"I recognise patterns in myself but feel unable to stop repeating them."},
+  {id:'sc32',name:'Pattern',    code:'Øll', slot:'A8',col:'#A0426B',svgId:'node-sc15',subId:'sub-sc15',appId:'node-a8',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"My most significant life events seem to follow the same underlying script."},
   {id:'ap9', name:'A1',code:'NARC',slot:'APP',col:'#C4622D',svgId:'node-a1', subId:'sub-node-a1',appId:'node-a1',ocId:'node-narc',layer:'Subconscious',reversed:true, q:"I abandon things when they stop feeling meaningful."},
   {id:'ap10',name:'A2',code:'NARC',slot:'APP',col:'#C4622D',svgId:'node-a2', subId:'sub-node-a2',appId:'node-a2',ocId:'node-narc',layer:'Subconscious',reversed:true, q:"I am often unaware of my impact on others until after the fact."},
-  {id:'ap11',name:'A3',code:'SIST',slot:'APP',col:'#3B4FD4',svgId:'node-a3', subId:'sub-node-a3',appId:'node-a3',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"My behaviour changes when I feel I am being judged."},
-  {id:'ap12',name:'A4',code:'SIST',slot:'APP',col:'#3B4FD4',svgId:'node-a4', subId:'sub-node-a4',appId:'node-a4',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"I avoid examining decisions that might show I acted wrongly."},
-  {id:'ap13',name:'A5',code:'YARC',slot:'APP',col:'#00C4B4',svgId:'node-a5', subId:'sub-node-a5',appId:'node-a5',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"Logic leaves me when emotion enters."},
-  {id:'ap14',name:'A6',code:'YARC',slot:'APP',col:'#00C4B4',svgId:'node-a6', subId:'sub-node-a6',appId:'node-a6',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"I lose myself when someone I care about is struggling."},
-  {id:'ap15',name:'A7',code:'Øll', slot:'APP',col:'#D4920A',svgId:'node-a7', subId:'sub-node-a7',appId:'node-a7',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"What I give to others often comes from fear of being rejected rather than genuine care."},
-  {id:'ap16',name:'A8',code:'Øll', slot:'APP',col:'#D4920A',svgId:'node-a8', subId:'sub-node-a8',appId:'node-a8',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"I understand my patterns intellectually but they continue regardless."},
+  {id:'ap11',name:'A3',code:'SIST',slot:'APP',col:'#534AB7',svgId:'node-a3', subId:'sub-node-a3',appId:'node-a3',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"My behaviour changes when I feel I am being judged."},
+  {id:'ap12',name:'A4',code:'SIST',slot:'APP',col:'#534AB7',svgId:'node-a4', subId:'sub-node-a4',appId:'node-a4',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"I avoid examining decisions that might show I acted wrongly."},
+  {id:'ap13',name:'A5',code:'YARC',slot:'APP',col:'#1D9E75',svgId:'node-a5', subId:'sub-node-a5',appId:'node-a5',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"Logic leaves me when emotion enters."},
+  {id:'ap14',name:'A6',code:'YARC',slot:'APP',col:'#1D9E75',svgId:'node-a6', subId:'sub-node-a6',appId:'node-a6',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"I lose myself when someone I care about is struggling."},
+  {id:'ap15',name:'A7',code:'Øll', slot:'APP',col:'#A0426B',svgId:'node-a7', subId:'sub-node-a7',appId:'node-a7',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"What I give to others often comes from fear of being rejected rather than genuine care."},
+  {id:'ap16',name:'A8',code:'Øll', slot:'APP',col:'#A0426B',svgId:'node-a8', subId:'sub-node-a8',appId:'node-a8',ocId:'node-oll', layer:'Subconscious',reversed:true, q:"I understand my patterns intellectually but they continue regardless."},
   {id:'oc5', name:'NARC',code:'NARC',slot:'OC',col:'#C4622D',svgId:'node-narc',subId:'sub-node-narc',appId:'node-narc',ocId:'node-narc',layer:'Subconscious',reversed:true, q:"Under pressure I become focused on self-protection above all else."},
-  {id:'oc6', name:'SIST',code:'SIST',slot:'OC',col:'#3B4FD4',svgId:'node-sist',subId:'sub-node-sist',appId:'node-sist',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"I become rigid or controlling when I feel uncertain."},
-  {id:'oc7', name:'YARC',code:'YARC',slot:'OC',col:'#00C4B4',svgId:'node-yarc',subId:'sub-node-yarc',appId:'node-yarc',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"I habitually prioritise others at the expense of my own wellbeing."},
-  {id:'oc8', name:'Øll', code:'Øll', slot:'OC',col:'#D4920A',svgId:'node-oll', subId:'sub-node-oll', appId:'node-oll', ocId:'node-oll', layer:'Subconscious',reversed:true, q:"My reactions tend toward extremes — all in or completely withdrawn."},
+  {id:'oc6', name:'SIST',code:'SIST',slot:'OC',col:'#534AB7',svgId:'node-sist',subId:'sub-node-sist',appId:'node-sist',ocId:'node-sist',layer:'Subconscious',reversed:true, q:"I become rigid or controlling when I feel uncertain."},
+  {id:'oc7', name:'YARC',code:'YARC',slot:'OC',col:'#1D9E75',svgId:'node-yarc',subId:'sub-node-yarc',appId:'node-yarc',ocId:'node-yarc',layer:'Subconscious',reversed:true, q:"I habitually prioritise others at the expense of my own wellbeing."},
+  {id:'oc8', name:'Øll', code:'Øll', slot:'OC',col:'#A0426B',svgId:'node-oll', subId:'sub-node-oll', appId:'node-oll', ocId:'node-oll', layer:'Subconscious',reversed:true, q:"My reactions tend toward extremes — all in or completely withdrawn."},
 ];
-
 const ANSWERS=["Strongly disagree","Disagree","Neutral / unsure","Agree","Strongly agree"];
 const LEVELS=[
-  {level:1,name:'Non-Conscious', col:'#D4920A',desc:'Behaviour entirely automatic. No observer present.'},
-  {level:2,name:'Sub-Conscious', col:'#D4920A',desc:'Hidden patterns driving decisions. You are moved but cannot yet see what moves you.'},
-  {level:3,name:'Conscious',     col:'#C4622D',desc:'The observer has switched on but remains largely reactive.'},
-  {level:4,name:'Aware',         col:'#C4622D',desc:'Awareness of your own loops. First level where genuine change becomes possible.'},
-  {level:5,name:'Choice',        col:'#3B4FD4',desc:'The gap between stimulus and response has opened. Behaviour is beginning to be chosen.'},
-  {level:6,name:'Integration',   col:'#3B4FD4',desc:'Holding both sides of a polarity simultaneously without collapsing into either.'},
-  {level:7,name:'Expression',    col:'#00C4B4',desc:'Conscious creation. Inner state reliably translates into outer reality.'},
-  {level:8,name:'Connection',    col:'#00C4B4',desc:'Genuine empathy without self-abandonment. Subconscious layer aligned.'},
-  {level:9,name:'Mastery',       col:'#00C4B4',desc:'Living by intention rather than impulse. Emotion is information, not instruction.'},
+  {level:1,name:'Non-Conscious',col:'#A0426B',desc:'Behaviour entirely automatic. No observer present.'},
+  {level:2,name:'Sub-Conscious',col:'#A0426B',desc:'Hidden patterns driving decisions. You are moved but cannot yet see what moves you.'},
+  {level:3,name:'Conscious',    col:'#C4622D',desc:'The observer has switched on but remains largely reactive.'},
+  {level:4,name:'Aware',        col:'#C4622D',desc:'Awareness of your own loops. First level where genuine change becomes possible.'},
+  {level:5,name:'Choice',       col:'#534AB7',desc:'The gap between stimulus and response has opened. Behaviour is beginning to be chosen.'},
+  {level:6,name:'Integration',  col:'#534AB7',desc:'Holding both sides of a polarity simultaneously without collapsing into either.'},
+  {level:7,name:'Expression',   col:'#1D9E75',desc:'Conscious creation. Inner state reliably translates into outer reality.'},
+  {level:8,name:'Connection',   col:'#1D9E75',desc:'Genuine empathy without self-abandonment. Subconscious layer aligned.'},
+  {level:9,name:'Mastery',      col:'#1D9E75',desc:'Living by intention rather than impulse. Emotion is information, not instruction.'},
   {level:10,name:'Creator/Source',col:'#00D4FF',desc:'25/25/25/25. Both layers aligned. Peak expression reached.'},
 ];
 function getLevel(bs){bs=parseFloat(bs);if(bs<=-4.5)return LEVELS[0];if(bs<=-2.5)return LEVELS[1];if(bs<=-0.5)return LEVELS[2];if(bs<=0.5)return LEVELS[3];if(bs<=1.5)return LEVELS[4];if(bs<=2.5)return LEVELS[5];if(bs<=3.2)return LEVELS[6];if(bs<=3.8)return LEVELS[7];if(bs<=4.5)return LEVELS[8];return LEVELS[9];}
 
 let scores={},currentStep=1,prevPulseEl=null,selAge='',selCtx='';
 
-// ── URL param routing ──────────────────────────────────────────────────────
 window.addEventListener('DOMContentLoaded',()=>{
   const params=new URLSearchParams(window.location.search);
-  const paid=params.get('paid');
-  if(paid==='report'||paid==='chat'){
+  if(params.get('paid')==='1'){
     const saved=sessionStorage.getItem('pt_solo_scores');
     const savedCtx=sessionStorage.getItem('pt_solo_ctx');
     if(saved){
@@ -604,7 +496,7 @@ window.addEventListener('DOMContentLoaded',()=>{
       document.getElementById('screen-intro').style.display='none';
       document.getElementById('screen-questions').style.display='none';
       document.getElementById('screen-results').style.display='block';
-      generateAndShowReport(ctx.name||'', paid==='chat');
+      generateAndShowReport(ctx.name||'');
       history.replaceState({},'',window.location.pathname);
     }
   }
@@ -639,15 +531,16 @@ function showStep(step){
   document.getElementById('q-prog-fill').style.width=(step/total*100).toFixed(0)+'%';
   document.getElementById('nav-prog').textContent=step+' / '+total;
   document.getElementById('awareness-reveal').classList.remove('visible');
-  if(step>total){showReveal();return;}
+  if(step>total){document.getElementById('nav-prog').style.display='none';showReveal();return;}
   const n=NODES[step-1];
   document.getElementById('diag-layer-badge').textContent=n.layer+' layer';
   document.getElementById('q-card-wrap').style.display='block';
   const cur=scores[n.id];const isLast=step===total;const isFlip=step===28;
   const answersHtml=ANSWERS.map((ans,di)=>{const raw=di+1;const sel=cur===raw;return `<button class="q-answer-btn${sel?' selected':''}" onclick="selectAnswer('${n.id}',${raw},this,'${n.col}')" data-raw="${raw}" style="${sel?`border-color:${n.col};background:${n.col}18`:''}"><span class="q-answer-num" style="${sel?`background:${n.col};color:#fff`:''}">${raw}</span><span>${ans}</span></button>`;}).join('');
   const nextFn=isLast?'finishAssessment()':isFlip?`flipDiagram(${step+1})`:`goToQ(${step+1})`;
-  const nextLbl=isLast?'Complete →':isFlip?'Continue to Part 2 →':'Next →';
-  document.getElementById('q-card-wrap').innerHTML=`<div class="q-step active" style="animation:step-in 0.25s ease"><div class="q-meta-row"><div class="q-dot" style="background:${n.col}"></div><span class="q-code-lbl" style="color:${n.col}">${n.code} · ${n.slot}</span><span class="q-layer-lbl">${n.layer}</span></div><div class="q-node-name">${n.name}</div><div class="q-question">${n.q}</div><div class="q-answers">${answersHtml}</div><div class="q-nav-row"><button class="q-btn q-btn-ghost" onclick="goToQ(${step-1})" ${step===1?'style="visibility:hidden"':''}>← Back</button><button class="q-btn q-btn-primary" id="q-next-btn" onclick="${nextFn}" ${cur===undefined?'disabled':''}>${nextLbl}</button></div></div>`;
+  const nextLbl=isLast?'Complete →':isFlip?'Part 2: Subconscious →':'Next →';
+  const nextStyle=isFlip?'style="background:transparent;border:1px solid var(--accent);color:var(--accent)"':'';
+  document.getElementById('q-card-wrap').innerHTML=`<div class="q-step active" style="animation:step-in 0.25s ease"><div class="q-meta-row"><div class="q-dot" style="background:${n.col}"></div><span class="q-code-lbl" style="color:${n.col}">${n.code} · ${n.slot}</span><span class="q-layer-lbl">${n.layer}</span></div><div class="q-node-name">${n.name}</div><div class="q-question">${n.q}</div><div class="q-answers">${answersHtml}</div><div class="q-nav-row"><button class="q-btn q-btn-ghost" onclick="goToQ(${step-1})" ${step===1?'style="visibility:hidden"':''}>← Back</button><button class="q-btn q-btn-primary" id="q-next-btn" onclick="${nextFn}" ${cur===undefined?'disabled':''} ${nextStyle}>${nextLbl}</button></div></div>`;
   activateNode(n);
 }
 function goToQ(s){if(s<1)return;showStep(s);}
@@ -702,7 +595,11 @@ function updateOCBars(){
 
 function flipDiagram(nextStep){
   const wrap=document.getElementById('diag-svg-wrap');
+  const badge=document.getElementById('diag-layer-badge');
   if(prevPulseEl){prevPulseEl.classList.remove('node-active-pulse');prevPulseEl=null;}
+  // Show transition label immediately so blank state looks intentional
+  badge.textContent='Loading subconscious layer…';
+  badge.style.color='var(--accent)';
   wrap.classList.add('diag-flip-out');
   setTimeout(()=>{
     const subSvg=document.getElementById('sub-diagram');
@@ -710,11 +607,14 @@ function flipDiagram(nextStep){
     const name=document.getElementById('obs-label')?.textContent||'—';
     const subLbl=document.getElementById('sub-obs-label');if(subLbl)subLbl.textContent=name;
     wrap.classList.add('show-sub');wrap.classList.remove('diag-flip-out');wrap.classList.add('diag-flip-in');
-    setTimeout(()=>{wrap.classList.remove('diag-flip-in');goToQ(nextStep);},450);
+    setTimeout(()=>{
+      wrap.classList.remove('diag-flip-in');
+      badge.style.color='';
+      goToQ(nextStep);
+    },450);
   },450);
 }
 
-// ── REVEAL — free results + Blueprint Colour ───────────────────────────────
 function showReveal(){
   document.getElementById('q-card-wrap').style.display='none';
   if(prevPulseEl){prevPulseEl.classList.remove('node-active-pulse');prevPulseEl=null;}
@@ -723,8 +623,6 @@ function showReveal(){
   const avg=effs.reduce((a,b)=>a+b,0)/effs.length;
   const bs=parseFloat(((avg-3)/2*5).toFixed(1));
   const lvl=getLevel(bs);
-
-  // Awareness level
   document.getElementById('ar-score').textContent=lvl.level;
   document.getElementById('ar-score').style.color=lvl.col;
   document.getElementById('ar-state').textContent=lvl.name+' · AI '+(bs>0?'+':'')+bs;
@@ -732,115 +630,57 @@ function showReveal(){
   document.getElementById('ar-desc').textContent=lvl.desc;
   document.getElementById('ar-fill').style.width=(lvl.level/10*100)+'%';
   document.getElementById('ar-fill').style.background=lvl.col;
-
-  // Blueprint Colour — compute from actual scores
-  const byCode={NARC:[],SIST:[],YARC:[],'Øll':[]};
-  NODES.forEach(n=>{if(scores[n.id]!==undefined){const eff=n.reversed?(6-scores[n.id]):scores[n.id];byCode[n.code].push(eff);}});
-  const totals={};Object.entries(byCode).forEach(([k,v])=>{totals[k]=v.reduce((a,b)=>a+b,0)||0.001;});
-  const grand=Object.values(totals).reduce((a,b)=>a+b,0)||1;
-  const narcPct=Math.round(totals.NARC/grand*100);
-  const yarcPct=Math.round(totals.YARC/grand*100);
-  const sistPct=Math.round(totals.SIST/grand*100);
-  const ollPct=100-narcPct-yarcPct-sistPct;
-  const blendHex=blendBlueprintColour(narcPct,yarcPct,sistPct,ollPct);
-
-  // Render Blueprint Colour reveal
-  const swatchRow=document.getElementById('bc-swatch-row');
-  if(swatchRow){
-    swatchRow.innerHTML=[
-      ['#C4622D',narcPct,'NARC'],
-      ['#3B4FD4',sistPct,'SIST'],
-      ['#00C4B4',yarcPct,'YARC'],
-      ['#D4920A',ollPct,'Øll'],
-    ].map(([c,p,l])=>`<div class="bc-swatch" style="background:${c};flex:${p}" title="${l} ${p}%"></div>`).join('');
-  }
-  const hexBox=document.getElementById('bc-hex-box');
-  const hexVal=document.getElementById('bc-hex-val');
-  if(hexBox)hexBox.style.background=blendHex;
-  if(hexVal)hexVal.textContent=blendHex;
-  const bcReveal=document.getElementById('bc-reveal');
-  if(bcReveal)bcReveal.style.display='block';
-
   document.getElementById('awareness-reveal').classList.add('visible');
 }
 
-// ── PAYMENT ────────────────────────────────────────────────────────────────
-async function handlePayment(type){
-  // Save scores before redirecting
-  sessionStorage.setItem('pt_solo_scores',JSON.stringify(scores));
+async function handlePayment(){
+  sessionStorage.setItem('pt_solo_scores', JSON.stringify(scores));
   const name=document.getElementById('solo-name')?.value.trim()||'';
-  sessionStorage.setItem('pt_solo_ctx',JSON.stringify({
+  sessionStorage.setItem('pt_solo_ctx', JSON.stringify({
     name,age:selAge,ctx:selCtx,
     most:document.getElementById('solo-most')?.value.trim()||'',
     least:document.getElementById('solo-least')?.value.trim()||''
   }));
-
   if(!stripe){alert('Stripe not loaded. Please refresh and try again.');return;}
-
-  const isChat=(type==='chat');
-  const priceId=isChat?CHAT_PRICE:REPORT_PRICE;
-  const successUrl=isChat?SUCCESS_CHAT:SUCCESS_REPORT;
-  const btnId=isChat?'cag-btn':'ar-gen-btn';
-  const loadingId=isChat?'cagLoading':'stripeLoading';
-
-  const btn=document.getElementById(btnId);
-  const loading=document.getElementById(loadingId);
-  if(btn){btn.disabled=true;btn.style.display='none';}
-  if(loading)loading.style.display='block';
-
+  const btn=document.getElementById('ar-gen-btn');
+  const loading=document.getElementById('stripeLoading');
+  btn.disabled=true;btn.style.display='none';loading.style.display='block';
   try{
     const{error}=await stripe.redirectToCheckout({
-      lineItems:[{price:priceId,quantity:1}],
+      lineItems:[{price:SOLO_PRICE_ID,quantity:1}],
       mode:'payment',
-      successUrl,
+      successUrl:SUCCESS_URL,
       cancelUrl:CANCEL_URL,
-      clientReferenceId:((isChat?'ChatAddon-':'SoloReport-')+(name||'anon')).substring(0,200)
+      clientReferenceId:('SoloAssessment-'+(name||'anon')).substring(0,200)
     });
-    if(error){
-      if(loading)loading.style.display='none';
-      if(btn){btn.style.display='block';btn.disabled=false;}
-      alert('Checkout error: '+error.message);
-    }
-  }catch(err){
-    if(loading)loading.style.display='none';
-    if(btn){btn.style.display='block';btn.disabled=false;}
-    alert('Something went wrong. Please try again.');
-  }
+    if(error){loading.style.display='none';btn.style.display='block';btn.disabled=false;alert('Checkout error: '+error.message);}
+  }catch(err){loading.style.display='none';btn.style.display='block';btn.disabled=false;alert('Something went wrong. Please try again.');}
 }
 
-// ── GENERATE REPORT ────────────────────────────────────────────────────────
-async function generateAndShowReport(name, chatUnlocked){
+async function generateAndShowReport(name){
   const wrap=document.getElementById('screen-results');
   wrap.innerHTML='<div style="padding:2rem;font-family:var(--mono);font-size:0.7rem;color:var(--muted);letter-spacing:0.1em">Generating your profile…</div>';
-
   const answered=NODES.filter(n=>scores[n.id]!==undefined);
   const effs=answered.map(n=>n.reversed?(6-scores[n.id]):scores[n.id]);
   const avg=effs.reduce((a,b)=>a+b,0)/effs.length;
   const bs=parseFloat(((avg-3)/2*5).toFixed(1));
   const aiScore=Math.round((avg-1)/4*100);
-
   const byCode={NARC:[],SIST:[],YARC:[],'Øll':[]};
   NODES.forEach(n=>{if(scores[n.id]!==undefined){const eff=n.reversed?(6-scores[n.id]):scores[n.id];byCode[n.code].push(eff);}});
   const totals={};Object.entries(byCode).forEach(([k,v])=>{totals[k]=v.reduce((a,b)=>a+b,0)||0.001;});
   const grand=Object.values(totals).reduce((a,b)=>a+b,0)||1;
   const narc=Math.round(totals.NARC/grand*100),sist=Math.round(totals.SIST/grand*100),yarc=Math.round(totals.YARC/grand*100),oll=100-narc-sist-yarc;
-
   const conN=NODES.filter(n=>n.layer==='Conscious'&&scores[n.id]!==undefined);
   const subN=NODES.filter(n=>n.layer==='Subconscious'&&scores[n.id]!==undefined);
   const conAvg=conN.length?conN.map(n=>scores[n.id]).reduce((a,b)=>a+b,0)/conN.length:0;
   const subAvg=subN.length?subN.map(n=>6-scores[n.id]).reduce((a,b)=>a+b,0)/subN.length:0;
   const drift=Math.abs(conAvg-subAvg).toFixed(1);
   const lvl=getLevel(bs);
-
-  const blendHex=blendBlueprintColour(narc,yarc,sist,oll);
-
   const ENCODE={1:'K',2:'M',3:'R',4:'T',5:'W'};
   const encoded=NODES.map(n=>ENCODE[scores[n.id]||3]||'R').join('');
-
   const savedCtx=sessionStorage.getItem('pt_solo_ctx');
   const ctx=savedCtx?JSON.parse(savedCtx):{};
   const ctxStr=[ctx.age,ctx.ctx,ctx.most,ctx.least].filter(Boolean).join(' | ');
-
   let ai=null;
   try{
     const sys=`You are generating a PsyTectrics™ Awareness Index™ profile. Second person, direct, clinical but human. No therapy-speak. Return ONLY valid JSON: {"keyword_identity":"<1-3 words>","keyword_description":"<1 sentence>","report_sections":{"who_you_are":"<2 paragraphs>","primary_pattern":"<1 paragraph>","under_pressure":"<1 paragraph>","in_relationships":"<1 paragraph>","next_move":"<1 paragraph>"}}`;
@@ -848,32 +688,20 @@ async function generateAndShowReport(name, chatUnlocked){
     const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1200,system:sys,messages:[{role:'user',content:msg}]})});
     const d=await res.json();ai=JSON.parse((d.content?.[0]?.text||'').replace(/```json|```/g,'').trim());
   }catch(e){console.warn('AI fallback',e);}
-
-  showResults({bs,aiScore,narc,sist,yarc,oll,drift,lvl,encoded,blendHex},ai,name,chatUnlocked);
+  showResults({bs,aiScore,narc,sist,yarc,oll,drift,lvl,encoded},ai,name);
   sessionStorage.removeItem('pt_solo_scores');
   sessionStorage.removeItem('pt_solo_ctx');
 }
 
-function showResults(r,ai,name,chatUnlocked){
+function showResults(r,ai,name){
   const wrap=document.getElementById('screen-results');
   document.getElementById('q-body').scrollTop=0;
-
   let interp='';
   if(ai){
     if(ai.keyword_identity)interp+=`<div style="margin-bottom:1rem;padding-bottom:0.8rem;border-bottom:1px solid rgba(0,0,0,0.08)"><div class="r-section-lbl">Awareness keyword</div><div style="font-family:'Montserrat',sans-serif;font-size:1.4rem;font-weight:300;color:#0B1020;margin-bottom:0.3rem">${ai.keyword_identity}</div><div style="font-size:0.78rem;color:#6B7280;line-height:1.65">${ai.keyword_description||''}</div></div>`;
     const rs=ai.report_sections||{};
     [['who_you_are','Who you are'],['primary_pattern','Primary pattern'],['under_pressure','Under pressure'],['in_relationships','In relationships'],['next_move','Next move']].forEach(([k,t])=>{const txt=rs[k]||'';if(!txt)return;interp+=`<div style="margin-bottom:1rem"><div class="r-section-lbl">${t}</div><div class="r-interp">${txt.split('\n\n').map(p=>`<p style="margin:0 0 0.5rem">${p}</p>`).join('')}</div></div>`;});
   }
-
-  // Blueprint Colour swatches for results
-  const swatchHtml=[['#C4622D',r.narc,'NARC'],['#3B4FD4',r.sist,'SIST'],['#00C4B4',r.yarc,'YARC'],['#D4920A',r.oll,'Øll']]
-    .map(([c,p,l])=>`<div style="flex:${p};background:${c}" title="${l} ${p}%"></div>`).join('');
-
-  // Chat button — gated
-  const chatSection=chatUnlocked
-    ?`<a href="chat.html?code=${r.encoded}" class="r-btn r-btn-primary">Open Profile Chat →</a>`
-    :`<div class="r-chat-gate"><span class="r-chat-gate-label">Awareness AI™ · Profile Chat</span><div class="r-chat-gate-title">Chat with your <em>Blueprint.</em></div><p class="r-chat-gate-desc">Mirror mode + Subject mode. Not a generic chatbot — it knows your exact profile.</p><div class="r-chat-gate-lock">🔒 Add at checkout for +£10 · Requires a report purchase first</div></div>`;
-
   wrap.innerHTML=`
     <div class="r-section" style="text-align:center">
       <span class="r-section-lbl">Awareness Index™${name?' · '+name:''}</span>
@@ -882,28 +710,20 @@ function showResults(r,ai,name,chatUnlocked){
       <div class="r-bar-wrap"><div class="r-bar" style="width:${(r.lvl.level-1)/9*100}%;background:${r.lvl.col}"></div></div>
       <div style="display:flex;gap:1.5rem;justify-content:center;margin-top:0.6rem">
         <div><div style="font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:#6B7280">AI Score</div><div style="font-family:'Montserrat',sans-serif;font-size:1.3rem;font-weight:300;color:${r.lvl.col}">${r.aiScore}%</div></div>
-        <div><div style="font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:#6B7280">Drift</div><div style="font-family:'Montserrat',sans-serif;font-size:1.3rem;font-weight:300;color:${parseFloat(r.drift)>=2.5?'#C4622D':'#00C4B4'}">${r.drift}</div></div>
+        <div><div style="font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:#6B7280">Drift</div><div style="font-family:'Montserrat',sans-serif;font-size:1.3rem;font-weight:300;color:${parseFloat(r.drift)>=2.5?'#C4622D':'#1D9E75'}">${r.drift}</div></div>
       </div>
     </div>
     <div class="r-section">
       <span class="r-section-lbl">SC Blueprint™ ratio</span>
-      ${[['NARC',r.narc,'#C4622D'],['SIST',r.sist,'#3B4FD4'],['YARC',r.yarc,'#00C4B4'],['Øll',r.oll,'#D4920A']].map(([n,p,c])=>`<div class="r-oc-row"><div class="r-oc-name" style="color:${c}">${n}</div><div class="r-oc-trk"><div class="r-oc-fill" style="width:${p}%;background:${c}"></div></div><div class="r-oc-pct" style="color:${c}">${p}%</div></div>`).join('')}
-    </div>
-    <div class="r-section">
-      <span class="r-section-lbl">Blueprint Colour™</span>
-      <div style="display:flex;height:40px;overflow:hidden;margin-bottom:0.75rem">${swatchHtml}</div>
-      <div style="display:flex;align-items:center;gap:0.75rem">
-        <div style="width:32px;height:32px;background:${r.blendHex};border:1px solid rgba(0,0,0,0.1);flex-shrink:0"></div>
-        <div style="font-family:'Space Mono',monospace;font-size:0.85rem;letter-spacing:0.06em;font-weight:700;color:#0B1020">${r.blendHex}</div>
-      </div>
+      ${[['NARC',r.narc,'#C4622D'],['SIST',r.sist,'#534AB7'],['YARC',r.yarc,'#1D9E75'],['Øll',r.oll,'#A0426B']].map(([n,p,c])=>`<div class="r-oc-row"><div class="r-oc-name" style="color:${c}">${n}</div><div class="r-oc-trk"><div class="r-oc-fill" style="width:${p}%;background:${c}"></div></div><div class="r-oc-pct" style="color:${c}">${p}%</div></div>`).join('')}
     </div>
     ${interp?`<div class="r-section">${interp}</div>`:''}
     <div class="r-section">
       <span class="r-section-lbl">Your assessment code</span>
       <div class="r-code-box">${r.encoded}</div>
-      <div style="font-size:0.74rem;color:#6B7280;line-height:1.65;margin-bottom:0.75rem">Save this code — it encodes your full 56-node SC Blueprint™ profile.</div>
+      <div style="font-size:0.74rem;color:#6B7280;line-height:1.65;margin-bottom:0.75rem">Save this code — it unlocks Profile Chat and stores your profile for future sessions.</div>
       <div class="r-action-row">
-        ${chatSection}
+        <a href="chat.html?code=${r.encoded}" class="r-btn r-btn-primary">Open Profile Chat →</a>
         <button onclick="location.href='solo.html'" class="r-btn r-btn-outline">Take again</button>
       </div>
     </div>`;
