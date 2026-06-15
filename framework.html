@@ -33,7 +33,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .nav-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-family:var(--mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
 .nav-links a:hover,.nav-links a.active{color:#fff}
 
-/* HERO — padding-top reduced from 10rem to 4rem to eliminate blank gap */
 .page-hero{padding:4rem 3rem 6rem;position:relative;overflow:hidden;border-bottom:1px solid var(--line);max-width:1200px;margin:0 auto}
 .page-hero::before{content:'';position:absolute;top:0;right:0;width:600px;height:600px;background:radial-gradient(ellipse,rgba(0,212,255,0.05) 0%,transparent 70%);pointer-events:none}
 .eyebrow{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:1.5rem}
@@ -44,7 +43,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .hero-principle blockquote{font-family:var(--serif);font-style:italic;font-size:clamp(1.2rem,2vw,1.6rem);font-weight:300;line-height:1.4;color:#0B1020;margin-bottom:0.75rem}
 .hero-principle cite{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)}
 
-/* LAYOUT */
 .container{max-width:1200px;margin:0 auto;padding:0 3rem}
 section{padding:6rem 0;border-top:1px solid var(--line)}
 .section-label{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:#00D4FF;margin-bottom:1rem}
@@ -54,7 +52,6 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 .body-text{color:var(--muted);font-size:0.9rem;line-height:1.85;max-width:680px}
 .body-text+.body-text{margin-top:1rem}
 
-/* TWO LAYERS */
 .layers-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(0,0,0,0.08);border:1px solid rgba(0,0,0,0.08)}
 .layer-card{background:#FFFFFF;padding:2.8rem;transition:background 0.3s}
 .layer-card:hover{background:#F4F6F9}
@@ -72,7 +69,6 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 .drift-card p{color:var(--muted);font-size:0.88rem;line-height:1.75;margin-bottom:1rem}
 .drift-formula{font-family:var(--mono);font-size:0.78rem;color:var(--gold);background:var(--gold-bg);border:1px solid var(--gold-border);padding:0.8rem 1.2rem;display:inline-block;margin-top:0.5rem}
 
-/* OBSERVER CODES */
 .codes-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(0,0,0,0.08);border:1px solid rgba(0,0,0,0.08)}
 .code-card{background:#FFFFFF;padding:2.5rem;transition:background 0.3s}
 .code-card:hover{background:#F4F6F9}
@@ -89,7 +85,6 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 .zero-point-eq{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:#0B1020}
 .zero-point-eq em{font-style:italic;color:var(--gold)}
 
-/* HIERARCHY */
 .hierarchy-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
 .hierarchy-visual{display:flex;flex-direction:column;gap:1px}
 .h-tier{background:#F4F6F9;border:1px solid var(--line);padding:1.2rem 1.5rem;display:flex;align-items:center;gap:1rem;transition:background 0.2s}
@@ -103,7 +98,6 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 .hierarchy-text h3 em{font-style:italic;color:var(--gold)}
 .hierarchy-text p{color:var(--muted);font-size:0.86rem;line-height:1.8;margin-bottom:1rem}
 
-/* CLARITY INDEX */
 .ci-scale{background:#F4F6F9;border:1px solid var(--line);padding:2.5rem;margin-bottom:1px}
 .ci-track-wrap{position:relative;margin:2rem 0 0.75rem}
 .ci-track{height:1px;background:var(--line-strong);position:relative}
@@ -123,7 +117,6 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 .level-num{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;color:var(--gold);display:block;margin-bottom:0.4rem}
 .level-name{font-family:var(--serif);font-size:0.92rem;font-weight:300;color:#0B1020}
 
-/* IP SECTION */
 .ip-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(0,0,0,0.08);border:1px solid rgba(0,0,0,0.08)}
 .ip-card{background:#FFFFFF;padding:2rem;transition:background 0.2s}
 .ip-card:hover{background:#F4F6F9}
@@ -131,7 +124,6 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 .ip-card h3{font-family:var(--serif);font-size:1.05rem;font-weight:300;color:#0B1020;margin-bottom:0.5rem}
 .ip-card p{color:var(--muted);font-size:0.8rem;line-height:1.65}
 
-/* CTA */
 .cta-strip{padding:5rem 3rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem;background:#F4F6F9}
 .cta-strip h2{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300}
 .cta-strip h2 em{font-style:italic;color:var(--gold)}
@@ -141,7 +133,6 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 .btn-ghost{border:1px solid var(--line-strong);color:var(--muted);padding:0.9rem 2rem;font-family:var(--mono);font-size:0.74rem;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:all 0.2s}
 .btn-ghost:hover{border-color:var(--gold-border);color:#0B1020}
 
-/* FOOTER */
 .pt-footer{background:#060B18;border-top:1px solid rgba(255,255,255,0.07);padding:2rem 3rem}
 .pt-footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 .pt-footer-logo{font-family:'Space Mono',monospace;font-size:0.78rem;letter-spacing:0.16em;color:rgba(255,255,255,0.5);font-weight:700}
@@ -175,6 +166,7 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
   <ul class="nav-links">
     <li><a href="reports.html">Reports</a></li>
     <li><a href="prototypes.html">Prototypes</a></li>
+    <li><a href="store_index.html">Store</a></li>
     <li><a href="framework.html" class="active">Framework</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
@@ -469,6 +461,7 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
       <a href="index.html">Home</a>
       <a href="reports.html">Reports</a>
       <a href="prototypes.html">Prototypes</a>
+      <a href="store_index.html">Store</a>
       <a href="framework.html">Framework</a>
       <a href="contact.html">Contact</a>
       <a href="privacy.html">Privacy</a>

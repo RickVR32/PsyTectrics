@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Narc Card Game — PsyTectrics™</title>
+<meta name="description" content="The Narc Card Game — SC Framework™. Work together. Read the room. Fill the Zero-Point bank before the Loop Deck runs out. Nobody wins alone. Nobody loses alone."/>
+<link rel="icon" href="pt_icon.png" type="image/png"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#060B18;--bg:#FFFFFF;--bg-soft:#F4F6F9;
+  --text:#0B1020;--muted:#6B7280;
+  --purple:#7F77DD;--purple-dark:#534AB7;
+  --purple-soft:rgba(127,119,221,0.08);--purple-border:rgba(127,119,221,0.25);
+  --line:rgba(0,0,0,0.08);
+  --serif:'Montserrat',sans-serif;--sans:'Inter',sans-serif;--mono:'Space Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;padding-top:70px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0.85rem 2.5rem;border-bottom:1px solid rgba(255,255,255,0.06);background:#060B18;height:70px}
+.nav-logo-wrap{display:flex;align-items:center;text-decoration:none}
+.nav-logo-img{height:52px;width:auto;display:block}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-family:var(--mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.nav-hamburger span{display:block;width:22px;height:2px;background:rgba(255,255,255,0.7);transition:all 0.3s}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-drawer{display:none;position:fixed;top:70px;left:0;right:0;background:#060B18;border-bottom:1px solid rgba(255,255,255,0.08);z-index:199;padding:1.2rem 1.5rem;flex-direction:column}
+.nav-drawer.open{display:flex}
+.nav-drawer a{color:rgba(255,255,255,0.6);text-decoration:none;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.85rem 0;border-bottom:1px solid rgba(255,255,255,0.06);transition:color 0.2s}
+.nav-drawer a:last-child{border-bottom:none}
+.nav-drawer a:hover{color:#fff}
+
+/* HERO */
+.hero{background:#0a0a0a;min-height:85vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:0;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 50%,rgba(83,74,183,0.12) 0%,transparent 65%);pointer-events:none}
+.hero-copy{padding:4rem 3rem 4rem 4rem;position:relative;z-index:2}
+.hero-eyebrow{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--purple);display:block;margin-bottom:1.2rem;opacity:0.8}
+.hero h1{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.8rem);font-weight:300;line-height:1.08;color:#fff;margin-bottom:1.2rem}
+.hero h1 em{font-style:italic;color:var(--purple)}
+.hero-desc{font-size:0.92rem;color:rgba(255,255,255,0.45);line-height:1.85;max-width:420px;margin-bottom:2rem}
+.hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.hero-meta-item{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);display:flex;align-items:center;gap:0.4rem}
+.hero-meta-item::before{content:'◈';color:var(--purple);font-size:0.45rem}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.btn-notify{background:var(--purple-dark);color:#EEEDFE;padding:0.9rem 2rem;font-family:var(--mono);font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border:none;cursor:pointer;transition:opacity 0.2s;text-decoration:none;display:inline-block}
+.btn-notify:hover{opacity:0.85}
+.btn-ghost{border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.6);padding:0.9rem 2rem;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:all 0.2s;display:inline-block}
+.btn-ghost:hover{border-color:var(--purple);color:var(--purple)}
+.price-tag{font-family:var(--serif);font-size:2.8rem;font-weight:300;color:#fff;line-height:1;margin-bottom:0.4rem}
+.price-tag span{font-size:1.2rem;vertical-align:top;margin-top:0.4rem;display:inline-block}
+.price-note{font-family:var(--mono);font-size:0.62rem;color:rgba(255,255,255,0.3);letter-spacing:0.1em}
+
+.hero-img{display:flex;align-items:center;justify-content:center;padding:4rem 3rem;position:relative;z-index:2}
+.hero-img img{max-width:100%;max-height:500px;object-fit:contain;animation:float 6s ease-in-out infinite;filter:drop-shadow(0 40px 80px rgba(83,74,183,0.3))}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+/* CODE PILLS */
+.codes-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:2rem}
+.code-pill{padding:5px 14px;border-radius:20px;font-family:var(--mono);font-size:0.6rem;font-weight:700;letter-spacing:1px}
+
+/* SECTIONS */
+.section{padding:5rem 3rem;border-top:1px solid var(--line)}
+.container{max-width:1200px;margin:0 auto}
+.section-label{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--purple);margin-bottom:0.6rem;display:block}
+.section-title{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;margin-bottom:1rem}
+.section-title em{font-style:italic;color:var(--purple)}
+.section-desc{color:var(--muted);font-size:0.9rem;line-height:1.8;max-width:600px;margin-bottom:3rem}
+
+/* IMAGE PLACEHOLDER */
+.img-placeholder{background:#F4F6F9;border:2px dashed #D1D5DB;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:3rem 2rem;text-align:center;position:relative;overflow:hidden}
+.img-placeholder::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#F9FAFB 0%,#F3F4F6 100%)}
+.img-placeholder-icon{font-size:2rem;position:relative;z-index:1;opacity:0.4}
+.img-placeholder-label{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#9CA3AF;position:relative;z-index:1}
+.img-placeholder-desc{font-size:0.78rem;color:#D1D5DB;position:relative;z-index:1;max-width:200px;line-height:1.5}
+.img-placeholder.dark{background:#111;border-color:#222}
+.img-placeholder.dark::before{background:linear-gradient(135deg,#111 0%,#0a0a0a 100%)}
+.img-placeholder.dark .img-placeholder-label{color:#444}
+.img-placeholder.dark .img-placeholder-desc{color:#333}
+
+/* CARD SPREAD */
+.card-spread-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:2rem}
+.card-spread-grid .img-placeholder{aspect-ratio:0.66;padding:1.5rem 1rem}
+
+/* FEATURE GRID */
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:2rem}
+.feature-card{background:#fff;padding:2rem;transition:background 0.2s}
+.feature-card:hover{background:var(--bg-soft)}
+.feature-icon{width:36px;height:36px;background:var(--purple-soft);border:1px solid var(--purple-border);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:0.9rem;color:var(--purple);margin-bottom:1rem}
+.feature-card h3{font-family:var(--serif);font-size:1.1rem;font-weight:300;margin-bottom:0.5rem;color:var(--text)}
+.feature-card h3 em{font-style:italic;color:var(--purple)}
+.feature-card p{color:var(--muted);font-size:0.82rem;line-height:1.7}
+
+/* CARD TYPES */
+.card-types-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.card-type{background:#fff;padding:1.8rem;display:flex;gap:1.2rem;align-items:flex-start}
+.card-type-swatch{width:44px;height:62px;border-radius:5px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:0.6rem;font-weight:700;letter-spacing:1px}
+.card-type-body h4{font-family:var(--mono);font-size:0.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:0.3rem}
+.card-type-body p{color:var(--muted);font-size:0.8rem;line-height:1.6}
+.card-type-body .count{font-family:var(--mono);font-size:0.6rem;color:#9CA3AF;margin-top:0.3rem}
+
+/* CONTENTS */
+.contents-table{width:100%;border-collapse:collapse;border:1px solid var(--line)}
+.contents-table th{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.8rem 1rem;background:var(--navy);color:rgba(255,255,255,0.5);text-align:left;border-bottom:1px solid rgba(255,255,255,0.06)}
+.contents-table td{padding:0.8rem 1rem;border-bottom:1px solid var(--line);font-size:0.84rem;color:var(--muted)}
+.contents-table td:last-child{color:var(--purple);font-family:var(--mono);font-size:0.78rem;font-weight:700;text-align:right}
+.contents-table tr:last-child td{border-bottom:none}
+.contents-table tr:hover td{background:var(--bg-soft)}
+
+/* GAMEPLAY IMAGES */
+.gameplay-grid{display:grid;grid-template-columns:2fr 1fr;gap:16px}
+.gameplay-grid-right{display:flex;flex-direction:column;gap:16px}
+
+/* CODES EXPLAINER */
+.codes-dark{background:#0a0a0a;padding:5rem 3rem;border-top:1px solid #1a1a1a}
+.codes-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#1a1a1a;border:1px solid #1a1a1a;margin-top:2rem}
+.code-card{background:#0d0d0d;padding:1.8rem;transition:background 0.2s}
+.code-card:hover{background:#111}
+.code-name{font-family:var(--mono);font-size:1rem;font-weight:700;margin-bottom:0.3rem}
+.code-sub{font-family:var(--serif);font-size:0.88rem;font-weight:300;font-style:italic;color:#555;margin-bottom:0.8rem}
+.code-card p{color:#666;font-size:0.8rem;line-height:1.7}
+.code-effect{font-family:var(--mono);font-size:0.62rem;margin-top:0.8rem;padding:0.4rem 0.8rem;display:inline-block}
+
+/* CROSS SELL */
+.cross-sell{background:var(--bg-soft);border-top:1px solid var(--line);padding:5rem 3rem}
+.cross-sell-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:2rem}
+.cross-sell-card{background:#fff;padding:2rem;display:flex;gap:1.5rem;align-items:flex-start;text-decoration:none;color:inherit;transition:background 0.2s}
+.cross-sell-card:hover{background:var(--bg-soft)}
+.cross-sell-img{width:80px;height:80px;object-fit:contain;flex-shrink:0}
+.cross-sell-img-placeholder{width:80px;height:80px;background:#F4F6F9;border:1px dashed #D1D5DB;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.cross-sell-body span{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--purple)}
+.cross-sell-body h3{font-family:var(--serif);font-size:1.2rem;font-weight:300;margin:0.3rem 0 0.4rem;color:var(--text)}
+.cross-sell-body h3 em{font-style:italic;color:var(--purple)}
+.cross-sell-body p{color:var(--muted);font-size:0.8rem;line-height:1.6}
+
+/* CTA BANNER */
+.cta-banner{background:var(--navy);padding:5rem 3rem;text-align:center;position:relative;overflow:hidden}
+.cta-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50%,rgba(83,74,183,0.1),transparent 65%);pointer-events:none}
+.cta-banner h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);font-weight:300;color:#fff;margin-bottom:0.8rem}
+.cta-banner h2 em{font-style:italic;color:var(--purple)}
+.cta-banner p{color:rgba(255,255,255,0.35);font-size:0.88rem;margin-bottom:2.5rem}
+.cta-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:500;align-items:center;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal{background:#0a0a0a;border:1px solid #534AB7;padding:2.5rem;max-width:420px;width:90%;position:relative}
+.modal h3{font-family:var(--serif);font-size:1.4rem;color:#EEEDFE;margin-bottom:0.5rem;font-weight:300}
+.modal p{font-size:0.84rem;color:rgba(255,255,255,0.4);line-height:1.7;margin-bottom:1.5rem}
+.modal input{width:100%;background:#111;border:0.5px solid #333;color:#fff;padding:0.8rem 1rem;font-family:var(--mono);font-size:0.78rem;outline:none;margin-bottom:1rem}
+.modal input:focus{border-color:#534AB7}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:rgba(255,255,255,0.3);font-size:1.2rem;cursor:pointer}
+.modal-close:hover{color:#fff}
+.modal-success{display:none;text-align:center;padding:1rem 0}
+.modal-success p{color:#1D9E75;font-size:0.9rem;font-family:var(--mono);letter-spacing:1px}
+
+.pt-footer{background:#060B18;border-top:1px solid rgba(255,255,255,0.07);padding:2rem 3rem}
+.pt-footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.pt-footer-logo{font-family:var(--mono);font-size:0.78rem;letter-spacing:0.16em;color:rgba(255,255,255,0.5);font-weight:700}
+.pt-footer-links{display:flex;gap:1.8rem;flex-wrap:wrap}
+.pt-footer-links a{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s}
+.pt-footer-links a:hover{color:rgba(255,255,255,0.7)}
+.pt-footer-note{font-family:var(--mono);font-size:0.58rem;color:rgba(255,255,255,0.2)}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .hero-img{display:none}
+  .feature-grid,.codes-grid{grid-template-columns:1fr}
+  .card-types-grid,.cross-sell-grid{grid-template-columns:1fr}
+  .card-spread-grid{grid-template-columns:repeat(2,1fr)}
+  .gameplay-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  nav{padding:0.8rem 1.2rem}
+  .nav-links{display:none}
+  .nav-hamburger{display:flex}
+  .section,.codes-dark,.cross-sell,.cta-banner{padding:4rem 1.5rem}
+  .hero-copy{padding:3rem 1.5rem}
+  .pt-footer{padding:2rem 1.5rem}
+  .pt-footer-inner{flex-direction:column;text-align:center;align-items:center}
+  .pt-footer-links{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo-wrap"><img src="pt_logo.png" alt="PsyTectrics" class="nav-logo-img"/></a>
+  <ul class="nav-links">
+    <li><a href="reports.html">Reports</a></li>
+    <li><a href="prototypes.html">Prototypes</a></li>
+    <li><a href="store_index.html" class="active">Store</a></li>
+    <li><a href="framework.html">Framework</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <a href="index.html">Home</a><a href="reports.html">Reports</a><a href="prototypes.html">Prototypes</a>
+  <a href="store_index.html" style="color:#fff">Store</a><a href="framework.html">Framework</a><a href="contact.html">Contact</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-copy">
+    <span class="hero-eyebrow">SC Framework™ · PsyTectrics Games · SC-CG-001</span>
+    <h1>The Narc<br/><em>Card Game</em></h1>
+    <div class="codes-row">
+      <div class="code-pill" style="background:#1a0000;color:#E24B4A;border:1px solid #8B0000;">NARC</div>
+      <div class="code-pill" style="background:#00080f;color:#85B7EB;border:1px solid #185FA5;">YARC</div>
+      <div class="code-pill" style="background:#001208;color:#9FE1CB;border:1px solid #0F6E56;">SIST</div>
+      <div class="code-pill" style="background:#0a0a0a;color:#888;border:1px solid #444;">ØLL</div>
+      <div class="code-pill" style="background:#0d0b20;color:#AFA9EC;border:1px solid #534AB7;">ZERO-POINT</div>
+    </div>
+    <p class="hero-desc">"Work together. Read the room. Fill the Zero-Point bank before the Loop Deck runs out. Nobody wins alone. Nobody loses alone."</p>
+    <div class="hero-meta">
+      <span class="hero-meta-item">2–6 Players</span>
+      <span class="hero-meta-item">Ages 16+</span>
+      <span class="hero-meta-item">30–60 mins</span>
+      <span class="hero-meta-item">Collaborative</span>
+    </div>
+    <div class="price-tag"><span>£</span>19.99</div>
+    <div class="price-note">Estimated launch price · Free UK delivery</div>
+    <div class="hero-actions" style="margin-top:1.5rem">
+      <button class="btn-notify" onclick="openModal()">Notify Me When Live →</button>
+      <a href="store_narc_card_game_rulebook.pdf" class="btn-ghost">Download Rulebook →</a>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img src="the_narc_code_game.png" alt="The Narc Card Game box"/>
+  </div>
+</div>
+
+<!-- CARD SPREAD — RENDER PLACEHOLDER -->
+<div class="section" style="background:#0a0a0a;border-top:1px solid #1a1a1a">
+  <div class="container">
+    <span class="section-label" style="color:var(--purple)">Render placeholder</span>
+    <h2 class="section-title" style="color:#EEEDFE;margin-bottom:0.5rem">The cards.<br/><em>All six types.</em></h2>
+    <p style="color:rgba(255,255,255,0.35);font-size:0.88rem;margin-bottom:2rem;">📸 Suggested render: 4 cards fanned out face-up from each deck on a dark surface, dramatic side lighting, one per deck type.</p>
+    <div class="card-spread-grid">
+      <div class="img-placeholder dark" style="min-height:220px">
+        <div class="img-placeholder-icon">🔻</div>
+        <div class="img-placeholder-label">NARC Response Cards</div>
+        <div class="img-placeholder-desc">4 cards fanned, dark red face, dramatic lighting</div>
+      </div>
+      <div class="img-placeholder dark" style="min-height:220px">
+        <div class="img-placeholder-icon">🔷</div>
+        <div class="img-placeholder-label">YARC Response Cards</div>
+        <div class="img-placeholder-desc">4 cards fanned, blue face</div>
+      </div>
+      <div class="img-placeholder dark" style="min-height:220px">
+        <div class="img-placeholder-icon">◆</div>
+        <div class="img-placeholder-label">SIST Response Cards</div>
+        <div class="img-placeholder-desc">4 cards fanned, teal/gold face</div>
+      </div>
+      <div class="img-placeholder dark" style="min-height:220px">
+        <div class="img-placeholder-icon">⚡</div>
+        <div class="img-placeholder-label">Trigger Cards</div>
+        <div class="img-placeholder-desc">4 cards fanned, coral face</div>
+      </div>
+      <div class="img-placeholder dark" style="min-height:220px">
+        <div class="img-placeholder-icon">Ø</div>
+        <div class="img-placeholder-label">ØLL Event Cards</div>
+        <div class="img-placeholder-desc">4 cards fanned, black face</div>
+      </div>
+      <div class="img-placeholder dark" style="min-height:220px">
+        <div class="img-placeholder-icon">👁</div>
+        <div class="img-placeholder-label">Observer Mode Cards</div>
+        <div class="img-placeholder-desc">4 cards fanned, purple face</div>
+      </div>
+      <div class="img-placeholder dark" style="min-height:220px">
+        <div class="img-placeholder-icon">🎯</div>
+        <div class="img-placeholder-label">Zero-Point Win Cards</div>
+        <div class="img-placeholder-desc">Card face, dramatic reveal shot</div>
+      </div>
+      <div class="img-placeholder dark" style="min-height:220px">
+        <div class="img-placeholder-icon">📦</div>
+        <div class="img-placeholder-label">All 7 Decks Together</div>
+        <div class="img-placeholder-desc">All decks spread on dark surface, overhead shot</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW TO PLAY -->
+<div class="section">
+  <div class="container">
+    <span class="section-label">How it works</span>
+    <h2 class="section-title">The loop.<br/><em>Broken together.</em></h2>
+    <p class="section-desc">Every turn, the team faces a real conflict scenario. You discuss, you choose a response — and you live with the consequences. NARC and YARC choices drain the clock. Only SIST fills the bank. The loop is a team problem.</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Draw a <em>Trigger</em></h3>
+        <p>A real conflict scenario — co-parenting, relationships, workplace, friendship. Read it aloud. The table feels it before anyone responds.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🃏</div>
+        <h3>Choose a <em>Response</em></h3>
+        <p>Every player draws a response card. The team discusses — then one card is played. NARC and YARC move fast. SIST builds toward the win.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">◈</div>
+        <h3>Fill the <em>Zero-Point Bank</em></h3>
+        <p>Only SIST responses add tokens to the bank. Reach 15 tokens before the Loop Deck runs out — play Zero-Point and the team wins.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">Ø</div>
+        <h3>Survive <em>ØLL Events</em></h3>
+        <p>Threshold moments that shake the whole table. Lose Loop Deck cards and bank tokens — unless someone plays the rare ØLL Held card.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👁</div>
+        <h3>Play <em>Observer Mode</em></h3>
+        <p>Power cards held in hand. Read the room, predict responses, block ØLL events. Rewards SC Framework literacy — the more you understand the codes, the better you play.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Get your <em>Code Readout</em></h3>
+        <p>At game end — win or lose — every player receives their Observer Code readout from the Team Tracker. The insight is the point, not just the win.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GAMEPLAY IMAGES -->
+<div class="section" style="background:var(--bg-soft)">
+  <div class="container">
+    <span class="section-label">Render placeholders</span>
+    <h2 class="section-title" style="margin-bottom:0.5rem">Gameplay <em>shots.</em></h2>
+    <p style="color:var(--muted);font-size:0.88rem;margin-bottom:2rem;">📸 Suggested renders: in-play shots showing cards on a table, tokens on tracker, people mid-discussion.</p>
+    <div class="gameplay-grid">
+      <div class="img-placeholder" style="min-height:360px">
+        <div class="img-placeholder-icon">🎮</div>
+        <div class="img-placeholder-label">Hero Gameplay Shot</div>
+        <div class="img-placeholder-desc">Overhead shot — cards on table, Team Tracker visible, tokens in play, hands visible mid-game. Dark wood surface, dramatic lighting.</div>
+      </div>
+      <div class="gameplay-grid-right">
+        <div class="img-placeholder" style="min-height:172px">
+          <div class="img-placeholder-icon">🔍</div>
+          <div class="img-placeholder-label">Card Close-Up</div>
+          <div class="img-placeholder-desc">Single SIST card face-up, sharp macro shot showing card text</div>
+        </div>
+        <div class="img-placeholder" style="min-height:172px">
+          <div class="img-placeholder-icon">📊</div>
+          <div class="img-placeholder-label">Team Tracker in Play</div>
+          <div class="img-placeholder-desc">Team Tracker with tokens on both Loop Deck and Zero-Point bank</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CARD TYPES -->
+<div class="section">
+  <div class="container">
+    <span class="section-label">What's in the decks</span>
+    <h2 class="section-title">Six card types.<br/><em>One framework.</em></h2>
+    <p class="section-desc">Every card in the game maps directly to the SC Framework™. The more you understand the codes, the better you play — and the more you take away.</p>
+    <div class="card-types-grid">
+      <div class="card-type">
+        <div class="card-type-swatch" style="background:#1a0000;border:1.5px solid #8B0000;color:#E24B4A;">NARC</div>
+        <div class="card-type-body">
+          <h4 style="color:#E24B4A;">NARC Response</h4>
+          <p>Reactive, withdrawing, reframing. Feels like control — drains the Loop Deck. Short-term move, long-term cost.</p>
+          <div class="count">×25 cards</div>
+        </div>
+      </div>
+      <div class="card-type">
+        <div class="card-type-swatch" style="background:#00080f;border:1.5px solid #185FA5;color:#378ADD;">YARC</div>
+        <div class="card-type-body">
+          <h4 style="color:#378ADD;">YARC Response</h4>
+          <p>Chasing, escalating, people-pleasing. Same cost as NARC — different flavour. Also drains the clock.</p>
+          <div class="count">×25 cards</div>
+        </div>
+      </div>
+      <div class="card-type">
+        <div class="card-type-swatch" style="background:#001208;border:1.5px solid #0F6E56;color:#1D9E75;">SIST</div>
+        <div class="card-type-body">
+          <h4 style="color:#1D9E75;">SIST Response</h4>
+          <p>Deliberate, regulated, aware. The only cards that fill the Zero-Point bank. Slower — but the only path that works.</p>
+          <div class="count">×25 cards</div>
+        </div>
+      </div>
+      <div class="card-type">
+        <div class="card-type-swatch" style="background:#100500;border:1.5px solid #C85030;color:#F0997B;">TRIG</div>
+        <div class="card-type-body">
+          <h4 style="color:#C85030;">Trigger Cards</h4>
+          <p>Real conflict scenarios — co-parenting, relationships, workplace, friendship. Sets the scene each turn.</p>
+          <div class="count">×40 cards</div>
+        </div>
+      </div>
+      <div class="card-type">
+        <div class="card-type-swatch" style="background:#0a0a0a;border:1.5px solid #444;color:#888;">ØLL</div>
+        <div class="card-type-body">
+          <h4 style="color:#888;">ØLL Event Cards</h4>
+          <p>Threshold moments that shake the whole table. Lose Loop Deck cards and bank tokens. The rare ØLL Held card is the only positive outcome.</p>
+          <div class="count">×15 cards</div>
+        </div>
+      </div>
+      <div class="card-type">
+        <div class="card-type-swatch" style="background:#0e0014;border:1.5px solid #534AB7;color:#7F77DD;">OBS</div>
+        <div class="card-type-body">
+          <h4 style="color:#7F77DD;">Observer Mode Cards</h4>
+          <p>Hold in hand, play anytime. Read the room, predict responses, block ØLL events. Power cards for aware players.</p>
+          <div class="count">×15 cards</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENTS -->
+<div class="section" style="background:var(--bg-soft)">
+  <div class="container">
+    <span class="section-label">What's in the box</span>
+    <h2 class="section-title">Everything you <em>need.</em></h2>
+    <table class="contents-table">
+      <thead><tr><th>Component</th><th>Description</th><th>Qty</th></tr></thead>
+      <tbody>
+        <tr><td>Trigger Cards</td><td>Real conflict scenarios</td><td>×40</td></tr>
+        <tr><td>NARC Response Cards</td><td>Reactive response deck — dark red</td><td>×25</td></tr>
+        <tr><td>YARC Response Cards</td><td>Chasing response deck — blue</td><td>×25</td></tr>
+        <tr><td>SIST Response Cards</td><td>Aware response deck — teal</td><td>×25</td></tr>
+        <tr><td>ØLL Event Cards</td><td>Threshold event deck — black</td><td>×15</td></tr>
+        <tr><td>Observer Mode Cards</td><td>Power cards — purple</td><td>×15</td></tr>
+        <tr><td>Zero-Point Cards</td><td>Win condition cards</td><td>×5</td></tr>
+        <tr><td>Loop Deck Tokens</td><td>25mm natural wood — countdown</td><td>×20</td></tr>
+        <tr><td>Zero-Point Bank Tokens</td><td>20mm wood — fill to win</td><td>×15</td></tr>
+        <tr><td>Team Tracker Card</td><td>A5 laminated — tracks Loop Deck and bank</td><td>×1</td></tr>
+        <tr><td>Official Rulebook</td><td>A5, 7 pages, saddle stitched</td><td>×1</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- OBSERVER CODES EXPLAINER -->
+<div class="codes-dark">
+  <div class="container">
+    <span class="section-label">The SC Framework™</span>
+    <h2 class="section-title" style="color:#EEEDFE;margin-bottom:0.5rem">Four codes.<br/><em>Always present.</em></h2>
+    <p style="color:rgba(255,255,255,0.35);font-size:0.88rem;max-width:580px;line-height:1.8;margin-bottom:0">Every person carries all four codes simultaneously. The game reveals which ones dominate under pressure — and what it costs you.</p>
+    <div class="codes-grid">
+      <div class="code-card">
+        <div class="code-name" style="color:#E24B4A;">NARC</div>
+        <div class="code-sub">Self-reference · Protection</div>
+        <p>Extractive, self-protective energy. At 25% — healthy self-interest. When dominant — reactive, withdrawing, zero-sum.</p>
+        <div class="code-effect" style="background:#1a0000;color:#E24B4A;border:1px solid #8B0000;">Drains Loop Deck</div>
+      </div>
+      <div class="code-card">
+        <div class="code-name" style="color:#378ADD;">YARC</div>
+        <div class="code-sub">Other-directed · Giving</div>
+        <p>Giving, empathetic energy. At 25% — genuine connection. When dominant — self-abandoning, chasing, boundary-less.</p>
+        <div class="code-effect" style="background:#00080f;color:#378ADD;border:1px solid #185FA5;">Drains Loop Deck</div>
+      </div>
+      <div class="code-card">
+        <div class="code-name" style="color:#1D9E75;">SIST</div>
+        <div class="code-sub">Regulation · Integration</div>
+        <p>Holds NARC and YARC in conscious regulation simultaneously. The most stable self-aware state. The only code that wins the game.</p>
+        <div class="code-effect" style="background:#001208;color:#1D9E75;border:1px solid #0F6E56;">Fills Zero-Point Bank</div>
+      </div>
+      <div class="code-card">
+        <div class="code-name" style="color:#888;">ØLL</div>
+        <div class="code-sub">Volatility · Threshold</div>
+        <p>Pure potential in both directions. When dominant — total volatility, all-or-nothing. When held — creative intensity and transformation.</p>
+        <div class="code-effect" style="background:#0a0a0a;color:#666;border:1px solid #333;">ØLL Event triggered</div>
+      </div>
+    </div>
+    <div style="margin-top:1.5rem;padding:1.2rem 1.5rem;background:#111;border:1px solid #1a1a1a;display:inline-block">
+      <span style="font-family:var(--mono);font-size:0.62rem;color:#534AB7;letter-spacing:1px;">Want to go deeper? Take the full SC Blueprint™ Assessment → </span>
+      <a href="reports.html" style="font-family:var(--mono);font-size:0.62rem;color:var(--purple);letter-spacing:1px;text-decoration:none;">psytectrics.com/reports</a>
+    </div>
+  </div>
+</div>
+
+<!-- CROSS SELL -->
+<div class="cross-sell">
+  <div class="container">
+    <span class="section-label">Complete the suite</span>
+    <h2 class="section-title">More from <em>PsyTectrics.</em></h2>
+    <div class="cross-sell-grid">
+      <a href="store_bad_habits.html" class="cross-sell-card">
+        <img src="bad_habbit_card_game.png" alt="Bad Habits" class="cross-sell-img"/>
+        <div class="cross-sell-body">
+          <span>SC Framework™ Junior Series · SC-JR-001</span>
+          <h3>Bad Habits <em>Card Game</em></h3>
+          <p>The kids collaborative card game. Ages 7–12. Work together to fill the Good Habits Jar before the Habit Deck runs out.</p>
+        </div>
+      </a>
+      <a href="store_narc_boardgame.html" class="cross-sell-card">
+        <img src="narc_board_game_render.png" alt="The Narc Boardgame" class="cross-sell-img"/>
+        <div class="cross-sell-body">
+          <span>SC Framework™ Flagship · SC-BG-001</span>
+          <h3>The Narc <em>Boardgame</em></h3>
+          <p>Five rings. Six card types. Drift mechanics. Zero-Point at the centre. The full SC Framework™ board game experience.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <h2>Be first<br/><em>in line.</em></h2>
+  <p>The Narc Card Game — launching 2026 · Estimated £19.99 · Free UK delivery · PsyTectrics Technologies Ltd</p>
+  <div class="cta-btns">
+    <button class="btn-notify" onclick="openModal()">Notify Me When Live →</button>
+    <a href="store_index.html" class="btn-ghost">Back to Store →</a>
+  </div>
+</div>
+
+<footer class="pt-footer">
+  <div class="pt-footer-inner">
+    <span class="pt-footer-logo">PSYTECTRICS™</span>
+    <div class="pt-footer-links">
+      <a href="index.html">Home</a><a href="reports.html">Reports</a><a href="prototypes.html">Prototypes</a>
+      <a href="store_index.html">Store</a><a href="framework.html">Framework</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a>
+    </div>
+    <span class="pt-footer-note">© 2026 PsyTectrics Technologies Ltd · All rights reserved</span>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3>Get Notified</h3>
+    <p>Be the first to know when The Narc Card Game launches. No spam — just one email when it's live.</p>
+    <div id="modalForm">
+      <input type="email" id="modalEmail" placeholder="your@email.com"/>
+      <button class="btn-notify" style="width:100%;text-align:center;" onclick="submitNotify()">Notify Me When Live →</button>
+    </div>
+    <div class="modal-success" id="modalSuccess"><p>✦ You're on the list. ✦</p></div>
+  </div>
+</div>
+
+<script>
+const hamburger=document.getElementById('hamburger'),drawer=document.getElementById('navDrawer');
+hamburger.addEventListener('click',function(){hamburger.classList.toggle('open');drawer.classList.toggle('open');});
+drawer.querySelectorAll('a').forEach(function(l){l.addEventListener('click',function(){hamburger.classList.remove('open');drawer.classList.remove('open');});});
+function openModal(){document.getElementById('modalForm').style.display='block';document.getElementById('modalSuccess').style.display='none';document.getElementById('modalEmail').value='';document.getElementById('modalOverlay').classList.add('open');}
+function closeModal(){document.getElementById('modalOverlay').classList.remove('open');}
+function submitNotify(){const e=document.getElementById('modalEmail').value;if(!e||!e.includes('@')){document.getElementById('modalEmail').style.borderColor='#E24B4A';return;}document.getElementById('modalForm').style.display='none';document.getElementById('modalSuccess').style.display='block';}
+document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===this)closeModal();});
+</script>
+</body>
+</html>
