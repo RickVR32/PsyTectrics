@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Store — PsyTectrics™</title>
-<meta name="description" content="PsyTectrics Store — PsyTec Health Ring £60 and PsyTec Health Watch £70. Continuous health monitoring. Free UK delivery."/>
+<meta name="description" content="PsyTectrics Store — Health wearables, SC Framework games and card games. Free UK delivery."/>
 <link rel="icon" href="pt_icon.png" type="image/png"/>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 <style>
@@ -14,6 +14,7 @@
   --bg:#FFFFFF;--bg-soft:#F4F6F9;
   --text:#0B1020;--muted:#6B7280;--muted2:#9CA3AF;
   --accent:#00D4FF;--accent-soft:rgba(0,212,255,0.08);--accent-border:rgba(0,212,255,0.25);
+  --purple:#7F77DD;--purple-soft:rgba(127,119,221,0.08);--purple-border:rgba(127,119,221,0.25);
   --line:rgba(0,0,0,0.08);--line-strong:rgba(0,0,0,0.14);
   --serif:'Montserrat',sans-serif;--sans:'Inter',sans-serif;--mono:'Space Mono',monospace;
 }
@@ -43,56 +44,103 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .hero-eyebrow{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;display:block;opacity:0.8}
 .hero h1{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.8rem);font-weight:300;color:#fff;line-height:1.1;margin-bottom:1.2rem}
 .hero h1 em{font-style:italic;color:var(--accent)}
-.hero-desc{color:rgba(255,255,255,0.45);font-size:0.92rem;line-height:1.85;max-width:500px;margin:0 auto 2.5rem}
+.hero-desc{color:rgba(255,255,255,0.45);font-size:0.92rem;line-height:1.85;max-width:520px;margin:0 auto 2.5rem}
 .hero-perks{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap}
 .hero-perk{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);display:flex;align-items:center;gap:0.4rem}
 .hero-perk::before{content:'◈';color:var(--accent);font-size:0.5rem}
 
-/* PRODUCTS GRID */
-.products{padding:5rem 3rem;background:var(--bg-soft)}
+/* SECTION HEADERS */
+.section-wrap{padding:5rem 3rem;background:var(--bg-soft)}
+.section-wrap.white{background:var(--bg)}
 .container{max-width:1200px;margin:0 auto}
 .section-label{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.6rem;display:block;text-align:center}
+.section-label.purple{color:var(--purple)}
 .section-title{font-family:var(--serif);font-size:clamp(1.6rem,2.5vw,2.4rem);font-weight:300;text-align:center;margin-bottom:3rem}
 .section-title em{font-style:italic;color:var(--accent)}
+.section-title em.purple{color:var(--purple)}
 
+/* PRODUCT GRID */
 .product-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.product-grid.three{grid-template-columns:1fr 1fr 1fr}
 
-.product-card{background:#fff;display:flex;flex-direction:column;transition:background 0.2s}
+.product-card{background:#fff;display:flex;flex-direction:column;transition:background 0.2s;position:relative}
 .product-card:hover{background:var(--bg-soft)}
-.product-img-wrap{display:flex;align-items:center;justify-content:center;padding:3rem 2rem;background:#ffffff;border-bottom:1px solid var(--line);min-height:280px;position:relative;overflow:hidden}
+.product-card.dark{background:#0a0a0a}
+.product-card.dark:hover{background:#111}
+
+/* Coming Soon overlay */
+.coming-soon-badge{position:absolute;top:16px;right:16px;background:var(--purple);color:#EEEDFE;font-family:var(--mono);font-size:0.58rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:0.3rem 0.7rem;z-index:2}
+.under-dev-badge{position:absolute;top:16px;right:16px;background:#1a0000;border:1px solid #8B0000;color:#E24B4A;font-family:var(--mono);font-size:0.58rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:0.3rem 0.7rem;z-index:2}
+
+.product-img-wrap{display:flex;align-items:center;justify-content:center;padding:3rem 2rem;border-bottom:1px solid var(--line);min-height:280px;position:relative;overflow:hidden}
+.product-img-wrap.dark-bg{background:#0a0a0a;border-bottom:1px solid #1a1a1a}
+.product-img-wrap.light-bg{background:#ffffff}
 .product-img{width:200px;height:200px;object-fit:contain;animation:float 6s ease-in-out infinite;position:relative;z-index:1}
-.product-img.watch-img{width:160px;height:200px}
+.product-img.tall{width:180px;height:220px}
+.product-img.game{width:220px;height:220px}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* Dimmed image for coming soon */
+.product-img-wrap.dimmed::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.35);z-index:2;pointer-events:none}
 
 .product-body{padding:2.5rem;display:flex;flex-direction:column;gap:0.8rem;flex:1}
 .product-tag{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent)}
+.product-tag.purple{color:var(--purple)}
 .product-badge{font-family:var(--mono);font-size:0.56rem;letter-spacing:0.1em;background:var(--accent-soft);border:1px solid var(--accent-border);color:var(--accent);padding:0.2rem 0.5rem;display:inline-block;margin-left:0.5rem}
-.product-name{font-family:var(--serif);font-size:1.6rem;font-weight:300;color:var(--text)}
+.product-badge.purple{background:var(--purple-soft);border-color:var(--purple-border);color:var(--purple)}
+.product-badge.red{background:rgba(139,0,0,0.1);border-color:#8B0000;color:#E24B4A}
+.product-name{font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--text)}
+.product-name.white{color:#EEEDFE}
 .product-name em{font-style:italic;color:var(--accent)}
+.product-name em.purple{color:var(--purple)}
 .product-desc{color:var(--muted);font-size:0.84rem;line-height:1.7}
+.product-desc.light{color:rgba(255,255,255,0.45)}
 .product-features{list-style:none;border-top:1px solid var(--line);margin-top:0.5rem}
+.product-features.dark-line{border-top-color:#1a1a1a}
 .product-features li{display:flex;align-items:center;gap:0.7rem;padding:0.5rem 0;border-bottom:1px solid var(--line);font-size:0.82rem;color:var(--muted)}
+.product-features.dark-line li{border-bottom-color:#1a1a1a;color:rgba(255,255,255,0.4)}
 .product-features li:last-child{border-bottom:none}
 .product-features li::before{content:'✦';color:var(--accent);font-size:0.45rem;flex-shrink:0}
-.product-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:1.5rem;border-top:1px solid var(--line)}
-.product-price{font-family:var(--serif);font-size:2.4rem;font-weight:300;color:var(--text);line-height:1}
-.product-price span{font-size:1rem;vertical-align:top;margin-top:0.4rem;display:inline-block}
-.btn-view{background:var(--accent);color:#060B18;padding:0.85rem 1.8rem;font-family:var(--mono);font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s,transform 0.15s;display:inline-block}
-.btn-view:hover{opacity:0.85;transform:translateY(-1px)}
+.product-features.purple-tick li::before{color:var(--purple)}
 
-/* COMPARE */
-.compare{padding:5rem 3rem;border-top:1px solid var(--line)}
-.compare-title{font-family:var(--serif);font-size:clamp(1.4rem,2.5vw,2rem);font-weight:300;margin-bottom:2.5rem;text-align:center}
-.compare-title em{font-style:italic;color:var(--accent)}
-.compare-table{width:100%;border-collapse:collapse;border:1px solid var(--line)}
-.compare-table th{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:1rem 1.5rem;background:var(--navy);color:rgba(255,255,255,0.6);text-align:left;border-bottom:1px solid rgba(255,255,255,0.06)}
-.compare-table th:first-child{color:rgba(255,255,255,0.3)}
-.compare-table td{padding:0.9rem 1.5rem;border-bottom:1px solid var(--line);font-size:0.84rem;color:var(--muted);vertical-align:middle}
-.compare-table td:first-child{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted2)}
-.compare-table tr:last-child td{border-bottom:none}
-.compare-table tr:hover td{background:var(--bg-soft)}
-.tick{color:var(--accent);font-size:0.8rem}
-.cross{color:var(--muted2);font-size:0.8rem}
+.product-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:1.5rem;border-top:1px solid var(--line)}
+.product-footer.dark-line{border-top-color:#1a1a1a}
+.product-price{font-family:var(--serif);font-size:2.4rem;font-weight:300;color:var(--text);line-height:1}
+.product-price.white{color:#EEEDFE}
+.product-price span{font-size:1rem;vertical-align:top;margin-top:0.4rem;display:inline-block}
+.product-price-note{font-family:var(--mono);font-size:0.68rem;color:var(--muted);letter-spacing:0.05em;line-height:1.6}
+.product-price-note.purple{color:var(--purple)}
+.product-price-note.red{color:#E24B4A}
+
+.btn-view{background:var(--accent);color:#060B18;padding:0.85rem 1.8rem;font-family:var(--mono);font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s,transform 0.15s;display:inline-block;cursor:pointer;border:none}
+.btn-view:hover{opacity:0.85;transform:translateY(-1px)}
+.btn-notify{background:var(--purple);color:#EEEDFE;padding:0.85rem 1.8rem;font-family:var(--mono);font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s,transform 0.15s;display:inline-block;cursor:pointer;border:none}
+.btn-notify:hover{opacity:0.85;transform:translateY(-1px)}
+.btn-dev{background:transparent;color:#E24B4A;border:1px solid #8B0000;padding:0.85rem 1.8rem;font-family:var(--mono);font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:all 0.2s;display:inline-block;cursor:pointer}
+.btn-dev:hover{background:#1a0000}
+
+/* GAMES SECTION divider banner */
+.games-banner{background:linear-gradient(135deg,#0d0b20 0%,#0a0a0a 50%,#120000 100%);padding:3rem;text-align:center;border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;position:relative;overflow:hidden}
+.games-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(127,119,221,0.08) 0%,transparent 65%);pointer-events:none}
+.games-banner-eyebrow{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--purple);margin-bottom:0.8rem;display:block;opacity:0.8;position:relative;z-index:2}
+.games-banner h2{font-family:var(--serif);font-size:clamp(1.8rem,3vw,3rem);font-weight:300;color:#fff;line-height:1.1;margin-bottom:0.8rem;position:relative;z-index:2}
+.games-banner h2 em{font-style:italic;color:var(--purple)}
+.games-banner p{color:rgba(255,255,255,0.35);font-size:0.88rem;line-height:1.85;max-width:500px;margin:0 auto;position:relative;z-index:2}
+.games-banner-pills{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:1.2rem;position:relative;z-index:2}
+.gpill{padding:4px 12px;border-radius:20px;font-family:var(--mono);font-size:0.6rem;font-weight:700;letter-spacing:1px;}
+
+/* NOTIFY MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:500;align-items:center;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal{background:#0a0a0a;border:1px solid #534AB7;padding:2.5rem;max-width:420px;width:90%;position:relative}
+.modal h3{font-family:var(--serif);font-size:1.4rem;color:#EEEDFE;margin-bottom:0.5rem;font-weight:300}
+.modal p{font-size:0.84rem;color:rgba(255,255,255,0.4);line-height:1.7;margin-bottom:1.5rem}
+.modal input{width:100%;background:#111;border:0.5px solid #333;color:#fff;padding:0.8rem 1rem;font-family:var(--mono);font-size:0.78rem;outline:none;margin-bottom:1rem}
+.modal input:focus{border-color:#534AB7}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:rgba(255,255,255,0.3);font-size:1.2rem;cursor:pointer;font-family:var(--mono)}
+.modal-close:hover{color:#fff}
+.modal-success{display:none;text-align:center;padding:1rem 0}
+.modal-success p{color:#1D9E75;font-size:0.9rem;font-family:var(--mono);letter-spacing:1px}
 
 /* CTA */
 .cta{background:var(--navy);padding:5rem 3rem;text-align:center;position:relative;overflow:hidden}
@@ -105,6 +153,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .btn-cta-primary:hover{opacity:0.85}
 .btn-cta-ghost{border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.6);padding:1rem 2.2rem;font-family:var(--mono);font-size:0.74rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:all 0.2s}
 .btn-cta-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn-cta-purple{border:1px solid var(--purple);color:var(--purple);padding:1rem 2.2rem;font-family:var(--mono);font-size:0.74rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:all 0.2s}
+.btn-cta-purple:hover{background:var(--purple);color:#fff}
 
 .pt-footer{background:#060B18;border-top:1px solid rgba(255,255,255,0.07);padding:2rem 3rem}
 .pt-footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
@@ -114,15 +164,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .pt-footer-links a:hover{color:rgba(255,255,255,0.7)}
 .pt-footer-note{font-family:var(--mono);font-size:0.58rem;color:rgba(255,255,255,0.2)}
 
+@media(max-width:900px){
+  .product-grid.three{grid-template-columns:1fr}
+}
 @media(max-width:768px){
   nav{padding:0.8rem 1.2rem}
   .nav-links{display:none}
   .nav-hamburger{display:flex}
   .hero{padding:4rem 1.5rem 3.5rem}
-  .products{padding:4rem 1.5rem}
-  .compare{padding:4rem 1.5rem}
+  .section-wrap{padding:4rem 1.5rem}
   .product-grid{grid-template-columns:1fr}
-  .compare-table th,.compare-table td{padding:0.75rem 1rem}
+  .games-banner{padding:2.5rem 1.5rem}
   .cta{padding:4rem 1.5rem}
   .pt-footer{padding:2rem 1.5rem}
   .pt-footer-inner{flex-direction:column;text-align:center;align-items:center}
@@ -160,8 +212,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 <!-- HERO -->
 <div class="hero">
   <span class="hero-eyebrow">PsyTectrics™ Store</span>
-  <h1>Health data.<br/><em>Worn differently.</em></h1>
-  <p class="hero-desc">Two devices. One health platform. Continuous monitoring worn on your finger or your wrist — no subscription, no noise, just the data that matters.</p>
+  <h1>Health data &amp; human<br/><em>awareness. Together.</em></h1>
+  <p class="hero-desc">Health wearables that track your body. SC Framework games that track your patterns. Two product lines. One platform. Continuous growth — inside and out.</p>
   <div class="hero-perks">
     <span class="hero-perk">Free UK delivery</span>
     <span class="hero-perk">60-day returns</span>
@@ -170,23 +222,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
   </div>
 </div>
 
-<!-- PRODUCTS -->
-<div class="products" id="products">
+<!-- WEARABLES SECTION -->
+<div class="section-wrap" id="wearables">
   <div class="container">
-    <span class="section-label">The range</span>
+    <span class="section-label">Health Wearables</span>
     <h2 class="section-title">Two devices.<br/><em>Choose your fit.</em></h2>
-
     <div class="product-grid">
 
       <!-- RING -->
       <div class="product-card">
-        <div class="product-img-wrap">
+        <div class="product-img-wrap light-bg">
           <img class="product-img" src="psytec_health_ring_grey%20%281%29.webp" alt="PsyTec Health Ring"/>
         </div>
         <div class="product-body">
-          <div>
-            <span class="product-tag">PT-HR-001<span class="product-badge">Bestseller</span></span>
-          </div>
+          <div><span class="product-tag">PT-HR-001<span class="product-badge">Bestseller</span></span></div>
           <div class="product-name">PsyTec <em>Health Ring</em></div>
           <p class="product-desc">Worn on your finger. Running silently. Continuous heart rate, blood oxygen, and sleep monitoring — invisible, always on, no subscription.</p>
           <ul class="product-features">
@@ -194,24 +243,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
             <li>IP68 waterproof · up to 3 days battery</li>
             <li>Graphite Silver or Rose Silver</li>
             <li>Sizes 8–12 · magnetic charging</li>
-            <li>Free companion app — iOS & Android</li>
+            <li>Free companion app — iOS &amp; Android</li>
           </ul>
           <div class="product-footer">
             <div class="product-price"><span>£</span>60</div>
-            <a href="store_ring.html" class="btn-view">View & Order →</a>
+            <a href="store_ring.html" class="btn-view">View &amp; Order →</a>
           </div>
         </div>
       </div>
 
       <!-- WATCH -->
       <div class="product-card">
-        <div class="product-img-wrap">
-          <img class="product-img watch-img" src="psytec_health_watch_black.jpg" alt="PsyTec Health Watch"/>
+        <div class="product-img-wrap light-bg">
+          <img class="product-img tall" src="psytec_health_watch_black.jpg" alt="PsyTec Health Watch"/>
         </div>
         <div class="product-body">
-          <div>
-            <span class="product-tag">PT-HW-001<span class="product-badge" style="background:rgba(0,212,255,0.04);border-color:rgba(0,212,255,0.15);color:var(--muted)">New</span></span>
-          </div>
+          <div><span class="product-tag">PT-HW-001<span class="product-badge" style="background:rgba(0,212,255,0.04);border-color:rgba(0,212,255,0.15);color:var(--muted)">New</span></span></div>
           <div class="product-name">PsyTec <em>Health Watch</em></div>
           <p class="product-desc">Full health dashboard on your wrist. Heart rate, blood oxygen, blood pressure, and sleep — plus Bluetooth calling. Four strap options. No subscription.</p>
           <ul class="product-features">
@@ -219,11 +266,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
             <li>Bluetooth calling · up to 7 days battery</li>
             <li>Black Silicone · Grey Silicone · Black Leather · Brown Leather</li>
             <li>MAI Health Score · 1.96" AMOLED · IP67</li>
-            <li>Runmefit app — iOS & Android</li>
+            <li>Runmefit app — iOS &amp; Android</li>
           </ul>
           <div class="product-footer">
             <div class="product-price"><span>£</span>70</div>
-            <a href="store_watch.html" class="btn-view">View & Order →</a>
+            <a href="store_watch.html" class="btn-view">View &amp; Order →</a>
           </div>
         </div>
       </div>
@@ -232,43 +279,121 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
   </div>
 </div>
 
-<!-- COMPARE -->
-<div class="compare">
+<!-- SC FRAMEWORK GAMES BANNER -->
+<div class="games-banner" id="games">
+  <span class="games-banner-eyebrow">SC Framework™ · PsyTectrics Games</span>
+  <h2>The awareness<br/><em>game suite.</em></h2>
+  <p>Three games. One framework. Built on the SC Framework™ from Narcissist / Yarcissist. Experience the patterns — then break them.</p>
+  <div class="games-banner-pills">
+    <div class="gpill" style="background:#1a0000;color:#E24B4A;border:1px solid #8B0000;">NARC</div>
+    <div class="gpill" style="background:#00080f;color:#85B7EB;border:1px solid #185FA5;">YARC</div>
+    <div class="gpill" style="background:#001208;color:#9FE1CB;border:1px solid #0F6E56;">SIST</div>
+    <div class="gpill" style="background:#0a0a0a;color:#888;border:1px solid #444;">ØLL</div>
+    <div class="gpill" style="background:#0d0b20;color:#AFA9EC;border:1px solid #534AB7;">ZERO-POINT</div>
+  </div>
+</div>
+
+<!-- GAMES SECTION -->
+<div class="section-wrap white" id="game-products">
   <div class="container">
-    <h2 class="compare-title">Ring vs Watch —<br/><em>which is right for you?</em></h2>
-    <table class="compare-table">
-      <thead>
-        <tr>
-          <th>Feature</th>
-          <th>Health Ring · £60</th>
-          <th>Health Watch · £70</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Heart rate monitoring</td><td><span class="tick">◈</span> Continuous</td><td><span class="tick">◈</span> Continuous</td></tr>
-        <tr><td>Blood oxygen (SpO₂)</td><td><span class="tick">◈</span> Continuous</td><td><span class="tick">◈</span> Continuous</td></tr>
-        <tr><td>Sleep monitoring</td><td><span class="tick">◈</span> Included</td><td><span class="tick">◈</span> Included</td></tr>
-        <tr><td>Blood pressure</td><td><span class="cross">—</span></td><td><span class="tick">◈</span> On demand</td></tr>
-        <tr><td>Bluetooth calling</td><td><span class="cross">—</span></td><td><span class="tick">◈</span> Included</td></tr>
-        <tr><td>MAI Health Score</td><td><span class="cross">—</span></td><td><span class="tick">◈</span> Daily score</td></tr>
-        <tr><td>Display</td><td><span class="cross">—</span> No screen</td><td><span class="tick">◈</span> 1.96" AMOLED</td></tr>
-        <tr><td>Battery life</td><td>Up to 3 days</td><td>Up to 7 days</td></tr>
-        <tr><td>Water resistance</td><td>IP68</td><td>IP67</td></tr>
-        <tr><td>Strap / style options</td><td>Graphite · Rose Silver</td><td>4 options — silicone & leather</td></tr>
-        <tr><td>Companion app</td><td><span class="tick">◈</span> iOS & Android</td><td><span class="tick">◈</span> Runmefit</td></tr>
-        <tr><td>Best for</td><td>Passive, invisible tracking</td><td>Active health hub + calling</td></tr>
-      </tbody>
-    </table>
+    <span class="section-label purple">Coming Soon · Under Development</span>
+    <h2 class="section-title">Three products.<br/><em class="purple">One framework.</em></h2>
+
+    <div class="product-grid three">
+
+      <!-- NARC CARD GAME — COMING SOON -->
+      <div class="product-card dark">
+        <div class="coming-soon-badge">Coming Soon</div>
+        <div class="product-img-wrap dark-bg dimmed">
+          <img class="product-img game" src="the_narc_code_game.png" alt="The Narc Card Game"/>
+        </div>
+        <div class="product-body">
+          <div><span class="product-tag purple">SC-CG-001<span class="product-badge purple">Coming Soon</span></span></div>
+          <div class="product-name white">The Narc <em class="purple">Card Game</em></div>
+          <p class="product-desc light">Work together. Read the room. Fill the Zero-Point bank before the Loop Deck runs out. Nobody wins alone. Nobody loses alone.</p>
+          <ul class="product-features dark-line purple-tick">
+            <li>NARC · YARC · SIST · ØLL · Observer Mode</li>
+            <li>Collaborative · Ages 16+ · 30–60 mins</li>
+            <li>2–6 players · 150+ cards</li>
+            <li>Observer Code readout at game end</li>
+            <li>SC Framework™ · PsyTectrics</li>
+          </ul>
+          <div class="product-footer dark-line">
+            <div>
+              <div class="product-price-note purple">Estimated launch price</div>
+              <div class="product-price white"><span style="font-size:1rem;vertical-align:top;margin-top:0.4rem;display:inline-block">£</span>19.99</div>
+            </div>
+            <button class="btn-notify" onclick="openModal('The Narc Card Game')">Notify Me →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- BAD HABITS — COMING SOON -->
+      <div class="product-card" style="background:#FFFBF0;">
+        <div class="coming-soon-badge" style="background:#FF6B35;">Coming Soon</div>
+        <div class="product-img-wrap" style="background:#fff;border-bottom:1px solid #FFE8D0;" class="dimmed">
+          <img class="product-img game" src="bad_habbit_card_game.png" alt="Bad Habits Card Game" style="opacity:0.75;"/>
+        </div>
+        <div class="product-body">
+          <div><span class="product-tag" style="color:#FF6B35;">SC-JR-001<span class="product-badge" style="background:rgba(255,107,53,0.08);border-color:rgba(255,107,53,0.3);color:#FF6B35;">Coming Soon</span></span></div>
+          <div class="product-name">Bad <em style="color:#FF6B35;">Habits</em></div>
+          <p class="product-desc">The kids collaborative card game. Work together to fill the Good Habits Jar before the Habit Deck runs out. Win as a team — or lose as one.</p>
+          <ul class="product-features" style="border-top-color:#FFE8D0;">
+            <li style="border-bottom-color:#FFE8D0;color:#888;">Good Habits · Bad Habits · Ask! · Overload</li>
+            <li style="border-bottom-color:#FFE8D0;color:#888;">Collaborative · Ages 7–12 · 20–40 mins</li>
+            <li style="border-bottom-color:#FFE8D0;color:#888;">2–6 players · 100+ cards</li>
+            <li style="border-bottom-color:#FFE8D0;color:#888;">The Kay mechanic — curiosity as positive energy</li>
+            <li style="border-bottom-color:#FFE8D0;color:#888;">SC Framework™ Junior Series</li>
+          </ul>
+          <div class="product-footer" style="border-top-color:#FFE8D0;">
+            <div>
+              <div class="product-price-note" style="color:#FF6B35;">Estimated launch price</div>
+              <div class="product-price"><span>£</span>14.99</div>
+            </div>
+            <button class="btn-notify" style="background:#FF6B35;" onclick="openModal('Bad Habits Card Game')">Notify Me →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- NARC BOARDGAME — UNDER DEVELOPMENT -->
+      <div class="product-card dark">
+        <div class="under-dev-badge">Under Development</div>
+        <div class="product-img-wrap dark-bg dimmed">
+          <img class="product-img game" src="narc_board_game_render.png" alt="The Narc Boardgame" style="opacity:0.6;"/>
+        </div>
+        <div class="product-body">
+          <div><span class="product-tag purple">SC-BG-001<span class="product-badge red">In Development</span></span></div>
+          <div class="product-name white">The Narc <em class="purple">Boardgame</em></div>
+          <p class="product-desc light">The full SC Framework™ board game experience. Five rings. Six card types. Drift mechanics. Zero-Point at the centre. The flagship product.</p>
+          <ul class="product-features dark-line purple-tick">
+            <li>5-ring circular board · 6 space types</li>
+            <li>Competitive · Ages 16+ · 60–90 mins</li>
+            <li>2–6 players · 190+ cards + 3D tokens</li>
+            <li>Drift system · Observer Mode · ØLL events</li>
+            <li>Full SC Framework™ flagship product</li>
+          </ul>
+          <div class="product-footer dark-line">
+            <div>
+              <div class="product-price-note red">Releasing after card games</div>
+              <div class="product-price white"><span style="font-size:1rem;vertical-align:top;margin-top:0.4rem;display:inline-block">£</span>34.99</div>
+            </div>
+            <button class="btn-dev" onclick="openModal('The Narc Boardgame')">Register Interest →</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
 
 <!-- CTA -->
 <div class="cta">
-  <h2>Pick your device.<br/><em>Start tracking.</em></h2>
-  <p>Free UK delivery · 60-day returns · Secure Stripe checkout · 1-year warranty</p>
+  <h2>Pick your product.<br/><em>Start tracking.</em></h2>
+  <p>Health wearables available now · SC Framework games coming soon · Free UK delivery</p>
   <div class="cta-btns">
     <a href="store_ring.html" class="btn-cta-primary">Health Ring — £60 →</a>
     <a href="store_watch.html" class="btn-cta-ghost">Health Watch — £70 →</a>
+    <a href="#games" class="btn-cta-purple">SC Framework Games ↓</a>
   </div>
 </div>
 
@@ -288,7 +413,24 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
   </div>
 </footer>
 
+<!-- NOTIFY MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3>Get Notified</h3>
+    <p id="modalDesc">Be the first to know when this product launches. No spam — just a single email when it's live.</p>
+    <div id="modalForm">
+      <input type="email" id="modalEmail" placeholder="your@email.com"/>
+      <button class="btn-notify" style="width:100%;text-align:center;" onclick="submitNotify()">Notify Me When Live →</button>
+    </div>
+    <div class="modal-success" id="modalSuccess">
+      <p>✦ You're on the list. We'll be in touch. ✦</p>
+    </div>
+  </div>
+</div>
+
 <script>
+// Nav
 const hamburger = document.getElementById('hamburger');
 const drawer = document.getElementById('navDrawer');
 hamburger.addEventListener('click', function() {
@@ -300,6 +442,32 @@ drawer.querySelectorAll('a').forEach(function(link) {
     hamburger.classList.remove('open');
     drawer.classList.remove('open');
   });
+});
+
+// Modal
+let currentProduct = '';
+function openModal(product) {
+  currentProduct = product;
+  document.getElementById('modalDesc').textContent = 'Be the first to know when ' + product + ' launches. No spam — just a single email when it\'s live.';
+  document.getElementById('modalForm').style.display = 'block';
+  document.getElementById('modalSuccess').style.display = 'none';
+  document.getElementById('modalEmail').value = '';
+  document.getElementById('modalOverlay').classList.add('open');
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+}
+function submitNotify() {
+  const email = document.getElementById('modalEmail').value;
+  if (!email || !email.includes('@')) {
+    document.getElementById('modalEmail').style.borderColor = '#E24B4A';
+    return;
+  }
+  document.getElementById('modalForm').style.display = 'none';
+  document.getElementById('modalSuccess').style.display = 'block';
+}
+document.getElementById('modalOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
 });
 </script>
 </body>
