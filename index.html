@@ -11,13 +11,12 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --navy:#060B18;--navy2:#0B1020;--navy3:#141C2E;
-  --bg:#FFFFFF;--bg-soft:#F4F6F9;--bg-soft2:#E8ECF2;
+  --bg:#FFFFFF;--bg-soft:#F4F6F9;
   --text:#0B1020;--muted:#6B7280;--muted2:#9CA3AF;
-  --accent:#00D4FF;--accent-dark:#0099BB;
+  --accent:#00D4FF;
   --accent-soft:rgba(0,212,255,0.08);--accent-border:rgba(0,212,255,0.25);
   --line:rgba(0,0,0,0.08);--line-strong:rgba(0,0,0,0.14);
   --line-light:rgba(255,255,255,0.08);
-  --narc:#C4622D;--yarc:#1D9E75;--sist:#534AB7;--oll:#A0426B;
   --serif:'Montserrat',sans-serif;--sans:'Inter',sans-serif;--mono:'Space Mono',monospace;
 }
 html{scroll-behavior:smooth}
@@ -29,7 +28,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .nav-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-family:var(--mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
 .nav-links a:hover{color:#fff}
 .nav-cta{background:var(--accent);color:#060B18;padding:0.6rem 1.4rem;font-family:var(--mono);font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s}
-.nav-cta:hover{opacity:0.85}
 .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
 .nav-hamburger span{display:block;width:22px;height:2px;background:rgba(255,255,255,0.7);transition:all 0.3s}
 .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -41,7 +39,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .nav-drawer a:last-child{border-bottom:none}
 .nav-drawer a:hover{color:#fff}
 .nav-drawer .drawer-cta{background:var(--accent);color:#060B18;padding:0.75rem 1.2rem;font-weight:700;margin-top:0.8rem;text-align:center;border-bottom:none}
-.hero{min-height:calc(100vh - 70px);background:var(--navy);display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:0;position:relative;overflow:hidden}
+.hero{min-height:calc(100vh - 70px);background:var(--navy);display:grid;grid-template-columns:1fr 1fr;align-items:center;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(0,212,255,0.07) 0%,transparent 60%);pointer-events:none}
 .hero-copy{padding:4rem 3rem 4rem 4rem;position:relative;z-index:2}
 .hero-eyebrow{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:2rem;opacity:0.8}
@@ -78,29 +76,25 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 .what-card h3{font-family:var(--serif);font-size:1.2rem;font-weight:400;color:var(--text)}
 .what-card h3 em{font-style:italic;color:var(--accent)}
 .what-card p{color:var(--muted);font-size:0.84rem;line-height:1.7;flex:1}
-.what-link{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-border);padding-bottom:1px;transition:border-color 0.2s;align-self:flex-start}
-.what-link:hover{border-color:var(--accent)}
-.assess-feature{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--navy);border:none;overflow:hidden}
+.what-link{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-border);padding-bottom:1px;align-self:flex-start}
+.assess-feature{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--navy);overflow:hidden}
 .assess-geo-side{background:var(--navy);display:flex;align-items:center;justify-content:center;padding:4rem 2rem;position:relative;min-height:480px}
 .assess-geo-side::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(0,212,255,0.06) 0%,transparent 70%)}
 .assess-geo-side svg{width:min(380px,100%);height:auto;opacity:0.9}
 .assess-copy-side{padding:4rem;display:flex;flex-direction:column;justify-content:center;border-left:1px solid rgba(255,255,255,0.06)}
 .assess-copy-side .section-title{color:#FFFFFF}
-.assess-features-list{list-style:none;display:flex;flex-direction:column;gap:0;border-top:1px solid rgba(255,255,255,0.07);margin-bottom:2.5rem}
+.assess-features-list{list-style:none;display:flex;flex-direction:column;border-top:1px solid rgba(255,255,255,0.07);margin-bottom:2.5rem}
 .assess-features-list li{display:flex;align-items:center;gap:0.75rem;padding:0.75rem 0;border-bottom:1px solid rgba(255,255,255,0.06);font-size:0.84rem;color:rgba(255,255,255,0.6)}
 .assess-features-list li::before{content:'◈';color:var(--accent);font-size:0.6rem;flex-shrink:0}
-.assess-price{font-family:var(--serif);font-size:1rem;color:rgba(255,255,255,0.4);margin-bottom:1.5rem}
-.assess-price strong{color:#FFFFFF;font-weight:300;font-size:1.3rem}
 .products-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
 .product-strip-card{background:#fff;padding:2.2rem;transition:background 0.2s;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:0.75rem}
 .product-strip-card:hover{background:var(--bg-soft)}
 .ps-tag{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent)}
-.ps-price{font-family:var(--serif);font-size:2.2rem;font-weight:300;color:var(--text);line-height:1}
 .product-strip-card h3{font-family:var(--serif);font-size:1.1rem;font-weight:300;color:var(--text)}
 .product-strip-card h3 em{font-style:italic;color:var(--accent)}
 .product-strip-card p{color:var(--muted);font-size:0.82rem;line-height:1.65;flex:1}
 .ps-link{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-top:auto}
-.blueprints-section{background:var(--navy);border-top:none;padding:6rem 0}
+.blueprints-section{background:var(--navy);padding:6rem 0}
 .blueprints-inner{max-width:1200px;margin:0 auto;padding:0 3rem}
 .blueprints-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1.5rem}
 .blueprints-header .section-title{color:#FFFFFF;margin-bottom:0}
@@ -113,8 +107,7 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 .bp-card p{color:rgba(255,255,255,0.35);font-size:0.78rem;line-height:1.6;flex:1}
 .bp-trl{font-family:var(--mono);font-size:0.58rem;color:rgba(255,255,255,0.2);letter-spacing:0.08em;text-transform:uppercase}
 .bp-link{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);opacity:0.7;text-decoration:none;margin-top:auto}
-.bp-link:hover{opacity:1}
-.investor-strip{background:var(--navy);border-top:none;padding:5rem 3rem;text-align:center;position:relative;overflow:hidden}
+.investor-strip{background:var(--navy);padding:5rem 3rem;text-align:center;position:relative;overflow:hidden}
 .investor-strip::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:200px;background:radial-gradient(ellipse,rgba(0,212,255,0.05) 0%,transparent 70%);pointer-events:none}
 .investor-strip p{font-family:var(--serif);font-size:clamp(1.1rem,2vw,1.5rem);font-weight:300;color:rgba(255,255,255,0.5);max-width:800px;margin:0 auto 2.5rem;line-height:1.7}
 .investor-strip p strong{color:#FFFFFF;font-weight:300}
@@ -125,9 +118,7 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 .cta-banner p{color:var(--muted);font-size:0.9rem;line-height:1.75;max-width:480px;margin:0 auto 2.5rem}
 .cta-actions{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
 .btn-primary{background:var(--accent);color:#060B18;padding:0.9rem 2.2rem;font-family:var(--mono);font-size:0.74rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s}
-.btn-primary:hover{opacity:0.85}
 .btn-outline{border:1px solid var(--line-strong);color:var(--muted);padding:0.9rem 2.2rem;font-family:var(--mono);font-size:0.74rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:all 0.2s}
-.btn-outline:hover{border-color:var(--accent-border);color:var(--accent)}
 .btn-white-outline{border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.65);padding:0.9rem 2.2rem;font-family:var(--mono);font-size:0.74rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:all 0.2s}
 .btn-white-outline:hover{border-color:var(--accent);color:var(--accent)}
 .pt-footer{background:#060B18;border-top:1px solid rgba(255,255,255,0.07);padding:2rem 3rem}
@@ -138,39 +129,62 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 .pt-footer-links a:hover{color:rgba(255,255,255,0.7)}
 .pt-footer-note{font-family:var(--mono);font-size:0.58rem;color:rgba(255,255,255,0.2);letter-spacing:0.06em}
 @media(max-width:1200px){.bp-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:1024px){.hero{grid-template-columns:1fr}.hero-geo{display:none}.what-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr}
+  .hero-geo{display:none}
+  .what-grid{grid-template-columns:repeat(3,1fr)}
+}
 @media(max-width:768px){
-  nav{padding:0.8rem 1.2rem;width:100%}
+  nav{padding:0.8rem 1.2rem}
   .nav-links,.nav-cta{display:none}
   .nav-hamburger{display:flex}
-  .hero{grid-template-columns:1fr;overflow-x:hidden}
-  .hero-copy{padding:3rem 1.5rem}
-  .container{padding:0 1.5rem}
-  .blueprints-inner{padding:0 1.5rem}
-  .assess-feature{grid-template-columns:1fr}
-  .assess-geo-side{min-height:280px}
+  .hero{grid-template-columns:1fr;min-height:auto;padding-bottom:2rem}
+  .hero-copy{padding:2.5rem 1.25rem}
+  .hero-geo{display:none}
+  .hero-stat-row{gap:1.2rem;flex-wrap:wrap;margin-top:2rem;padding-top:1.5rem}
+  .container{padding:0 1.25rem}
+  section{padding:3.5rem 0}
+  .what-grid{grid-template-columns:1fr}
+  .what-card{padding:1.75rem 1.25rem}
+  .assess-feature{grid-template-columns:1fr;display:flex;flex-direction:column}
+  .assess-geo-side{display:none}
+  .assess-copy-side{padding:2.5rem 1.25rem;border-left:none;border-top:1px solid rgba(255,255,255,0.06)}
   .products-strip{grid-template-columns:1fr}
-  .what-grid,.bp-grid{grid-template-columns:1fr}
-  .cta-banner{padding:4rem 1.5rem}
-  .investor-strip{padding:4rem 1.5rem}
-  .pt-footer{padding:2rem 1.5rem}
-  .pt-footer-inner{flex-direction:column;text-align:center;align-items:center}
-  .pt-footer-links{justify-content:center;gap:1.2rem}
-  .hero-stat-row{gap:1.5rem;flex-wrap:wrap}
+  .product-strip-card{padding:1.75rem 1.25rem}
+  .blueprints-section{padding:3.5rem 0}
+  .blueprints-inner{padding:0 1.25rem}
   .blueprints-header{flex-direction:column;align-items:flex-start}
+  .blueprints-header .btn-white-outline{width:100%;text-align:center}
+  .bp-grid{grid-template-columns:1fr}
+  .bp-card{padding:1.5rem 1.25rem}
+  .investor-strip{padding:3rem 1.25rem}
+  .investor-actions{flex-direction:column;align-items:stretch}
+  .investor-actions a{text-align:center}
   .testimonials-grid{grid-template-columns:1fr!important}
+  .cta-banner{padding:3.5rem 1.25rem}
+  .cta-actions{flex-direction:column;align-items:stretch}
+  .cta-actions a{text-align:center}
+  .pt-footer{padding:2rem 1.25rem}
+  .pt-footer-inner{flex-direction:column;text-align:center;align-items:center}
+  .pt-footer-links{justify-content:center;gap:1rem}
   .geo-label-narc,.geo-label-sist,.geo-label-yarc,.geo-label-oll{display:none}
-  .nav-drawer{width:100%;left:0;right:0}
 }
 @media(max-width:480px){
-  .hero-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+  .hero-copy{padding:2rem 1rem}
+  .hero h1{font-size:2.2rem}
+  .hero-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
   .hero-actions{flex-direction:column;align-items:stretch}
-  .hero-actions a{text-align:center}
+  .hero-actions a{text-align:center;justify-content:center}
+  .section-title{font-size:1.8rem}
+  .cta-banner{padding:3rem 1rem}
+  .investor-strip{padding:2.5rem 1rem}
+  .blueprints-inner{padding:0 1rem}
+  .pt-footer{padding:1.75rem 1rem}
+  .pt-footer-links{gap:0.8rem}
 }
 </style>
 </head>
 <body>
-
 <nav>
   <a href="index.html" class="nav-logo-wrap">
     <img src="pt_logo.png" alt="PsyTectrics" class="nav-logo-img"/>
@@ -186,7 +200,6 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
     <span></span><span></span><span></span>
   </button>
 </nav>
-
 <div class="nav-drawer" id="navDrawer">
   <a href="index.html">Home</a>
   <a href="reports.html">Reports</a>
@@ -196,8 +209,6 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
   <a href="contact.html">Contact</a>
   <a href="reports.html" class="drawer-cta">Begin Assessment — Free →</a>
 </div>
-
-<!-- HERO -->
 <div class="hero">
   <div class="hero-copy">
     <span class="hero-eyebrow">PsyTectrics Technologies Ltd · Behavioural Intelligence</span>
@@ -271,8 +282,6 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
     </div>
   </div>
 </div>
-
-<!-- WHAT WE DO -->
 <section>
   <div class="container">
     <span class="section-label">What we do</span>
@@ -300,8 +309,6 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
     </div>
   </div>
 </section>
-
-<!-- ASSESSMENT FEATURE -->
 <div class="assess-feature">
   <div class="assess-geo-side">
     <svg viewBox="120 120 660 660" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
@@ -310,29 +317,13 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
       <line x1="450" y1="106" x2="450" y2="794" stroke="rgba(255,255,255,0.05)" stroke-width="0.5" stroke-dasharray="4 8"/>
       <line x1="106" y1="450" x2="794" y2="450" stroke="rgba(255,255,255,0.05)" stroke-width="0.5" stroke-dasharray="4 8"/>
       <line x1="450" y1="302" x2="367.6" y2="246" stroke="#C4622D" stroke-width="1.4" opacity="0.6"/>
-      <line x1="367.6" y1="246" x2="286.6" y2="198.4" stroke="#C4622D" stroke-width="1" opacity="0.35"/>
-      <line x1="367.6" y1="246" x2="392.8" y2="155.5" stroke="#C4622D" stroke-width="1" opacity="0.35"/>
       <line x1="450" y1="302" x2="532.4" y2="246" stroke="#C4622D" stroke-width="1.4" opacity="0.6"/>
-      <line x1="532.4" y1="246" x2="507.2" y2="155.5" stroke="#C4622D" stroke-width="1" opacity="0.35"/>
-      <line x1="532.4" y1="246" x2="613.4" y2="198.4" stroke="#C4622D" stroke-width="1" opacity="0.35"/>
       <line x1="598" y1="450" x2="654" y2="367.6" stroke="#534AB7" stroke-width="1.4" opacity="0.6"/>
-      <line x1="654" y1="367.6" x2="701.6" y2="286.6" stroke="#534AB7" stroke-width="1" opacity="0.35"/>
-      <line x1="654" y1="367.6" x2="744.5" y2="392.8" stroke="#534AB7" stroke-width="1" opacity="0.35"/>
       <line x1="598" y1="450" x2="654" y2="532.4" stroke="#534AB7" stroke-width="1.4" opacity="0.6"/>
-      <line x1="654" y1="532.4" x2="744.5" y2="507.2" stroke="#534AB7" stroke-width="1" opacity="0.35"/>
-      <line x1="654" y1="532.4" x2="701.6" y2="613.4" stroke="#534AB7" stroke-width="1" opacity="0.35"/>
       <line x1="450" y1="598" x2="532.4" y2="654" stroke="#1D9E75" stroke-width="1.4" opacity="0.6"/>
-      <line x1="532.4" y1="654" x2="613.4" y2="701.6" stroke="#1D9E75" stroke-width="1" opacity="0.35"/>
-      <line x1="532.4" y1="654" x2="507.2" y2="744.5" stroke="#1D9E75" stroke-width="1" opacity="0.35"/>
       <line x1="450" y1="598" x2="367.6" y2="654" stroke="#1D9E75" stroke-width="1.4" opacity="0.6"/>
-      <line x1="367.6" y1="654" x2="392.8" y2="744.5" stroke="#1D9E75" stroke-width="1" opacity="0.35"/>
-      <line x1="367.6" y1="654" x2="286.6" y2="701.6" stroke="#1D9E75" stroke-width="1" opacity="0.35"/>
       <line x1="302" y1="450" x2="246" y2="532.4" stroke="#A0426B" stroke-width="1.4" opacity="0.6"/>
-      <line x1="246" y1="532.4" x2="198.4" y2="613.4" stroke="#A0426B" stroke-width="1" opacity="0.35"/>
-      <line x1="246" y1="532.4" x2="155.5" y2="507.2" stroke="#A0426B" stroke-width="1" opacity="0.35"/>
       <line x1="302" y1="450" x2="246" y2="367.6" stroke="#A0426B" stroke-width="1.4" opacity="0.6"/>
-      <line x1="246" y1="367.6" x2="155.5" y2="392.8" stroke="#A0426B" stroke-width="1" opacity="0.35"/>
-      <line x1="246" y1="367.6" x2="198.4" y2="286.6" stroke="#A0426B" stroke-width="1" opacity="0.35"/>
       <circle cx="450" cy="450" r="52" fill="rgba(6,11,24,0.9)" stroke="rgba(0,212,255,0.35)" stroke-width="1.8"/>
       <circle cx="450" cy="450" r="3" fill="#00D4FF" opacity="0.8"/>
       <text x="450" y="454" text-anchor="middle" font-size="9" fill="rgba(0,212,255,0.6)" font-family="monospace" letter-spacing="1">ZERO-POINT</text>
@@ -357,8 +348,6 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
     <a href="reports.html" class="btn-hero-primary" style="align-self:flex-start">Begin Assessment →</a>
   </div>
 </div>
-
-<!-- REPORTS -->
 <section>
   <div class="container">
     <span class="section-label">Reports</span>
@@ -386,8 +375,6 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
     </div>
   </div>
 </section>
-
-<!-- PROTOTYPES -->
 <div class="blueprints-section">
   <div class="blueprints-inner">
     <div class="blueprints-header">
@@ -398,46 +385,14 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
       <a href="prototypes.html" class="btn-white-outline">View all prototypes →</a>
     </div>
     <div class="bp-grid">
-      <a href="prototypes.html" class="bp-card">
-        <span class="bp-code">DP-1 · Core engine</span>
-        <h3>Duality <em>Processor</em></h3>
-        <p>The computational engine at the centre of the device ecosystem. Processes both awareness layers through the SC Blueprint™ scoring engine in real time.</p>
-        <span class="bp-trl">TRL 2 · Silicon in development</span>
-        <span class="bp-link">View prototype →</span>
-      </a>
-      <a href="prototypes.html" class="bp-card">
-        <span class="bp-code">MIRROR · Biometric display</span>
-        <h3>Smart <em>Mirror</em></h3>
-        <p>15.6" OLED smart mirror with integrated biometric sensors and camera. Displays your full awareness profile in real time. Reads and feeds the DP-1 engine.</p>
-        <span class="bp-trl">TRL 3 · Early prototype</span>
-        <span class="bp-link">View prototype →</span>
-      </a>
-      <a href="prototypes.html" class="bp-card">
-        <span class="bp-code">TRACE · Smartwatch</span>
-        <h3>Awareness <em>Watch</em></h3>
-        <p>Continuous drift monitoring on the wrist. PPG, EDA, accelerometer, gyroscope. Antique bronze PVD finish. Companion device to the TRACE-R ring.</p>
-        <span class="bp-trl">TRL 2 · Prototype stage</span>
-        <span class="bp-link">View prototype →</span>
-      </a>
-      <a href="prototypes.html" class="bp-card">
-        <span class="bp-code">FIELD · Ambient sensor</span>
-        <h3>Room <em>Intelligence</em></h3>
-        <p>Passive group awareness mapping. Three form factors. Maps the collective behavioural state of everyone in a space — meetings, therapy rooms, high-conflict environments.</p>
-        <span class="bp-trl">TRL 2 · Concept validated</span>
-        <span class="bp-link">View prototype →</span>
-      </a>
-      <a href="prototypes.html" class="bp-card">
-        <span class="bp-code">NEURO-EQ · Headset</span>
-        <h3>Neural <em>Equaliser</em></h3>
-        <p>EEG-based brainwave headset mapping cognitive and emotional state directly to the SC Blueprint™ framework. Passive monitoring with real-time awareness feedback.</p>
-        <span class="bp-trl">TRL 2 · Concept stage</span>
-        <span class="bp-link">View prototype →</span>
-      </a>
+      <a href="prototypes.html" class="bp-card"><span class="bp-code">DP-1 · Core engine</span><h3>Duality <em>Processor</em></h3><p>The computational engine at the centre of the device ecosystem. Processes both awareness layers through the SC Blueprint™ scoring engine in real time.</p><span class="bp-trl">TRL 2 · Silicon in development</span><span class="bp-link">View prototype →</span></a>
+      <a href="prototypes.html" class="bp-card"><span class="bp-code">MIRROR · Biometric display</span><h3>Smart <em>Mirror</em></h3><p>15.6" OLED smart mirror with integrated biometric sensors and camera. Displays your full awareness profile in real time. Reads and feeds the DP-1 engine.</p><span class="bp-trl">TRL 3 · Early prototype</span><span class="bp-link">View prototype →</span></a>
+      <a href="prototypes.html" class="bp-card"><span class="bp-code">TRACE · Smartwatch</span><h3>Awareness <em>Watch</em></h3><p>Continuous drift monitoring on the wrist. PPG, EDA, accelerometer, gyroscope. Antique bronze PVD finish. Companion device to the TRACE-R ring.</p><span class="bp-trl">TRL 2 · Prototype stage</span><span class="bp-link">View prototype →</span></a>
+      <a href="prototypes.html" class="bp-card"><span class="bp-code">FIELD · Ambient sensor</span><h3>Room <em>Intelligence</em></h3><p>Passive group awareness mapping. Three form factors. Maps the collective behavioural state of everyone in a space — meetings, therapy rooms, high-conflict environments.</p><span class="bp-trl">TRL 2 · Concept validated</span><span class="bp-link">View prototype →</span></a>
+      <a href="prototypes.html" class="bp-card"><span class="bp-code">NEURO-EQ · Headset</span><h3>Neural <em>Equaliser</em></h3><p>EEG-based brainwave headset mapping cognitive and emotional state directly to the SC Blueprint™ framework. Passive monitoring with real-time awareness feedback.</p><span class="bp-trl">TRL 2 · Concept stage</span><span class="bp-link">View prototype →</span></a>
     </div>
   </div>
 </div>
-
-<!-- INVESTOR -->
 <div class="investor-strip">
   <p><strong>PsyTectrics is building the next generation of behavioural intelligence technology</strong> — combining psychometrics, awareness science, and artificial intelligence to help people and organisations understand how humans think, decide, communicate, and perform.</p>
   <div class="investor-actions">
@@ -445,27 +400,14 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
     <a href="contact.html" class="btn-white-outline">Investment enquiry</a>
   </div>
 </div>
-
-<!-- TESTIMONIALS -->
 <div style="border-top:1px solid var(--line);padding:5rem 1.5rem;background:#fff;text-align:center;overflow-x:hidden">
   <p style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted2);margin-bottom:2.5rem">What people have said</p>
   <div class="testimonials-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:var(--line);max-width:960px;margin:0 auto">
-    <div style="background:#fff;padding:2rem 1.8rem;text-align:left">
-      <p style="font-size:0.88rem;color:var(--muted);line-height:1.8;margin-bottom:1.2rem">"The Drift reading was the most accurate description of the gap I've been feeling between how I present at work and what's actually going on underneath. I didn't expect to be that confronted by a questionnaire."</p>
-      <span style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted2)">Solo Assessment · London</span>
-    </div>
-    <div style="background:#fff;padding:2rem 1.8rem;text-align:left">
-      <p style="font-size:0.88rem;color:var(--muted);line-height:1.8;margin-bottom:1.2rem">"I've done MBTI, Big Five, DISC. This is the first framework that felt like it was reading how I actually operate rather than how I'd like to be seen. The conscious/subconscious split is genuinely useful."</p>
-      <span style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted2)">Solo Assessment · Manchester</span>
-    </div>
-    <div style="background:#fff;padding:2rem 1.8rem;text-align:left">
-      <p style="font-size:0.88rem;color:var(--muted);line-height:1.8;margin-bottom:1.2rem">"We used the Business Audit to look at our brand communication and the gap it identified between what we think we're saying and what the output actually signals was uncomfortable — and exactly what we needed."</p>
-      <span style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted2)">Business Audit · Agency, Bristol</span>
-    </div>
+    <div style="background:#fff;padding:2rem 1.8rem;text-align:left"><p style="font-size:0.88rem;color:var(--muted);line-height:1.8;margin-bottom:1.2rem">"The Drift reading was the most accurate description of the gap I've been feeling between how I present at work and what's actually going on underneath. I didn't expect to be that confronted by a questionnaire."</p><span style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted2)">Solo Assessment · London</span></div>
+    <div style="background:#fff;padding:2rem 1.8rem;text-align:left"><p style="font-size:0.88rem;color:var(--muted);line-height:1.8;margin-bottom:1.2rem">"I've done MBTI, Big Five, DISC. This is the first framework that felt like it was reading how I actually operate rather than how I'd like to be seen. The conscious/subconscious split is genuinely useful."</p><span style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted2)">Solo Assessment · Manchester</span></div>
+    <div style="background:#fff;padding:2rem 1.8rem;text-align:left"><p style="font-size:0.88rem;color:var(--muted);line-height:1.8;margin-bottom:1.2rem">"We used the Business Audit to look at our brand communication and the gap it identified between what we think we're saying and what the output actually signals was uncomfortable — and exactly what we needed."</p><span style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted2)">Business Audit · Agency, Bristol</span></div>
   </div>
 </div>
-
-<!-- CTA -->
 <div class="cta-banner">
   <h2>Start with the<br/><em>free assessment.</em></h2>
   <p>56 questions. Two layers. Your full SC Blueprint™ profile shown immediately. Results generated instantly.</p>
@@ -474,7 +416,6 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
     <a href="framework.html" class="btn-outline">Explore the Blueprint</a>
   </div>
 </div>
-
 <footer class="pt-footer">
   <div class="pt-footer-inner">
     <span class="pt-footer-logo">PSYTECTRICS™</span>
@@ -490,20 +431,11 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
     <span class="pt-footer-note">© 2026 PsyTectrics Technologies Ltd · All rights reserved</span>
   </div>
 </footer>
-
 <script>
-const hamburger = document.getElementById('hamburger');
-const drawer = document.getElementById('navDrawer');
-hamburger.addEventListener('click', function() {
-  hamburger.classList.toggle('open');
-  drawer.classList.toggle('open');
-});
-drawer.querySelectorAll('a').forEach(function(link) {
-  link.addEventListener('click', function() {
-    hamburger.classList.remove('open');
-    drawer.classList.remove('open');
-  });
-});
+const hamburger=document.getElementById('hamburger');
+const drawer=document.getElementById('navDrawer');
+hamburger.addEventListener('click',function(){hamburger.classList.toggle('open');drawer.classList.toggle('open');});
+drawer.querySelectorAll('a').forEach(function(link){link.addEventListener('click',function(){hamburger.classList.remove('open');drawer.classList.remove('open');});});
 </script>
 </body>
 </html>
