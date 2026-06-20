@@ -161,6 +161,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
   .pt-footer-inner{flex-direction:column;text-align:center;align-items:center}
   .pt-footer-links{justify-content:center}
 }
+/* MOBILE-NAV-SAFETY */
+@media(max-width:768px){nav,nav.pt-nav{padding:0.8rem 1.2rem}}
+@media(max-width:430px){
+  .nav-badge,.nav-tag{display:none}
+  .nav-right,nav .nav-right,nav.pt-nav div{flex-wrap:nowrap;gap:0.5rem}
+  .nav-prog{display:none}
+  .nav-right .nav-btn:nth-of-type(2){display:none}
+}
 </style>
 </head>
 <body>

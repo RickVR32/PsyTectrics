@@ -319,6 +319,22 @@ nav.pt-nav .nav-back { font-family:'Space Mono',monospace; font-size:0.65rem; le
 nav.pt-nav .nav-back:hover { color:rgba(255,255,255,0.8); }
 @media(max-width:768px){ nav.pt-nav { padding:0.8rem 1.2rem; } nav.pt-nav .nav-links { display:none; } }
 
+/* MOBILE-NAV-SAFETY */
+@media(max-width:768px){nav,nav.pt-nav{padding:0.8rem 1.2rem}}
+@media(max-width:430px){
+  .nav-badge,.nav-tag{display:none}
+  .nav-right,nav .nav-right,nav.pt-nav div{flex-wrap:nowrap;gap:0.5rem}
+  .nav-prog{display:none}
+}
+@media(max-width:900px){
+  .main{grid-template-columns:1fr}
+  .right-panel{height:auto;position:static;top:auto;border-top:1px solid var(--border)}
+  .watch-area{border-right:none;padding:28px 18px}
+  .metrics-strip{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:380px){
+  .watch-shell{width:220px;height:220px}
+}
 </style>
 </head>
 <body>

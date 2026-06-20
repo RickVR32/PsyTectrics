@@ -633,6 +633,25 @@ nav.pt-nav .nav-back { font-family:'Space Mono',monospace; font-size:0.65rem; le
 nav.pt-nav .nav-back:hover { color:rgba(255,255,255,0.8); }
 @media(max-width:768px){ nav.pt-nav { padding:0.8rem 1.2rem; } nav.pt-nav .nav-links { display:none; } }
 
+/* MOBILE-NAV-SAFETY */
+@media(max-width:768px){nav,nav.pt-nav{padding:0.8rem 1.2rem}}
+@media(max-width:430px){
+  .nav-badge,.nav-tag{display:none}
+  .nav-right,nav .nav-right,nav.pt-nav div{flex-wrap:nowrap;gap:0.5rem}
+  .nav-prog{display:none}
+}
+@media(max-width:900px){
+  .main{grid-template-columns:1fr}
+  .right-col{height:auto;position:static;top:auto;border-left:none;border-top:1px solid var(--border)}
+  .left-col{border-right:none}
+  .schematic-wrap,.pipeline{padding:20px 18px}
+  .output-grid{grid-template-columns:1fr 1fr}
+  .header{padding:14px 18px}
+}
+@media(max-width:480px){
+  .output-grid{grid-template-columns:1fr}
+  .out-val{font-size:20px}
+}
 </style>
 </head>
 <body>

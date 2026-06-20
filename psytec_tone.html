@@ -555,6 +555,53 @@ nav.pt-nav .nav-back { font-family:'Space Mono',monospace; font-size:0.65rem; le
 nav.pt-nav .nav-back:hover { color:rgba(255,255,255,0.8); }
 @media(max-width:768px){ nav.pt-nav { padding:0.8rem 1.2rem; } nav.pt-nav .nav-links { display:none; } }
 
+/* MOBILE-NAV-SAFETY */
+@media(max-width:768px){nav,nav.pt-nav{padding:0.8rem 1.2rem}}
+@media(max-width:430px){
+  .nav-badge,.nav-tag{display:none}
+  .nav-right,nav .nav-right,nav.pt-nav div{flex-wrap:nowrap;gap:0.5rem}
+  .nav-prog{display:none}
+}
+
+/* ── MOBILE REBUILD: stacked flow instead of absolute overlay art-piece ── */
+@media(max-width:680px){
+  html,body{height:auto;overflow-y:auto;overflow-x:hidden}
+  .mirror-shell{
+    position:relative;width:100%;height:auto;min-height:100vh;
+    display:flex;flex-direction:column;align-items:center;
+    justify-content:flex-start;overflow:visible;
+    padding:86px 16px 48px;gap:18px;
+  }
+  .mirror-bg,.mirror-frame{position:fixed}
+  .figure-aura,.reflection{position:fixed;opacity:0.05}
+  .bracket{display:none}
+
+  .tce-header,.status-strip,.drift-overlay,.codes-overlay,
+  .bio-strip,.scale-overlay,.dialogue-panel,.input-panel,.mode-indicator{
+    position:static;top:auto;left:auto;right:auto;bottom:auto;transform:none;
+    z-index:5;width:100%;
+  }
+  .tce-header{align-items:center}
+  .status-strip{flex-direction:row;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px}
+
+  .rings-row{display:flex;justify-content:center;gap:24px;width:100%;flex-wrap:wrap}
+  .drift-overlay,.codes-overlay{flex:0 0 auto}
+  .drift-overlay svg,.codes-overlay svg{width:84px;height:84px}
+
+  .bio-strip{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:14px 20px;width:100%;max-width:340px}
+  .bio-item{align-items:center}
+  .bio-bar-track{width:60px}
+
+  .scale-overlay{align-items:center}
+
+  .dialogue-panel{width:100%;max-width:420px;display:none}
+  .dialogue-panel.visible{display:flex}
+  .dialogue-inner{padding:18px 18px}
+
+  .input-panel{width:100%;max-width:380px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;padding:16px}
+
+  .mode-indicator{text-align:center}
+}
 </style>
 </head>
 <body>
@@ -607,6 +654,7 @@ nav.pt-nav .nav-back:hover { color:rgba(255,255,255,0.8); }
  <div class="s-pill dim"><div class="pill-dot"></div>DPC ACTIVE</div>
  </div>
 
+ <div class="rings-row">
  <!-- DRIFT RING OVERLAY — top left -->
  <div class="drift-overlay">
  <div class="overlay-label">drift</div>
@@ -629,6 +677,7 @@ nav.pt-nav .nav-back:hover { color:rgba(255,255,255,0.8); }
  <text x="55" y="63" text-anchor="middle" font-size="7" fill="#4A4A5A" font-family="monospace" id="codes-center-2">POINT</text>
  </svg>
  </div>
+</div>
 
  <!-- BIO STRIP — left -->
  <div class="bio-strip">

@@ -163,8 +163,55 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .page-wrap{display:flex;flex-direction:column;height:100vh}
 .main-area{flex:1;overflow:hidden}
 
-@media(max-width:900px){.main{grid-template-columns:1fr}.geo-col{display:none}}
+.geo-toggle{display:none}
+.geo-close{display:none}
+
+@media(max-width:900px){
+  .main{grid-template-columns:1fr}
+
+  .geo-toggle{
+    display:flex;align-items:center;gap:0.4rem;
+    position:fixed;bottom:1.2rem;right:1.2rem;z-index:160;
+    background:#060B18;color:#fff;border:1px solid var(--accent-border);
+    font-family:var(--mono);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;
+    padding:0.7rem 1.1rem;border-radius:30px;cursor:pointer;
+    box-shadow:0 6px 20px rgba(0,0,0,0.25);
+  }
+  .geo-toggle-icon{color:var(--accent)}
+
+  .geo-close{
+    display:flex;align-items:center;justify-content:center;
+    width:26px;height:26px;border-radius:50%;
+    background:var(--bg-soft);border:1px solid var(--line-strong);
+    color:var(--muted);font-size:0.8rem;cursor:pointer;
+  }
+
+  .geo-col{
+    position:fixed;top:var(--nav-h);left:0;right:0;
+    height:0;overflow:hidden;
+    background:#FAFBFC;z-index:150;
+    border-right:none;border-bottom:1px solid var(--line);
+    box-shadow:0 12px 30px rgba(0,0,0,0.18);
+    transition:height 0.32s ease;
+    padding:0 1.5rem;
+  }
+  body.geo-open .geo-col{height:62vh;padding:1.2rem 1.5rem}
+  body.geo-open .geo-toggle{display:none}
+
+  .geo-backdrop{display:none}
+  body.geo-open .geo-backdrop{
+    display:block;position:fixed;inset:var(--nav-h) 0 0 0;
+    background:rgba(6,11,24,0.35);z-index:149;
+  }
+}
 @media(max-width:768px){nav{padding:0.8rem 1.2rem}}
+/* MOBILE-NAV-SAFETY */
+@media(max-width:768px){nav,nav.pt-nav{padding:0.8rem 1.2rem}}
+@media(max-width:430px){
+  .nav-badge,.nav-tag{display:none}
+  .nav-right,nav .nav-right,nav.pt-nav div{flex-wrap:nowrap;gap:0.5rem}
+  .nav-prog{display:none}
+}
 </style>
 </head>
 <body>
@@ -181,13 +228,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
   </div>
 </nav>
 
+<button class="geo-toggle" id="geo-toggle" aria-label="View Blueprint diagram" onclick="document.body.classList.add('geo-open')">
+  <span class="geo-toggle-icon">◇</span> Blueprint
+</button>
+<div class="geo-backdrop" id="geo-backdrop" onclick="document.body.classList.remove('geo-open')"></div>
+
 <div class="main-area">
 <div class="main">
 
   <!-- GEO -->
-  <div class="geo-col">
+  <div class="geo-col" id="geo-col">
     <div class="diag-header">
       <span class="diag-label">SC Blueprint™</span>
+      <button class="geo-close" id="geo-close" aria-label="Close diagram" onclick="document.body.classList.remove('geo-open')">✕</button>
     </div>
     <div class="diag-svg-wrap" id="diag-svg-wrap">
       <svg id="main-diagram" viewBox="120 120 660 660" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
