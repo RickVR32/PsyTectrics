@@ -166,6 +166,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 
 @media(max-width:900px){.hero{grid-template-columns:1fr}.hero-img{display:none}.feature-grid{grid-template-columns:1fr 1fr}.card-spread-grid{grid-template-columns:repeat(2,1fr)}.cross-sell-grid{grid-template-columns:1fr}.gameplay-grid{grid-template-columns:1fr}}
 @media(max-width:768px){nav{padding:0.8rem 1.2rem}.nav-links{display:none}.nav-hamburger{display:flex}.section,.drift-section,.cross-sell,.cta-banner{padding:4rem 1.5rem}.hero-copy{padding:5rem 1.5rem 3rem}.pt-footer{padding:2rem 1.5rem}.pt-footer-inner{flex-direction:column;text-align:center;align-items:center}.pt-footer-links{justify-content:center}.feature-grid{grid-template-columns:1fr}}
+/* LOGO-FIX: real logo file is ~6.45:1 aspect ratio — full height renders 300px+ wide and eats the whole nav bar on phones */
+@media(max-width:768px){
+  .nav-logo-img,nav.pt-nav .nav-logo-img{height:30px!important;width:auto}
+}
+@media(max-width:480px){
+  .nav-logo-img,nav.pt-nav .nav-logo-img{height:25px!important}
+}
+@media(max-width:768px){
+  nav,nav.pt-nav{flex-wrap:wrap;height:auto;min-height:70px;row-gap:4px}
+  .nav-right{gap:0.5rem!important}
+}
 </style>
 </head>
 <body>

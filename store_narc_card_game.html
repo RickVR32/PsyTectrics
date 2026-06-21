@@ -186,6 +186,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
   .pt-footer-inner{flex-direction:column;text-align:center;align-items:center}
   .pt-footer-links{justify-content:center}
 }
+/* LOGO-FIX: real logo file is ~6.45:1 aspect ratio — full height renders 300px+ wide and eats the whole nav bar on phones */
+@media(max-width:768px){
+  .nav-logo-img,nav.pt-nav .nav-logo-img{height:30px!important;width:auto}
+}
+@media(max-width:480px){
+  .nav-logo-img,nav.pt-nav .nav-logo-img{height:25px!important}
+}
+@media(max-width:768px){
+  nav,nav.pt-nav{flex-wrap:wrap;height:auto;min-height:70px;row-gap:4px}
+  .nav-right{gap:0.5rem!important}
+}
 </style>
 </head>
 <body>

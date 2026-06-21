@@ -635,7 +635,7 @@ nav.pt-nav .nav-back:hover { color:rgba(255,255,255,0.8); }
 
 /* MOBILE-NAV-SAFETY */
 @media(max-width:768px){nav,nav.pt-nav{padding:0.8rem 1.2rem}}
-@media(max-width:430px){
+@media(max-width:600px){
   .nav-badge,.nav-tag{display:none}
   .nav-right,nav .nav-right,nav.pt-nav div{flex-wrap:nowrap;gap:0.5rem}
   .nav-prog{display:none}
@@ -651,6 +651,17 @@ nav.pt-nav .nav-back:hover { color:rgba(255,255,255,0.8); }
 @media(max-width:480px){
   .output-grid{grid-template-columns:1fr}
   .out-val{font-size:20px}
+}
+/* LOGO-FIX: real logo file is ~6.45:1 aspect ratio — full height renders 300px+ wide and eats the whole nav bar on phones */
+@media(max-width:768px){
+  .nav-logo-img,nav.pt-nav .nav-logo-img{height:30px!important;width:auto}
+}
+@media(max-width:480px){
+  .nav-logo-img,nav.pt-nav .nav-logo-img{height:25px!important}
+}
+@media(max-width:768px){
+  nav,nav.pt-nav{flex-wrap:wrap;height:auto;min-height:70px;row-gap:4px}
+  .nav-right{gap:0.5rem!important}
 }
 </style>
 </head>
