@@ -29,7 +29,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .nav-back:hover{color:rgba(255,255,255,0.8)}
 .nav-prog{font-family:var(--mono);font-size:0.6rem;color:rgba(255,255,255,0.3);display:none}
 
-.main{display:grid;grid-template-columns:1fr 1fr;height:calc(100vh - var(--nav-h));margin-top:var(--nav-h)}
+.main{display:grid;grid-template-columns:1fr 1fr;height:100%}
 
 .geo-col{border-right:1px solid var(--line);padding:1.5rem;display:flex;flex-direction:column;gap:1rem;background:#FAFBFC;overflow:hidden}
 .diag-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted)}
@@ -161,7 +161,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 @keyframes step-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
 .page-wrap{display:flex;flex-direction:column;height:100vh}
-.main-area{flex:1;overflow:hidden}
+.main-area{flex:1;overflow:hidden;padding-top:var(--nav-h)}
 
 .geo-toggle{display:none}
 .geo-close{display:none}
