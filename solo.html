@@ -752,14 +752,8 @@ async function generateAndShowReport(name){
   const encoded=NODES.map(n=>ENCODE[scores[n.id]||3]||'R').join('');
   const savedCtx=sessionStorage.getItem('pt_solo_ctx');
   const ctx=savedCtx?JSON.parse(savedCtx):{};
-  const ctxStr=[ctx.age,ctx.ctx,ctx.most,ctx.least].filter(Boolean).join(' | ');
-  let ai=null;
-  try{
-    const sys=`You are generating a PsyTectrics™ Awareness Index™ profile. Second person, direct, clinical but human. No therapy-speak. Return ONLY valid JSON: {"keyword_identity":"<1-3 words>","keyword_description":"<1 sentence>","report_sections":{"who_you_are":"<2 paragraphs>","primary_pattern":"<1 paragraph>","under_pressure":"<1 paragraph>","in_relationships":"<1 paragraph>","next_move":"<1 paragraph>"}}`;
-    const msg=`${name?'Name: '+name+'\n':''}${ctxStr?'Context: '+ctxStr+'\n':''}Awareness Index: ${aiScore}% | Level ${lvl.level}: ${lvl.name} | Score: ${bs>0?'+':''}${bs}\nSC Blueprint™: NARC ${narc}% | SIST ${sist}% | YARC ${yarc}% | Øll ${oll}% | Drift: ${drift}`;
-    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1200,system:sys,messages:[{role:'user',content:msg}]})});
-    const d=await res.json();ai=JSON.parse((d.content?.[0]?.text||'').replace(/```json|```/g,'').trim());
-  }catch(e){console.warn('AI fallback',e);}
+  // AI narrative generation removed — report shows score-based sections only.
+  const ai=null;
   showResults({bs,aiScore,narc,sist,yarc,oll,drift,lvl,encoded},ai,name);
   sessionStorage.removeItem('pt_solo_scores');
   sessionStorage.removeItem('pt_solo_ctx');
@@ -795,7 +789,6 @@ function showResults(r,ai,name){
       <div class="r-code-box">${r.encoded}</div>
       <div style="font-size:0.74rem;color:#6B7280;line-height:1.65;margin-bottom:0.75rem">Save this code — it unlocks Profile Chat and stores your profile for future sessions.</div>
       <div class="r-action-row">
-        <a href="chat.html?code=${r.encoded}" class="r-btn r-btn-primary">Open Profile Chat →</a>
         <button onclick="location.href='solo.html'" class="r-btn r-btn-outline">Take again</button>
       </div>
     </div>`;

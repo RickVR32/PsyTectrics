@@ -213,35 +213,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
     <div class="landing-inner">
       <span class="landing-eyebrow">Profile Chat · PsyTectrics™</span>
       <h2 class="landing-title">Talk to the profile.<br/><em>Not a generic chatbot.</em></h2>
-      <p class="landing-desc">Paste your 56-character assessment code. The profile is decoded instantly — your SC Blueprints™, Awareness Index™, Drift, and all 56 node scores become the intelligence layer behind every response. Five messages free. Full session unlocks via email.</p>
+      <p class="landing-desc">Profile Chat is currently offline while we finish building it out. Check back soon — in the meantime, you can revisit your report or explore the other assessments.</p>
 
-      <div class="mode-cards">
-        <div class="mode-card" id="card-mirror" onclick="selectMode('mirror')">
-          <span class="mode-tag">Solo · Self</span>
-          <div class="mode-name"><em>Mirror</em> Mode</div>
-          <p class="mode-desc">The AI reflects your own profile back — your patterns, blind spots, and subconscious drivers, speaking as your awareness profile.</p>
-        </div>
-        <div class="mode-card" id="card-subject" onclick="selectMode('subject')">
-          <span class="mode-tag">Observer · Other</span>
-          <div class="mode-name"><em>Subject</em> Mode</div>
-          <p class="mode-desc">The AI simulates how the profiled person operates — how they respond, what drives their behaviour, what their blind spots look like in conversation.</p>
-        </div>
-      </div>
-
-      <div class="code-section">
-        <label class="code-label" for="codeInput">Assessment code — 56 characters</label>
-        <div class="code-input-wrap">
-          <input class="code-input" id="codeInput" type="text" maxlength="72" placeholder="Paste your encoded assessment code here" oninput="onCodeInput()" autocomplete="off" spellcheck="false"/>
-          <span class="code-clear" id="codeClear" onclick="clearCode()">✕</span>
-        </div>
-        <div class="code-status" id="codeStatus"></div>
-        <div class="profile-mini" id="profileMini">
-          <div class="pm-grid" id="pmGrid"></div>
-          <div class="pm-meta" id="pmMeta"></div>
-        </div>
-      </div>
-
-      <button class="start-btn" id="startBtn" onclick="startChat()">Begin session →</button>
+      <a href="reports.html" class="start-btn" style="display:inline-block;text-decoration:none;text-align:center">← Back to reports</a>
     </div>
   </div>
 </div>
