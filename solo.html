@@ -19,7 +19,6 @@
 }
 html,body{height:100%;overflow:hidden}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased}
-
 nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;border-bottom:1px solid rgba(255,255,255,0.06);background:#060B18;height:var(--nav-h)}
 .nav-logo-wrap{display:flex;align-items:center;text-decoration:none}
 .nav-logo-img{height:46px;width:auto;display:block}
@@ -28,9 +27,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .nav-back{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s}
 .nav-back:hover{color:rgba(255,255,255,0.8)}
 .nav-prog{font-family:var(--mono);font-size:0.6rem;color:rgba(255,255,255,0.3);display:none}
-
 .main{display:grid;grid-template-columns:1fr 1fr;height:100%}
-
 .geo-col{border-right:1px solid var(--line);padding:1.5rem;display:flex;flex-direction:column;gap:1rem;background:#FAFBFC;overflow:hidden}
 .diag-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted)}
 .diag-header{display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
@@ -52,21 +49,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .oc-mini-track{height:2px;background:var(--line)}
 .oc-mini-fill{height:100%;transition:width 0.6s ease}
 .oc-mini-pct{font-family:var(--mono);font-size:6.5px;color:var(--muted)}
-
 .q-col{display:flex;flex-direction:column;overflow:hidden}
 .q-progress-bar{height:2px;background:var(--line);flex-shrink:0}
 .q-progress-fill{height:100%;background:var(--accent);transition:width 0.4s ease;width:0%}
 .q-body{flex:1;overflow-y:auto;padding:2rem}
 .q-body::-webkit-scrollbar{width:2px}
 .q-body::-webkit-scrollbar-thumb{background:var(--line-strong)}
-
 .intro-eyebrow{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:0.75rem}
 .intro-title{font-family:var(--serif);font-weight:300;font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.1;margin-bottom:0.75rem}
 .intro-title em{font-style:italic;color:var(--accent)}
 .intro-desc{font-size:0.86rem;color:var(--muted);line-height:1.8;margin-bottom:0.5rem}
 .intro-free{font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:1.2rem;padding:0.75rem 1rem;background:var(--bg-soft);border-left:2px solid var(--accent)}
 .intro-free strong{color:var(--text);font-weight:500}
-
 .ctx-field{margin-bottom:0.9rem}
 .ctx-field label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:0.4rem}
 .ctx-field input,.ctx-field textarea,.ctx-field select{width:100%;font-family:var(--sans);font-size:0.86rem;color:var(--text);background:#fff;border:1px solid var(--line-strong);padding:0.7rem 1rem;outline:none;transition:border-color 0.2s;border-radius:0;-webkit-appearance:none}
@@ -78,7 +72,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .opt-btn:hover,.opt-btn.active{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
 .start-btn{width:100%;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--accent);color:#060B18;padding:0.9rem;border:none;cursor:pointer;font-weight:700;border-radius:0;margin-top:0.75rem;transition:opacity 0.2s}
 .start-btn:hover{opacity:0.85}
-
 .q-step{display:none;flex-direction:column;gap:1rem}
 .q-step.active{display:flex}
 .q-meta-row{display:flex;align-items:center;gap:8px}
@@ -98,8 +91,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .q-btn-primary:disabled{opacity:0.35;cursor:not-allowed}
 .q-btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--line-strong)}
 .q-btn-ghost:hover{color:var(--text)}
-
-/* REVEAL */
 .awareness-reveal{display:none;flex-direction:column;gap:0.9rem;align-items:center;padding:1rem 0}
 .awareness-reveal.visible{display:flex}
 .ar-lbl{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted)}
@@ -108,8 +99,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .ar-desc{font-size:0.82rem;color:var(--muted);line-height:1.75;max-width:340px;text-align:center}
 .ar-track{height:2px;background:var(--line);width:100%;max-width:240px}
 .ar-fill{height:100%;transition:width 0.8s ease}
-
-/* PAYMENT GATE */
 .pay-gate{background:var(--bg-soft);border:1px solid var(--line-strong);padding:1.5rem;width:100%;max-width:380px;text-align:center}
 .pay-gate-title{font-family:var(--serif);font-size:1.2rem;font-weight:300;margin-bottom:0.5rem}
 .pay-gate-title em{font-style:italic;color:var(--accent)}
@@ -125,8 +114,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .ar-gen-btn:disabled{opacity:0.35;cursor:not-allowed}
 .pay-secure{font-family:var(--mono);font-size:0.56rem;letter-spacing:0.06em;color:var(--muted2);margin-top:0.6rem}
 .stripe-loading{font-family:var(--mono);font-size:0.65rem;color:var(--muted);padding:0.5rem;display:none}
-
-/* RESULTS */
 .results-wrap{padding:0.5rem 0}
 .r-section{background:var(--bg-soft);border:1px solid var(--line);padding:1.2rem;margin-bottom:0.75rem}
 .r-section-lbl{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:0.9rem;display:block}
@@ -147,7 +134,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .r-btn-primary:hover{opacity:0.85}
 .r-btn-outline{background:transparent;color:var(--muted);border:1px solid var(--line-strong)}
 .r-btn-outline:hover{color:var(--text)}
-
 .pt-footer{background:#060B18;border-top:1px solid rgba(255,255,255,0.07);padding:1.2rem 2.5rem;flex-shrink:0}
 .pt-footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem}
 .pt-footer-logo{font-family:var(--mono);font-size:0.7rem;letter-spacing:0.16em;color:rgba(255,255,255,0.5);font-weight:700}
@@ -155,107 +141,52 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .pt-footer-links a{font-family:var(--mono);font-size:0.56rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none}
 .pt-footer-links a:hover{color:rgba(255,255,255,0.7)}
 .pt-footer-note{font-family:var(--mono);font-size:0.52rem;color:rgba(255,255,255,0.2)}
-
 @keyframes node-pulse{0%{filter:drop-shadow(0 0 0px currentColor);opacity:0.6}50%{filter:drop-shadow(0 0 8px currentColor);opacity:1}100%{filter:drop-shadow(0 0 0px currentColor);opacity:0.6}}
 .node-active-pulse{animation:node-pulse 1.8s ease-in-out infinite}
 @keyframes step-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-
 .page-wrap{display:flex;flex-direction:column;height:100vh}
 .main-area{flex:1;overflow:hidden;padding-top:var(--nav-h)}
-
 .geo-toggle{display:none}
 .geo-close{display:none}
-
 @media(max-width:900px){
   .main{grid-template-columns:1fr}
-
-  .geo-toggle{
-    display:flex;align-items:center;gap:0.4rem;
-    position:fixed;bottom:1.2rem;right:1.2rem;z-index:160;
-    background:#060B18;color:#fff;border:1px solid var(--accent-border);
-    font-family:var(--mono);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;
-    padding:0.7rem 1.1rem;border-radius:30px;cursor:pointer;
-    box-shadow:0 6px 20px rgba(0,0,0,0.25);
-  }
+  .geo-toggle{display:flex;align-items:center;gap:0.4rem;position:fixed;bottom:1.2rem;right:1.2rem;z-index:160;background:#060B18;color:#fff;border:1px solid var(--accent-border);font-family:var(--mono);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.7rem 1.1rem;border-radius:30px;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,0.25)}
   .geo-toggle-icon{color:var(--accent)}
-
-  .geo-close{
-    display:flex;align-items:center;justify-content:center;
-    width:26px;height:26px;border-radius:50%;
-    background:var(--bg-soft);border:1px solid var(--line-strong);
-    color:var(--muted);font-size:0.8rem;cursor:pointer;
-  }
-
-  .geo-col{
-    position:fixed;top:var(--nav-h);left:0;right:0;
-    height:0;overflow:hidden;
-    background:#FAFBFC;z-index:150;
-    border-right:none;border-bottom:1px solid var(--line);
-    box-shadow:0 12px 30px rgba(0,0,0,0.18);
-    transition:height 0.32s ease;
-    padding:0 1.5rem;
-  }
+  .geo-close{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--bg-soft);border:1px solid var(--line-strong);color:var(--muted);font-size:0.8rem;cursor:pointer}
+  .geo-col{position:fixed;top:var(--nav-h);left:0;right:0;height:0;overflow:hidden;background:#FAFBFC;z-index:150;border-right:none;border-bottom:1px solid var(--line);box-shadow:0 12px 30px rgba(0,0,0,0.18);transition:height 0.32s ease;padding:0 1.5rem}
   body.geo-open .geo-col{height:62vh;padding:1.2rem 1.5rem}
   body.geo-open .geo-toggle{display:none}
-
   .geo-backdrop{display:none}
-  body.geo-open .geo-backdrop{
-    display:block;position:fixed;inset:var(--nav-h) 0 0 0;
-    background:rgba(6,11,24,0.35);z-index:149;
-  }
+  body.geo-open .geo-backdrop{display:block;position:fixed;inset:var(--nav-h) 0 0 0;background:rgba(6,11,24,0.35);z-index:149}
 }
 @media(max-width:768px){nav{padding:0.8rem 1.2rem}}
-/* MOBILE-NAV-SAFETY */
 @media(max-width:768px){nav,nav.pt-nav{padding:0.8rem 1.2rem}}
-@media(max-width:600px){
-  .nav-badge,.nav-tag{display:none}
-  .nav-right,nav .nav-right,nav.pt-nav div{flex-wrap:nowrap;gap:0.5rem}
-  .nav-prog{display:none}
-}
-/* LOGO-FIX: real logo file is ~6.45:1 aspect ratio — full height renders 300px+ wide and eats the whole nav bar on phones */
+@media(max-width:600px){.nav-badge,.nav-tag{display:none}.nav-right,nav .nav-right,nav.pt-nav div{flex-wrap:nowrap;gap:0.5rem}.nav-prog{display:none}}
 @media(max-width:768px){
   .nav-logo-img,nav.pt-nav .nav-logo-img{height:38px!important;width:auto}
-  nav .nav-logo-wrap,nav.pt-nav .nav-logo-wrap{
-    position:absolute;left:0;right:0;top:0;height:70px;
-    display:flex;align-items:center;justify-content:center;
-    pointer-events:none;z-index:1;
-  }
+  nav .nav-logo-wrap,nav.pt-nav .nav-logo-wrap{position:absolute;left:0;right:0;top:0;height:70px;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:1}
   nav .nav-logo-wrap img,nav.pt-nav .nav-logo-wrap img{pointer-events:auto}
   nav,nav.pt-nav{justify-content:flex-end}
   nav>*:not(.nav-logo-wrap),nav.pt-nav>*:not(.nav-logo-wrap){position:relative;z-index:2}
 }
-@media(max-width:480px){
-  .nav-logo-img,nav.pt-nav .nav-logo-img{height:32px!important}
-}
-@media(max-width:768px){
-  nav,nav.pt-nav{flex-wrap:wrap;height:auto;min-height:70px;row-gap:4px}
-  .nav-right{gap:0.5rem!important}
-}
+@media(max-width:480px){.nav-logo-img,nav.pt-nav .nav-logo-img{height:32px!important}}
+@media(max-width:768px){nav,nav.pt-nav{flex-wrap:wrap;height:auto;min-height:70px;row-gap:4px}.nav-right{gap:0.5rem!important}}
 </style>
 </head>
 <body>
 <div class="page-wrap">
-
 <nav>
-  <a href="index.html" class="nav-logo-wrap">
-    <img src="pt_logo.png" alt="PsyTectrics" class="nav-logo-img"/>
-  </a>
+  <a href="index.html" class="nav-logo-wrap"><img src="pt_logo.png" alt="PsyTectrics" class="nav-logo-img"/></a>
   <div class="nav-right">
     <span class="nav-badge">Solo Assessment</span>
     <span class="nav-prog" id="nav-prog">—</span>
     <a href="reports.html" class="nav-back">← Reports</a>
   </div>
 </nav>
-
-<button class="geo-toggle" id="geo-toggle" aria-label="View SC diagram" onclick="document.body.classList.add('geo-open')">
-  <span class="geo-toggle-icon">◇</span> Diagram
-</button>
+<button class="geo-toggle" id="geo-toggle" aria-label="View SC diagram" onclick="document.body.classList.add('geo-open')"><span class="geo-toggle-icon">◇</span> Diagram</button>
 <div class="geo-backdrop" id="geo-backdrop" onclick="document.body.classList.remove('geo-open')"></div>
-
 <div class="main-area">
 <div class="main">
-
-  <!-- GEO -->
   <div class="geo-col" id="geo-col">
     <div class="diag-header">
       <span class="diag-label">SC Blueprint™</span>
@@ -291,15 +222,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
         <g id="node-a6" style="opacity:0;transition:opacity 0.5s"><ellipse cx="367.6" cy="654" rx="20" ry="11" transform="rotate(202,367.6,654)" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="367.6" y="658" text-anchor="middle" font-size="8" fill="#1D9E75" font-family="monospace">A6</text></g>
         <g id="node-a7" style="opacity:0;transition:opacity 0.5s"><ellipse cx="246" cy="532.4" rx="20" ry="11" transform="rotate(248,246,532.4)" fill="transparent" stroke="#A0426B" stroke-width="2"/><text x="246" y="536.4" text-anchor="middle" font-size="8" fill="#A0426B" font-family="monospace">A7</text></g>
         <g id="node-a8" style="opacity:0;transition:opacity 0.5s"><ellipse cx="246" cy="367.6" rx="20" ry="11" transform="rotate(292,246,367.6)" fill="transparent" stroke="#A0426B" stroke-width="2"/><text x="246" y="371.6" text-anchor="middle" font-size="8" fill="#A0426B" font-family="monospace">A8</text></g>
-        <g id="node-sc1"  style="opacity:0;transition:opacity 0.4s"><polygon points="298.7,205.5 276.1,205.2 287.4,185.9" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="264" y="189" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Intention</text></g>
-        <g id="node-sc2"  style="opacity:0;transition:opacity 0.4s"><polygon points="389,169 383.5,147.1 405.1,153.1" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="399.8" y="135" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Intention</text></g>
-        <g id="node-sc3"  style="opacity:0;transition:opacity 0.4s"><polygon points="511,169 494.9,153.1 516.5,147.1" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="500.2" y="135" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Presence</text></g>
-        <g id="node-sc4"  style="opacity:0;transition:opacity 0.4s"><polygon points="601.3,205.5 612.6,185.9 623.9,205.2" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="635.8" y="189" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Presence</text></g>
-        <g id="node-sc5"  style="opacity:0;transition:opacity 0.4s"><polygon points="694.5,298.7 694.8,276.1 714.1,287.4" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="714.8" y="268" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Core Self</text></g>
-        <g id="node-sc6"  style="opacity:0;transition:opacity 0.4s"><polygon points="731,389 752.9,383.5 746.9,405.1" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="769.5" y="404" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Core Self</text></g>
-        <g id="node-sc7"  style="opacity:0;transition:opacity 0.4s"><polygon points="731,511 746.9,494.9 752.9,516.5" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="769.5" y="504" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Integrity</text></g>
-        <g id="node-sc8"  style="opacity:0;transition:opacity 0.4s"><polygon points="694.5,601.3 714.1,612.6 694.8,623.9" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="714.8" y="640" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Integrity</text></g>
-        <g id="node-sc9"  style="opacity:0;transition:opacity 0.4s"><polygon points="601.3,694.5 623.9,694.8 612.6,714.1" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="635.8" y="719" text-anchor="middle" font-size="6.5" fill="#1D9E75" font-family="monospace">Balance</text></g>
+        <g id="node-sc1" style="opacity:0;transition:opacity 0.4s"><polygon points="298.7,205.5 276.1,205.2 287.4,185.9" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="264" y="189" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Intention</text></g>
+        <g id="node-sc2" style="opacity:0;transition:opacity 0.4s"><polygon points="389,169 383.5,147.1 405.1,153.1" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="399.8" y="135" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Intention</text></g>
+        <g id="node-sc3" style="opacity:0;transition:opacity 0.4s"><polygon points="511,169 494.9,153.1 516.5,147.1" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="500.2" y="135" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Presence</text></g>
+        <g id="node-sc4" style="opacity:0;transition:opacity 0.4s"><polygon points="601.3,205.5 612.6,185.9 623.9,205.2" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="635.8" y="189" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Presence</text></g>
+        <g id="node-sc5" style="opacity:0;transition:opacity 0.4s"><polygon points="694.5,298.7 694.8,276.1 714.1,287.4" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="714.8" y="268" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Core Self</text></g>
+        <g id="node-sc6" style="opacity:0;transition:opacity 0.4s"><polygon points="731,389 752.9,383.5 746.9,405.1" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="769.5" y="404" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Core Self</text></g>
+        <g id="node-sc7" style="opacity:0;transition:opacity 0.4s"><polygon points="731,511 746.9,494.9 752.9,516.5" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="769.5" y="504" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Integrity</text></g>
+        <g id="node-sc8" style="opacity:0;transition:opacity 0.4s"><polygon points="694.5,601.3 714.1,612.6 694.8,623.9" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="714.8" y="640" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Integrity</text></g>
+        <g id="node-sc9" style="opacity:0;transition:opacity 0.4s"><polygon points="601.3,694.5 623.9,694.8 612.6,714.1" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="635.8" y="719" text-anchor="middle" font-size="6.5" fill="#1D9E75" font-family="monospace">Balance</text></g>
         <g id="node-sc10" style="opacity:0;transition:opacity 0.4s"><polygon points="511,731 516.5,752.9 494.9,746.9" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="500.2" y="774" text-anchor="middle" font-size="6.5" fill="#1D9E75" font-family="monospace">Balance</text></g>
         <g id="node-sc11" style="opacity:0;transition:opacity 0.4s"><polygon points="389,731 405.1,746.9 383.5,752.9" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="399.8" y="774" text-anchor="middle" font-size="6.5" fill="#1D9E75" font-family="monospace">Connection</text></g>
         <g id="node-sc12" style="opacity:0;transition:opacity 0.4s"><polygon points="298.7,694.5 287.4,714.1 276.1,694.8" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="264.2" y="719" text-anchor="middle" font-size="6.5" fill="#1D9E75" font-family="monospace">Connection</text></g>
@@ -338,15 +269,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
         <g id="sub-node-a6" style="opacity:0;transition:opacity 0.5s"><ellipse cx="367.6" cy="654" rx="20" ry="11" transform="rotate(202,367.6,654)" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="367.6" y="658" text-anchor="middle" font-size="8" fill="#1D9E75" font-family="monospace">A6</text></g>
         <g id="sub-node-a7" style="opacity:0;transition:opacity 0.5s"><ellipse cx="246" cy="532.4" rx="20" ry="11" transform="rotate(248,246,532.4)" fill="transparent" stroke="#A0426B" stroke-width="2"/><text x="246" y="536.4" text-anchor="middle" font-size="8" fill="#A0426B" font-family="monospace">A7</text></g>
         <g id="sub-node-a8" style="opacity:0;transition:opacity 0.5s"><ellipse cx="246" cy="367.6" rx="20" ry="11" transform="rotate(292,246,367.6)" fill="transparent" stroke="#A0426B" stroke-width="2"/><text x="246" y="371.6" text-anchor="middle" font-size="8" fill="#A0426B" font-family="monospace">A8</text></g>
-        <g id="sub-sc1"  style="opacity:0;transition:opacity 0.4s"><polygon points="298.7,205.5 276.1,205.2 287.4,185.9" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="264" y="189" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Intention</text></g>
-        <g id="sub-sc2"  style="opacity:0;transition:opacity 0.4s"><polygon points="389,169 383.5,147.1 405.1,153.1" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="399.8" y="135" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Intention</text></g>
-        <g id="sub-sc3"  style="opacity:0;transition:opacity 0.4s"><polygon points="511,169 494.9,153.1 516.5,147.1" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="500.2" y="135" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Presence</text></g>
-        <g id="sub-sc4"  style="opacity:0;transition:opacity 0.4s"><polygon points="601.3,205.5 612.6,185.9 623.9,205.2" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="635.8" y="189" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Presence</text></g>
-        <g id="sub-sc5"  style="opacity:0;transition:opacity 0.4s"><polygon points="694.5,298.7 694.8,276.1 714.1,287.4" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="714.8" y="268" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Core Self</text></g>
-        <g id="sub-sc6"  style="opacity:0;transition:opacity 0.4s"><polygon points="731,389 752.9,383.5 746.9,405.1" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="769.5" y="404" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Core Self</text></g>
-        <g id="sub-sc7"  style="opacity:0;transition:opacity 0.4s"><polygon points="731,511 746.9,494.9 752.9,516.5" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="769.5" y="504" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Integrity</text></g>
-        <g id="sub-sc8"  style="opacity:0;transition:opacity 0.4s"><polygon points="694.5,601.3 714.1,612.6 694.8,623.9" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="714.8" y="640" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Integrity</text></g>
-        <g id="sub-sc9"  style="opacity:0;transition:opacity 0.4s"><polygon points="601.3,694.5 623.9,694.8 612.6,714.1" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="635.8" y="719" text-anchor="middle" font-size="6.5" fill="#1D9E75" font-family="monospace">Balance</text></g>
+        <g id="sub-sc1" style="opacity:0;transition:opacity 0.4s"><polygon points="298.7,205.5 276.1,205.2 287.4,185.9" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="264" y="189" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Intention</text></g>
+        <g id="sub-sc2" style="opacity:0;transition:opacity 0.4s"><polygon points="389,169 383.5,147.1 405.1,153.1" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="399.8" y="135" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Intention</text></g>
+        <g id="sub-sc3" style="opacity:0;transition:opacity 0.4s"><polygon points="511,169 494.9,153.1 516.5,147.1" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="500.2" y="135" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Presence</text></g>
+        <g id="sub-sc4" style="opacity:0;transition:opacity 0.4s"><polygon points="601.3,205.5 612.6,185.9 623.9,205.2" fill="transparent" stroke="#C4622D" stroke-width="2"/><text x="635.8" y="189" text-anchor="middle" font-size="6.5" fill="#C4622D" font-family="monospace">Presence</text></g>
+        <g id="sub-sc5" style="opacity:0;transition:opacity 0.4s"><polygon points="694.5,298.7 694.8,276.1 714.1,287.4" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="714.8" y="268" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Core Self</text></g>
+        <g id="sub-sc6" style="opacity:0;transition:opacity 0.4s"><polygon points="731,389 752.9,383.5 746.9,405.1" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="769.5" y="404" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Core Self</text></g>
+        <g id="sub-sc7" style="opacity:0;transition:opacity 0.4s"><polygon points="731,511 746.9,494.9 752.9,516.5" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="769.5" y="504" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Integrity</text></g>
+        <g id="sub-sc8" style="opacity:0;transition:opacity 0.4s"><polygon points="694.5,601.3 714.1,612.6 694.8,623.9" fill="transparent" stroke="#534AB7" stroke-width="2"/><text x="714.8" y="640" text-anchor="middle" font-size="6.5" fill="#534AB7" font-family="monospace">Integrity</text></g>
+        <g id="sub-sc9" style="opacity:0;transition:opacity 0.4s"><polygon points="601.3,694.5 623.9,694.8 612.6,714.1" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="635.8" y="719" text-anchor="middle" font-size="6.5" fill="#1D9E75" font-family="monospace">Balance</text></g>
         <g id="sub-sc10" style="opacity:0;transition:opacity 0.4s"><polygon points="511,731 516.5,752.9 494.9,746.9" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="500.2" y="774" text-anchor="middle" font-size="6.5" fill="#1D9E75" font-family="monospace">Balance</text></g>
         <g id="sub-sc11" style="opacity:0;transition:opacity 0.4s"><polygon points="389,731 405.1,746.9 383.5,752.9" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="399.8" y="774" text-anchor="middle" font-size="6.5" fill="#1D9E75" font-family="monospace">Connection</text></g>
         <g id="sub-sc12" style="opacity:0;transition:opacity 0.4s"><polygon points="298.7,694.5 287.4,714.1 276.1,694.8" fill="transparent" stroke="#1D9E75" stroke-width="2"/><text x="264.2" y="719" text-anchor="middle" font-size="6.5" fill="#1D9E75" font-family="monospace">Connection</text></g>
@@ -365,23 +296,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
       <div class="oc-mini"><div class="oc-mini-label" style="color:#A0426B">Øll</div><div class="oc-mini-track"><div class="oc-mini-fill" id="oc-oll" style="width:25%;background:#A0426B"></div></div><div class="oc-mini-pct" id="ocp-oll">25%</div></div>
     </div>
   </div>
-
-  <!-- Q COL -->
   <div class="q-col">
     <div class="q-progress-bar"><div class="q-progress-fill" id="q-prog-fill"></div></div>
     <div class="q-body" id="q-body">
-
-      <!-- INTRO -->
       <div id="screen-intro">
         <span class="intro-eyebrow">Behavioral Intelligence Assessment · PsyTectrics™</span>
         <h1 style="font-family:var(--serif);font-weight:300;font-size:clamp(1.8rem,3vw,2.5rem);line-height:1.1;margin-bottom:0.75rem">Understand the<br/><em style="font-style:italic;color:var(--accent)">Human Operating System</em></h1>
-        <!-- FIXED: was "three layers — SC Blueprint™, Behavioral Nodes, and Awareness Patterns" — contradicted every other page.
-             Corrected to "two layers" (conscious and subconscious) which is the site-wide framework standard. -->
         <p class="intro-desc">56 structured questions mapped across two layers — conscious and subconscious — to produce your SC Blueprint™ ratio, Drift measurement, and Awareness Index™. Includes a full AI-generated interpretive report.</p>
         <div class="intro-free">The assessment is <strong>free to complete.</strong> Your results and awareness level are shown immediately. The full written AI report unlocks for <strong>£50</strong> — paid at the end, no account required.</div>
         <div class="ctx-field">
           <label>Name</label>
           <input type="text" id="solo-name" placeholder="Your name" oninput="updateLabel()"/>
+        </div>
+        <div class="ctx-field">
+          <label>Email <span style="color:var(--accent)">*</span></label>
+          <input type="email" id="solo-email" placeholder="you@example.com" required/>
         </div>
         <div class="ctx-field">
           <label>Age band (optional)</label>
@@ -410,10 +339,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
             <button class="opt-btn" onclick="selOpt(this,'ctx','Major transition')">Major transition</button>
           </div>
         </div>
+        <div class="ctx-field" style="display:flex;align-items:flex-start;gap:0.5rem">
+          <input type="checkbox" id="solo-marketing" checked style="margin-top:3px;width:auto"/>
+          <label style="text-transform:none;font-family:var(--sans);font-size:0.78rem;letter-spacing:normal;color:var(--muted);font-weight:300;margin-bottom:0">Keep me updated on PsyTectrics news and future assessments</label>
+        </div>
         <button class="start-btn" onclick="startAssessment()">Begin assessment →</button>
       </div>
-
-      <!-- QUESTIONS -->
       <div id="screen-questions" style="display:none">
         <div id="q-card-wrap"></div>
         <div class="awareness-reveal" id="awareness-reveal">
@@ -422,8 +353,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
           <div class="ar-state" id="ar-state">—</div>
           <div class="ar-desc" id="ar-desc">—</div>
           <div class="ar-track"><div class="ar-fill" id="ar-fill"></div></div>
-
-          <!-- PAYMENT GATE -->
           <div class="pay-gate">
             <div class="pay-gate-title">Full <em>Profile Report</em></div>
             <p class="pay-gate-desc">Your awareness level is shown above. Unlock the full AI-generated written report — your complete SC Blueprint™ breakdown, primary pattern, pressure response, relationship profile, and next move.</p>
@@ -443,16 +372,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
           </div>
         </div>
       </div>
-
-      <!-- RESULTS -->
       <div id="screen-results" style="display:none" class="results-wrap"></div>
-
     </div>
   </div>
-
 </div>
 </div>
-
 <footer class="pt-footer">
   <div class="pt-footer-inner">
     <span class="pt-footer-logo">PSYTECTRICS™</span>
@@ -468,19 +392,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
     <span class="pt-footer-note">© 2026 PsyTectrics Technologies Ltd · All rights reserved</span>
   </div>
 </footer>
-
 </div>
-
-<script src="https://js.stripe.com/v3/"></script>
 <script>
-const STRIPE_PUBLISHABLE_KEY = 'pk_live_51ThnQyBb2S75affdhU11ovPt7pYoAGbAAwwUZBxNi5ZpKrR2BafzrrT7GbLYV9oxvowHfjvPJTPoC8dSg9qIZgsy00a2nB2kqW';
-const SOLO_PRICE_ID = 'price_1ThuC4Bb2S75affdG3NIdc8u';
-const SUCCESS_URL = window.location.origin + '/solo.html?paid=1';
-const CANCEL_URL = window.location.href;
-
-let stripe;
-try { stripe = Stripe(STRIPE_PUBLISHABLE_KEY); } catch(e) {}
-
 const NODES=[
   {id:'sc1', name:'Intention',  code:'NARC',slot:'A1',col:'#C4622D',svgId:'node-sc1', appId:'node-a1',ocId:'node-narc',layer:'Conscious',reversed:false,q:"I feel clear about what I genuinely want from life."},
   {id:'sc2', name:'Intention',  code:'NARC',slot:'A1',col:'#C4622D',svgId:'node-sc2', appId:'node-a1',ocId:'node-narc',layer:'Conscious',reversed:false,q:"My goals reflect my personal values rather than outside expectations."},
@@ -582,6 +495,12 @@ function selOpt(btn,type,val){
 function updateLabel(){const n=document.getElementById('solo-name')?.value.trim()||'—';const el=document.getElementById('obs-label');if(el)el.textContent=n.length>8?n.slice(0,8)+'…':n;}
 
 function startAssessment(){
+  const emailVal=document.getElementById('solo-email')?.value.trim()||'';
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)){
+    alert("Please enter a valid email address to begin — this is how we'll be in touch about your results.");
+    document.getElementById('solo-email')?.focus();
+    return;
+  }
   scores={};currentStep=1;
   NODES.forEach(n=>{scores[n.id]=undefined;});
   ['main-diagram','sub-diagram'].forEach(diagId=>{
@@ -669,7 +588,6 @@ function flipDiagram(nextStep){
   const wrap=document.getElementById('diag-svg-wrap');
   const badge=document.getElementById('diag-layer-badge');
   if(prevPulseEl){prevPulseEl.classList.remove('node-active-pulse');prevPulseEl=null;}
-  // Show transition label immediately so blank state looks intentional
   badge.textContent='Loading subconscious layer…';
   badge.style.color='var(--accent)';
   wrap.classList.add('diag-flip-out');
@@ -687,51 +605,7 @@ function flipDiagram(nextStep){
   },450);
 }
 
-function showReveal(){
-  document.getElementById('q-card-wrap').style.display='none';
-  if(prevPulseEl){prevPulseEl.classList.remove('node-active-pulse');prevPulseEl=null;}
-  const answered=NODES.filter(n=>scores[n.id]!==undefined);
-  const effs=answered.map(n=>n.reversed?(6-scores[n.id]):scores[n.id]);
-  const avg=effs.reduce((a,b)=>a+b,0)/effs.length;
-  const bs=parseFloat(((avg-3)/2*5).toFixed(1));
-  const lvl=getLevel(bs);
-  document.getElementById('ar-score').textContent=lvl.level;
-  document.getElementById('ar-score').style.color=lvl.col;
-  document.getElementById('ar-state').textContent=lvl.name+' · AI '+(bs>0?'+':'')+bs;
-  document.getElementById('ar-state').style.color=lvl.col;
-  document.getElementById('ar-desc').textContent=lvl.desc;
-  document.getElementById('ar-fill').style.width=(lvl.level/10*100)+'%';
-  document.getElementById('ar-fill').style.background=lvl.col;
-  document.getElementById('awareness-reveal').classList.add('visible');
-}
-
-async function handlePayment(){
-  sessionStorage.setItem('pt_solo_scores', JSON.stringify(scores));
-  const name=document.getElementById('solo-name')?.value.trim()||'';
-  sessionStorage.setItem('pt_solo_ctx', JSON.stringify({
-    name,age:selAge,ctx:selCtx,
-    most:document.getElementById('solo-most')?.value.trim()||'',
-    least:document.getElementById('solo-least')?.value.trim()||''
-  }));
-  if(!stripe){alert('Stripe not loaded. Please refresh and try again.');return;}
-  const btn=document.getElementById('ar-gen-btn');
-  const loading=document.getElementById('stripeLoading');
-  btn.disabled=true;btn.style.display='none';loading.style.display='block';
-  try{
-    const{error}=await stripe.redirectToCheckout({
-      lineItems:[{price:SOLO_PRICE_ID,quantity:1}],
-      mode:'payment',
-      successUrl:SUCCESS_URL,
-      cancelUrl:CANCEL_URL,
-      clientReferenceId:('SoloAssessment-'+(name||'anon')).substring(0,200)
-    });
-    if(error){loading.style.display='none';btn.style.display='block';btn.disabled=false;alert('Checkout error: '+error.message);}
-  }catch(err){loading.style.display='none';btn.style.display='block';btn.disabled=false;alert('Something went wrong. Please try again.');}
-}
-
-async function generateAndShowReport(name){
-  const wrap=document.getElementById('screen-results');
-  wrap.innerHTML='<div style="padding:2rem;font-family:var(--mono);font-size:0.7rem;color:var(--muted);letter-spacing:0.1em">Generating your profile…</div>';
+function computeResults(){
   const answered=NODES.filter(n=>scores[n.id]!==undefined);
   const effs=answered.map(n=>n.reversed?(6-scores[n.id]):scores[n.id]);
   const avg=effs.reduce((a,b)=>a+b,0)/effs.length;
@@ -750,11 +624,74 @@ async function generateAndShowReport(name){
   const lvl=getLevel(bs);
   const ENCODE={1:'K',2:'M',3:'R',4:'T',5:'W'};
   const encoded=NODES.map(n=>ENCODE[scores[n.id]||3]||'R').join('');
-  const savedCtx=sessionStorage.getItem('pt_solo_ctx');
-  const ctx=savedCtx?JSON.parse(savedCtx):{};
-  // AI narrative generation removed — report shows score-based sections only.
+  return {bs,aiScore,narc,sist,yarc,oll,drift,lvl,encoded};
+}
+
+function showReveal(){
+  document.getElementById('q-card-wrap').style.display='none';
+  if(prevPulseEl){prevPulseEl.classList.remove('node-active-pulse');prevPulseEl=null;}
+  const r=computeResults();
+  document.getElementById('ar-score').textContent=r.lvl.level;
+  document.getElementById('ar-score').style.color=r.lvl.col;
+  document.getElementById('ar-state').textContent=r.lvl.name+' · AI '+(r.bs>0?'+':'')+r.bs;
+  document.getElementById('ar-state').style.color=r.lvl.col;
+  document.getElementById('ar-desc').textContent=r.lvl.desc;
+  document.getElementById('ar-fill').style.width=(r.lvl.level/10*100)+'%';
+  document.getElementById('ar-fill').style.background=r.lvl.col;
+  document.getElementById('awareness-reveal').classList.add('visible');
+}
+
+async function handlePayment(){
+  const email=document.getElementById('solo-email')?.value.trim()||'';
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    alert('Please go back and enter a valid email address before continuing.');
+    return;
+  }
+  const name=document.getElementById('solo-name')?.value.trim()||'';
+  const most=document.getElementById('solo-most')?.value.trim()||'';
+  const least=document.getElementById('solo-least')?.value.trim()||'';
+  const marketingOptIn=document.getElementById('solo-marketing')?.checked!==false;
+
+  sessionStorage.setItem('pt_solo_scores', JSON.stringify(scores));
+  sessionStorage.setItem('pt_solo_ctx', JSON.stringify({name,age:selAge,ctx:selCtx,most,least}));
+
+  const r=computeResults();
+
+  const btn=document.getElementById('ar-gen-btn');
+  const loading=document.getElementById('stripeLoading');
+  btn.disabled=true;btn.style.display='none';loading.style.display='block';
+
+  try{
+    const res=await fetch('/api/create-checkout-session',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        email,
+        submission:{
+          name, age:selAge, ctx:selCtx, most, least,
+          answers:scores,
+          narc:r.narc, sist:r.sist, yarc:r.yarc, oll:r.oll,
+          awarenessLevel:r.lvl.level, bs:r.bs, drift:r.drift, encoded:r.encoded,
+          marketingOptIn
+        }
+      })
+    });
+    const data=await res.json();
+    if(res.ok && data.url){ window.location.href=data.url; return; }
+    throw new Error(data.error||'No checkout URL returned');
+  }catch(err){
+    console.error(err);
+    loading.style.display='none';btn.style.display='block';btn.disabled=false;
+    alert('Something went wrong starting checkout. Please try again.');
+  }
+}
+
+async function generateAndShowReport(name){
+  const wrap=document.getElementById('screen-results');
+  wrap.innerHTML='<div style="padding:2rem;font-family:var(--mono);font-size:0.7rem;color:var(--muted);letter-spacing:0.1em">Generating your profile…</div>';
+  const r=computeResults();
   const ai=null;
-  showResults({bs,aiScore,narc,sist,yarc,oll,drift,lvl,encoded},ai,name);
+  showResults(r,ai,name);
   sessionStorage.removeItem('pt_solo_scores');
   sessionStorage.removeItem('pt_solo_ctx');
 }
