@@ -43,6 +43,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .diag-flip-out{animation:flip-out 0.45s ease forwards}
 .diag-flip-in{animation:flip-in 0.45s ease forwards}
 .diag-layer-badge{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--sist);text-align:center;flex-shrink:0}
+.geo-legend{font-family:var(--mono);font-size:0.56rem;letter-spacing:0.03em;color:var(--muted);line-height:1.7;flex-shrink:0;border-top:1px solid var(--line);padding-top:0.6rem}
+.geo-legend b{color:var(--text);font-weight:500}
 .oc-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;flex-shrink:0}
 .oc-mini{display:flex;flex-direction:column;gap:2px}
 .oc-mini-label{font-family:var(--mono);font-size:6.5px;letter-spacing:0.08em}
@@ -194,9 +196,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
     </div>
     <div class="diag-svg-wrap" id="diag-svg-wrap">
       <svg id="main-diagram" viewBox="120 120 660 660" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="450" cy="450" r="48" fill="none" stroke="#B8B2A8" stroke-width="0.5" opacity="0.09"/>
+        <circle cx="498" cy="450" r="48" fill="none" stroke="#B8B2A8" stroke-width="0.5" opacity="0.09"/>
+        <circle cx="474" cy="408.4" r="48" fill="none" stroke="#B8B2A8" stroke-width="0.5" opacity="0.09"/>
+        <circle cx="426" cy="408.4" r="48" fill="none" stroke="#B8B2A8" stroke-width="0.5" opacity="0.09"/>
+        <circle cx="402" cy="450" r="48" fill="none" stroke="#B8B2A8" stroke-width="0.5" opacity="0.09"/>
+        <circle cx="426" cy="491.6" r="48" fill="none" stroke="#B8B2A8" stroke-width="0.5" opacity="0.09"/>
+        <circle cx="474" cy="491.6" r="48" fill="none" stroke="#B8B2A8" stroke-width="0.5" opacity="0.09"/>
         <polygon points="450,302 598,450 450,598 302,450" fill="none" stroke="#B8B2A8" stroke-width="1.2" opacity="0.7"/>
-        <circle cx="450" cy="450" r="220" fill="none" stroke="#C8C4BC" stroke-width="0.6" stroke-dasharray="3 9" opacity="0.14"/>
-        <circle cx="450" cy="450" r="70" fill="none" stroke="#C8C4BC" stroke-width="0.5" opacity="0.25"/>
+        <circle cx="450" cy="450" r="239.5" fill="none" stroke="#C8C4BC" stroke-width="0.6" stroke-dasharray="3 9" opacity="0.14"/>
+        <circle cx="450" cy="450" r="96" fill="none" stroke="#C8C4BC" stroke-width="0.5" opacity="0.25"/>
         <line x1="450" y1="106" x2="450" y2="794" stroke="#C8C4BC" stroke-width="0.5" stroke-dasharray="4 8" opacity="0.35"/>
         <line x1="106" y1="450" x2="794" y2="450" stroke="#C8C4BC" stroke-width="0.5" stroke-dasharray="4 8" opacity="0.35"/>
         <line x1="450" y1="302" x2="367.6" y2="246" stroke="#C4622D" stroke-width="1.2" opacity="0.35"/><line x1="367.6" y1="246" x2="286.6" y2="198.4" stroke="#C4622D" stroke-width="1" opacity="0.28"/><line x1="367.6" y1="246" x2="392.8" y2="155.5" stroke="#C4622D" stroke-width="1" opacity="0.28"/>
@@ -241,9 +250,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
         <g id="node-bs" style="opacity:0;transition:opacity 0.5s"><polygon points="424,642 476,642 450,674" fill="none" stroke="#D4D0C8" stroke-width="1.3"/><text x="450" y="657" text-anchor="middle" font-size="7" fill="#6B7280" font-family="monospace">AI</text><text id="v-bs" x="450" y="669" text-anchor="middle" font-size="8" fill="#6B7280" font-family="monospace">—</text></g>
       </svg>
       <svg id="sub-diagram" viewBox="120 120 660 660" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="450" cy="450" r="48" fill="none" stroke="#B8B2A8" stroke-width="0.5" opacity="0.09"/>
+        <circle cx="498" cy="450" r="48" fill="none" stroke="#B8B2A8" stroke-width="0.5" opacity="0.09"/>
+        <circle cx="474" cy="408.4" r="48" fill="none" stroke="#B8B2A8" stroke-width="0.5" opacity="0.09"/>
+        <circle cx="426" cy="408.4" r="48" fill="none" stroke="#B8B2A8" stroke-width="0.5" opacity="0.09"/>
+        <circle cx="402" cy="450" r="48" fill="none" stroke="#B8B2A8" stroke-width="0.5" opacity="0.09"/>
+        <circle cx="426" cy="491.6" r="48" fill="none" stroke="#B8B2A8" stroke-width="0.5" opacity="0.09"/>
+        <circle cx="474" cy="491.6" r="48" fill="none" stroke="#B8B2A8" stroke-width="0.5" opacity="0.09"/>
         <polygon points="450,302 598,450 450,598 302,450" fill="none" stroke="#B8B2A8" stroke-width="1.2" opacity="0.7"/>
-        <circle cx="450" cy="450" r="220" fill="none" stroke="#C8C4BC" stroke-width="0.6" stroke-dasharray="3 9" opacity="0.14"/>
-        <circle cx="450" cy="450" r="70" fill="none" stroke="#C8C4BC" stroke-width="0.5" opacity="0.25"/>
+        <circle cx="450" cy="450" r="239.5" fill="none" stroke="#C8C4BC" stroke-width="0.6" stroke-dasharray="3 9" opacity="0.14"/>
+        <circle cx="450" cy="450" r="96" fill="none" stroke="#C8C4BC" stroke-width="0.5" opacity="0.25"/>
         <line x1="450" y1="106" x2="450" y2="794" stroke="#C8C4BC" stroke-width="0.5" stroke-dasharray="4 8" opacity="0.35"/>
         <line x1="106" y1="450" x2="794" y2="450" stroke="#C8C4BC" stroke-width="0.5" stroke-dasharray="4 8" opacity="0.35"/>
         <line x1="450" y1="302" x2="367.6" y2="246" stroke="#C4622D" stroke-width="1.2" opacity="0.35"/><line x1="367.6" y1="246" x2="286.6" y2="198.4" stroke="#C4622D" stroke-width="1" opacity="0.28"/><line x1="367.6" y1="246" x2="392.8" y2="155.5" stroke="#C4622D" stroke-width="1" opacity="0.28"/>
@@ -294,6 +310,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
       <div class="oc-mini"><div class="oc-mini-label" style="color:#534AB7">SIST</div><div class="oc-mini-track"><div class="oc-mini-fill" id="oc-sist" style="width:25%;background:#534AB7"></div></div><div class="oc-mini-pct" id="ocp-sist">25%</div></div>
       <div class="oc-mini"><div class="oc-mini-label" style="color:#1D9E75">YARC</div><div class="oc-mini-track"><div class="oc-mini-fill" id="oc-yarc" style="width:25%;background:#1D9E75"></div></div><div class="oc-mini-pct" id="ocp-yarc">25%</div></div>
       <div class="oc-mini"><div class="oc-mini-label" style="color:#A0426B">Øll</div><div class="oc-mini-track"><div class="oc-mini-fill" id="oc-oll" style="width:25%;background:#A0426B"></div></div><div class="oc-mini-pct" id="ocp-oll">25%</div></div>
+    </div>
+    <div class="geo-legend">
+      <div><b>Seed</b> — Omniality, pre-structure potential (7-circle seed of life)</div>
+      <div><b>Inner ring · r96</b> — Zero-Point boundary, 1.618× the Focus 21 radius</div>
+      <div><b>Diamond</b> — tetrahedron projection, 4 Observer Codes as vertices</div>
+      <div><b>Outer ring · r239</b> — existence field, φ× the Observer Code radius</div>
+      <div><b>Center dot</b> — Focus 21, equidistant observer seat</div>
     </div>
   </div>
   <div class="q-col">
