@@ -1,0 +1,6 @@
+api/decode.js
+api/ask.js
+api/reviews.js
+api/save-test-result.js
+api/profile-report.js
+api/telegram-cron.js
