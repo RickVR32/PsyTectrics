@@ -207,6 +207,7 @@ async function adminCmd(s, msg, cb) {
 }
 
 module.exports = async (req, res) => {
+  if (req.method === 'GET') return require('../lib/telegram-cron')(req, res); // daily Vercel cron
   if (req.method !== 'POST') return res.status(405).end();
   if (!process.env.TELEGRAM_WEBHOOK_SECRET || req.headers['x-telegram-bot-api-secret-token'] !== process.env.TELEGRAM_WEBHOOK_SECRET) return res.status(401).end();
   const upd = req.body || {};
