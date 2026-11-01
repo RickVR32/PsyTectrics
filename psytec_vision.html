@@ -619,6 +619,22 @@ nav.pt-nav .nav-back:hover { color:rgba(255,255,255,0.8); }
   nav,nav.pt-nav{flex-wrap:wrap;height:auto;min-height:70px;row-gap:4px}
   .nav-right{gap:0.5rem!important}
 }
+
+/* FOOTER-PAY: payment logos + Site by Ric (shared with client builds) */
+.pt-footer-pay{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:1.6rem;padding-top:1.4rem;border-top:1px solid rgba(255,255,255,0.07)}
+.pt-pay-label{display:flex;align-items:center;gap:8px;margin:0;font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.4)}
+.pt-pay-label svg{width:14px;height:14px;stroke:#00D4FF;fill:none;stroke-width:2}
+.pay-chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0}
+.pay-card{display:block;width:51px;height:32px;border-radius:4px}
+.pay-chip{display:inline-flex;align-items:center;justify-content:center;gap:5px;width:51px;height:32px;background:#fff;border-radius:4px}
+.pay-chip img{display:block;height:23px;width:auto}
+.pay-chip.gpay img{height:15px}
+.pay-chip.klarna{background:#ffb3c7;width:auto;padding:0 9px;font-family:'Inter',sans-serif;font-size:.74rem;font-weight:700;color:#0b051d}
+.pay-chip.klarna img{height:11px}
+.pt-footer-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:1.2rem;font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.06em;color:rgba(255,255,255,0.3)}
+.pt-footer-bot a{color:rgba(255,255,255,0.7);text-decoration:none}
+.pt-footer-bot a:hover{color:#00D4FF}
+@media(max-width:768px){.pt-footer-pay,.pt-footer-bot{flex-direction:column;align-items:center;text-align:center}.pay-chips{justify-content:center}}
 </style>
 </head>
 <body>
@@ -1191,6 +1207,20 @@ setTimeout(runScan, 600);
     <a href="contact.html" style="font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none">Contact</a>
   </div>
   <span style="font-family:'Space Mono',monospace;font-size:0.52rem;color:rgba(255,255,255,0.2)">© 2026 PsyTectrics Technologies Ltd · All rights reserved</span>
+  <div class="pt-footer-pay">
+    <p class="pt-pay-label"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Secure payments via Stripe</p>
+    <ul class="pay-chips" aria-label="Accepted payment methods">
+      <li><img class="pay-card" src="images/pay/visa.svg" alt="Visa" width="51" height="32"></li>
+      <li><img class="pay-card" src="images/pay/mastercard.svg" alt="Mastercard" width="51" height="32"></li>
+      <li><img class="pay-card" src="images/pay/amex.svg" alt="American Express" width="51" height="32"></li>
+      <li class="pay-chip"><img src="images/pay/applepay.svg" alt="Apple Pay" width="36" height="23"></li>
+      <li class="pay-chip gpay"><img src="images/pay/googlepay.svg" alt="Google Pay" width="38" height="15"></li>
+      <li class="pay-chip klarna"><img src="images/pay/klarna.svg" alt="" width="12" height="12">Klarna</li>
+      <li><img class="pay-card" src="images/pay/diners.svg" alt="Diners Club" width="51" height="32"></li>
+      <li><img class="pay-card" src="images/pay/amazonpay.svg" alt="Amazon Pay" width="51" height="32"></li>
+    </ul>
+  </div>
+  <div class="pt-footer-bot"><span>© 2026 PsyTectrics™ · All rights reserved</span><span>Site by <a href="https://ric-lee.co.uk" target="_blank" rel="noopener">Ric</a></span></div>
 </footer>
 </body>
 </html>

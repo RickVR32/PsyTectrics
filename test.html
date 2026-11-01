@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Free Tests — PsyTectrics™</title>
+<meta name="description" content="Free PsyTectrics self-reflection tests built on the SC Blueprint™ framework — Narc, Empath, Grounded and Volatile."/>
+<link rel="icon" href="pt_icon.png" type="image/png"/>
+<link rel="apple-touch-icon" href="pt_icon.png">
+<link rel="canonical" href="https://psytectrics.com/test.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PsyTectrics">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://psytectrics.com/test.html">
+<meta property="og:title" content="Free Tests — PsyTectrics™">
+<meta property="og:description" content="Free PsyTectrics self-reflection tests built on the SC Blueprint™ framework — Narc, Empath, Grounded and Volatile.">
+<meta property="og:image" content="https://psytectrics.com/pt_logo_icon.png">
+<meta name="twitter:card" content="summary_large_image">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FFFFFF;--bg-soft:#F4F6F9;
+  --text:#0B1020;--muted:#6B7280;--muted2:#9CA3AF;
+  --accent:#00D4FF;--accent-soft:rgba(0,212,255,0.08);--accent-border:rgba(0,212,255,0.25);
+  --line:rgba(0,0,0,0.08);--line-strong:rgba(0,0,0,0.14);
+  --serif:'Montserrat',sans-serif;--sans:'Inter',sans-serif;--mono:'Space Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;padding-top:70px;-webkit-font-smoothing:antialiased;min-height:100vh}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0.85rem 2.5rem;border-bottom:1px solid rgba(255,255,255,0.06);background:#060B18;height:70px}
+.nav-logo-wrap{display:flex;align-items:center;text-decoration:none}
+.nav-logo-img{height:52px;width:auto;display:block}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-family:var(--mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.nav-cta{background:var(--accent);color:#060B18;padding:0.6rem 1.4rem;font-family:var(--mono);font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s}
+.nav-cta:hover{opacity:0.85}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.nav-hamburger span{display:block;width:22px;height:2px;background:rgba(255,255,255,0.7);transition:all 0.3s}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-drawer{display:none;position:fixed;top:70px;left:0;right:0;background:#060B18;border-bottom:1px solid rgba(255,255,255,0.08);z-index:199;padding:1.2rem 1.5rem;flex-direction:column}
+.nav-drawer.open{display:flex}
+.nav-drawer a{color:rgba(255,255,255,0.6);text-decoration:none;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.85rem 0;border-bottom:1px solid rgba(255,255,255,0.06);transition:color 0.2s}
+.nav-drawer a:last-child{border-bottom:none}
+.nav-drawer a:hover,.nav-drawer a.active{color:#fff}
+.nav-drawer .drawer-cta{background:var(--accent);color:#060B18;padding:0.75rem 1.2rem;font-weight:700;margin-top:0.8rem;text-align:center;border-bottom:none}
+
+.pt-footer{background:#060B18;border-top:1px solid rgba(255,255,255,0.07);padding:2rem 3rem}
+.pt-footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.pt-footer-logo{font-family:var(--mono);font-size:0.78rem;letter-spacing:0.16em;color:rgba(255,255,255,0.5);font-weight:700}
+.pt-footer-links{display:flex;gap:1.8rem;flex-wrap:wrap}
+.pt-footer-links a{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s}
+.pt-footer-links a:hover{color:rgba(255,255,255,0.7)}
+.pt-footer-note{font-family:var(--mono);font-size:0.58rem;color:rgba(255,255,255,0.2);letter-spacing:0.06em}
+
+
+.wrap{max-width:760px;margin:0 auto;padding:3.5rem 1.5rem 4rem}
+.eyebrow{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:1rem}
+.t-title{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3.4rem);font-weight:300;line-height:1.05;margin-bottom:1rem}
+.t-title em{font-style:italic;color:var(--accent)}
+.t-intro{color:var(--muted);font-size:0.95rem;line-height:1.85;margin-bottom:2rem}
+.btn{display:inline-block;background:var(--accent);color:#060B18;padding:0.95rem 2rem;font-family:var(--mono);font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:opacity .2s}
+.btn:hover{opacity:.85}.btn:disabled{opacity:.35;cursor:not-allowed}
+.btn-ghost{background:none;border:1px solid var(--line-strong);color:var(--text)}
+.progress{height:3px;background:var(--line);margin-bottom:2rem}.progress>div{height:100%;background:var(--accent);width:0;transition:width .3s}
+.q-count{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted2);margin-bottom:1rem}
+.q-text{font-family:var(--serif);font-size:clamp(1.3rem,3vw,1.75rem);font-weight:300;line-height:1.35;margin-bottom:2rem;min-height:4.5em}
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:2rem}
+.scale button{background:var(--bg-soft);border:1px solid var(--line);padding:1rem 0.4rem;font-family:var(--sans);font-size:0.78rem;color:var(--text);cursor:pointer;line-height:1.35;transition:all .15s}
+.scale button:hover{border-color:var(--accent)}.scale button.sel{background:var(--accent-soft);border-color:var(--accent);font-weight:500}
+.nav-row{display:flex;justify-content:space-between;gap:1rem}
+.res-card{background:var(--bg-soft);border:1px solid var(--line);padding:2rem;margin-bottom:1.5rem}
+.res-label{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:0.6rem}
+.res-big{font-family:var(--serif);font-size:clamp(2rem,5vw,2.8rem);font-weight:300;line-height:1.1;margin-bottom:1rem}
+.res-text{color:var(--text);font-size:0.95rem;line-height:1.85}
+.bar-row{display:grid;grid-template-columns:110px 1fr 48px;align-items:center;gap:12px;margin:0.7rem 0;font-family:var(--mono);font-size:0.75rem}
+.bar-bg{height:8px;background:var(--line)}.bar-bg>div{height:100%}
+.bar-pct{text-align:right}
+.cta-box{border:1px solid var(--accent-border);background:var(--accent-soft);border-left:3px solid var(--accent);padding:1.5rem;margin:1.5rem 0}
+.cta-box p{color:var(--muted);font-size:0.88rem;line-height:1.75;margin-bottom:1rem}
+.save{border:1px solid var(--line);padding:1.5rem;margin:1.5rem 0}
+.save h3{font-family:var(--serif);font-weight:400;font-size:1.15rem;margin-bottom:0.4rem}
+.save p{color:var(--muted);font-size:0.84rem;line-height:1.7;margin-bottom:1rem}
+.save input[type=email]{width:100%;padding:0.85rem 1rem;border:1px solid var(--line-strong);font-family:var(--sans);font-size:0.9rem;margin-bottom:0.8rem}
+.save label{display:flex;gap:0.6rem;align-items:flex-start;font-size:0.8rem;color:var(--muted);line-height:1.5;margin-bottom:1rem}
+.save-msg{font-size:0.82rem;margin-top:0.8rem;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:1.5rem}
+.stat{background:#fff;padding:0.9rem 1rem;display:flex;flex-direction:column;gap:2px;min-width:0}
+.stat .k{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted)}
+.stat .v{font-family:var(--serif);font-size:1.5rem;font-weight:400;line-height:1.15}
+.stat .s{font-size:0.74rem;color:var(--muted2)}
+.map-key{display:flex;flex-wrap:wrap;gap:0.4rem 1rem;align-items:center;font-size:0.78rem;color:var(--muted);margin-top:0.8rem}
+.map-key span{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:-0.6rem}
+.needs{list-style:none;display:flex;flex-direction:column;gap:0.7rem;margin:0;padding:0}
+.needs li{border:1px solid var(--line);border-left:3px solid;padding:0.8rem 1rem;font-size:0.9rem;line-height:1.65;background:#fff}
+.needs .nm{font-family:var(--mono);font-size:0.68rem;color:var(--muted)}
+.needs .ch{font-family:var(--mono);font-size:0.7rem;color:#534AB7}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}}
+.pay{border:2px solid var(--accent);background:var(--accent-soft);padding:1.6rem;margin:1.5rem 0;display:flex;flex-direction:column;gap:0.6rem}
+.pay h3{font-family:var(--serif);font-weight:400;font-size:1.5rem;margin:0}
+.pay p{color:var(--muted);font-size:0.9rem;line-height:1.7;margin:0}
+.pay input[type=text],.pay input[type=email]{width:100%;padding:0.85rem 1rem;border:1px solid var(--line-strong);font-family:var(--sans);font-size:0.9rem;background:#fff}
+.pay label{display:flex;gap:0.6rem;align-items:flex-start;font-size:0.8rem;color:var(--muted);line-height:1.5}
+.lock{font-size:0.82rem;color:var(--muted);font-style:italic}
+[hidden]{display:none!important}
+.disc{font-size:0.74rem;color:var(--muted2);line-height:1.7;margin-top:2rem;border-top:1px solid var(--line);padding-top:1.2rem}
+@media(max-width:600px){.scale{grid-template-columns:1fr}.scale button{padding:0.8rem;text-align:left}.bar-row{grid-template-columns:90px 1fr 40px}.wrap{padding:2.5rem 1rem 3rem}}
+@media(max-width:768px){nav{padding:0.8rem 1.2rem}.nav-links{display:none}.nav-hamburger{display:flex}.pt-footer{padding:2rem 1.5rem}.pt-footer-inner{flex-direction:column;text-align:center;align-items:center}.pt-footer-links{justify-content:center}}
+/* LOGO-FIX: real logo file is ~6.45:1 aspect ratio — full height renders 300px+ wide and eats the whole nav bar on phones */
+@media(max-width:768px){
+  .nav-logo-img,nav.pt-nav .nav-logo-img{height:38px!important;width:auto}
+  nav .nav-logo-wrap,nav.pt-nav .nav-logo-wrap{
+    position:absolute;left:0;right:0;top:0;height:70px;
+    display:flex;align-items:center;justify-content:center;
+    pointer-events:none;z-index:1;
+  }
+  nav .nav-logo-wrap img,nav.pt-nav .nav-logo-wrap img{pointer-events:auto}
+  nav,nav.pt-nav{justify-content:flex-end}
+  nav>*:not(.nav-logo-wrap),nav.pt-nav>*:not(.nav-logo-wrap){position:relative;z-index:2}
+}
+@media(max-width:480px){
+  .nav-logo-img,nav.pt-nav .nav-logo-img{height:32px!important}
+}
+@media(max-width:768px){
+  nav,nav.pt-nav{flex-wrap:wrap;height:auto;min-height:70px;row-gap:4px}
+  .nav-right{gap:0.5rem!important}
+}
+
+/* FOOTER-PAY: payment logos + Site by Ric (shared with client builds) */
+.pt-footer-pay{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:1.6rem;padding-top:1.4rem;border-top:1px solid rgba(255,255,255,0.07)}
+.pt-pay-label{display:flex;align-items:center;gap:8px;margin:0;font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.4)}
+.pt-pay-label svg{width:14px;height:14px;stroke:#00D4FF;fill:none;stroke-width:2}
+.pay-chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0}
+.pay-card{display:block;width:51px;height:32px;border-radius:4px}
+.pay-chip{display:inline-flex;align-items:center;justify-content:center;gap:5px;width:51px;height:32px;background:#fff;border-radius:4px}
+.pay-chip img{display:block;height:23px;width:auto}
+.pay-chip.gpay img{height:15px}
+.pay-chip.klarna{background:#ffb3c7;width:auto;padding:0 9px;font-family:'Inter',sans-serif;font-size:.74rem;font-weight:700;color:#0b051d}
+.pay-chip.klarna img{height:11px}
+.pt-footer-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:1.2rem;font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.06em;color:rgba(255,255,255,0.3)}
+.pt-footer-bot a{color:rgba(255,255,255,0.7);text-decoration:none}
+.pt-footer-bot a:hover{color:#00D4FF}
+@media(max-width:768px){.pt-footer-pay,.pt-footer-bot{flex-direction:column;align-items:center;text-align:center}.pay-chips{justify-content:center}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo-wrap">
+    <img src="pt_logo.png" alt="PsyTectrics" class="nav-logo-img"/>
+  </a>
+  <ul class="nav-links">
+    <li><a href="tests.html" class="active">Tests</a></li>
+    <li><a href="reports.html">Reports</a></li>
+    <li><a href="framework.html">Framework</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <a href="index.html">Home</a>
+  <a href="tests.html" class="active">Tests</a>
+  <a href="reports.html">Reports</a>
+  <a href="framework.html">Framework</a>
+  <a href="contact.html">Contact</a>
+  <a href="test.html?t=quick-check" class="drawer-cta">Free Quick Check →</a>
+</div>
+<main class="wrap" id="app"><p class="t-intro">Loading…</p></main>
+<script src="sc-engine.js"></script>
+<script src="sc-geo.js"></script>
+<footer class="pt-footer">
+  <div class="pt-footer-inner">
+    <span class="pt-footer-logo">PSYTECTRICS™</span>
+    <div class="pt-footer-links">
+      <a href="index.html">Home</a>
+      <a href="tests.html">Tests</a>
+      <a href="reports.html">Reports</a>
+      <a href="framework.html">Framework</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+  </div>
+  <div class="pt-footer-pay">
+    <p class="pt-pay-label"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Secure payments via Stripe</p>
+    <ul class="pay-chips" aria-label="Accepted payment methods">
+      <li><img class="pay-card" src="images/pay/visa.svg" alt="Visa" width="51" height="32"></li>
+      <li><img class="pay-card" src="images/pay/mastercard.svg" alt="Mastercard" width="51" height="32"></li>
+      <li><img class="pay-card" src="images/pay/amex.svg" alt="American Express" width="51" height="32"></li>
+      <li class="pay-chip"><img src="images/pay/applepay.svg" alt="Apple Pay" width="36" height="23"></li>
+      <li class="pay-chip gpay"><img src="images/pay/googlepay.svg" alt="Google Pay" width="38" height="15"></li>
+      <li class="pay-chip klarna"><img src="images/pay/klarna.svg" alt="" width="12" height="12">Klarna</li>
+      <li><img class="pay-card" src="images/pay/diners.svg" alt="Diners Club" width="51" height="32"></li>
+      <li><img class="pay-card" src="images/pay/amazonpay.svg" alt="Amazon Pay" width="51" height="32"></li>
+    </ul>
+  </div>
+  <div class="pt-footer-bot"><span>© 2026 PsyTectrics™ · All rights reserved</span><span>Site by <a href="https://ric-lee.co.uk" target="_blank" rel="noopener">Ric</a></span></div>
+</footer>
+<script>
+const params=new URLSearchParams(location.search);
+const testId=(params.get('t')||'quick-check').replace(/[^a-z0-9-]/g,'');
+const app=document.getElementById('app');
+let T=null,answers=[],idx=0,result=null;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+const code=params.get('code');
+function load(id,then){return fetch('tests/'+id+'.json').then(r=>{if(!r.ok)throw 0;return r.json()}).then(t=>{T=t;if(T.items&&!T.questions)T.questions=T.items;answers=new Array(T.questions.length).fill(null);document.title=T.title+' '+T.titleEm+' — PsyTectrics™';then()})
+ .catch(()=>{app.innerHTML='<p class="t-intro">That test could not be found. <a href="tests.html">See all tests →</a></p>'})}
+if(code){
+  app.innerHTML='<p class="t-intro">Opening your result…</p>';
+  fetch('/api/decode',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code})}).then(r=>r.json().then(d=>({ok:r.ok,d})))
+   .then(({ok,d})=>{if(!ok)throw new Error(d.error);load(d.test,()=>{if(d.answers.length!==T.questions.length)throw 0;answers=d.answers.slice();score();results()})})
+   .catch(e=>{app.innerHTML='<p class="t-intro">'+esc((e&&e.message)||'That code could not be opened.')+' <a href="test.html?t='+testId+'">Take the test →</a></p>'});
+}else load(testId,intro);
+
+function intro(){
+  app.innerHTML=`<span class="eyebrow">${esc(T.eyebrow)}</span>
+  <h1 class="t-title">${esc(T.title)} <em>${esc(T.titleEm)}</em></h1>
+  <p class="t-intro">${esc(T.intro)}</p>
+  <button class="btn" id="start">Start →</button>
+  <p class="disc">${esc(T.disclaimer)}</p>`;
+  document.getElementById('start').onclick=()=>{idx=0;question()};
+}
+function question(){
+  const q=T.questions[idx],n=T.questions.length;
+  app.innerHTML=`<div class="progress"><div style="width:${idx/n*100}%"></div></div>
+  <div class="q-count">Question ${idx+1} of ${n}</div>
+  <div class="q-text">${esc(q.text)}</div>
+  <div class="scale">${T.scale.map((s,i)=>`<button data-v="${i+1}" class="${answers[idx]===i+1?'sel':''}">${esc(s)}</button>`).join('')}</div>
+  <div class="nav-row"><button class="btn btn-ghost" id="back" ${idx===0?'disabled':''}>← Back</button></div>`;
+  app.querySelectorAll('.scale button').forEach(b=>b.onclick=()=>{answers[idx]=+b.dataset.v;
+    app.querySelectorAll('.scale button').forEach(x=>x.classList.toggle('sel',x===b));
+    setTimeout(()=>{if(idx<n-1){idx++;question()}else{score();results()}},180)});
+  document.getElementById('back').onclick=()=>{if(idx>0){idx--;question()}};
+}
+function score(){
+  if(T.version==='v4'){const a={};T.questions.forEach((q,i)=>a[q.id]=answers[i]);result=SCEngine.score({items:T.questions},a);return}
+  const dims=Object.keys(T.dimensions),sum={},cnt={};dims.forEach(d=>{sum[d]=0;cnt[d]=0});
+  T.questions.forEach((q,i)=>{const v=q.reverse?6-answers[i]:answers[i];sum[q.dim]+=v;cnt[q.dim]++});
+  if(T.scoring==='ratio'){
+    const g=dims.reduce((a,d)=>a+sum[d],0),pct={};let acc=0;
+    dims.forEach((d,i)=>{pct[d]=i<dims.length-1?Math.round(sum[d]/g*100):100-acc;acc+=pct[d]});
+    const top=dims.slice().sort((a,b)=>pct[b]-pct[a])[0];
+    result={type:'ratio',pct,dominant:top};
+  }else{
+    const facet={};dims.forEach(d=>facet[d]=Math.round((sum[d]/cnt[d]-1)/4*100));
+    const all=T.questions.reduce((a,q,i)=>a+(q.reverse?6-answers[i]:answers[i]),0)/T.questions.length;
+    const index=Math.round((all-1)/4*100);
+    const band=T.bands.find(b=>index<=b.max);
+    result={type:'bands',index,band:band.title,facet};
+  }
+}
+function bars(obj){return Object.entries(obj).map(([d,v])=>`<div class="bar-row"><span style="color:${T.dimensions[d].color}">${esc(T.dimensions[d].label)}</span><div class="bar-bg"><div style="width:${v}%;background:${T.dimensions[d].color}"></div></div><span class="bar-pct">${v}${T.scoring==='ratio'?'%':''}</span></div>`).join('')}
+function results(){
+  let main;
+  if(result.version==='v4'){
+    const ty=(T.types||{})[result.type]||{title:'',text:''};
+    const st=(k,v,sub)=>`<div class="stat"><span class="k">${k}</span><span class="v">${v}</span><span class="s">${sub}</span></div>`;
+    const needs=result.needs.length?result.needs.map(n=>`<li style="border-left-color:${SCGeo.COL[n.pattern]}"><strong>${esc(n.name)}</strong> <span class="nm">${esc(n.pattern)} · light ${Math.round(n.light)} / shadow ${Math.round(n.shadow)}</span><br>${T.paywall?'<span class="lock">Your steps for this code are in the full report.</span>':esc(n.fix||'')+'<br><span class="ch">'+esc(n.ch||'')+'</span>'}</li>`).join(''):'<li style="border-left-color:#2F8A5B"><strong>Nothing major pulling you off centre.</strong><br>Keep practising noticing what happens while it happens.<br><span class="ch">Ch 11 · The Observer position</span></li>';
+    main=`<div class="res-card"><div class="res-label">Your balance</div><div class="res-big">${esc(ty.title)}</div><p class="res-text">${esc(ty.text)}</p></div>
+    <div class="stats">${st('Level',result.level+' / 10',result.stage)}${st('Board ring',result.ring,'of 5 · Zero-Point')}${st('Lean',SCEngine.leanLabel(result.lean),'Narc ↔ Empath')}${st('Charge',Math.round(result.charge),'Both roles')}${st('Regulation',Math.round(result.regulation),'Grounded vs Volatile')}${st('Drift',result.drift.toFixed(1),'Says vs does · 0–5')}</div>
+    <div class="res-card"><div class="res-label">Your Balance Map</div><div id="geo"></div><p class="map-key"><span style="background:#2F8A5B"></span>Balanced <span style="background:#C48A1C"></span>Leaning <span style="background:#C2413A"></span>Needs balancing <span style="background:#C9CCD6"></span>Not measured in this test</p></div>
+    <div class="res-card"><div class="res-label">What needs balancing</div><ul class="needs">${needs}</ul></div>`;
+  }else
+  if(result.type==='ratio'){const r=T.results[result.dominant];
+    main=`<div class="res-card"><div class="res-label">Your dominant pattern</div><div class="res-big" style="color:${T.dimensions[result.dominant].color}">${esc(r.title)}</div><p class="res-text">${esc(r.text)}</p></div>
+    <div class="res-card"><div class="res-label">Your pattern ratio</div>${bars(result.pct)}</div>`;
+  }else{const b=T.bands.find(x=>x.title===result.band);
+    main=`<div class="res-card"><div class="res-label">${esc(T.indexLabel)}</div><div class="res-big">${result.index} <span style="font-size:0.5em;color:var(--muted)">/ 100 · ${esc(b.title)}</span></div><p class="res-text">${esc(b.text)}</p></div>
+    <div class="res-card"><div class="res-label">By area (0–100)</div>${bars(result.facet)}</div>`;
+  }
+  app.innerHTML=`<span class="eyebrow">Your result · ${esc(T.title)} ${esc(T.titleEm)}</span>${main}
+  ${T.paywall?`<div class="pay"><span class="res-label">Unlock</span><h3>${esc(T.paywall.title)}</h3><p>${esc(T.paywall.text)}</p>
+    <input type="text" id="pn" placeholder="Your first name (for your report)" autocomplete="given-name"/>
+    <input type="email" id="pe" placeholder="you@example.com" autocomplete="email"/>
+    <label><input type="checkbox" id="pm"/> Send me news about new tests, the games and the book. You can unsubscribe any time.</label>
+    <button class="btn" id="pb">${esc(T.paywall.button)} — ${esc(T.price)} →</button><div class="save-msg" id="pmsg">Secure payment via Stripe. Got a discount code? Add it at checkout.</div></div>`:''}
+  <div class="save"${T.paywall?' hidden':''}><h3>Email me my result</h3><p>Get a copy of this result by email. Optional.</p>
+    <input type="email" id="em" placeholder="you@example.com" autocomplete="email"/>
+    <label><input type="checkbox" id="mk"/> Also send me occasional updates about new PsyTectrics tests. You can unsubscribe any time.</label>
+    <button class="btn" id="sv">Send my result →</button><div class="save-msg" id="svm"></div></div>
+  <div class="cta-box"><p>${esc(T.cta.text)}</p><a class="btn" href="${esc(T.cta.href)}">${esc(T.cta.label)}</a></div>
+  <p><a href="tests.html" style="color:var(--muted);font-size:0.85rem">See all tests →</a> · <a href="#" id="again" style="color:var(--muted);font-size:0.85rem">Take again</a></p>
+  <p class="disc">${esc(T.disclaimer)} <a href="privacy.html" style="color:inherit">Privacy</a></p>`;
+  document.getElementById('again').onclick=e=>{e.preventDefault();answers.fill(null);intro()};
+  document.getElementById('sv').onclick=save;
+  if(T.paywall)document.getElementById('pb').onclick=unlock;
+  if(result.version==='v4')SCGeo.render(document.getElementById('geo'),result);
+  window.scrollTo(0,0);
+}
+async function unlock(){
+  const em=document.getElementById('pe').value.trim(),msg=document.getElementById('pmsg'),btn=document.getElementById('pb');
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){msg.textContent='Please enter a valid email address so we can send your report.';return}
+  btn.disabled=true;msg.textContent='Opening secure checkout…';
+  try{const r=await fetch('/api/create-profile-checkout',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:em,name:document.getElementById('pn').value.trim(),marketingOptIn:document.getElementById('pm').checked,answers})});
+    const d=await r.json();if(r.ok&&d.url){location.href=d.url;return}throw new Error(d.error)}
+  catch(e){btn.disabled=false;msg.textContent=(e&&e.message)||'Something went wrong. Please try again.'}
+}
+async function save(){
+  const em=document.getElementById('em').value.trim(),msg=document.getElementById('svm'),btn=document.getElementById('sv');
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){msg.textContent='Please enter a valid email address.';return}
+  btn.disabled=true;msg.textContent='Sending…';
+  try{const r=await fetch('/api/save-test-result',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({test:T.id,email:em,marketingOptIn:document.getElementById('mk').checked,answers,result})});
+    if(!r.ok)throw 0;const d=await r.json();msg.textContent=d.emailed?'Done — check your inbox.':'Saved — thank you.';}
+  catch{btn.disabled=false;msg.textContent='Something went wrong. Please try again.'}
+}
+
+
+const hamburger=document.getElementById('hamburger');
+const drawer=document.getElementById('navDrawer');
+hamburger.addEventListener('click',function(){hamburger.classList.toggle('open');drawer.classList.toggle('open');});
+drawer.querySelectorAll('a').forEach(function(link){link.addEventListener('click',function(){hamburger.classList.remove('open');drawer.classList.remove('open');});});
+</script>
+<script src="pt-widgets.js" defer></script>
+</body>
+</html>

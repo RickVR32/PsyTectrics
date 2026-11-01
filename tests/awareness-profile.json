@@ -1,0 +1,435 @@
+{
+ "id": "awareness-profile",
+ "version": "v4",
+ "title": "Awareness",
+ "titleEm": "Profile",
+ "eyebrow": "56 questions · 12–15 minutes",
+ "intro": "Fifty-six statements across two layers — how you see yourself, and what actually happens under pressure. Answer about how you usually are, not how you'd like to be.",
+ "scale": [
+  "Strongly disagree",
+  "Disagree",
+  "Neutral",
+  "Agree",
+  "Strongly agree"
+ ],
+ "items": [
+  {
+   "pattern": "Narc",
+   "node": "intention",
+   "side": "light",
+   "text": "I can say what I want without needing to control the outcome.",
+   "id": "q1"
+  },
+  {
+   "pattern": "Narc",
+   "node": "intention",
+   "side": "light",
+   "text": "I can let others make decisions that affect me without feeling threatened.",
+   "id": "q2"
+  },
+  {
+   "pattern": "Narc",
+   "node": "presence",
+   "side": "light",
+   "text": "I can stay in a difficult conversation even when it gets emotional.",
+   "id": "q3"
+  },
+  {
+   "pattern": "Narc",
+   "node": "presence",
+   "side": "light",
+   "text": "When I need space, I say so rather than just going quiet.",
+   "id": "q4"
+  },
+  {
+   "pattern": "Narc",
+   "node": "ownership",
+   "side": "light",
+   "text": "I can admit when I've got something wrong.",
+   "id": "q5"
+  },
+  {
+   "pattern": "Narc",
+   "node": "impact",
+   "side": "light",
+   "text": "I notice my impact on others while it's happening.",
+   "id": "q6"
+  },
+  {
+   "pattern": "Empath",
+   "node": "balance",
+   "side": "light",
+   "text": "I can support someone without losing track of my own needs.",
+   "id": "q7"
+  },
+  {
+   "pattern": "Empath",
+   "node": "balance",
+   "side": "light",
+   "text": "I can let someone be upset with me without rushing to fix it.",
+   "id": "q8"
+  },
+  {
+   "pattern": "Empath",
+   "node": "connection",
+   "side": "light",
+   "text": "I can feel close to someone without needing constant reassurance.",
+   "id": "q9"
+  },
+  {
+   "pattern": "Empath",
+   "node": "connection",
+   "side": "light",
+   "text": "I can sit with silence in a relationship without panicking.",
+   "id": "q10"
+  },
+  {
+   "pattern": "Empath",
+   "node": "clearhead",
+   "side": "light",
+   "text": "When emotions run high, I can slow down before I respond.",
+   "id": "q11"
+  },
+  {
+   "pattern": "Empath",
+   "node": "holding",
+   "side": "light",
+   "text": "I can be there for someone who's struggling without taking their feelings on as mine.",
+   "id": "q12"
+  },
+  {
+   "pattern": "Grounded",
+   "node": "coreself",
+   "side": "light",
+   "text": "I feel like the same person whoever I'm with.",
+   "id": "q13"
+  },
+  {
+   "pattern": "Grounded",
+   "node": "coreself",
+   "side": "light",
+   "text": "I can feel strong emotions without losing my sense of who I am.",
+   "id": "q14"
+  },
+  {
+   "pattern": "Grounded",
+   "node": "integrity",
+   "side": "light",
+   "text": "My actions match the values I say I hold.",
+   "id": "q15"
+  },
+  {
+   "pattern": "Grounded",
+   "node": "integrity",
+   "side": "light",
+   "text": "After a conflict, I go back and repair it rather than letting it slide.",
+   "id": "q16"
+  },
+  {
+   "pattern": "Grounded",
+   "node": "consistency",
+   "side": "light",
+   "text": "I behave the same whether or not I'm being watched.",
+   "id": "q17"
+  },
+  {
+   "pattern": "Grounded",
+   "node": "honesty",
+   "side": "light",
+   "text": "I can look honestly at a decision even if it shows I was wrong.",
+   "id": "q18"
+  },
+  {
+   "pattern": "Volatile",
+   "node": "purpose",
+   "side": "light",
+   "text": "I can channel strong feelings into something useful.",
+   "id": "q19"
+  },
+  {
+   "pattern": "Volatile",
+   "node": "purpose",
+   "side": "light",
+   "text": "When I feel intensely about something, I can still act with a plan.",
+   "id": "q20"
+  },
+  {
+   "pattern": "Volatile",
+   "node": "pattern",
+   "side": "light",
+   "text": "I can spot my own loops while they're happening.",
+   "id": "q21"
+  },
+  {
+   "pattern": "Volatile",
+   "node": "pattern",
+   "side": "light",
+   "text": "I know my early warning signs before I hit my limit.",
+   "id": "q22"
+  },
+  {
+   "pattern": "Volatile",
+   "node": "limit",
+   "side": "light",
+   "text": "When I hit my limit, I can step away calmly and come back later.",
+   "id": "q23"
+  },
+  {
+   "pattern": "Volatile",
+   "node": "cycles",
+   "side": "light",
+   "text": "I'm actively working to break my cycles, not just recognise them.",
+   "id": "q24"
+  },
+  {
+   "pattern": "Narc",
+   "side": "recog",
+   "text": "I know I pull back when things get intense.",
+   "id": "q25"
+  },
+  {
+   "pattern": "Empath",
+   "side": "recog",
+   "text": "I know I chase or over-give when things feel shaky.",
+   "id": "q26"
+  },
+  {
+   "pattern": "Grounded",
+   "side": "recog",
+   "text": "I can pause and notice what I'm feeling before I respond.",
+   "id": "q27"
+  },
+  {
+   "pattern": "Volatile",
+   "side": "recog",
+   "text": "I know I can go to extremes under pressure.",
+   "id": "q28"
+  },
+  {
+   "pattern": "Narc",
+   "node": "intention",
+   "side": "shadow",
+   "text": "When I feel challenged, my first move is to protect my position.",
+   "id": "q29"
+  },
+  {
+   "pattern": "Narc",
+   "node": "intention",
+   "side": "shadow",
+   "text": "I need things done my way to feel safe.",
+   "id": "q30"
+  },
+  {
+   "pattern": "Narc",
+   "node": "presence",
+   "side": "shadow",
+   "text": "When emotions run high, I shut down or go silent.",
+   "id": "q31"
+  },
+  {
+   "pattern": "Narc",
+   "node": "presence",
+   "side": "shadow",
+   "text": "I switch to logic or facts when someone is upset with me.",
+   "id": "q32"
+  },
+  {
+   "pattern": "Narc",
+   "node": "ownership",
+   "side": "shadow",
+   "text": "I find a way to show it wasn't really my fault.",
+   "id": "q33"
+  },
+  {
+   "pattern": "Narc",
+   "node": "impact",
+   "side": "shadow",
+   "text": "I only realise how I came across after the fact.",
+   "id": "q34"
+  },
+  {
+   "pattern": "Empath",
+   "node": "balance",
+   "side": "shadow",
+   "text": "When someone pulls away, I feel I have to fix it straight away.",
+   "id": "q35"
+  },
+  {
+   "pattern": "Empath",
+   "node": "balance",
+   "side": "shadow",
+   "text": "I keep explaining until I feel understood.",
+   "id": "q36"
+  },
+  {
+   "pattern": "Empath",
+   "node": "connection",
+   "side": "shadow",
+   "text": "Silence or a slow reply makes me anxious that something's wrong.",
+   "id": "q37"
+  },
+  {
+   "pattern": "Empath",
+   "node": "connection",
+   "side": "shadow",
+   "text": "I say yes to keep the peace, even when I mean no.",
+   "id": "q38"
+  },
+  {
+   "pattern": "Empath",
+   "node": "clearhead",
+   "side": "shadow",
+   "text": "When I feel disconnected, my emotions take over and I push harder.",
+   "id": "q39"
+  },
+  {
+   "pattern": "Empath",
+   "node": "holding",
+   "side": "shadow",
+   "text": "I lose myself when someone I care about is struggling.",
+   "id": "q40"
+  },
+  {
+   "pattern": "Grounded",
+   "node": "coreself",
+   "side": "shadow",
+   "text": "I hold my feelings in so well that people don't know what's going on with me.",
+   "id": "q41"
+  },
+  {
+   "pattern": "Grounded",
+   "node": "coreself",
+   "side": "shadow",
+   "text": "I stay calm on the outside while things build up inside.",
+   "id": "q42"
+  },
+  {
+   "pattern": "Grounded",
+   "node": "integrity",
+   "side": "shadow",
+   "text": "I tell myself stories that protect my self-image, even when they aren't true.",
+   "id": "q43"
+  },
+  {
+   "pattern": "Grounded",
+   "node": "integrity",
+   "side": "shadow",
+   "text": "Once things calm down, I'd rather move on than talk about what happened.",
+   "id": "q44"
+  },
+  {
+   "pattern": "Grounded",
+   "node": "consistency",
+   "side": "shadow",
+   "text": "When I feel uncertain, I become rigid or controlling.",
+   "id": "q45"
+  },
+  {
+   "pattern": "Grounded",
+   "node": "honesty",
+   "side": "shadow",
+   "text": "I avoid looking at decisions that might show I acted wrongly.",
+   "id": "q46"
+  },
+  {
+   "pattern": "Volatile",
+   "node": "purpose",
+   "side": "shadow",
+   "text": "I go all-in on things, then drop them completely.",
+   "id": "q47"
+  },
+  {
+   "pattern": "Volatile",
+   "node": "purpose",
+   "side": "shadow",
+   "text": "My mood can swing quickly from one extreme to the other.",
+   "id": "q48"
+  },
+  {
+   "pattern": "Volatile",
+   "node": "pattern",
+   "side": "shadow",
+   "text": "I see my patterns but still keep repeating them.",
+   "id": "q49"
+  },
+  {
+   "pattern": "Volatile",
+   "node": "pattern",
+   "side": "shadow",
+   "text": "Small things can tip me over the edge without warning.",
+   "id": "q50"
+  },
+  {
+   "pattern": "Volatile",
+   "node": "limit",
+   "side": "shadow",
+   "text": "In heated moments I say or do things I can't take back.",
+   "id": "q51"
+  },
+  {
+   "pattern": "Volatile",
+   "node": "cycles",
+   "side": "shadow",
+   "text": "After I blow up or shut down completely, things just reset without being resolved.",
+   "id": "q52"
+  },
+  {
+   "pattern": "Narc",
+   "side": "role",
+   "text": "Under pressure, protecting myself matters more than how the other person feels.",
+   "id": "q53"
+  },
+  {
+   "pattern": "Empath",
+   "side": "role",
+   "text": "Under pressure, keeping the connection matters more than my own limits.",
+   "id": "q54"
+  },
+  {
+   "pattern": "Grounded",
+   "side": "role",
+   "text": "What looks like calm in me is sometimes just me shutting things out.",
+   "id": "q55"
+  },
+  {
+   "pattern": "Volatile",
+   "side": "role",
+   "text": "My reactions go to extremes — all in or completely withdrawn.",
+   "id": "q56"
+  }
+ ],
+ "cta": {
+  "text": "Prefer it written personally? A hand-written report reads your answers alongside your own context.",
+  "label": "Ask about a hand-written report →",
+  "href": "contact.html"
+ },
+ "disclaimer": "This is a self-reflection tool, not a psychological assessment or diagnosis.",
+ "types": {
+  "narc": {
+   "title": "Leaning Narc",
+   "text": "Under pressure you contract. You protect your position, go quiet or switch to logic to get the intensity down. It keeps you steady in the moment, but the people around you can feel shut out."
+  },
+  "empath": {
+   "title": "Leaning Empath",
+   "text": "Under pressure you expand. You reach for connection, explain, reassure and fix. It comes from caring, but it can mean your own limits disappear and silence feels unbearable."
+  },
+  "loop": {
+   "title": "Caught in the loop",
+   "text": "Both roles are firing. You can shut down and chase within the same week, sometimes the same argument. It can look balanced from the outside, but it means the loop is running hard."
+  },
+  "zero": {
+   "title": "Close to Zero-Point",
+   "text": "You hold steady more often than not. Neither role takes over for long, and you can usually notice what's happening while it's happening. The full profile shows where that still slips."
+  },
+  "mixed": {
+   "title": "No strong pull",
+   "text": "Neither role clearly takes over for you. Some situations pull you towards shutting down, others towards chasing. The codes below show where your balance is most fragile."
+  }
+ },
+ "price": "£19",
+ "paywall": {
+  "title": "Your full Awareness Profile",
+  "text": "A 10-page report written around your answers: your type, all 16 codes, your Balance Map, what needs balancing with steps from the book, lines to hand to the people in your life, and a four-week plan. Delivered instantly, with your personal Source Code.",
+  "button": "Unlock my full report"
+ }
+}

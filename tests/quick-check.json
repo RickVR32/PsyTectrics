@@ -1,0 +1,125 @@
+{
+ "id": "quick-check",
+ "version": "v4",
+ "title": "Quick",
+ "titleEm": "Check",
+ "eyebrow": "Free · 12 questions · 3 minutes",
+ "intro": "Twelve quick statements. Answer honestly about how you usually are — not how you'd like to be. You'll see your Balance Map straight away.",
+ "scale": [
+  "Strongly disagree",
+  "Disagree",
+  "Neutral",
+  "Agree",
+  "Strongly agree"
+ ],
+ "items": [
+  {
+   "id": "q1",
+   "pattern": "Narc",
+   "side": "light",
+   "text": "I can stay in a difficult conversation even when it gets emotional.",
+   "node": "presence"
+  },
+  {
+   "id": "q2",
+   "pattern": "Empath",
+   "side": "light",
+   "text": "I can sit with silence in a relationship without panicking.",
+   "node": "connection"
+  },
+  {
+   "id": "q3",
+   "pattern": "Grounded",
+   "side": "light",
+   "text": "After a conflict, I go back and repair it rather than letting it slide.",
+   "node": "integrity"
+  },
+  {
+   "id": "q4",
+   "pattern": "Volatile",
+   "side": "light",
+   "text": "I know my early warning signs before I hit my limit.",
+   "node": "pattern"
+  },
+  {
+   "id": "q5",
+   "pattern": "Narc",
+   "side": "shadow",
+   "text": "When emotions run high, I shut down or go silent.",
+   "node": "presence"
+  },
+  {
+   "id": "q6",
+   "pattern": "Empath",
+   "side": "shadow",
+   "text": "Silence or a slow reply makes me anxious that something's wrong.",
+   "node": "connection"
+  },
+  {
+   "id": "q7",
+   "pattern": "Grounded",
+   "side": "shadow",
+   "text": "Once things calm down, I'd rather move on than talk about what happened.",
+   "node": "integrity"
+  },
+  {
+   "id": "q8",
+   "pattern": "Volatile",
+   "side": "shadow",
+   "text": "Small things can tip me over the edge without warning.",
+   "node": "pattern"
+  },
+  {
+   "id": "q9",
+   "pattern": "Narc",
+   "side": "role",
+   "text": "Under pressure, protecting myself matters more than how the other person feels."
+  },
+  {
+   "id": "q10",
+   "pattern": "Empath",
+   "side": "role",
+   "text": "Under pressure, keeping the connection matters more than my own limits."
+  },
+  {
+   "id": "q11",
+   "pattern": "Grounded",
+   "side": "role",
+   "text": "What looks like calm in me is sometimes just me shutting things out."
+  },
+  {
+   "id": "q12",
+   "pattern": "Volatile",
+   "side": "role",
+   "text": "My reactions go to extremes — all in or completely withdrawn."
+  }
+ ],
+ "types": {
+  "narc": {
+   "title": "Leaning Narc",
+   "text": "Under pressure you contract. You protect your position, go quiet or switch to logic to get the intensity down. It keeps you steady in the moment, but the people around you can feel shut out."
+  },
+  "empath": {
+   "title": "Leaning Empath",
+   "text": "Under pressure you expand. You reach for connection, explain, reassure and fix. It comes from caring, but it can mean your own limits disappear and silence feels unbearable."
+  },
+  "loop": {
+   "title": "Caught in the loop",
+   "text": "Both roles are firing. You can shut down and chase within the same week, sometimes the same argument. It can look balanced from the outside, but it means the loop is running hard."
+  },
+  "zero": {
+   "title": "Close to Zero-Point",
+   "text": "You hold steady more often than not. Neither role takes over for long, and you can usually notice what's happening while it's happening. The full profile shows where that still slips."
+  },
+  "mixed": {
+   "title": "No strong pull",
+   "text": "Neither role clearly takes over for you. Some situations pull you towards shutting down, others towards chasing. The codes below show where your balance is most fragile."
+  }
+ },
+ "cta": {
+  "text": "This is a 12-question snapshot. The full Awareness Profile uses 56 questions across your conscious and subconscious layers to map all 16 codes.",
+  "label": "Take the full Awareness Profile — free →",
+  "href": "test.html?t=awareness-profile"
+ },
+ "disclaimer": "This is a short self-reflection tool, not a psychological assessment or diagnosis."
+}

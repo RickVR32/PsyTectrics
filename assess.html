@@ -356,6 +356,22 @@ body{padding-top:70px}
   nav,nav.pt-nav{flex-wrap:wrap;height:auto;min-height:70px;row-gap:4px}
   .nav-right{gap:0.5rem!important}
 }
+
+/* FOOTER-PAY: payment logos + Site by Ric (shared with client builds) */
+.pt-footer-pay{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:1.6rem;padding-top:1.4rem;border-top:1px solid rgba(255,255,255,0.07)}
+.pt-pay-label{display:flex;align-items:center;gap:8px;margin:0;font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.4)}
+.pt-pay-label svg{width:14px;height:14px;stroke:#00D4FF;fill:none;stroke-width:2}
+.pay-chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0}
+.pay-card{display:block;width:51px;height:32px;border-radius:4px}
+.pay-chip{display:inline-flex;align-items:center;justify-content:center;gap:5px;width:51px;height:32px;background:#fff;border-radius:4px}
+.pay-chip img{display:block;height:23px;width:auto}
+.pay-chip.gpay img{height:15px}
+.pay-chip.klarna{background:#ffb3c7;width:auto;padding:0 9px;font-family:'Inter',sans-serif;font-size:.74rem;font-weight:700;color:#0b051d}
+.pay-chip.klarna img{height:11px}
+.pt-footer-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:1.2rem;font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.06em;color:rgba(255,255,255,0.3)}
+.pt-footer-bot a{color:rgba(255,255,255,0.7);text-decoration:none}
+.pt-footer-bot a:hover{color:#00D4FF}
+@media(max-width:768px){.pt-footer-pay,.pt-footer-bot{flex-direction:column;align-items:center;text-align:center}.pay-chips{justify-content:center}}
 </style>
 </head>
 <body>
@@ -366,8 +382,7 @@ body{padding-top:70px}
   </a>
   <ul class="nav-links">
     <li><a href="reports.html" class="active">Reports</a></li>
-    <li><a href="prototypes.html">Prototypes</a></li>
-    <li><a href="store_index.html">Store</a></li>
+    <li><a href="tests.html">Tests</a></li>
     <li><a href="framework.html">Framework</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
@@ -377,8 +392,8 @@ body{padding-top:70px}
 <div class="intro">
  <div class="intro-label">Behavioral Intelligence Assessment</div>
  <h1 class="intro-title">Understand the<br>Human Operating System</h1>
- <p class="intro-copy">56 structured questions across three layers — SC Blueprint™, Behavioral Nodes, and Awareness Patterns — mapped across both conscious and subconscious layers. Includes Drift measurement, Awareness Index™, and a full AI-generated interpretive report.</p>
- <p style="font-size:0.72rem;line-height:1.8;color:var(--muted);margin-bottom:28px;">The assessment is <strong style="color:var(--text)">free to complete</strong>. Your results and awareness level are shown immediately. The full written AI report unlocks for <strong style="color:var(--text)">£49</strong> — paid at the end, no account required.</p>
+ <p class="intro-copy">56 structured questions across three layers — SC Blueprint™, Behavioral Nodes, and Awareness Patterns — mapped across both conscious and subconscious layers. Includes Drift measurement, Awareness Index™, and an optional full written report.</p>
+ <p style="font-size:0.72rem;line-height:1.8;color:var(--muted);margin-bottom:28px;">The assessment is <strong style="color:var(--text)">free to complete</strong>. Your results and awareness level are shown immediately. The full written report unlocks for <strong style="color:var(--text)">£50</strong> — paid at the end, no account required.</p>
  <div class="oc-field">
  <div class="oc-field-label">Name</div>
  <input class="oc-input" id="obs-name" type="text" placeholder="Your name" oninput="updateObsNode()">
@@ -464,10 +479,10 @@ body{padding-top:70px}
  <circle cx="450" cy="450" r="39" fill="none" stroke="#D4D0C8" stroke-width="0.5" opacity="0.4"/>
  <circle cx="450" cy="450" r="3" fill="var(--muted)" opacity="0.4"/>
  <text id="obs-label" x="450" y="455" text-anchor="middle" font-size="11" fill="var(--muted)" font-family="monospace" opacity="0.7">–</text>
- <g id="node-narc" style="opacity:0.12;transition:opacity 0.5s" onmouseover="showTooltip('narc',event)" onmouseout="hideTooltip()"><polygon points="450,272 480,302 450,332 420,302" fill="transparent" fill-opacity="0" stroke="#C4622D" stroke-width="2.2"/><text x="450" y="301" text-anchor="middle" font-size="10" fill="#C4622D" font-family="monospace">NARC</text><text id="v-narc" x="450" y="315" text-anchor="middle" font-size="9" fill="#C4622D" font-family="monospace" opacity="0.7">–</text></g>
- <g id="node-sist" style="opacity:0.12;transition:opacity 0.5s" onmouseover="showTooltip('sist',event)" onmouseout="hideTooltip()"><polygon points="598,420 628,450 598,480 568,450" fill="transparent" fill-opacity="0" stroke="#534AB7" stroke-width="2.2"/><text x="598" y="449" text-anchor="middle" font-size="10" fill="#534AB7" font-family="monospace">SIST</text><text id="v-sist" x="598" y="463" text-anchor="middle" font-size="9" fill="#534AB7" font-family="monospace" opacity="0.7">–</text></g>
- <g id="node-yarc" style="opacity:0.12;transition:opacity 0.5s" onmouseover="showTooltip('yarc',event)" onmouseout="hideTooltip()"><polygon points="450,568 480,598 450,628 420,598" fill="transparent" fill-opacity="0" stroke="#1D9E75" stroke-width="2.2"/><text x="450" y="597" text-anchor="middle" font-size="10" fill="#1D9E75" font-family="monospace">YARC</text><text id="v-yarc" x="450" y="611" text-anchor="middle" font-size="9" fill="#1D9E75" font-family="monospace" opacity="0.7">–</text></g>
- <g id="node-oll" style="opacity:0.12;transition:opacity 0.5s" onmouseover="showTooltip('oll',event)" onmouseout="hideTooltip()"><polygon points="302,420 332,450 302,480 272,450" fill="transparent" fill-opacity="0" stroke="#A0426B" stroke-width="2.2"/><text x="302" y="449" text-anchor="middle" font-size="10" fill="#A0426B" font-family="monospace">Øll</text><text id="v-oll" x="302" y="463" text-anchor="middle" font-size="9" fill="#A0426B" font-family="monospace" opacity="0.7">–</text></g>
+ <g id="node-narc" style="opacity:0.12;transition:opacity 0.5s" onmouseover="showTooltip('narc',event)" onmouseout="hideTooltip()"><polygon points="450,272 480,302 450,332 420,302" fill="transparent" fill-opacity="0" stroke="#C4622D" stroke-width="2.2"/><text x="450" y="301" text-anchor="middle" font-size="10" fill="#C4622D" font-family="monospace">Narc</text><text id="v-narc" x="450" y="315" text-anchor="middle" font-size="9" fill="#C4622D" font-family="monospace" opacity="0.7">–</text></g>
+ <g id="node-sist" style="opacity:0.12;transition:opacity 0.5s" onmouseover="showTooltip('sist',event)" onmouseout="hideTooltip()"><polygon points="598,420 628,450 598,480 568,450" fill="transparent" fill-opacity="0" stroke="#534AB7" stroke-width="2.2"/><text x="598" y="449" text-anchor="middle" font-size="10" fill="#534AB7" font-family="monospace">Grounded</text><text id="v-sist" x="598" y="463" text-anchor="middle" font-size="9" fill="#534AB7" font-family="monospace" opacity="0.7">–</text></g>
+ <g id="node-yarc" style="opacity:0.12;transition:opacity 0.5s" onmouseover="showTooltip('yarc',event)" onmouseout="hideTooltip()"><polygon points="450,568 480,598 450,628 420,598" fill="transparent" fill-opacity="0" stroke="#1D9E75" stroke-width="2.2"/><text x="450" y="597" text-anchor="middle" font-size="10" fill="#1D9E75" font-family="monospace">Empath</text><text id="v-yarc" x="450" y="611" text-anchor="middle" font-size="9" fill="#1D9E75" font-family="monospace" opacity="0.7">–</text></g>
+ <g id="node-oll" style="opacity:0.12;transition:opacity 0.5s" onmouseover="showTooltip('oll',event)" onmouseout="hideTooltip()"><polygon points="302,420 332,450 302,480 272,450" fill="transparent" fill-opacity="0" stroke="#A0426B" stroke-width="2.2"/><text x="302" y="449" text-anchor="middle" font-size="10" fill="#A0426B" font-family="monospace">Volatile</text><text id="v-oll" x="302" y="463" text-anchor="middle" font-size="9" fill="#A0426B" font-family="monospace" opacity="0.7">–</text></g>
  <g id="node-a1" style="opacity:0;transition:opacity 0.5s;cursor:pointer" onmouseover="showTooltip('a1',event)" onmouseout="hideTooltip()"><ellipse fill="transparent" fill-opacity="0" cx="367.6" cy="246" rx="20" ry="11" transform="rotate(-22,367.6,246)" stroke="#C4622D" stroke-width="2.5"/><text x="367.6" y="250" text-anchor="middle" font-size="8.5" fill="#C4622D" font-family="monospace">A1</text></g>
  <g id="node-a2" style="opacity:0;transition:opacity 0.5s;cursor:pointer" onmouseover="showTooltip('a2',event)" onmouseout="hideTooltip()"><ellipse fill="transparent" fill-opacity="0" cx="532.4" cy="246" rx="20" ry="11" transform="rotate(22,532.4,246)" stroke="#C4622D" stroke-width="2.5"/><text x="532.4" y="250" text-anchor="middle" font-size="8.5" fill="#C4622D" font-family="monospace">A2</text></g>
  <g id="node-a3" style="opacity:0;transition:opacity 0.5s;cursor:pointer" onmouseover="showTooltip('a3',event)" onmouseout="hideTooltip()"><ellipse fill="transparent" fill-opacity="0" cx="654" cy="367.6" rx="20" ry="11" transform="rotate(68,654,367.6)" stroke="#534AB7" stroke-width="2.5"/><text x="654" y="371.6" text-anchor="middle" font-size="8.5" fill="#534AB7" font-family="monospace">A3</text></g>
@@ -515,10 +530,10 @@ body{padding-top:70px}
  <circle cx="450" cy="450" r="39" fill="none" stroke="#D4D0C8" stroke-width="0.5" opacity="0.4"/>
  <circle cx="450" cy="450" r="3" fill="var(--muted)" opacity="0.4"/>
  <text id="sub-obs-label" x="450" y="455" text-anchor="middle" font-size="11" fill="var(--muted)" font-family="monospace" opacity="0.7">–</text>
- <g id="sub-node-narc" style="opacity:0.12;transition:opacity 0.5s"><polygon points="450,272 480,302 450,332 420,302" fill="none" stroke="#C4622D" stroke-width="2.2"/><text x="450" y="301" text-anchor="middle" font-size="10" fill="#C4622D" font-family="monospace">NARC</text><text id="sub-v-narc" x="450" y="315" text-anchor="middle" font-size="9" fill="#C4622D" font-family="monospace" opacity="0.7">–</text></g>
- <g id="sub-node-sist" style="opacity:0.12;transition:opacity 0.5s"><polygon points="598,420 628,450 598,480 568,450" fill="none" stroke="#534AB7" stroke-width="2.2"/><text x="598" y="449" text-anchor="middle" font-size="10" fill="#534AB7" font-family="monospace">SIST</text><text id="sub-v-sist" x="598" y="463" text-anchor="middle" font-size="9" fill="#534AB7" font-family="monospace" opacity="0.7">–</text></g>
- <g id="sub-node-yarc" style="opacity:0.12;transition:opacity 0.5s"><polygon points="450,568 480,598 450,628 420,598" fill="none" stroke="#1D9E75" stroke-width="2.2"/><text x="450" y="597" text-anchor="middle" font-size="10" fill="#1D9E75" font-family="monospace">YARC</text><text id="sub-v-yarc" x="450" y="611" text-anchor="middle" font-size="9" fill="#1D9E75" font-family="monospace" opacity="0.7">–</text></g>
- <g id="sub-node-oll" style="opacity:0.12;transition:opacity 0.5s"><polygon points="302,420 332,450 302,480 272,450" fill="none" stroke="#A0426B" stroke-width="2.2"/><text x="302" y="449" text-anchor="middle" font-size="10" fill="#A0426B" font-family="monospace">Øll</text><text id="sub-v-oll" x="302" y="463" text-anchor="middle" font-size="9" fill="#A0426B" font-family="monospace" opacity="0.7">–</text></g>
+ <g id="sub-node-narc" style="opacity:0.12;transition:opacity 0.5s"><polygon points="450,272 480,302 450,332 420,302" fill="none" stroke="#C4622D" stroke-width="2.2"/><text x="450" y="301" text-anchor="middle" font-size="10" fill="#C4622D" font-family="monospace">Narc</text><text id="sub-v-narc" x="450" y="315" text-anchor="middle" font-size="9" fill="#C4622D" font-family="monospace" opacity="0.7">–</text></g>
+ <g id="sub-node-sist" style="opacity:0.12;transition:opacity 0.5s"><polygon points="598,420 628,450 598,480 568,450" fill="none" stroke="#534AB7" stroke-width="2.2"/><text x="598" y="449" text-anchor="middle" font-size="10" fill="#534AB7" font-family="monospace">Grounded</text><text id="sub-v-sist" x="598" y="463" text-anchor="middle" font-size="9" fill="#534AB7" font-family="monospace" opacity="0.7">–</text></g>
+ <g id="sub-node-yarc" style="opacity:0.12;transition:opacity 0.5s"><polygon points="450,568 480,598 450,628 420,598" fill="none" stroke="#1D9E75" stroke-width="2.2"/><text x="450" y="597" text-anchor="middle" font-size="10" fill="#1D9E75" font-family="monospace">Empath</text><text id="sub-v-yarc" x="450" y="611" text-anchor="middle" font-size="9" fill="#1D9E75" font-family="monospace" opacity="0.7">–</text></g>
+ <g id="sub-node-oll" style="opacity:0.12;transition:opacity 0.5s"><polygon points="302,420 332,450 302,480 272,450" fill="none" stroke="#A0426B" stroke-width="2.2"/><text x="302" y="449" text-anchor="middle" font-size="10" fill="#A0426B" font-family="monospace">Volatile</text><text id="sub-v-oll" x="302" y="463" text-anchor="middle" font-size="9" fill="#A0426B" font-family="monospace" opacity="0.7">–</text></g>
  <g id="sub-sc1" style="opacity:0;transition:opacity 0.4s"><polygon points="298.7,205.5 276.1,205.2 287.4,185.9" fill="transparent" fill-opacity="0" stroke="#C4622D" stroke-width="2.5"/><text x="264" y="189" text-anchor="middle" font-size="7" fill="#C4622D" font-family="monospace" opacity="0.85">Presence</text></g>
  <g id="sub-sc2" style="opacity:0;transition:opacity 0.4s"><polygon points="389,169 383.5,147.1 405.1,153.1" fill="transparent" fill-opacity="0" stroke="#C4622D" stroke-width="2.5"/><text x="399.8" y="135" text-anchor="middle" font-size="7" fill="#C4622D" font-family="monospace" opacity="0.85">Fear</text></g>
  <g id="sub-sc3" style="opacity:0;transition:opacity 0.4s"><polygon points="511,169 494.9,153.1 516.5,147.1" fill="transparent" fill-opacity="0" stroke="#C4622D" stroke-width="2.5"/><text x="500.2" y="135" text-anchor="middle" font-size="7" fill="#C4622D" font-family="monospace" opacity="0.85">Intention</text></g>
@@ -555,10 +570,10 @@ body{padding-top:70px}
 
  <div class="diag-layer-badge" id="diag-layer-badge">Part 1 · Conscious layer</div>
  <div class="oc-strip">
- <div class="oc-mini"><div class="oc-mini-label" style="color:var(--narc)">NARC</div><div class="oc-mini-track"><div class="oc-mini-fill" id="oc-narc" style="width:25%;background:var(--narc)"></div></div><div class="oc-mini-pct" id="ocp-narc">25%</div></div>
- <div class="oc-mini"><div class="oc-mini-label" style="color:var(--sist)">SIST</div><div class="oc-mini-track"><div class="oc-mini-fill" id="oc-sist" style="width:25%;background:var(--sist)"></div></div><div class="oc-mini-pct" id="ocp-sist">25%</div></div>
- <div class="oc-mini"><div class="oc-mini-label" style="color:var(--yarc)">YARC</div><div class="oc-mini-track"><div class="oc-mini-fill" id="oc-yarc" style="width:25%;background:var(--yarc)"></div></div><div class="oc-mini-pct" id="ocp-yarc">25%</div></div>
- <div class="oc-mini"><div class="oc-mini-label" style="color:var(--oll)">Øll</div><div class="oc-mini-track"><div class="oc-mini-fill" id="oc-oll" style="width:25%;background:var(--oll)"></div></div><div class="oc-mini-pct" id="ocp-oll">25%</div></div>
+ <div class="oc-mini"><div class="oc-mini-label" style="color:var(--narc)">Narc</div><div class="oc-mini-track"><div class="oc-mini-fill" id="oc-narc" style="width:25%;background:var(--narc)"></div></div><div class="oc-mini-pct" id="ocp-narc">25%</div></div>
+ <div class="oc-mini"><div class="oc-mini-label" style="color:var(--sist)">Grounded</div><div class="oc-mini-track"><div class="oc-mini-fill" id="oc-sist" style="width:25%;background:var(--sist)"></div></div><div class="oc-mini-pct" id="ocp-sist">25%</div></div>
+ <div class="oc-mini"><div class="oc-mini-label" style="color:var(--yarc)">Empath</div><div class="oc-mini-track"><div class="oc-mini-fill" id="oc-yarc" style="width:25%;background:var(--yarc)"></div></div><div class="oc-mini-pct" id="ocp-yarc">25%</div></div>
+ <div class="oc-mini"><div class="oc-mini-label" style="color:var(--oll)">Volatile</div><div class="oc-mini-track"><div class="oc-mini-fill" id="oc-oll" style="width:25%;background:var(--oll)"></div></div><div class="oc-mini-pct" id="ocp-oll">25%</div></div>
  </div>
  </div>
 
@@ -572,7 +587,7 @@ body{padding-top:70px}
  <div class="ar-state" id="ar-state">–</div>
  <div class="ar-desc" id="ar-desc">–</div>
  <div class="ar-track"><div class="ar-fill" id="ar-fill" style="width:0%"></div></div>
- <div style="margin-top:8px;font-size:0.72rem;color:var(--muted);line-height:1.7;max-width:300px;text-align:center">Your Blueprint map and data summary are shown below. The full written AI report unlocks for <strong style="color:var(--text)">£49</strong>.</div>
+ <div style="margin-top:8px;font-size:0.72rem;color:var(--muted);line-height:1.7;max-width:300px;text-align:center">Your Blueprint map and data summary are shown below. The full written report unlocks for <strong style="color:var(--text)">£50</strong>.</div>
  <button class="ar-generate-btn" id="ar-gen-btn" onclick="proceedToResults()">View my results →</button>
  </div>
  <!-- PAYMENT GATE (shown after reveal, before full report) -->
@@ -580,10 +595,10 @@ body{padding-top:70px}
  <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted)">Assessment complete</div>
  <div class="pg-score" id="pg-score-display" style="color:var(--sist)">–</div>
  <div class="pg-title" id="pg-level-display">–</div>
- <p class="pg-copy">Your Blueprint ratios, node scores, and Awareness Index™ are ready. To unlock the full written AI profile, email your code and you'll receive a payment link for £49 within 24 hours.</p>
+ <p class="pg-copy">Your Blueprint ratios, node scores, and Awareness Index™ are ready. To unlock the full written profile, email your code and you'll receive a payment link for £50 within 24 hours.</p>
  <div class="pg-price-box">
- <div class="pg-price">£49</div>
- <div class="pg-price-label">Full AI interpretive report · one-off · no account needed</div>
+ <div class="pg-price">£50</div>
+ <div class="pg-price-label">Full written report · one-off · no account needed</div>
  <button class="report-locked-btn pg-cta-btn" onclick="emailReportRequest()">Request my full report →</button>
  </div>
  <span class="pg-skip" onclick="showResultsWithoutReport()">Just show me my data →</span>
@@ -747,63 +762,63 @@ body{padding-top:70px}
 // ─────────────────────────────────────────────────────
 const NODES=[
  // PART 1 – CONSCIOUS (Q1–28)
- {id:'sc1', name:'Intention', code:'NARC',slot:'A1', layer:'Conscious', col:'#C4622D',svgId:'node-sc1', subId:'sub-sc1', appId:'node-a1',ocId:'node-narc',reversed:false,q:"I feel clear about what I genuinely want from life."},
- {id:'sc2', name:'Intention', code:'NARC',slot:'A1', layer:'Conscious', col:'#C4622D',svgId:'node-sc2', subId:'sub-sc2', appId:'node-a1',ocId:'node-narc',reversed:false,q:"My goals reflect my personal values rather than outside expectations."},
- {id:'sc3', name:'Presence', code:'NARC',slot:'A2', layer:'Conscious', col:'#C4622D',svgId:'node-sc3', subId:'sub-sc3', appId:'node-a2',ocId:'node-narc',reversed:false,q:"I am able to stay mentally present during important moments."},
- {id:'sc4', name:'Presence', code:'NARC',slot:'A2', layer:'Conscious', col:'#C4622D',svgId:'node-sc4', subId:'sub-sc4', appId:'node-a2',ocId:'node-narc',reversed:false,q:"I notice my emotional state before reacting impulsively."},
- {id:'sc5', name:'Core Self', code:'SIST',slot:'A3', layer:'Conscious', col:'#534AB7',svgId:'node-sc5', subId:'sub-sc5', appId:'node-a3',ocId:'node-sist',reversed:false,q:"I feel connected to who I truly am beneath social roles."},
- {id:'sc6', name:'Core Self', code:'SIST',slot:'A3', layer:'Conscious', col:'#534AB7',svgId:'node-sc6', subId:'sub-sc6', appId:'node-a3',ocId:'node-sist',reversed:false,q:"I rarely feel the need to become someone different to gain approval."},
- {id:'sc7', name:'Integrity', code:'SIST',slot:'A4', layer:'Conscious', col:'#534AB7',svgId:'node-sc7', subId:'sub-sc7', appId:'node-a4',ocId:'node-sist',reversed:false,q:"My actions usually align with the values I claim to believe in."},
- {id:'sc8', name:'Integrity', code:'SIST',slot:'A4', layer:'Conscious', col:'#534AB7',svgId:'node-sc8', subId:'sub-sc8', appId:'node-a4',ocId:'node-sist',reversed:false,q:"I remain honest with myself even when the truth feels uncomfortable."},
- {id:'sc9', name:'Balance', code:'YARC',slot:'A5', layer:'Conscious', col:'#1D9E75',svgId:'node-sc9', subId:'sub-sc9', appId:'node-a5',ocId:'node-yarc',reversed:false,q:"I can usually remain emotionally stable during stressful situations."},
- {id:'sc10',name:'Balance', code:'YARC',slot:'A5', layer:'Conscious', col:'#1D9E75',svgId:'node-sc10',subId:'sub-sc10',appId:'node-a5',ocId:'node-yarc',reversed:false,q:"I consider multiple perspectives before forming conclusions."},
- {id:'sc11',name:'Connection', code:'YARC',slot:'A6', layer:'Conscious', col:'#1D9E75',svgId:'node-sc11',subId:'sub-sc11',appId:'node-a6',ocId:'node-yarc',reversed:false,q:"I genuinely try to understand other people's perspectives."},
- {id:'sc12',name:'Connection', code:'YARC',slot:'A6', layer:'Conscious', col:'#1D9E75',svgId:'node-sc12',subId:'sub-sc12',appId:'node-a6',ocId:'node-yarc',reversed:false,q:"I value meaningful connection more than status or appearance."},
- {id:'sc13',name:'Purpose', code:'Øll', slot:'A7', layer:'Conscious', col:'#A0426B',svgId:'node-sc13',subId:'sub-sc13',appId:'node-a7',ocId:'node-oll', reversed:false,q:"I feel my life has direction or meaning beyond short-term survival."},
- {id:'sc14',name:'Purpose', code:'Øll', slot:'A7', layer:'Conscious', col:'#A0426B',svgId:'node-sc14',subId:'sub-sc14',appId:'node-a7',ocId:'node-oll', reversed:false,q:"I regularly think about my long-term purpose."},
- {id:'sc15',name:'Pattern', code:'Øll', slot:'A8', layer:'Conscious', col:'#A0426B',svgId:'node-sc15',subId:'sub-sc15',appId:'node-a8',ocId:'node-oll', reversed:false,q:"I notice recurring patterns in my behaviour over time."},
- {id:'sc16',name:'Pattern', code:'Øll', slot:'A8', layer:'Conscious', col:'#A0426B',svgId:'node-sc16',subId:'sub-sc16',appId:'node-a8',ocId:'node-oll', reversed:false,q:"I can identify cycles that repeatedly appear in my life."},
- {id:'ap1', name:'A1',appNum:1, code:'NARC',slot:'APP',layer:'Conscious', col:'#C4622D',svgId:'node-a1', subId:'sub-node-a1', appId:'node-a1',ocId:'node-narc',reversed:false,q:"When I commit to something, I follow through consistently rather than losing momentum over time."},
- {id:'ap2', name:'A2',appNum:2, code:'NARC',slot:'APP',layer:'Conscious', col:'#C4622D',svgId:'node-a2', subId:'sub-node-a2', appId:'node-a2',ocId:'node-narc',reversed:false,q:"I am generally aware of how my inner state is affecting my behaviour in real time."},
- {id:'ap3', name:'A3',appNum:3, code:'SIST',slot:'APP',layer:'Conscious', col:'#534AB7',svgId:'node-a3', subId:'sub-node-a3', appId:'node-a3',ocId:'node-sist',reversed:false,q:"My behaviour tends to be consistent whether I am being observed or not."},
- {id:'ap4', name:'A4',appNum:4, code:'SIST',slot:'APP',layer:'Conscious', col:'#534AB7',svgId:'node-a4', subId:'sub-node-a4', appId:'node-a4',ocId:'node-sist',reversed:false,q:"When I make decisions, I can usually explain my reasoning clearly and honestly."},
- {id:'ap5', name:'A5',appNum:5, code:'YARC',slot:'APP',layer:'Conscious', col:'#1D9E75',svgId:'node-a5', subId:'sub-node-a5', appId:'node-a5',ocId:'node-yarc',reversed:false,q:"I can think clearly and remain grounded even when situations are emotionally charged."},
- {id:'ap6', name:'A6',appNum:6, code:'YARC',slot:'APP',layer:'Conscious', col:'#1D9E75',svgId:'node-a6', subId:'sub-node-a6', appId:'node-a6',ocId:'node-yarc',reversed:false,q:"I am able to be genuinely present with others without losing my own emotional stability."},
- {id:'ap7', name:'A7',appNum:7, code:'Øll', slot:'APP',layer:'Conscious', col:'#A0426B',svgId:'node-a7', subId:'sub-node-a7', appId:'node-a7',ocId:'node-oll', reversed:false,q:"The way I show up for others reflects something deeper than habit or obligation."},
- {id:'ap8', name:'A8',appNum:8, code:'Øll', slot:'APP',layer:'Conscious', col:'#A0426B',svgId:'node-a8', subId:'sub-node-a8', appId:'node-a8',ocId:'node-oll', reversed:false,q:"I am actively breaking cycles that no longer serve me rather than just recognising them."},
- {id:'oc1', name:'NARC', code:'NARC',slot:'OC', layer:'Conscious', col:'#C4622D',svgId:'node-narc',subId:'sub-node-narc',appId:'node-narc',ocId:'node-narc',reversed:false,q:"I have a clear and stable sense of who I am that doesn't depend on how others see me."},
- {id:'oc2', name:'SIST', code:'SIST',slot:'OC', layer:'Conscious', col:'#534AB7',svgId:'node-sist',subId:'sub-node-sist',appId:'node-sist',ocId:'node-sist',reversed:false,q:"I am able to manage my emotional responses and maintain stability even under pressure."},
- {id:'oc3', name:'YARC', code:'YARC',slot:'OC', layer:'Conscious', col:'#1D9E75',svgId:'node-yarc',subId:'sub-node-yarc',appId:'node-yarc',ocId:'node-yarc',reversed:false,q:"I genuinely invest in the wellbeing of others without losing sight of my own needs."},
- {id:'oc4', name:'Øll', code:'Øll', slot:'OC', layer:'Conscious', col:'#A0426B',svgId:'node-oll', subId:'sub-node-oll', appId:'node-oll', ocId:'node-oll', reversed:false,q:"I am able to sit with uncertainty and discomfort without needing to immediately resolve or escape it."},
+ {id:'sc1', name:'Intention', code:'Narc',slot:'A1', layer:'Conscious', col:'#C4622D',svgId:'node-sc1', subId:'sub-sc1', appId:'node-a1',ocId:'node-narc',reversed:false,q:"I feel clear about what I genuinely want from life."},
+ {id:'sc2', name:'Intention', code:'Narc',slot:'A1', layer:'Conscious', col:'#C4622D',svgId:'node-sc2', subId:'sub-sc2', appId:'node-a1',ocId:'node-narc',reversed:false,q:"My goals reflect my personal values rather than outside expectations."},
+ {id:'sc3', name:'Presence', code:'Narc',slot:'A2', layer:'Conscious', col:'#C4622D',svgId:'node-sc3', subId:'sub-sc3', appId:'node-a2',ocId:'node-narc',reversed:false,q:"I am able to stay mentally present during important moments."},
+ {id:'sc4', name:'Presence', code:'Narc',slot:'A2', layer:'Conscious', col:'#C4622D',svgId:'node-sc4', subId:'sub-sc4', appId:'node-a2',ocId:'node-narc',reversed:false,q:"I notice my emotional state before reacting impulsively."},
+ {id:'sc5', name:'Core Self', code:'Grounded',slot:'A3', layer:'Conscious', col:'#534AB7',svgId:'node-sc5', subId:'sub-sc5', appId:'node-a3',ocId:'node-sist',reversed:false,q:"I feel connected to who I truly am beneath social roles."},
+ {id:'sc6', name:'Core Self', code:'Grounded',slot:'A3', layer:'Conscious', col:'#534AB7',svgId:'node-sc6', subId:'sub-sc6', appId:'node-a3',ocId:'node-sist',reversed:false,q:"I rarely feel the need to become someone different to gain approval."},
+ {id:'sc7', name:'Integrity', code:'Grounded',slot:'A4', layer:'Conscious', col:'#534AB7',svgId:'node-sc7', subId:'sub-sc7', appId:'node-a4',ocId:'node-sist',reversed:false,q:"My actions usually align with the values I claim to believe in."},
+ {id:'sc8', name:'Integrity', code:'Grounded',slot:'A4', layer:'Conscious', col:'#534AB7',svgId:'node-sc8', subId:'sub-sc8', appId:'node-a4',ocId:'node-sist',reversed:false,q:"I remain honest with myself even when the truth feels uncomfortable."},
+ {id:'sc9', name:'Balance', code:'Empath',slot:'A5', layer:'Conscious', col:'#1D9E75',svgId:'node-sc9', subId:'sub-sc9', appId:'node-a5',ocId:'node-yarc',reversed:false,q:"I can usually remain emotionally stable during stressful situations."},
+ {id:'sc10',name:'Balance', code:'Empath',slot:'A5', layer:'Conscious', col:'#1D9E75',svgId:'node-sc10',subId:'sub-sc10',appId:'node-a5',ocId:'node-yarc',reversed:false,q:"I consider multiple perspectives before forming conclusions."},
+ {id:'sc11',name:'Connection', code:'Empath',slot:'A6', layer:'Conscious', col:'#1D9E75',svgId:'node-sc11',subId:'sub-sc11',appId:'node-a6',ocId:'node-yarc',reversed:false,q:"I genuinely try to understand other people's perspectives."},
+ {id:'sc12',name:'Connection', code:'Empath',slot:'A6', layer:'Conscious', col:'#1D9E75',svgId:'node-sc12',subId:'sub-sc12',appId:'node-a6',ocId:'node-yarc',reversed:false,q:"I value meaningful connection more than status or appearance."},
+ {id:'sc13',name:'Purpose', code:'Volatile', slot:'A7', layer:'Conscious', col:'#A0426B',svgId:'node-sc13',subId:'sub-sc13',appId:'node-a7',ocId:'node-oll', reversed:false,q:"I feel my life has direction or meaning beyond short-term survival."},
+ {id:'sc14',name:'Purpose', code:'Volatile', slot:'A7', layer:'Conscious', col:'#A0426B',svgId:'node-sc14',subId:'sub-sc14',appId:'node-a7',ocId:'node-oll', reversed:false,q:"I regularly think about my long-term purpose."},
+ {id:'sc15',name:'Pattern', code:'Volatile', slot:'A8', layer:'Conscious', col:'#A0426B',svgId:'node-sc15',subId:'sub-sc15',appId:'node-a8',ocId:'node-oll', reversed:false,q:"I notice recurring patterns in my behaviour over time."},
+ {id:'sc16',name:'Pattern', code:'Volatile', slot:'A8', layer:'Conscious', col:'#A0426B',svgId:'node-sc16',subId:'sub-sc16',appId:'node-a8',ocId:'node-oll', reversed:false,q:"I can identify cycles that repeatedly appear in my life."},
+ {id:'ap1', name:'A1',appNum:1, code:'Narc',slot:'APP',layer:'Conscious', col:'#C4622D',svgId:'node-a1', subId:'sub-node-a1', appId:'node-a1',ocId:'node-narc',reversed:false,q:"When I commit to something, I follow through consistently rather than losing momentum over time."},
+ {id:'ap2', name:'A2',appNum:2, code:'Narc',slot:'APP',layer:'Conscious', col:'#C4622D',svgId:'node-a2', subId:'sub-node-a2', appId:'node-a2',ocId:'node-narc',reversed:false,q:"I am generally aware of how my inner state is affecting my behaviour in real time."},
+ {id:'ap3', name:'A3',appNum:3, code:'Grounded',slot:'APP',layer:'Conscious', col:'#534AB7',svgId:'node-a3', subId:'sub-node-a3', appId:'node-a3',ocId:'node-sist',reversed:false,q:"My behaviour tends to be consistent whether I am being observed or not."},
+ {id:'ap4', name:'A4',appNum:4, code:'Grounded',slot:'APP',layer:'Conscious', col:'#534AB7',svgId:'node-a4', subId:'sub-node-a4', appId:'node-a4',ocId:'node-sist',reversed:false,q:"When I make decisions, I can usually explain my reasoning clearly and honestly."},
+ {id:'ap5', name:'A5',appNum:5, code:'Empath',slot:'APP',layer:'Conscious', col:'#1D9E75',svgId:'node-a5', subId:'sub-node-a5', appId:'node-a5',ocId:'node-yarc',reversed:false,q:"I can think clearly and remain grounded even when situations are emotionally charged."},
+ {id:'ap6', name:'A6',appNum:6, code:'Empath',slot:'APP',layer:'Conscious', col:'#1D9E75',svgId:'node-a6', subId:'sub-node-a6', appId:'node-a6',ocId:'node-yarc',reversed:false,q:"I am able to be genuinely present with others without losing my own emotional stability."},
+ {id:'ap7', name:'A7',appNum:7, code:'Volatile', slot:'APP',layer:'Conscious', col:'#A0426B',svgId:'node-a7', subId:'sub-node-a7', appId:'node-a7',ocId:'node-oll', reversed:false,q:"The way I show up for others reflects something deeper than habit or obligation."},
+ {id:'ap8', name:'A8',appNum:8, code:'Volatile', slot:'APP',layer:'Conscious', col:'#A0426B',svgId:'node-a8', subId:'sub-node-a8', appId:'node-a8',ocId:'node-oll', reversed:false,q:"I am actively breaking cycles that no longer serve me rather than just recognising them."},
+ {id:'oc1', name:'Narc', code:'Narc',slot:'OC', layer:'Conscious', col:'#C4622D',svgId:'node-narc',subId:'sub-node-narc',appId:'node-narc',ocId:'node-narc',reversed:false,q:"I have a clear and stable sense of who I am that doesn't depend on how others see me."},
+ {id:'oc2', name:'Grounded', code:'Grounded',slot:'OC', layer:'Conscious', col:'#534AB7',svgId:'node-sist',subId:'sub-node-sist',appId:'node-sist',ocId:'node-sist',reversed:false,q:"I am able to manage my emotional responses and maintain stability even under pressure."},
+ {id:'oc3', name:'Empath', code:'Empath',slot:'OC', layer:'Conscious', col:'#1D9E75',svgId:'node-yarc',subId:'sub-node-yarc',appId:'node-yarc',ocId:'node-yarc',reversed:false,q:"I genuinely invest in the wellbeing of others without losing sight of my own needs."},
+ {id:'oc4', name:'Volatile', code:'Volatile', slot:'OC', layer:'Conscious', col:'#A0426B',svgId:'node-oll', subId:'sub-node-oll', appId:'node-oll', ocId:'node-oll', reversed:false,q:"I am able to sit with uncertainty and discomfort without needing to immediately resolve or escape it."},
  // PART 2 – SUBCONSCIOUS (Q29–56)
- {id:'sc17',name:'Intention', code:'NARC',slot:'A1', layer:'Subconscious',col:'#C4622D',svgId:'node-sc1', subId:'sub-sc1', appId:'node-a1',ocId:'node-narc',reversed:true, q:"I often pursue things because they are expected of me rather than because I truly want them."},
- {id:'sc18',name:'Intention', code:'NARC',slot:'A1', layer:'Subconscious',col:'#C4622D',svgId:'node-sc2', subId:'sub-sc2', appId:'node-a1',ocId:'node-narc',reversed:true, q:"I sometimes feel disconnected from the goals I spend most of my time chasing."},
- {id:'sc19',name:'Presence', code:'NARC',slot:'A2', layer:'Subconscious',col:'#C4622D',svgId:'node-sc3', subId:'sub-sc3', appId:'node-a2',ocId:'node-narc',reversed:true, q:"My mind frequently drifts away from the present moment."},
- {id:'sc20',name:'Presence', code:'NARC',slot:'A2', layer:'Subconscious',col:'#C4622D',svgId:'node-sc4', subId:'sub-sc4', appId:'node-a2',ocId:'node-narc',reversed:true, q:"I often react emotionally before fully understanding a situation."},
- {id:'sc21',name:'Core Self', code:'SIST',slot:'A3', layer:'Subconscious',col:'#534AB7',svgId:'node-sc5', subId:'sub-sc5', appId:'node-a3',ocId:'node-sist',reversed:true, q:"I change parts of myself depending on who I am around."},
- {id:'sc22',name:'Core Self', code:'SIST',slot:'A3', layer:'Subconscious',col:'#534AB7',svgId:'node-sc6', subId:'sub-sc6', appId:'node-a3',ocId:'node-sist',reversed:true, q:"I sometimes feel unsure who the real me actually is."},
- {id:'sc23',name:'Integrity', code:'SIST',slot:'A4', layer:'Subconscious',col:'#534AB7',svgId:'node-sc7', subId:'sub-sc7', appId:'node-a4',ocId:'node-sist',reversed:true, q:"I occasionally behave in ways that conflict with what I believe is right."},
- {id:'sc24',name:'Integrity', code:'SIST',slot:'A4', layer:'Subconscious',col:'#534AB7',svgId:'node-sc8', subId:'sub-sc8', appId:'node-a4',ocId:'node-sist',reversed:true, q:"I sometimes compromise my values to avoid discomfort."},
- {id:'sc25',name:'Balance', code:'YARC',slot:'A5', layer:'Subconscious',col:'#1D9E75',svgId:'node-sc9', subId:'sub-sc9', appId:'node-a5',ocId:'node-yarc',reversed:true, q:"Negative emotions can stay with me long after situations are over."},
- {id:'sc26',name:'Balance', code:'YARC',slot:'A5', layer:'Subconscious',col:'#1D9E75',svgId:'node-sc10',subId:'sub-sc10',appId:'node-a5',ocId:'node-yarc',reversed:true, q:"Stress can quickly overwhelm my thinking."},
- {id:'sc27',name:'Connection', code:'YARC',slot:'A6', layer:'Subconscious',col:'#1D9E75',svgId:'node-sc11',subId:'sub-sc11',appId:'node-a6',ocId:'node-yarc',reversed:true, q:"I often assume people misunderstand me."},
- {id:'sc28',name:'Connection', code:'YARC',slot:'A6', layer:'Subconscious',col:'#1D9E75',svgId:'node-sc12',subId:'sub-sc12',appId:'node-a6',ocId:'node-yarc',reversed:true, q:"I sometimes withdraw emotionally instead of expressing how I truly feel."},
- {id:'sc29',name:'Purpose', code:'Øll', slot:'A7', layer:'Subconscious',col:'#A0426B',svgId:'node-sc13',subId:'sub-sc13',appId:'node-a7',ocId:'node-oll', reversed:true, q:"I sometimes feel like I am moving through life without real direction."},
- {id:'sc30',name:'Purpose', code:'Øll', slot:'A7', layer:'Subconscious',col:'#A0426B',svgId:'node-sc14',subId:'sub-sc14',appId:'node-a7',ocId:'node-oll', reversed:true, q:"I often focus more on avoiding failure than pursuing meaning."},
- {id:'sc31',name:'Pattern', code:'Øll', slot:'A8', layer:'Subconscious',col:'#A0426B',svgId:'node-sc15',subId:'sub-sc15',appId:'node-a8',ocId:'node-oll', reversed:true, q:"I often repeat behaviours I later regret."},
- {id:'sc32',name:'Pattern', code:'Øll', slot:'A8', layer:'Subconscious',col:'#A0426B',svgId:'node-sc16',subId:'sub-sc16',appId:'node-a8',ocId:'node-oll', reversed:true, q:"I fall back into habits I promised to change even when I recognise the cycle."},
- {id:'ap9', name:'A1',appNum:1, code:'NARC',slot:'APP',layer:'Subconscious',col:'#C4622D',svgId:'node-a1', subId:'sub-node-a1', appId:'node-a1',ocId:'node-narc',reversed:true, q:"I often start things with energy but lose momentum before they mean anything."},
- {id:'ap10',name:'A2',appNum:2, code:'NARC',slot:'APP',layer:'Subconscious',col:'#C4622D',svgId:'node-a2', subId:'sub-node-a2', appId:'node-a2',ocId:'node-narc',reversed:true, q:"I frequently notice my mood has affected a situation only after the damage is done."},
- {id:'ap11',name:'A3',appNum:3, code:'SIST',slot:'APP',layer:'Subconscious',col:'#534AB7',svgId:'node-a3', subId:'sub-node-a3', appId:'node-a3',ocId:'node-sist',reversed:true, q:"I behave differently when no one is watching — my private self and public self don't always match."},
- {id:'ap12',name:'A4',appNum:4, code:'SIST',slot:'APP',layer:'Subconscious',col:'#534AB7',svgId:'node-a4', subId:'sub-node-a4', appId:'node-a4',ocId:'node-sist',reversed:true, q:"I sometimes make decisions I can't fully justify, then construct reasons afterwards."},
- {id:'ap13',name:'A5',appNum:5, code:'YARC',slot:'APP',layer:'Subconscious',col:'#1D9E75',svgId:'node-a5', subId:'sub-node-a5', appId:'node-a5',ocId:'node-yarc',reversed:true, q:"When emotions run high I find it hard to think straight or see the situation clearly."},
- {id:'ap14',name:'A6',appNum:6, code:'YARC',slot:'APP',layer:'Subconscious',col:'#1D9E75',svgId:'node-a6', subId:'sub-node-a6', appId:'node-a6',ocId:'node-yarc',reversed:true, q:"Being around certain people drains me or pulls me off centre in ways I struggle to control."},
- {id:'ap15',name:'A7',appNum:7, code:'Øll', slot:'APP',layer:'Subconscious',col:'#A0426B',svgId:'node-a7', subId:'sub-node-a7', appId:'node-a7',ocId:'node-oll', reversed:true, q:"A lot of what I do for others comes from obligation, guilt, or fear of how I'll be perceived."},
- {id:'ap16',name:'A8',appNum:8, code:'Øll', slot:'APP',layer:'Subconscious',col:'#A0426B',svgId:'node-a8', subId:'sub-node-a8', appId:'node-a8',ocId:'node-oll', reversed:true, q:"I can see the cycles clearly but keep returning to them anyway."},
- {id:'oc5', name:'NARC', code:'NARC',slot:'OC', layer:'Subconscious',col:'#C4622D',svgId:'node-narc',subId:'sub-node-narc',appId:'node-narc',ocId:'node-narc',reversed:true, q:"My sense of self shifts significantly depending on the situation or who I am with."},
- {id:'oc6', name:'SIST', code:'SIST',slot:'OC', layer:'Subconscious',col:'#534AB7',svgId:'node-sist',subId:'sub-node-sist',appId:'node-sist',ocId:'node-sist',reversed:true, q:"When things feel out of control, I struggle to regulate myself and can become overwhelmed quickly."},
- {id:'oc7', name:'YARC', code:'YARC',slot:'OC', layer:'Subconscious',col:'#1D9E75',svgId:'node-yarc',subId:'sub-node-yarc',appId:'node-yarc',ocId:'node-yarc',reversed:true, q:"I often give to others at the expense of myself, or withhold from others to protect myself."},
- {id:'oc8', name:'Øll', code:'Øll', slot:'OC', layer:'Subconscious',col:'#A0426B',svgId:'node-oll', subId:'sub-node-oll', appId:'node-oll', ocId:'node-oll', reversed:true, q:"I find it difficult to sit with things being unresolved — I need certainty or I avoid the situation entirely."},
+ {id:'sc17',name:'Intention', code:'Narc',slot:'A1', layer:'Subconscious',col:'#C4622D',svgId:'node-sc1', subId:'sub-sc1', appId:'node-a1',ocId:'node-narc',reversed:true, q:"I often pursue things because they are expected of me rather than because I truly want them."},
+ {id:'sc18',name:'Intention', code:'Narc',slot:'A1', layer:'Subconscious',col:'#C4622D',svgId:'node-sc2', subId:'sub-sc2', appId:'node-a1',ocId:'node-narc',reversed:true, q:"I sometimes feel disconnected from the goals I spend most of my time chasing."},
+ {id:'sc19',name:'Presence', code:'Narc',slot:'A2', layer:'Subconscious',col:'#C4622D',svgId:'node-sc3', subId:'sub-sc3', appId:'node-a2',ocId:'node-narc',reversed:true, q:"My mind frequently drifts away from the present moment."},
+ {id:'sc20',name:'Presence', code:'Narc',slot:'A2', layer:'Subconscious',col:'#C4622D',svgId:'node-sc4', subId:'sub-sc4', appId:'node-a2',ocId:'node-narc',reversed:true, q:"I often react emotionally before fully understanding a situation."},
+ {id:'sc21',name:'Core Self', code:'Grounded',slot:'A3', layer:'Subconscious',col:'#534AB7',svgId:'node-sc5', subId:'sub-sc5', appId:'node-a3',ocId:'node-sist',reversed:true, q:"I change parts of myself depending on who I am around."},
+ {id:'sc22',name:'Core Self', code:'Grounded',slot:'A3', layer:'Subconscious',col:'#534AB7',svgId:'node-sc6', subId:'sub-sc6', appId:'node-a3',ocId:'node-sist',reversed:true, q:"I sometimes feel unsure who the real me actually is."},
+ {id:'sc23',name:'Integrity', code:'Grounded',slot:'A4', layer:'Subconscious',col:'#534AB7',svgId:'node-sc7', subId:'sub-sc7', appId:'node-a4',ocId:'node-sist',reversed:true, q:"I occasionally behave in ways that conflict with what I believe is right."},
+ {id:'sc24',name:'Integrity', code:'Grounded',slot:'A4', layer:'Subconscious',col:'#534AB7',svgId:'node-sc8', subId:'sub-sc8', appId:'node-a4',ocId:'node-sist',reversed:true, q:"I sometimes compromise my values to avoid discomfort."},
+ {id:'sc25',name:'Balance', code:'Empath',slot:'A5', layer:'Subconscious',col:'#1D9E75',svgId:'node-sc9', subId:'sub-sc9', appId:'node-a5',ocId:'node-yarc',reversed:true, q:"Negative emotions can stay with me long after situations are over."},
+ {id:'sc26',name:'Balance', code:'Empath',slot:'A5', layer:'Subconscious',col:'#1D9E75',svgId:'node-sc10',subId:'sub-sc10',appId:'node-a5',ocId:'node-yarc',reversed:true, q:"Stress can quickly overwhelm my thinking."},
+ {id:'sc27',name:'Connection', code:'Empath',slot:'A6', layer:'Subconscious',col:'#1D9E75',svgId:'node-sc11',subId:'sub-sc11',appId:'node-a6',ocId:'node-yarc',reversed:true, q:"I often assume people misunderstand me."},
+ {id:'sc28',name:'Connection', code:'Empath',slot:'A6', layer:'Subconscious',col:'#1D9E75',svgId:'node-sc12',subId:'sub-sc12',appId:'node-a6',ocId:'node-yarc',reversed:true, q:"I sometimes withdraw emotionally instead of expressing how I truly feel."},
+ {id:'sc29',name:'Purpose', code:'Volatile', slot:'A7', layer:'Subconscious',col:'#A0426B',svgId:'node-sc13',subId:'sub-sc13',appId:'node-a7',ocId:'node-oll', reversed:true, q:"I sometimes feel like I am moving through life without real direction."},
+ {id:'sc30',name:'Purpose', code:'Volatile', slot:'A7', layer:'Subconscious',col:'#A0426B',svgId:'node-sc14',subId:'sub-sc14',appId:'node-a7',ocId:'node-oll', reversed:true, q:"I often focus more on avoiding failure than pursuing meaning."},
+ {id:'sc31',name:'Pattern', code:'Volatile', slot:'A8', layer:'Subconscious',col:'#A0426B',svgId:'node-sc15',subId:'sub-sc15',appId:'node-a8',ocId:'node-oll', reversed:true, q:"I often repeat behaviours I later regret."},
+ {id:'sc32',name:'Pattern', code:'Volatile', slot:'A8', layer:'Subconscious',col:'#A0426B',svgId:'node-sc16',subId:'sub-sc16',appId:'node-a8',ocId:'node-oll', reversed:true, q:"I fall back into habits I promised to change even when I recognise the cycle."},
+ {id:'ap9', name:'A1',appNum:1, code:'Narc',slot:'APP',layer:'Subconscious',col:'#C4622D',svgId:'node-a1', subId:'sub-node-a1', appId:'node-a1',ocId:'node-narc',reversed:true, q:"I often start things with energy but lose momentum before they mean anything."},
+ {id:'ap10',name:'A2',appNum:2, code:'Narc',slot:'APP',layer:'Subconscious',col:'#C4622D',svgId:'node-a2', subId:'sub-node-a2', appId:'node-a2',ocId:'node-narc',reversed:true, q:"I frequently notice my mood has affected a situation only after the damage is done."},
+ {id:'ap11',name:'A3',appNum:3, code:'Grounded',slot:'APP',layer:'Subconscious',col:'#534AB7',svgId:'node-a3', subId:'sub-node-a3', appId:'node-a3',ocId:'node-sist',reversed:true, q:"I behave differently when no one is watching — my private self and public self don't always match."},
+ {id:'ap12',name:'A4',appNum:4, code:'Grounded',slot:'APP',layer:'Subconscious',col:'#534AB7',svgId:'node-a4', subId:'sub-node-a4', appId:'node-a4',ocId:'node-sist',reversed:true, q:"I sometimes make decisions I can't fully justify, then construct reasons afterwards."},
+ {id:'ap13',name:'A5',appNum:5, code:'Empath',slot:'APP',layer:'Subconscious',col:'#1D9E75',svgId:'node-a5', subId:'sub-node-a5', appId:'node-a5',ocId:'node-yarc',reversed:true, q:"When emotions run high I find it hard to think straight or see the situation clearly."},
+ {id:'ap14',name:'A6',appNum:6, code:'Empath',slot:'APP',layer:'Subconscious',col:'#1D9E75',svgId:'node-a6', subId:'sub-node-a6', appId:'node-a6',ocId:'node-yarc',reversed:true, q:"Being around certain people drains me or pulls me off centre in ways I struggle to control."},
+ {id:'ap15',name:'A7',appNum:7, code:'Volatile', slot:'APP',layer:'Subconscious',col:'#A0426B',svgId:'node-a7', subId:'sub-node-a7', appId:'node-a7',ocId:'node-oll', reversed:true, q:"A lot of what I do for others comes from obligation, guilt, or fear of how I'll be perceived."},
+ {id:'ap16',name:'A8',appNum:8, code:'Volatile', slot:'APP',layer:'Subconscious',col:'#A0426B',svgId:'node-a8', subId:'sub-node-a8', appId:'node-a8',ocId:'node-oll', reversed:true, q:"I can see the cycles clearly but keep returning to them anyway."},
+ {id:'oc5', name:'Narc', code:'Narc',slot:'OC', layer:'Subconscious',col:'#C4622D',svgId:'node-narc',subId:'sub-node-narc',appId:'node-narc',ocId:'node-narc',reversed:true, q:"My sense of self shifts significantly depending on the situation or who I am with."},
+ {id:'oc6', name:'Grounded', code:'Grounded',slot:'OC', layer:'Subconscious',col:'#534AB7',svgId:'node-sist',subId:'sub-node-sist',appId:'node-sist',ocId:'node-sist',reversed:true, q:"When things feel out of control, I struggle to regulate myself and can become overwhelmed quickly."},
+ {id:'oc7', name:'Empath', code:'Empath',slot:'OC', layer:'Subconscious',col:'#1D9E75',svgId:'node-yarc',subId:'sub-node-yarc',appId:'node-yarc',ocId:'node-yarc',reversed:true, q:"I often give to others at the expense of myself, or withhold from others to protect myself."},
+ {id:'oc8', name:'Volatile', code:'Volatile', slot:'OC', layer:'Subconscious',col:'#A0426B',svgId:'node-oll', subId:'sub-node-oll', appId:'node-oll', ocId:'node-oll', reversed:true, q:"I find it difficult to sit with things being unresolved — I need certainty or I avoid the situation entirely."},
 ];
 
 const ANSWERS=["Strongly disagree","Disagree","Neutral / unsure","Agree","Strongly agree"];
@@ -970,28 +985,28 @@ function lightNode(n,effScore){
 // Subconscious mirrors the same structure
 
 const HIERARCHY = {
- NARC: {
+ Narc: {
  apps: {
  A1: { con: ['sc1','sc2'], sub: ['sc17','sc18'] },
  A2: { con: ['sc3','sc4'], sub: ['sc19','sc20'] },
  },
  oc_direct: { con: 'oc1', sub: 'oc5' }
  },
- SIST: {
+ Grounded: {
  apps: {
  A3: { con: ['sc5','sc6'], sub: ['sc21','sc22'] },
  A4: { con: ['sc7','sc8'], sub: ['sc23','sc24'] },
  },
  oc_direct: { con: 'oc2', sub: 'oc6' }
  },
- YARC: {
+ Empath: {
  apps: {
  A5: { con: ['sc9','sc10'], sub: ['sc25','sc26'] },
  A6: { con: ['sc11','sc12'],sub: ['sc27','sc28'] },
  },
  oc_direct: { con: 'oc3', sub: 'oc7' }
  },
- 'Øll': {
+ 'Volatile': {
  apps: {
  A7: { con: ['sc13','sc14'],sub: ['sc29','sc30'] },
  A8: { con: ['sc15','sc16'],sub: ['sc31','sc32'] },
@@ -1056,7 +1071,7 @@ function calcOCHierarchy(codeName) {
 }
 
 function updateOCBars(){
- const km = {NARC:'narc', SIST:'sist', YARC:'yarc', 'Øll':'oll'};
+ const km = {Narc:'narc', Grounded:'sist', Empath:'yarc', 'Volatile':'oll'};
  const ocFinals = {};
 
  Object.keys(HIERARCHY).forEach(code => {
@@ -1185,7 +1200,7 @@ function emailReportRequest(){
  const subject=encodeURIComponent(`Solo Report Request — ${name} — Level ${lvl}`);
  const body=encodeURIComponent(
  `Hi,\n\nI've completed the SCH Solo Assessment and would like to unlock my full written report.\n\n`+
- `Name: ${name}\nAwareness Level: ${lvl}\nAwareness Index™: ${bs>0?'+':''}${bs}\n\nAssessment Code:\n${code}\n\nPlease send me a payment link for £49.\n\nThank you.`
+ `Name: ${name}\nAwareness Level: ${lvl}\nAwareness Index™: ${bs>0?'+':''}${bs}\n\nAssessment Code:\n${code}\n\nPlease send me a payment link for £50.\n\nThank you.`
  );
  window.location.href=`mailto:hello@psytectrics.com?subject=${subject}&body=${body}`;
 }
@@ -1208,10 +1223,10 @@ function calcScores(){
  awareness_score:50,
  observer_codes:{narc:25,sist:25,yarc:25,oll:25},
  oc_hierarchy:{
- NARC:{appScores:{},ocFromApps:3,ocDirect:null,ocFinal:3},
- SIST:{appScores:{},ocFromApps:3,ocDirect:null,ocFinal:3},
- YARC:{appScores:{},ocFromApps:3,ocDirect:null,ocFinal:3},
- 'Øll':{appScores:{},ocFromApps:3,ocDirect:null,ocFinal:3},
+ Narc:{appScores:{},ocFromApps:3,ocDirect:null,ocFinal:3},
+ Grounded:{appScores:{},ocFromApps:3,ocDirect:null,ocFinal:3},
+ Empath:{appScores:{},ocFromApps:3,ocDirect:null,ocFinal:3},
+ 'Volatile':{appScores:{},ocFromApps:3,ocDirect:null,ocFinal:3},
  },
  awareness_level:5, awareness_level_name:'Choice', bs_state:'Zero-Point proximity'
  };
@@ -1239,15 +1254,15 @@ function calcScores(){
 
  // OC ratio: proportional share of integrated score (higher = more expressed)
  const ocFinals = {
- NARC: ocResults.NARC?.ocFinal ?? 3,
- SIST: ocResults.SIST?.ocFinal ?? 3,
- YARC: ocResults.YARC?.ocFinal ?? 3,
- 'Øll': ocResults['Øll']?.ocFinal ?? 3,
+ Narc: ocResults.Narc?.ocFinal ?? 3,
+ Grounded: ocResults.Grounded?.ocFinal ?? 3,
+ Empath: ocResults.Empath?.ocFinal ?? 3,
+ 'Volatile': ocResults['Volatile']?.ocFinal ?? 3,
  };
  const ocTotal = Object.values(ocFinals).reduce((a,b)=>a+b,0) || 1;
- const narcPct = Math.round(ocFinals.NARC / ocTotal * 100);
- const sistPct = Math.round(ocFinals.SIST / ocTotal * 100);
- const yarcPct = Math.round(ocFinals.YARC / ocTotal * 100);
+ const narcPct = Math.round(ocFinals.Narc / ocTotal * 100);
+ const sistPct = Math.round(ocFinals.Grounded / ocTotal * 100);
+ const yarcPct = Math.round(ocFinals.Empath / ocTotal * 100);
  const ollPct = 100 - narcPct - sistPct - yarcPct;
 
  const lvl = getLevel(bs);
@@ -1284,7 +1299,7 @@ function renderResults(r, withReport){
  document.getElementById('r-st').textContent=r.bs_state;
  // Hierarchy breakdown
  const hier = r.oc_hierarchy || {};
- const hierCols = {NARC:'#C4622D',SIST:'#534AB7',YARC:'#1D9E75','Øll':'#A0426B'};
+ const hierCols = {Narc:'#C4622D',Grounded:'#534AB7',Empath:'#1D9E75','Volatile':'#A0426B'};
  document.getElementById('r-hierarchy').innerHTML = Object.entries(hier).map(([code, data]) => {
  if(!data) return '';
  const apps = Object.entries(data.appScores||{}).map(([app,score]) =>
@@ -1301,7 +1316,7 @@ function renderResults(r, withReport){
  document.getElementById('r-drift-row').textContent='Drift: '+r.drift+' — Conscious avg '+r.con_avg+' / Subconscious avg '+r.sub_avg;
  const oc=r.observer_codes;
  const cols={narc:'var(--narc)',yarc:'var(--yarc)',sist:'var(--sist)',oll:'var(--oll)'};
- const names={narc:'NARC',yarc:'YARC',sist:'SIST',oll:'Øll'};
+ const names={narc:'Narc',yarc:'Empath',sist:'Grounded',oll:'Volatile'};
  const descs={narc:'Self-reference, protection, identity — your survival layer.',yarc:'Other-directed awareness, empathy — your giving layer.',sist:'Regulation, structure, integration — your holding layer.',oll:'Volatility, threshold, core identity — your transformation layer.'};
  document.getElementById('r-oc-bars').innerHTML=Object.entries(oc).map(([k,pct])=>`<div class="r-oc-row"><div class="r-oc-name" style="color:${cols[k]}">${names[k]}</div><div class="r-oc-trk"><div class="r-oc-fill" style="width:${pct}%;background:${cols[k]}"></div></div><div class="r-oc-pct" style="color:${cols[k]}">${pct}%</div></div><div class="r-oc-desc">${descs[k]}</div>`).join('');
  document.getElementById('r-nodes').innerHTML=NODES.map(n=>{
@@ -1328,8 +1343,8 @@ function renderResults(r, withReport){
  <div class="report-locked">
  <div class="report-locked-icon">⬡</div>
  <div class="report-locked-title">Full written report</div>
- <p class="report-locked-copy">Your Blueprint ratios, node scores, and Awareness Index™ are shown above. The full AI-written interpretive profile — who you are, your primary pattern, and your next move — unlocks for £49.</p>
- <button class="report-locked-btn" onclick="emailReportRequest()">Request my full report · £49 →</button>
+ <p class="report-locked-copy">Your Blueprint ratios, node scores, and Awareness Index™ are shown above. The full written interpretive profile — who you are, your primary pattern, and your next move — unlocks for £50.</p>
+ <button class="report-locked-btn" onclick="emailReportRequest()">Request my full report · £50 →</button>
  </div>`;
  }
 
@@ -1380,12 +1395,12 @@ async function callClaude(r){
  const sys=`You are generating a deeply personal SCH awareness profile report. Your job is to be so specific that the person reads it and thinks "how do they know that." Generic output is a failure.
 
 FRAMEWORK:
-NARC=self/survival/protection (polar: YARC). YARC=other/empathy/giving (polar: NARC). SIST=regulation/structure/holding (polar: Øll). Øll=volatility/threshold/intensity (polar: SIST).
+Narc=self/survival/protection (polar: Empath). Empath=other/empathy/giving (polar: Narc). Grounded=regulation/structure/holding (polar: Volatile). Volatile=volatility/threshold/intensity (polar: Grounded).
 Score 1-2 = Activated (high load, cost, blind spot). Score 3 = Moderate. Score 4-5 = Regulated (resource).
 Awareness Index™: -5 (collapse) to +5 (peak). Zero-Point = 0. Drift = gap between conscious and subconscious layers.
 
 THIS PERSON'S PROFILE:
-Blueprint ratios: NARC ${r.observer_codes.narc}% | SIST ${r.observer_codes.sist}% | YARC ${r.observer_codes.yarc}% | Øll ${r.observer_codes.oll}%
+Blueprint ratios: Narc ${r.observer_codes.narc}% | Grounded ${r.observer_codes.sist}% | Empath ${r.observer_codes.yarc}% | Volatile ${r.observer_codes.oll}%
 Awareness Index™: ${r.balance_scale>0?'+':''}${r.balance_scale} = Level ${r.awareness_level} (${r.awareness_level_name})
 Drift: ${r.drift} — Conscious avg ${r.con_avg} / Subconscious avg ${r.sub_avg}${r.drift>=2.5?' — SIGNIFICANT GAP: subconscious patterns are substantially diverging from conscious presentation':r.drift>=1.5?' — MODERATE GAP: some divergence between layers':''}
 Activated nodes (score 1-2, HIGH LOAD): ${lowNodes}
@@ -1412,32 +1427,32 @@ Return ONLY valid JSON (no markdown, no backticks):
 {"keyword_identity":"<1-3 words>","keyword_description":"<1 punchy sentence>","report_sections":{"who_you_are":"<3 paragraphs — open with keyword, describe dominant code combination in daily life, close with big picture pattern>","primary_pattern":"<2 paragraphs — the main loop this person runs, what triggers it, what it costs>","under_pressure":"<2 paragraphs — what happens subconsciously when stress hits, which nodes activate, what behaviour emerges>","in_relationships":"<2 paragraphs — their natural role, what they give, what they need but don't ask for, where friction appears>","next_move":"<1-2 paragraphs — one or two concrete things based on actual scores, not generic advice>"},"mental_health_note":"<1-2 sentences, gentle, only if warranted>"}`;
 
  const msg=`${name?'Name: '+name+'\n':''}${ageBand?'Age band: '+ageBand+'\n':''}${lifeCtx?'Context: '+lifeCtx+'\n':''}${ctxBest?'Most like themselves: '+ctxBest+'\n':''}${ctxWorst?'Least like themselves: '+ctxWorst+'\n':''}
-OC: NARC ${r.observer_codes.narc}% SIST ${r.observer_codes.sist}% YARC ${r.observer_codes.yarc}% Øll ${r.observer_codes.oll}%
+OC: Narc ${r.observer_codes.narc}% Grounded ${r.observer_codes.sist}% Empath ${r.observer_codes.yarc}% Volatile ${r.observer_codes.oll}%
 BS: ${r.balance_scale>0?'+':''}${r.balance_scale} | Awareness: ${r.awareness_score}% | Drift: ${r.drift} | Level ${r.awareness_level} ${r.awareness_level_name}
 Activated (1-2): ${lowNodes}
 Regulated (4-5): ${highNodes}
 Conscious: ${conS}
 Subconscious: ${subS}`;
 
- const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:2000,system:sys,messages:[{role:'user',content:msg}]})});
+ const res=await fetch('/api/ai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({kind:'assess-report',system:sys,messages:[{role:'user',content:msg}]})});
  const d=await res.json();
  return JSON.parse((d.content?.[0]?.text||'').replace(/```json|```/g,'').trim());
 }
 
 // ── TOOLTIP ──
 const NODE_INFO = {
- 'narc':{name:'NARC',meta:'SC Blueprint™ · Self / Intake',desc:'How you relate to yourself. Your identity, protection, survival drive, and personal direction.'},
- 'sist':{name:'SIST',meta:'SC Blueprint™ · Regulation',desc:'How you hold structure. Your ability to regulate, integrate, and maintain consistency under pressure.'},
- 'yarc':{name:'YARC',meta:'SC Blueprint™ · Other / Giving',desc:'How you relate to others. Your empathy, connection, contribution, and outward expression.'},
- 'oll': {name:'Øll', meta:'SC Blueprint™ · Integration',desc:'Your threshold layer. Volatility, instinct, transformation, and core identity beneath all roles.'},
- 'a1':{name:'App A1',meta:'NARC · Intention + Presence',desc:'Do your conscious intentions and your moment-to-moment presence actually combine into follow-through?'},
- 'a2':{name:'App A2',meta:'NARC · Presence + Awareness',desc:'Does staying present and self-reflecting translate into real-time awareness of your own impact?'},
- 'a3':{name:'App A3',meta:'SIST · Core Self + Integrity',desc:'Does knowing who you are actually show up as consistent behaviour regardless of context?'},
- 'a4':{name:'App A4',meta:'SIST · Integrity + Logic',desc:'Does your value system hold up under reasoning — can you justify your decisions honestly?'},
- 'a5':{name:'App A5',meta:'YARC · Logic + Balance',desc:'Can your structured thinking stay intact when emotions are high?'},
- 'a6':{name:'App A6',meta:'YARC · Balance + Connection',desc:'Can you be fully present with others without losing your own emotional footing?'},
- 'a7':{name:'App A7',meta:'Øll · Connection + Purpose',desc:'Does the way you show up for others come from something genuine, or from habit and obligation?'},
- 'a8':{name:'App A8',meta:'Øll · Purpose + Pattern',desc:'Are you actively breaking your own cycles, or just recognising them?'},
+ 'narc':{name:'Narc',meta:'SC Blueprint™ · Self / Intake',desc:'How you relate to yourself. Your identity, protection, survival drive, and personal direction.'},
+ 'sist':{name:'Grounded',meta:'SC Blueprint™ · Regulation',desc:'How you hold structure. Your ability to regulate, integrate, and maintain consistency under pressure.'},
+ 'yarc':{name:'Empath',meta:'SC Blueprint™ · Other / Giving',desc:'How you relate to others. Your empathy, connection, contribution, and outward expression.'},
+ 'oll': {name:'Volatile', meta:'SC Blueprint™ · Integration',desc:'Your threshold layer. Volatility, instinct, transformation, and core identity beneath all roles.'},
+ 'a1':{name:'App A1',meta:'Narc · Intention + Presence',desc:'Do your conscious intentions and your moment-to-moment presence actually combine into follow-through?'},
+ 'a2':{name:'App A2',meta:'Narc · Presence + Awareness',desc:'Does staying present and self-reflecting translate into real-time awareness of your own impact?'},
+ 'a3':{name:'App A3',meta:'Grounded · Core Self + Integrity',desc:'Does knowing who you are actually show up as consistent behaviour regardless of context?'},
+ 'a4':{name:'App A4',meta:'Grounded · Integrity + Logic',desc:'Does your value system hold up under reasoning — can you justify your decisions honestly?'},
+ 'a5':{name:'App A5',meta:'Empath · Logic + Balance',desc:'Can your structured thinking stay intact when emotions are high?'},
+ 'a6':{name:'App A6',meta:'Empath · Balance + Connection',desc:'Can you be fully present with others without losing your own emotional footing?'},
+ 'a7':{name:'App A7',meta:'Volatile · Connection + Purpose',desc:'Does the way you show up for others come from something genuine, or from habit and obligation?'},
+ 'a8':{name:'App A8',meta:'Volatile · Purpose + Pattern',desc:'Are you actively breaking your own cycles, or just recognising them?'},
 };
 function showTooltip(id,event){
  event.stopPropagation();
@@ -1554,14 +1569,26 @@ function toggleDark(){toggleTheme();}
         <div class="pt-footer-links">
       <a href="index.html">Home</a>
       <a href="reports.html">Reports</a>
-      <a href="prototypes.html">Prototypes</a>
-      <a href="store_index.html">Store</a>
+      <a href="tests.html">Tests</a>
       <a href="framework.html">Framework</a>
       <a href="contact.html">Contact</a>
       <a href="privacy.html">Privacy</a>
     </div>
-    <span class="pt-footer-note">© 2026 PsyTectrics Technologies Ltd · All rights reserved</span>
   </div>
+  <div class="pt-footer-pay">
+    <p class="pt-pay-label"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Secure payments via Stripe</p>
+    <ul class="pay-chips" aria-label="Accepted payment methods">
+      <li><img class="pay-card" src="images/pay/visa.svg" alt="Visa" width="51" height="32"></li>
+      <li><img class="pay-card" src="images/pay/mastercard.svg" alt="Mastercard" width="51" height="32"></li>
+      <li><img class="pay-card" src="images/pay/amex.svg" alt="American Express" width="51" height="32"></li>
+      <li class="pay-chip"><img src="images/pay/applepay.svg" alt="Apple Pay" width="36" height="23"></li>
+      <li class="pay-chip gpay"><img src="images/pay/googlepay.svg" alt="Google Pay" width="38" height="15"></li>
+      <li class="pay-chip klarna"><img src="images/pay/klarna.svg" alt="" width="12" height="12">Klarna</li>
+      <li><img class="pay-card" src="images/pay/diners.svg" alt="Diners Club" width="51" height="32"></li>
+      <li><img class="pay-card" src="images/pay/amazonpay.svg" alt="Amazon Pay" width="51" height="32"></li>
+    </ul>
+  </div>
+  <div class="pt-footer-bot"><span>© 2026 PsyTectrics™ · All rights reserved</span><span>Site by <a href="https://ric-lee.co.uk" target="_blank" rel="noopener">Ric</a></span></div>
 </footer>
 </body>
 </html>

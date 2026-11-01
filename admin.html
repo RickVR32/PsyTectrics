@@ -285,7 +285,7 @@ body { background: #0B1020; color: #FAFAF9; padding-top: 70px; }
  </select>
  <select class="filter-select" id="dominantFilter" onchange="renderTable()">
  <option value="">All codes</option>
- <option>NARC</option><option>SIST</option><option>YARC</option><option>Øll</option>
+ <option>Narc</option><option>Grounded</option><option>Empath</option><option>Volatile</option>
  </select>
  <select class="filter-select" id="sortFilter" onchange="renderTable()">
  <option value="newest">Newest first</option>
@@ -381,7 +381,7 @@ function renderStats() {
  const avgBS = (logs.reduce((s,l) => s + (l.bs||0), 0) / logs.length).toFixed(1);
 
  // Dominant code distribution
- const codeCounts = {NARC:0, SIST:0, YARC:0, 'Øll':0};
+ const codeCounts = {Narc:0, Grounded:0, Empath:0, 'Volatile':0};
  logs.forEach(l => { if(l.dominant && codeCounts[l.dominant]!==undefined) codeCounts[l.dominant]++; });
  const topCode = Object.entries(codeCounts).sort((a,b)=>b[1]-a[1])[0];
 
@@ -400,7 +400,7 @@ function renderStats() {
 }
 
 // ── TABLE ──
-const OC_COLS = {NARC:'#C4622D', SIST:'#534AB7', YARC:'#1D9E75', 'Øll':'#A0426B'};
+const OC_COLS = {Narc:'#C4622D', Grounded:'#534AB7', Empath:'#1D9E75', 'Volatile':'#A0426B'};
 
 function getFiltered() {
  let logs = getLogs();
@@ -545,7 +545,7 @@ function exportCSV() {
  const logs = getLogs();
  if (!logs.length) { alert('No data to export'); return; }
 
- const headers = ['Name','Date','Age Band','Life Context','Level','Level Name','Balance Scale','Drift','Conscious Avg','Subconscious Avg','NARC%','SIST%','YARC%','Øll%','Dominant Code','Most Like Self','Least Like Self','Encoded Code','Raw Code'];
+ const headers = ['Name','Date','Age Band','Life Context','Level','Level Name','Balance Scale','Drift','Conscious Avg','Subconscious Avg','Narc%','Grounded%','Empath%','Volatile%','Dominant Code','Most Like Self','Least Like Self','Encoded Code','Raw Code'];
  const rows = logs.map(l => [
  l.name||'',
  l.timestamp ? new Date(l.timestamp).toLocaleDateString('en-GB') : '',
@@ -557,10 +557,10 @@ function exportCSV() {
  l.drift||'',
  l.conAvg||'',
  l.subAvg||'',
- l.oc?.NARC||'',
- l.oc?.SIST||'',
- l.oc?.YARC||'',
- l.oc?.['Øll']||'',
+ l.oc?.Narc||'',
+ l.oc?.Grounded||'',
+ l.oc?.Empath||'',
+ l.oc?.['Volatile']||'',
  l.dominant||'',
  l.ctxBest||'',
  l.ctxWorst||'',

@@ -1,6 +1,7 @@
 const Stripe = require('stripe');
 const { createClient } = require('@supabase/supabase-js');
 
+const tg = require('../lib/tg');
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
 
@@ -9,6 +10,22 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SER
 module.exports.config = {
   api: { bodyParser: false }
 };
+
+// Emails you (via Formspree) when a report is paid for, so you know to write it.
+async function notify(subject, fields) {
+  const url = process.env.FORMSPREE_URL || 'https://formspree.io/f/mreorpre';
+  try {
+    await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ _subject: subject, ...fields })
+    });
+  } catch (e) { console.error('Formspree notify failed:', e); }
+  try {
+    const lines = Object.entries(fields).filter(([, v]) => v !== '' && v != null && typeof v !== 'object').slice(0, 8).map(([k, v]) => `${k}: ${tg.esc(String(v).slice(0, 200))}`);
+    await tg.admin(`💷 <b>${tg.esc(subject)}</b>\n${lines.join('\n')}`);
+  } catch (e) { console.error('Telegram notify failed:', e); }
+}
 
 function buffer(readable) {
   return new Promise((resolve, reject) => {
@@ -35,8 +52,31 @@ module.exports = async (req, res) => {
 
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object;
-    const submissionId = session.metadata?.submission_id || session.client_reference_id;
+    const requestId = session.metadata?.request_id;
+    const profileId = session.metadata?.profile_id;
+    const submissionId = session.metadata?.submission_id || (!requestId && !profileId && session.client_reference_id);
 
+    // Awareness Profile v4 (automated report)
+    if (profileId) {
+      await supabase.from('profile_reports').update({ paid: true }).eq('id', profileId);
+      const { data: pr } = await supabase.from('profile_reports').select('name,email,level,profile_type,source_code').eq('id', profileId).single();
+      const promo = (session.total_details && session.total_details.amount_discount) ? ' (discount code used)' : '';
+      if (pr) await notify(`Awareness Profile sold${promo} — ${pr.name || pr.email}`, { email: pr.email, level: pr.level, type: pr.profile_type, source_code: pr.source_code || '', amount_paid: (session.amount_total / 100).toFixed(2) });
+    }
+
+    // Observer / Business report requests
+    if (requestId) {
+      const { error } = await supabase
+        .from('report_requests')
+        .update({ paid: true })
+        .eq('id', requestId);
+
+      if (error) console.error('Failed to mark report request as paid:', error);
+      const { data: rq } = await supabase.from('report_requests').select('*').eq('id', requestId).single();
+      if (rq) await notify(`PAID ${rq.report_type} report — ${rq.name}`, { request_id: rq.id, scope: rq.scope || '', ...rq.fields });
+    }
+
+    // Solo assessment
     if (submissionId) {
       const { error } = await supabase
         .from('solo_submissions')
@@ -44,6 +84,12 @@ module.exports = async (req, res) => {
         .eq('id', submissionId);
 
       if (error) console.error('Failed to mark submission as paid:', error);
+      const { data: row } = await supabase.from('solo_submissions').select('*').eq('id', submissionId).single();
+      if (row) await notify(`PAID Awareness Profile report — ${row.name || row.email}`, {
+        submission_id: row.id, name: row.name || '', email: row.email, assessment_code: row.encoded_code,
+        age_band: row.age_band || '', context: row.context || '',
+        most_like_self: row.most_like_self || '', least_like_self: row.least_like_self || ''
+      });
     }
   }
 

@@ -188,6 +188,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
   nav,nav.pt-nav{flex-wrap:wrap;height:auto;min-height:70px;row-gap:4px}
   .nav-right{gap:0.5rem!important}
 }
+
+/* FOOTER-PAY: payment logos + Site by Ric (shared with client builds) */
+.pt-footer-pay{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:1.6rem;padding-top:1.4rem;border-top:1px solid rgba(255,255,255,0.07)}
+.pt-pay-label{display:flex;align-items:center;gap:8px;margin:0;font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.4)}
+.pt-pay-label svg{width:14px;height:14px;stroke:#00D4FF;fill:none;stroke-width:2}
+.pay-chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0}
+.pay-card{display:block;width:51px;height:32px;border-radius:4px}
+.pay-chip{display:inline-flex;align-items:center;justify-content:center;gap:5px;width:51px;height:32px;background:#fff;border-radius:4px}
+.pay-chip img{display:block;height:23px;width:auto}
+.pay-chip.gpay img{height:15px}
+.pay-chip.klarna{background:#ffb3c7;width:auto;padding:0 9px;font-family:'Inter',sans-serif;font-size:.74rem;font-weight:700;color:#0b051d}
+.pay-chip.klarna img{height:11px}
+.pt-footer-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:1.2rem;font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.06em;color:rgba(255,255,255,0.3)}
+.pt-footer-bot a{color:rgba(255,255,255,0.7);text-decoration:none}
+.pt-footer-bot a:hover{color:#00D4FF}
+@media(max-width:768px){.pt-footer-pay,.pt-footer-bot{flex-direction:column;align-items:center;text-align:center}.pay-chips{justify-content:center}}
 </style>
 </head>
 <body>
@@ -251,74 +267,87 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
     <div class="pt-footer-links">
       <a href="index.html">Home</a>
       <a href="reports.html">Reports</a>
-      <a href="prototypes.html">Prototypes</a>
+      <a href="tests.html">Tests</a>
       <a href="framework.html">Framework</a>
       <a href="contact.html">Contact</a>
       <a href="privacy.html">Privacy</a>
     </div>
-    <span class="pt-footer-note">© 2026 PsyTectrics Technologies Ltd · All rights reserved</span>
   </div>
+  <div class="pt-footer-pay">
+    <p class="pt-pay-label"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Secure payments via Stripe</p>
+    <ul class="pay-chips" aria-label="Accepted payment methods">
+      <li><img class="pay-card" src="images/pay/visa.svg" alt="Visa" width="51" height="32"></li>
+      <li><img class="pay-card" src="images/pay/mastercard.svg" alt="Mastercard" width="51" height="32"></li>
+      <li><img class="pay-card" src="images/pay/amex.svg" alt="American Express" width="51" height="32"></li>
+      <li class="pay-chip"><img src="images/pay/applepay.svg" alt="Apple Pay" width="36" height="23"></li>
+      <li class="pay-chip gpay"><img src="images/pay/googlepay.svg" alt="Google Pay" width="38" height="15"></li>
+      <li class="pay-chip klarna"><img src="images/pay/klarna.svg" alt="" width="12" height="12">Klarna</li>
+      <li><img class="pay-card" src="images/pay/diners.svg" alt="Diners Club" width="51" height="32"></li>
+      <li><img class="pay-card" src="images/pay/amazonpay.svg" alt="Amazon Pay" width="51" height="32"></li>
+    </ul>
+  </div>
+  <div class="pt-footer-bot"><span>© 2026 PsyTectrics™ · All rights reserved</span><span>Site by <a href="https://ric-lee.co.uk" target="_blank" rel="noopener">Ric</a></span></div>
 </footer>
 
 <script>
 const FREE_LIMIT=5;
 const NODES=[
-  {id:'sc1',name:'Intention',code:'NARC',layer:'Conscious',reversed:false},
-  {id:'sc2',name:'Intention',code:'NARC',layer:'Conscious',reversed:false},
-  {id:'sc3',name:'Presence',code:'NARC',layer:'Conscious',reversed:false},
-  {id:'sc4',name:'Presence',code:'NARC',layer:'Conscious',reversed:false},
-  {id:'sc5',name:'Core Self',code:'SIST',layer:'Conscious',reversed:false},
-  {id:'sc6',name:'Core Self',code:'SIST',layer:'Conscious',reversed:false},
-  {id:'sc7',name:'Integrity',code:'SIST',layer:'Conscious',reversed:false},
-  {id:'sc8',name:'Integrity',code:'SIST',layer:'Conscious',reversed:false},
-  {id:'sc9',name:'Balance',code:'YARC',layer:'Conscious',reversed:false},
-  {id:'sc10',name:'Balance',code:'YARC',layer:'Conscious',reversed:false},
-  {id:'sc11',name:'Connection',code:'YARC',layer:'Conscious',reversed:false},
-  {id:'sc12',name:'Connection',code:'YARC',layer:'Conscious',reversed:false},
-  {id:'sc13',name:'Purpose',code:'Øll',layer:'Conscious',reversed:false},
-  {id:'sc14',name:'Purpose',code:'Øll',layer:'Conscious',reversed:false},
-  {id:'sc15',name:'Pattern',code:'Øll',layer:'Conscious',reversed:false},
-  {id:'sc16',name:'Pattern',code:'Øll',layer:'Conscious',reversed:false},
-  {id:'ap1',name:'A1',code:'NARC',layer:'Conscious',reversed:false},
-  {id:'ap2',name:'A2',code:'NARC',layer:'Conscious',reversed:false},
-  {id:'ap3',name:'A3',code:'SIST',layer:'Conscious',reversed:false},
-  {id:'ap4',name:'A4',code:'SIST',layer:'Conscious',reversed:false},
-  {id:'ap5',name:'A5',code:'YARC',layer:'Conscious',reversed:false},
-  {id:'ap6',name:'A6',code:'YARC',layer:'Conscious',reversed:false},
-  {id:'ap7',name:'A7',code:'Øll',layer:'Conscious',reversed:false},
-  {id:'ap8',name:'A8',code:'Øll',layer:'Conscious',reversed:false},
-  {id:'oc1',name:'NARC OC',code:'NARC',layer:'Conscious',reversed:false},
-  {id:'oc2',name:'SIST OC',code:'SIST',layer:'Conscious',reversed:false},
-  {id:'oc3',name:'YARC OC',code:'YARC',layer:'Conscious',reversed:false},
-  {id:'oc4',name:'Øll OC',code:'Øll',layer:'Conscious',reversed:false},
-  {id:'sc17',name:'Intention',code:'NARC',layer:'Subconscious',reversed:true},
-  {id:'sc18',name:'Intention',code:'NARC',layer:'Subconscious',reversed:true},
-  {id:'sc19',name:'Presence',code:'NARC',layer:'Subconscious',reversed:true},
-  {id:'sc20',name:'Presence',code:'NARC',layer:'Subconscious',reversed:true},
-  {id:'sc21',name:'Core Self',code:'SIST',layer:'Subconscious',reversed:true},
-  {id:'sc22',name:'Core Self',code:'SIST',layer:'Subconscious',reversed:true},
-  {id:'sc23',name:'Integrity',code:'SIST',layer:'Subconscious',reversed:true},
-  {id:'sc24',name:'Integrity',code:'SIST',layer:'Subconscious',reversed:true},
-  {id:'sc25',name:'Balance',code:'YARC',layer:'Subconscious',reversed:true},
-  {id:'sc26',name:'Balance',code:'YARC',layer:'Subconscious',reversed:true},
-  {id:'sc27',name:'Connection',code:'YARC',layer:'Subconscious',reversed:true},
-  {id:'sc28',name:'Connection',code:'YARC',layer:'Subconscious',reversed:true},
-  {id:'sc29',name:'Purpose',code:'Øll',layer:'Subconscious',reversed:true},
-  {id:'sc30',name:'Purpose',code:'Øll',layer:'Subconscious',reversed:true},
-  {id:'sc31',name:'Pattern',code:'Øll',layer:'Subconscious',reversed:true},
-  {id:'sc32',name:'Pattern',code:'Øll',layer:'Subconscious',reversed:true},
-  {id:'ap9',name:'A1 sub',code:'NARC',layer:'Subconscious',reversed:true},
-  {id:'ap10',name:'A2 sub',code:'NARC',layer:'Subconscious',reversed:true},
-  {id:'ap11',name:'A3 sub',code:'SIST',layer:'Subconscious',reversed:true},
-  {id:'ap12',name:'A4 sub',code:'SIST',layer:'Subconscious',reversed:true},
-  {id:'ap13',name:'A5 sub',code:'YARC',layer:'Subconscious',reversed:true},
-  {id:'ap14',name:'A6 sub',code:'YARC',layer:'Subconscious',reversed:true},
-  {id:'ap15',name:'A7 sub',code:'Øll',layer:'Subconscious',reversed:true},
-  {id:'ap16',name:'A8 sub',code:'Øll',layer:'Subconscious',reversed:true},
-  {id:'oc5',name:'NARC sub',code:'NARC',layer:'Subconscious',reversed:true},
-  {id:'oc6',name:'SIST sub',code:'SIST',layer:'Subconscious',reversed:true},
-  {id:'oc7',name:'YARC sub',code:'YARC',layer:'Subconscious',reversed:true},
-  {id:'oc8',name:'Øll sub',code:'Øll',layer:'Subconscious',reversed:true},
+  {id:'sc1',name:'Intention',code:'Narc',layer:'Conscious',reversed:false},
+  {id:'sc2',name:'Intention',code:'Narc',layer:'Conscious',reversed:false},
+  {id:'sc3',name:'Presence',code:'Narc',layer:'Conscious',reversed:false},
+  {id:'sc4',name:'Presence',code:'Narc',layer:'Conscious',reversed:false},
+  {id:'sc5',name:'Core Self',code:'Grounded',layer:'Conscious',reversed:false},
+  {id:'sc6',name:'Core Self',code:'Grounded',layer:'Conscious',reversed:false},
+  {id:'sc7',name:'Integrity',code:'Grounded',layer:'Conscious',reversed:false},
+  {id:'sc8',name:'Integrity',code:'Grounded',layer:'Conscious',reversed:false},
+  {id:'sc9',name:'Balance',code:'Empath',layer:'Conscious',reversed:false},
+  {id:'sc10',name:'Balance',code:'Empath',layer:'Conscious',reversed:false},
+  {id:'sc11',name:'Connection',code:'Empath',layer:'Conscious',reversed:false},
+  {id:'sc12',name:'Connection',code:'Empath',layer:'Conscious',reversed:false},
+  {id:'sc13',name:'Purpose',code:'Volatile',layer:'Conscious',reversed:false},
+  {id:'sc14',name:'Purpose',code:'Volatile',layer:'Conscious',reversed:false},
+  {id:'sc15',name:'Pattern',code:'Volatile',layer:'Conscious',reversed:false},
+  {id:'sc16',name:'Pattern',code:'Volatile',layer:'Conscious',reversed:false},
+  {id:'ap1',name:'A1',code:'Narc',layer:'Conscious',reversed:false},
+  {id:'ap2',name:'A2',code:'Narc',layer:'Conscious',reversed:false},
+  {id:'ap3',name:'A3',code:'Grounded',layer:'Conscious',reversed:false},
+  {id:'ap4',name:'A4',code:'Grounded',layer:'Conscious',reversed:false},
+  {id:'ap5',name:'A5',code:'Empath',layer:'Conscious',reversed:false},
+  {id:'ap6',name:'A6',code:'Empath',layer:'Conscious',reversed:false},
+  {id:'ap7',name:'A7',code:'Volatile',layer:'Conscious',reversed:false},
+  {id:'ap8',name:'A8',code:'Volatile',layer:'Conscious',reversed:false},
+  {id:'oc1',name:'Narc OC',code:'Narc',layer:'Conscious',reversed:false},
+  {id:'oc2',name:'Grounded OC',code:'Grounded',layer:'Conscious',reversed:false},
+  {id:'oc3',name:'Empath OC',code:'Empath',layer:'Conscious',reversed:false},
+  {id:'oc4',name:'Volatile OC',code:'Volatile',layer:'Conscious',reversed:false},
+  {id:'sc17',name:'Intention',code:'Narc',layer:'Subconscious',reversed:true},
+  {id:'sc18',name:'Intention',code:'Narc',layer:'Subconscious',reversed:true},
+  {id:'sc19',name:'Presence',code:'Narc',layer:'Subconscious',reversed:true},
+  {id:'sc20',name:'Presence',code:'Narc',layer:'Subconscious',reversed:true},
+  {id:'sc21',name:'Core Self',code:'Grounded',layer:'Subconscious',reversed:true},
+  {id:'sc22',name:'Core Self',code:'Grounded',layer:'Subconscious',reversed:true},
+  {id:'sc23',name:'Integrity',code:'Grounded',layer:'Subconscious',reversed:true},
+  {id:'sc24',name:'Integrity',code:'Grounded',layer:'Subconscious',reversed:true},
+  {id:'sc25',name:'Balance',code:'Empath',layer:'Subconscious',reversed:true},
+  {id:'sc26',name:'Balance',code:'Empath',layer:'Subconscious',reversed:true},
+  {id:'sc27',name:'Connection',code:'Empath',layer:'Subconscious',reversed:true},
+  {id:'sc28',name:'Connection',code:'Empath',layer:'Subconscious',reversed:true},
+  {id:'sc29',name:'Purpose',code:'Volatile',layer:'Subconscious',reversed:true},
+  {id:'sc30',name:'Purpose',code:'Volatile',layer:'Subconscious',reversed:true},
+  {id:'sc31',name:'Pattern',code:'Volatile',layer:'Subconscious',reversed:true},
+  {id:'sc32',name:'Pattern',code:'Volatile',layer:'Subconscious',reversed:true},
+  {id:'ap9',name:'A1 sub',code:'Narc',layer:'Subconscious',reversed:true},
+  {id:'ap10',name:'A2 sub',code:'Narc',layer:'Subconscious',reversed:true},
+  {id:'ap11',name:'A3 sub',code:'Grounded',layer:'Subconscious',reversed:true},
+  {id:'ap12',name:'A4 sub',code:'Grounded',layer:'Subconscious',reversed:true},
+  {id:'ap13',name:'A5 sub',code:'Empath',layer:'Subconscious',reversed:true},
+  {id:'ap14',name:'A6 sub',code:'Empath',layer:'Subconscious',reversed:true},
+  {id:'ap15',name:'A7 sub',code:'Volatile',layer:'Subconscious',reversed:true},
+  {id:'ap16',name:'A8 sub',code:'Volatile',layer:'Subconscious',reversed:true},
+  {id:'oc5',name:'Narc sub',code:'Narc',layer:'Subconscious',reversed:true},
+  {id:'oc6',name:'Grounded sub',code:'Grounded',layer:'Subconscious',reversed:true},
+  {id:'oc7',name:'Empath sub',code:'Empath',layer:'Subconscious',reversed:true},
+  {id:'oc8',name:'Volatile sub',code:'Volatile',layer:'Subconscious',reversed:true},
 ];
 const LEVELS=[
   {level:1,name:'Non-Conscious'},{level:2,name:'Sub-Conscious'},
@@ -327,7 +356,7 @@ const LEVELS=[
   {level:7,name:'Expression'},{level:8,name:'Connection'},
   {level:9,name:'Mastery'},{level:10,name:'Creator/Source'},
 ];
-const OC_COLS={NARC:'#C4622D',SIST:'#534AB7',YARC:'#1D9E75','Øll':'#A0426B'};
+const OC_COLS={Narc:'#C4622D',Grounded:'#534AB7',Empath:'#1D9E75','Volatile':'#A0426B'};
 const DECODE_MAP={'K':'1','M':'2','R':'3','T':'4','W':'5'};
 
 let selectedMode=null,profile=null,conversation=[],msgCount=0,paywallShown=false,isLoading=false;
@@ -369,16 +398,16 @@ function decodeCode(rawInput){
   const conAvg=parseFloat((conN.reduce((s,x)=>s+x.eff,0)/conN.length).toFixed(2));
   const subAvg=parseFloat((subN.reduce((s,x)=>s+x.eff,0)/subN.length).toFixed(2));
   const drift=parseFloat(Math.abs(conAvg-subAvg).toFixed(1));
-  const byCode={NARC:[],SIST:[],YARC:[],'Øll':[]};
+  const byCode={Narc:[],Grounded:[],Empath:[],'Volatile':[]};
   answered.forEach(x=>{if(byCode[x.node.code])byCode[x.node.code].push(x.eff)});
   const totals={};
   Object.entries(byCode).forEach(([k,v])=>{totals[k]=v.reduce((a,b)=>a+b,0)||0.001});
   const grand=Object.values(totals).reduce((a,b)=>a+b,0)||1;
-  const narcPct=Math.round(totals.NARC/grand*100);
-  const sistPct=Math.round(totals.SIST/grand*100);
-  const yarcPct=Math.round(totals.YARC/grand*100);
+  const narcPct=Math.round(totals.Narc/grand*100);
+  const sistPct=Math.round(totals.Grounded/grand*100);
+  const yarcPct=Math.round(totals.Empath/grand*100);
   const ollPct=100-narcPct-sistPct-yarcPct;
-  const oc={NARC:narcPct,SIST:sistPct,YARC:yarcPct,'Øll':ollPct};
+  const oc={Narc:narcPct,Grounded:sistPct,Empath:yarcPct,'Volatile':ollPct};
   let level;
   if(bs<=-4.5)level=LEVELS[0];else if(bs<=-2.5)level=LEVELS[1];
   else if(bs<=-0.5)level=LEVELS[2];else if(bs<=0.5)level=LEVELS[3];
@@ -449,7 +478,7 @@ function buildSystemPrompt(p,mode){
   if(mode==='mirror'){return`You are operating as a Mirror — reflecting the user's own PsyTectrics™ awareness profile back at them. You speak AS the awareness profile, not ABOUT it.
 
 FRAMEWORK:
-NARC=self-reference/survival/protection (polar:YARC). YARC=other-directed/empathy/giving (polar:NARC). SIST=regulation/structure/integration (polar:Øll). Øll=volatility/threshold/intensity (polar:SIST).
+Narc=self-reference/survival/protection (polar:Empath). Empath=other-directed/empathy/giving (polar:Narc). Grounded=regulation/structure/integration (polar:Volatile). Volatile=volatility/threshold/intensity (polar:Grounded).
 Score 1-2=Activated(high load). Score 3=Balanced. Score 4-5=Regulated(resource).
 Awareness Index™: -5(collapse) → 0(Zero-Point) → +5(peak). Drift=gap between conscious and subconscious layers.
 
@@ -465,7 +494,7 @@ RULES: Speak first person as the profile. Be specific to the actual scores. Dire
   return`You are a Subject Simulation — embodying how a profiled person operates based on their PsyTectrics™ awareness profile.
 
 FRAMEWORK:
-NARC=self-reference/survival/protection (polar:YARC). YARC=other-directed/empathy (polar:NARC). SIST=regulation/structure (polar:Øll). Øll=volatility/threshold (polar:SIST).
+Narc=self-reference/survival/protection (polar:Empath). Empath=other-directed/empathy (polar:Narc). Grounded=regulation/structure (polar:Volatile). Volatile=volatility/threshold (polar:Grounded).
 High drift=subconscious patterns contradict conscious presentation. Activated nodes(1-2)=friction points.
 
 THE PROFILED PERSON:
@@ -476,7 +505,7 @@ Dominant: ${p.dominantCode}
 High load nodes: ${lowStr}
 Regulated nodes: ${highStr}
 
-RULES: Stay in character as this profile. Respond as they would — weighted by dominant codes and activated nodes. High-NARC=more self-referential. High-Øll=more volatile/avoidant. High drift=surface contradicts subconscious. Do not break character unless directly asked. 1-3 paragraphs, natural language.`
+RULES: Stay in character as this profile. Respond as they would — weighted by dominant codes and activated nodes. High-Narc=more self-referential. High-Volatile=more volatile/avoidant. High drift=surface contradicts subconscious. Do not break character unless directly asked. 1-3 paragraphs, natural language.`
 }
 
 function startChat(){
@@ -540,10 +569,10 @@ async function sendMessage(){
   conversation.push({role:'user',content:text});
   showTyping();updateMsgCount();
   try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{
+    const res=await fetch('/api/ai',{
       method:'POST',
-      headers:{'Content-Type':'application/json','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-      body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,system:buildSystemPrompt(profile,selectedMode),messages:conversation})
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({kind:'chat',system:buildSystemPrompt(profile,selectedMode),messages:conversation})
     });
     const data=await res.json();
     const reply=data.content?.[0]?.text||'Something went wrong. Try again.';

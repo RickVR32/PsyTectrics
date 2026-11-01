@@ -41,7 +41,7 @@ module.exports = async (req, res) => {
         awareness_index: submission.bs,
         drift: submission.drift,
         encoded_code: submission.encoded,
-        marketing_opt_in: submission.marketingOptIn !== false,
+        marketing_opt_in: submission.marketingOptIn === true,
         paid: false
       })
       .select()
