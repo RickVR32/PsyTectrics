@@ -11,10 +11,14 @@
   function svg(R, opts = {}) {
     const E = root.SCEngine;
     let h = opts.standalone ? '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="1280" height="1280"><rect width="640" height="640" fill="#fff"/>' : '<svg viewBox="0 0 640 640" role="img" aria-label="Your Balance Map" style="width:100%;height:auto;display:block;max-width:560px;margin:0 auto">';
+    // Sacred geometry (from the original SC Blueprint diagram, scaled so the Observer Codes sit at r170):
+    // seed of life = Omniality; inner ring r110 = Zero-Point boundary; diamond = tetrahedron projection
+    // with the four codes as vertices; outer ring r275 = existence field, φ × the code radius.
+    h += geometry(opts.geometry !== false);
     // rings: the five board rings around Zero-Point, the person's ring highlighted
     for (let i = 5; i >= 1; i--) {
-      const rr = 60 + i * 50, on = (6 - i) === R.ring;
-      h += `<circle cx="320" cy="320" r="${rr}" fill="none" stroke="${on ? '#00D4FF' : 'rgba(11,16,32,0.08)'}" stroke-width="${on ? 2.5 : 1}" ${on ? '' : 'stroke-dasharray="3 6"'}/>`;
+      const rr = 60 + i * 50, on = !opts.live && (6 - i) === R.ring;
+      h += `<circle cx="320" cy="320" r="${rr}" fill="none" stroke="${on ? '#00D4FF' : 'rgba(11,16,32,0.06)'}" stroke-width="${on ? 2.5 : 1}" ${on ? '' : 'stroke-dasharray="3 6"'}/>`;
     }
     h += '<line x1="40" y1="320" x2="600" y2="320" stroke="rgba(11,16,32,0.12)"/><line x1="320" y1="40" x2="320" y2="600" stroke="rgba(11,16,32,0.12)"/>';
     for (const p of E.PATTERNS) {
@@ -35,11 +39,30 @@
       h += `<text x="${x}" y="${y + 14}" text-anchor="middle" font-size="10" fill="#6B7280" font-family="Space Mono, monospace">${R.ratio[p]}%</text>`;
     }
     h += '<circle cx="320" cy="320" r="54" fill="#060B18"/>';
+    if (opts.live) { // while answering: show progress, keep the level for the end
+      h += `<text x="320" y="322" text-anchor="middle" font-size="20" font-weight="700" fill="#00D4FF" font-family="Montserrat, sans-serif">${esc(opts.live)}</text>`;
+      h += `<text x="320" y="342" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)" font-family="Space Mono, monospace">MAPPING…</text>`;
+    } else {
     h += `<text x="320" y="316" text-anchor="middle" font-size="28" font-weight="700" fill="#00D4FF" font-family="Montserrat, sans-serif">L${R.level}</text>`;
     h += `<text x="320" y="336" text-anchor="middle" font-size="11" fill="#fff" font-family="Inter, sans-serif">${esc(R.stage)}</text>`;
     h += `<text x="320" y="351" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="Space Mono, monospace">RING ${R.ring}</text>`;
+    }
     h += '</svg>';
     return h;
+  }
+  function geometry(on) {
+    if (!on) return '';
+    const C = 320, PHI = 1.618, rc = 170, rs = 55; // rc: Observer Code radius, rs: seed circle radius
+    let g = '<g class="sc-sacred" aria-hidden="true" fill="none">';
+    g += `<circle cx="${C}" cy="${C}" r="${(rc * PHI).toFixed(1)}" stroke="#B8B2A8" stroke-width="1" stroke-dasharray="2 7" opacity=".55"/>`;
+    // flower ring: 12 faint circles on the outer field
+    for (let i = 0; i < 12; i++) { const a = i * Math.PI / 6; g += `<circle cx="${(C + rc * Math.cos(a)).toFixed(1)}" cy="${(C + rc * Math.sin(a)).toFixed(1)}" r="${(rc * PHI - rc).toFixed(1)}" stroke="#C8C4BC" stroke-width=".6" opacity=".35"/>`; }
+    g += `<polygon points="${C},${C - rc} ${C + rc},${C} ${C},${C + rc} ${C - rc},${C}" stroke="#B8B2A8" stroke-width="1.3" opacity=".8"/>`;
+    g += `<polygon points="${C - rc / Math.SQRT2},${C - rc / Math.SQRT2} ${C + rc / Math.SQRT2},${C - rc / Math.SQRT2} ${C + rc / Math.SQRT2},${C + rc / Math.SQRT2} ${C - rc / Math.SQRT2},${C + rc / Math.SQRT2}" stroke="#C8C4BC" stroke-width=".8" opacity=".5"/>`;
+    g += `<circle cx="${C}" cy="${C}" r="${(rc / PHI * 1.03).toFixed(1)}" stroke="#B8B2A8" stroke-width=".9" opacity=".7"/>`;
+    g += `<circle cx="${C}" cy="${C}" r="${rs}" stroke="#B8B2A8" stroke-width=".9" opacity=".7"/>`;
+    for (let i = 0; i < 6; i++) { const a = i * Math.PI / 3; g += `<circle cx="${(C + rs * Math.cos(a)).toFixed(1)}" cy="${(C + rs * Math.sin(a)).toFixed(1)}" r="${rs}" stroke="#B8B2A8" stroke-width=".9" opacity=".7"/>`; }
+    return g + '</g>';
   }
   function render(el, R) { el.innerHTML = svg(R); }
   root.SCGeo = { render, svg, COL, STATUS };
