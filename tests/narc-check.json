@@ -1,45 +1,183 @@
 {
-  "id": "narc-check",
-  "title": "Narc Pattern", "titleEm": "Self-Check",
-  "eyebrow": "Free · 20 questions · 5 minutes",
-  "intro": "Everyone has some Narc pattern — the pull to protect our position, control outcomes and avoid blame. This check shows how strong that pull is in you right now, across four areas. Answer about how you actually behave, especially in conflict.",
-  "scoring": "bands",
-  "scale": ["Strongly disagree", "Disagree", "Neutral", "Agree", "Strongly agree"],
-  "dimensions": {
-    "Control": {"label": "Control", "color": "#C4622D"},
-    "Image": {"label": "Image", "color": "#B88020"},
-    "Blame": {"label": "Blame", "color": "#A0426B"},
-    "Empathy": {"label": "Empathy gap", "color": "#534AB7"}
+ "id": "narc-check",
+ "version": "v4",
+ "title": "Narc Pattern",
+ "titleEm": "Self-Check",
+ "eyebrow": "Free · 20 questions · 5 minutes",
+ "intro": "Everyone has some Narc pattern: the pull to protect yourself by contracting. Holding your position, going quiet, deflecting blame. This check shows how strongly that pull runs in you right now, across the four Narc codes. Answer about how you actually behave, especially in conflict.",
+ "scale": [
+  "Strongly disagree",
+  "Disagree",
+  "Neutral",
+  "Agree",
+  "Strongly agree"
+ ],
+ "items": [
+  {
+   "id": "q1",
+   "pattern": "Narc",
+   "node": "intention",
+   "side": "light",
+   "text": "I can say what I want without needing to control the outcome."
   },
-  "questions": [
-    {"dim": "Control", "text": "I like to be the one who decides how things are done."},
-    {"dim": "Image", "text": "How others see me matters more to me than I let on."},
-    {"dim": "Blame", "text": "When a relationship has problems, it's usually mostly down to the other person."},
-    {"dim": "Empathy", "text": "Other people's feelings can seem like an overreaction to me."},
-    {"dim": "Control", "text": "It bothers me when plans are changed without my say."},
-    {"dim": "Image", "text": "I feel a strong need to be recognised for what I do."},
-    {"dim": "Blame", "text": "If someone is upset with me, I tend to point out what they did first."},
-    {"dim": "Empathy", "text": "I get impatient when people need a lot of emotional support."},
-    {"dim": "Control", "text": "I keep track of what I've done for others and what they owe me."},
-    {"dim": "Image", "text": "When I'm criticised, I want to set the record straight."},
-    {"dim": "Blame", "text": "I bring up past mistakes when I'm in an argument."},
-    {"dim": "Empathy", "text": "I sometimes use what I know about someone to win an argument."},
-    {"dim": "Control", "text": "I find it hard to back down once I've taken a position."},
-    {"dim": "Image", "text": "I sometimes adjust the story so I come across better."},
-    {"dim": "Blame", "text": "I often feel let down by people who should have known better."},
-    {"dim": "Empathy", "text": "When I'm upset, it's hard for me to see the situation from the other side."},
-    {"dim": "Control", "text": "I'm comfortable letting others make decisions that affect me.", "reverse": true},
-    {"dim": "Image", "text": "I can admit I was wrong without it bothering me much.", "reverse": true},
-    {"dim": "Blame", "text": "I can name my own part in most conflicts I've been in.", "reverse": true},
-    {"dim": "Empathy", "text": "I can usually tell when I've hurt someone, even if they don't say so.", "reverse": true}
-  ],
-  "indexLabel": "Narc Pattern Index",
-  "bands": [
-    {"max": 34, "title": "Low", "text": "The Narc pattern has a light hold on you. You can generally let others lead, own your part and see the other side, even in conflict. Watch for the areas below that score higher — that's where the pull still shows under pressure."},
-    {"max": 54, "title": "Moderate", "text": "The Narc pattern shows up, mostly under pressure. In calm times you share control and see other people clearly; in conflict you're more likely to defend your position, keep score or focus on what the other person did. That's very common — and it's where the most change is available."},
-    {"max": 74, "title": "High", "text": "The Narc pattern is a strong pull for you. Protecting your position, being seen in the right and staying in control often come before the other person's view — especially when you feel challenged. It probably feels like self-protection from the inside. The people around you are likely to experience it as hard to reach you."},
-    {"max": 100, "title": "Very high", "text": "The Narc pattern is running much of how you handle people and conflict right now. Control, image and blame are doing a lot of work, and the other person's experience is hard to hold onto when you're under pressure. That doesn't define who you are — patterns can shift — but it's worth taking seriously, and talking it through with someone you trust or a professional can help."}
-  ],
-  "cta": {"text": "Want the full picture? The Awareness Profile maps all four patterns — Narc, Empath, Grounded and Volatile — across 56 questions, with a written report available.", "label": "Take the full Awareness Profile — free →", "href": "solo.html"},
-  "disclaimer": "This is a self-reflection tool about behaviour patterns. It is not a test for narcissism or Narcissistic Personality Disorder, and it is not a diagnosis of any condition."
+  {
+   "id": "q2",
+   "pattern": "Narc",
+   "node": "intention",
+   "side": "shadow",
+   "text": "When I feel challenged, my first move is to protect my position."
+  },
+  {
+   "id": "q3",
+   "pattern": "Narc",
+   "node": "intention",
+   "side": "light",
+   "text": "I'm comfortable letting someone else lead, even when I'd do it differently."
+  },
+  {
+   "id": "q4",
+   "pattern": "Narc",
+   "node": "intention",
+   "side": "shadow",
+   "text": "I like things done my way, and I get tense when they aren't."
+  },
+  {
+   "id": "q5",
+   "pattern": "Narc",
+   "node": "presence",
+   "side": "light",
+   "text": "I can stay in a hard conversation even when it gets emotional."
+  },
+  {
+   "id": "q6",
+   "pattern": "Narc",
+   "node": "presence",
+   "side": "shadow",
+   "text": "When someone is upset with me, I go silent or switch off."
+  },
+  {
+   "id": "q7",
+   "pattern": "Narc",
+   "node": "presence",
+   "side": "light",
+   "text": "When I need space, I say so rather than just going quiet."
+  },
+  {
+   "id": "q8",
+   "pattern": "Narc",
+   "node": "presence",
+   "side": "shadow",
+   "text": "I switch to logic or facts when someone wants me to hear how they feel."
+  },
+  {
+   "id": "q9",
+   "pattern": "Narc",
+   "node": "ownership",
+   "side": "light",
+   "text": "I can say \"I got that wrong\" without adding a \"but\"."
+  },
+  {
+   "id": "q10",
+   "pattern": "Narc",
+   "node": "ownership",
+   "side": "shadow",
+   "text": "I find a way to show it wasn't really my fault."
+  },
+  {
+   "id": "q11",
+   "pattern": "Narc",
+   "node": "ownership",
+   "side": "light",
+   "text": "I apologise for my part even when the other person was wrong too."
+  },
+  {
+   "id": "q12",
+   "pattern": "Narc",
+   "node": "ownership",
+   "side": "shadow",
+   "text": "I remember other people's mistakes more clearly than my own."
+  },
+  {
+   "id": "q13",
+   "pattern": "Narc",
+   "node": "impact",
+   "side": "light",
+   "text": "I notice how I'm coming across while it's happening."
+  },
+  {
+   "id": "q14",
+   "pattern": "Narc",
+   "node": "impact",
+   "side": "shadow",
+   "text": "People tell me I was harsh or cold, and I genuinely didn't notice."
+  },
+  {
+   "id": "q15",
+   "pattern": "Narc",
+   "node": "impact",
+   "side": "light",
+   "text": "I can tell when someone feels dismissed by me, even if they don't say it."
+  },
+  {
+   "id": "q16",
+   "pattern": "Narc",
+   "node": "impact",
+   "side": "shadow",
+   "text": "I think people are too sensitive about the way I say things."
+  },
+  {
+   "id": "q17",
+   "pattern": "Grounded",
+   "node": "coreself",
+   "side": "light",
+   "text": "I don't need to win an argument to feel okay about myself."
+  },
+  {
+   "id": "q18",
+   "pattern": "Narc",
+   "side": "recog",
+   "text": "I know I pull back or harden when things get intense."
+  },
+  {
+   "id": "q19",
+   "pattern": "Narc",
+   "side": "role",
+   "text": "Under pressure, protecting myself matters more than how the other person feels."
+  },
+  {
+   "id": "q20",
+   "pattern": "Volatile",
+   "node": "limit",
+   "side": "shadow",
+   "text": "When I feel cornered, I say things I later regret."
+  }
+ ],
+ "types": {
+  "narc": {
+   "title": "The Narc pull is strong",
+   "text": "Under pressure you contract hard. Holding your position, going quiet or deflecting keeps you safe in the moment, but it costs closeness, and people may stop bringing things to you. The codes in red below are where it costs you most."
+  },
+  "empath": {
+   "title": "The Narc pull is light",
+   "text": "You don't tend to protect yourself by contracting. If anything you lean the other way. Take the Empath side seriously too: the full Awareness Profile maps both."
+  },
+  "loop": {
+   "title": "The Narc pull switches on and off",
+   "text": "Some of the time you contract hard, some of the time you don't. That on-off pattern is often what confuses the people close to you most. The red codes show where it fires."
+  },
+  "mixed": {
+   "title": "Some Narc pull, not running the show",
+   "text": "There's a Narc pull in you, like everyone, but it isn't running the show. The codes below show where it's strongest, and where a small change would make the biggest difference."
+  },
+  "zero": {
+   "title": "Close to Zero-Point",
+   "text": "You can stay present, own your part and notice your impact more often than not. Keep practising, especially on the codes still showing amber."
+  }
+ },
+ "cta": {
+  "text": "This check looks at one side of the loop. The full Awareness Profile maps both roles and all 16 codes, with a Level out of 10.",
+  "label": "Take the full Awareness Profile, free →",
+  "href": "test.html?t=awareness-profile"
+ },
+ "disclaimer": "This is a self-reflection tool, not a psychological assessment or diagnosis. It cannot tell you whether you have any condition."
 }

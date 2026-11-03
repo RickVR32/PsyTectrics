@@ -7,7 +7,8 @@ const tg = require('../lib/tg');
 const { ask } = require('../lib/qa');
 const E = require('../sc-engine.js');
 const SC = require('../lib/source-code');
-const PACKS = { 'quick-check': require('../tests/quick-check.json'), 'awareness-profile': require('../tests/awareness-profile.json') };
+const ALL = require('../lib/packs');
+const PACKS = Object.fromEntries(Object.entries(ALL.PACKS).filter(([id, p]) => !p.couples)); // couples needs both maps: website only
 
 const db = () => createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
 const SITE = () => process.env.SITE_URL || 'https://psytectrics.com';
@@ -16,6 +17,7 @@ const QA_PER_DAY = 20;
 const MENU = [
   [{ text: '⚡ Quick Check (3 min, free)', callback_data: 't:quick-check' }],
   [{ text: '🧭 Awareness Profile (56 questions)', callback_data: 't:awareness-profile' }],
+  [{ text: '🧪 More tests', callback_data: 'm:more' }],
   [{ text: '💬 Ask a question', callback_data: 'm:ask' }, { text: '⭐ Leave a review', callback_data: 'm:review' }],
   [{ text: '🔔 Monthly check-ins on/off', callback_data: 'm:checkins' }]
 ];
@@ -45,7 +47,7 @@ const SCALE_NOTE = '1 = Strongly disagree · 3 = Neutral · 5 = Strongly agree';
 function resultText(pack, R, code) {
   const ty = (pack.types || {})[R.type] || { title: '', text: '' };
   const needs = R.needs.length ? R.needs.map(n => `• ${tg.esc(n.name)} <i>(${n.pattern})</i>`).join('\n') : '• Nothing major pulling you off centre.';
-  return `<b>Your balance: ${tg.esc(ty.title)}</b>\n${tg.esc(ty.text)}\n\n` +
+  return `<b>${pack.about === 'them' ? 'Their pattern' : 'Your balance'}: ${tg.esc(ty.title)}</b>\n${tg.esc(ty.text)}\n\n` +
     `Level <b>${R.level}/10</b> · ${R.stage}\nLean: ${E.leanLabel(R.lean)} · Regulation ${Math.round(R.regulation)} · Drift ${R.drift.toFixed(1)}\n\n` +
     `<b>What needs balancing</b>\n${needs}` + (code ? `\n\nYour Source Code:\n<code>${code}</code>` : '');
 }
@@ -78,6 +80,13 @@ async function client(s, msg, cb) {
       return startTest(s, chat, mid, test);
     }
     if (d.startsWith('a:')) return answerQ(s, chat, mid, u, d.slice(2));
+    if (d === 'm:more') {
+      return tg.send(chat, 'More free tests. Each one maps onto the same Balance Map:', [
+        [{ text: '🛡 Narc Pattern Self-Check', callback_data: 't:narc-check' }],
+        [{ text: '🔍 Am I Dealing With a Narc?', callback_data: 't:dealing-with-narc' }],
+        [{ text: '💷 Money Balance', callback_data: 't:money' }, { text: '💼 Work Balance', callback_data: 't:work' }],
+        [{ text: '💞 Couples Balance (on the website)', url: `${SITE()}/test.html?t=couples` }]]);
+    }
     if (d === 'm:ask') { await save(s, chat, { state: 'ask' }); return tg.send(chat, 'Sure — type your question and I\'ll answer.'); }
     if (d === 'm:review') {
       return tg.send(chat, 'Thank you! How would you rate PsyTectrics?', [[1, 2, 3, 4, 5].map(v => ({ text: '⭐'.repeat(v), callback_data: `r:${v}` })).slice(0, 3), [4, 5].map(v => ({ text: '⭐'.repeat(v), callback_data: `r:${v}` }))]);
@@ -136,16 +145,17 @@ async function answerQ(s, chat, mid, u, v) {
   const keyed = {}; pack.items.forEach((it, i) => keyed[it.id] = answers[i]);
   const R = E.score(pack, keyed);
   let code = null; try { code = SC.encode({ test: pack.id, answers, level: R.level, type: R.type }); } catch (e) { console.error('code', e.message); }
-  await save(s, chat, { idx: 0, answers: [], state: null, last_check: new Date().toISOString(), last_level: R.level });
+  await save(s, chat, { idx: 0, answers: [], state: null, ...(pack.about === 'them' ? {} : { last_check: new Date().toISOString(), last_level: R.level }) });
   await s.from('test_results').insert({ test: pack.id, email: `telegram:${chat}`, marketing_opt_in: !!u.checkins, answers, result: { level: R.level, type: R.type, source: 'telegram', code } });
   await tg.edit(chat, mid, `✅ ${tg.esc(pack.title)} ${tg.esc(pack.titleEm)} complete.`);
-  const prev = prevLevel ? `\n\nLast time you were Level ${prevLevel} — ${R.level > prevLevel ? 'you\'ve moved closer to centre 👏' : R.level < prevLevel ? 'a bit further from centre this month. Worth a look at what\'s changed.' : 'steady.'}` : '';
+  const prev = prevLevel && pack.about !== 'them' ? `\n\nLast time you were Level ${prevLevel} — ${R.level > prevLevel ? 'you\'ve moved closer to centre 👏' : R.level < prevLevel ? 'a bit further from centre this month. Worth a look at what\'s changed.' : 'steady.'}` : '';
   const url = code ? `${SITE()}/test.html?code=${encodeURIComponent(code)}` : `${SITE()}/test.html?t=${pack.id}`;
+  const safety = pack.safety ? `\n\n⚠️ ${tg.esc(pack.safety)}` : '';
   const keys = [[{ text: pack.id === 'awareness-profile' ? '📄 See your Balance Map & unlock the full report' : '🗺 See your Balance Map', url }],
     ...(pack.id === 'quick-check' ? [[{ text: '🧭 Take the full Awareness Profile', callback_data: 't:awareness-profile' }]] : []),
     [{ text: '🔔 Monthly check-ins on/off', callback_data: 'm:checkins' }]];
   tg.admin(`🧪 Telegram ${pack.id} done — Level ${R.level}, ${R.type}`);
-  return tg.send(chat, resultText(pack, R, code) + prev, keys);
+  return tg.send(chat, resultText(pack, R, code) + prev + safety, keys);
 }
 
 // ---------- admin side ----------
@@ -179,7 +189,9 @@ async function adminCmd(s, msg, cb) {
   }
   if (cmd === '/code') {
     try {
-      const d = SC.decode(args.join(' ')); const pack = PACKS[d.test] || require(`../tests/${d.test}.json`);
+      const d = SC.decode(args.join(' ')); const pack = ALL.PACKS[d.test];
+      if (!pack) return tg.send(chat, `Code opened (${tg.esc(d.test)}, ${d.date}) but that test isn't on the site any more. Answers: <code>${d.answers.join('')}</code>`);
+      if (pack.couples) { const C = ALL.score(pack, d.answers); return tg.send(chat, `<b>Couples Balance</b> · taken ${d.date}\n\n<b>You</b>\n` + resultText(pack, C.me) + `\n\n<b>Partner (as they see them)</b>\n` + resultText(pack, C.partner)); }
       const keyed = {}; pack.items.forEach((it, i) => keyed[it.id] = d.answers[i]);
       return tg.send(chat, `<b>${tg.esc(d.test)}</b> · taken ${d.date}\n\n` + resultText(pack, E.score(pack, keyed)) + `\n\nAnswers: <code>${d.answers.join('')}</code>`);
     } catch (e) { return tg.send(chat, `Couldn't open that code: ${tg.esc(e.message)}`); }

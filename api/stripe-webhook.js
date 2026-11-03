@@ -27,6 +27,27 @@ async function notify(subject, fields) {
   } catch (e) { console.error('Telegram notify failed:', e); }
 }
 
+
+function planOf(sub) {
+  const it = sub.items && sub.items.data && sub.items.data[0];
+  const iv = it && it.price && it.price.recurring && it.price.recurring.interval;
+  return iv === 'year' ? 'yearly' : 'monthly';
+}
+async function saveSubscription(sub, emailHint) {
+  const email = String(emailHint || (sub.metadata && sub.metadata.member_email) || '').toLowerCase();
+  const end = sub.current_period_end || (sub.items && sub.items.data && sub.items.data[0] && sub.items.data[0].current_period_end);
+  const row = { stripe_customer_id: sub.customer, stripe_subscription_id: sub.id, status: sub.status, plan: planOf(sub),
+    current_period_end: end ? new Date(end * 1000).toISOString() : null, cancel_at_period_end: !!sub.cancel_at_period_end, updated_at: new Date().toISOString() };
+  if (email) {
+    const { error } = await supabase.from('members').upsert({ email, ...row }, { onConflict: 'email' });
+    if (error) console.error('members upsert', error);
+  } else {
+    const { error } = await supabase.from('members').update(row).eq('stripe_subscription_id', sub.id);
+    if (error) console.error('members update', error);
+  }
+  if (sub.status === 'canceled') await notify(`Membership ended — ${email || sub.customer}`, { plan: row.plan });
+}
+
 function buffer(readable) {
   return new Promise((resolve, reject) => {
     const chunks = [];
@@ -50,7 +71,22 @@ module.exports = async (req, res) => {
     return res.status(400).send(`Webhook Error: ${err.message}`);
   }
 
-  if (event.type === 'checkout.session.completed') {
+  // Membership: keep the members table in step with Stripe
+  if (event.type === 'customer.subscription.created' || event.type === 'customer.subscription.updated' || event.type === 'customer.subscription.deleted') {
+    await saveSubscription(event.data.object);
+  }
+
+  if (event.type === 'checkout.session.completed' && event.data.object.mode === 'subscription') {
+    const session = event.data.object;
+    try {
+      const sub = await stripe.subscriptions.retrieve(session.subscription);
+      const email = (session.metadata && session.metadata.member_email) || session.customer_email || (session.customer_details && session.customer_details.email);
+      await saveSubscription(sub, email);
+      await notify(`New member — ${email}`, { plan: planOf(sub), amount_paid: ((session.amount_total || 0) / 100).toFixed(2) });
+    } catch (e) { console.error('subscription checkout error', e); }
+  }
+
+  if (event.type === 'checkout.session.completed' && event.data.object.mode !== 'subscription') {
     const session = event.data.object;
     const requestId = session.metadata?.request_id;
     const profileId = session.metadata?.profile_id;

@@ -1,0 +1,324 @@
+{
+ "id": "couples",
+ "version": "v4",
+ "couples": true,
+ "title": "Couples",
+ "titleEm": "Balance",
+ "eyebrow": "Free · 32 questions · 6 minutes",
+ "intro": "Answer for yourself and for your partner as you see them, thinking about how you both behave when things get tense. You'll see two Balance Maps side by side and the loop the two of you tend to fall into. Better still: you both take it separately and compare.",
+ "scale": [
+  "Strongly disagree",
+  "Disagree",
+  "Neutral",
+  "Agree",
+  "Strongly agree"
+ ],
+ "items": [
+  {
+   "id": "m1",
+   "pattern": "Narc",
+   "node": "intention",
+   "side": "shadow",
+   "text": "When we disagree, I dig in to protect my position.",
+   "who": "me"
+  },
+  {
+   "id": "p1",
+   "pattern": "Narc",
+   "node": "intention",
+   "side": "shadow",
+   "text": "When we disagree, my partner digs in to protect their position.",
+   "who": "partner"
+  },
+  {
+   "id": "m2",
+   "pattern": "Narc",
+   "node": "presence",
+   "side": "shadow",
+   "text": "When things get heated with my partner, I go quiet or switch off.",
+   "who": "me"
+  },
+  {
+   "id": "p2",
+   "pattern": "Narc",
+   "node": "presence",
+   "side": "shadow",
+   "text": "When things get heated, my partner goes quiet or switches off.",
+   "who": "partner"
+  },
+  {
+   "id": "m3",
+   "pattern": "Narc",
+   "node": "presence",
+   "side": "light",
+   "text": "I can stay in a hard conversation with my partner even when it's emotional.",
+   "who": "me"
+  },
+  {
+   "id": "p3",
+   "pattern": "Narc",
+   "node": "presence",
+   "side": "light",
+   "text": "My partner can stay in a hard conversation with me even when it's emotional.",
+   "who": "partner"
+  },
+  {
+   "id": "m4",
+   "pattern": "Narc",
+   "node": "ownership",
+   "side": "light",
+   "text": "I can tell my partner \"I got that wrong\" without a \"but\".",
+   "who": "me"
+  },
+  {
+   "id": "p4",
+   "pattern": "Narc",
+   "node": "ownership",
+   "side": "light",
+   "text": "My partner can say \"I got that wrong\" without a \"but\".",
+   "who": "partner"
+  },
+  {
+   "id": "m5",
+   "pattern": "Empath",
+   "node": "balance",
+   "side": "shadow",
+   "text": "When my partner pulls away, I keep explaining until they respond.",
+   "who": "me"
+  },
+  {
+   "id": "p5",
+   "pattern": "Empath",
+   "node": "balance",
+   "side": "shadow",
+   "text": "When I pull away, my partner keeps explaining until I respond.",
+   "who": "partner"
+  },
+  {
+   "id": "m6",
+   "pattern": "Empath",
+   "node": "connection",
+   "side": "shadow",
+   "text": "A slow reply or silence from my partner makes me anxious.",
+   "who": "me"
+  },
+  {
+   "id": "p6",
+   "pattern": "Empath",
+   "node": "connection",
+   "side": "shadow",
+   "text": "A slow reply or silence from me makes my partner anxious.",
+   "who": "partner"
+  },
+  {
+   "id": "m7",
+   "pattern": "Empath",
+   "node": "connection",
+   "side": "light",
+   "text": "I can feel close to my partner without needing constant reassurance.",
+   "who": "me"
+  },
+  {
+   "id": "p7",
+   "pattern": "Empath",
+   "node": "connection",
+   "side": "light",
+   "text": "My partner can feel close to me without needing constant reassurance.",
+   "who": "partner"
+  },
+  {
+   "id": "m8",
+   "pattern": "Empath",
+   "node": "holding",
+   "side": "light",
+   "text": "I can hold my ground with my partner without it becoming a fight.",
+   "who": "me"
+  },
+  {
+   "id": "p8",
+   "pattern": "Empath",
+   "node": "holding",
+   "side": "light",
+   "text": "My partner can hold their ground with me without it becoming a fight.",
+   "who": "partner"
+  },
+  {
+   "id": "m9",
+   "pattern": "Grounded",
+   "node": "coreself",
+   "side": "light",
+   "text": "I feel like myself in this relationship.",
+   "who": "me"
+  },
+  {
+   "id": "p9",
+   "pattern": "Grounded",
+   "node": "coreself",
+   "side": "light",
+   "text": "My partner seems like themselves in this relationship.",
+   "who": "partner"
+  },
+  {
+   "id": "m10",
+   "pattern": "Grounded",
+   "node": "honesty",
+   "side": "shadow",
+   "text": "I tell my partner I'm fine when I'm not.",
+   "who": "me"
+  },
+  {
+   "id": "p10",
+   "pattern": "Grounded",
+   "node": "honesty",
+   "side": "shadow",
+   "text": "My partner says they're fine when they're not.",
+   "who": "partner"
+  },
+  {
+   "id": "m11",
+   "pattern": "Grounded",
+   "node": "consistency",
+   "side": "light",
+   "text": "My partner knows what to expect from me.",
+   "who": "me"
+  },
+  {
+   "id": "p11",
+   "pattern": "Grounded",
+   "node": "consistency",
+   "side": "light",
+   "text": "I know what to expect from my partner.",
+   "who": "partner"
+  },
+  {
+   "id": "m12",
+   "pattern": "Grounded",
+   "node": "integrity",
+   "side": "light",
+   "text": "After we argue, I go back and repair it.",
+   "who": "me"
+  },
+  {
+   "id": "p12",
+   "pattern": "Grounded",
+   "node": "integrity",
+   "side": "light",
+   "text": "After we argue, my partner goes back and repairs it.",
+   "who": "partner"
+  },
+  {
+   "id": "m13",
+   "pattern": "Volatile",
+   "node": "limit",
+   "side": "shadow",
+   "text": "In arguments I say things I regret.",
+   "who": "me"
+  },
+  {
+   "id": "p13",
+   "pattern": "Volatile",
+   "node": "limit",
+   "side": "shadow",
+   "text": "In arguments my partner says things they regret.",
+   "who": "partner"
+  },
+  {
+   "id": "m14",
+   "pattern": "Volatile",
+   "node": "limit",
+   "side": "light",
+   "text": "When I hit my limit, I take a break and come back.",
+   "who": "me"
+  },
+  {
+   "id": "p14",
+   "pattern": "Volatile",
+   "node": "limit",
+   "side": "light",
+   "text": "When my partner hits their limit, they take a break and come back.",
+   "who": "partner"
+  },
+  {
+   "id": "m15",
+   "pattern": "Volatile",
+   "node": "pattern",
+   "side": "shadow",
+   "text": "We have the same argument and I play the same part every time.",
+   "who": "me"
+  },
+  {
+   "id": "p15",
+   "pattern": "Volatile",
+   "node": "pattern",
+   "side": "shadow",
+   "text": "My partner plays the same part in our arguments every time.",
+   "who": "partner"
+  },
+  {
+   "id": "m16",
+   "pattern": "Volatile",
+   "node": "cycles",
+   "side": "light",
+   "text": "I'm actively trying to change my part in our arguments.",
+   "who": "me"
+  },
+  {
+   "id": "p16",
+   "pattern": "Volatile",
+   "node": "cycles",
+   "side": "light",
+   "text": "My partner is actively trying to change their part in our arguments.",
+   "who": "partner"
+  }
+ ],
+ "types": {
+  "narc": {
+   "title": "Leaning Narc",
+   "text": "Contracts under pressure: goes quiet, holds position, deflects."
+  },
+  "empath": {
+   "title": "Leaning Empath",
+   "text": "Expands under pressure: chases, explains, reassures."
+  },
+  "loop": {
+   "title": "Caught in the loop",
+   "text": "Swings between shutting down and chasing."
+  },
+  "mixed": {
+   "title": "No strong pull",
+   "text": "Neither role clearly takes over."
+  },
+  "zero": {
+   "title": "Close to Zero-Point",
+   "text": "Mostly steady, even when it's tense."
+  }
+ },
+ "pairs": {
+  "narc+empath": {
+   "title": "The chase and withdraw loop",
+   "text": "One of you pulls back, the other pushes forward, and each move makes the other's stronger. The more one goes quiet, the more the other chases; the more one chases, the more the other shuts down. Neither of you is the problem. The loop is. Break it from either side: the one who withdraws names it (\"I need ten minutes, I'm coming back\"), the one who chases waits."
+  },
+  "narc+narc": {
+   "title": "The cold war",
+   "text": "You both protect yourselves by contracting. Arguments may not be loud, but things go unsaid and distance builds. Someone has to go first. Pick a calm moment and name one thing you've both been avoiding."
+  },
+  "empath+empath": {
+   "title": "The pressure cooker",
+   "text": "You both reach for connection under stress, so arguments can escalate fast as you each push to be understood. Agree a pause signal. Being heard is easier at half the volume."
+  },
+  "loop+any": {
+   "title": "An unpredictable loop",
+   "text": "At least one of you swings between shutting down and chasing, which keeps the other guessing. Look at the red codes on each map. That's where it tips."
+  },
+  "steady": {
+   "title": "A fairly steady pair",
+   "text": "Neither of you is pulling hard in either direction. Look at the amber codes for the small habits worth working on together."
+  }
+ },
+ "cta": {
+  "text": "Each of you can take the full Awareness Profile for your own Level out of 10 and full report.",
+  "label": "Take the Awareness Profile, free →",
+  "href": "test.html?t=awareness-profile"
+ },
+ "disclaimer": "This reflects how you see yourself and your partner. It is not couples therapy or a psychological assessment. If you feel unsafe in your relationship, call the National Domestic Abuse Helpline on 0808 2000 247."
+}

@@ -1,10 +1,42 @@
 {
   "rewrites": [
-    { "source": "/api/decode", "destination": "/api/site?r=decode" },
-    { "source": "/api/ask", "destination": "/api/site?r=ask" },
-    { "source": "/api/reviews", "destination": "/api/site?r=reviews" },
-    { "source": "/api/save-test-result", "destination": "/api/site?r=save-test-result" },
-    { "source": "/api/profile-report", "destination": "/api/site?r=profile-report" }
+    {
+      "source": "/api/decode",
+      "destination": "/api/site?r=decode"
+    },
+    {
+      "source": "/api/ask",
+      "destination": "/api/site?r=ask"
+    },
+    {
+      "source": "/api/reviews",
+      "destination": "/api/site?r=reviews"
+    },
+    {
+      "source": "/api/save-test-result",
+      "destination": "/api/site?r=save-test-result"
+    },
+    {
+      "source": "/api/profile-report",
+      "destination": "/api/site?r=profile-report"
+    },
+    {
+      "source": "/api/config",
+      "destination": "/api/site?r=config"
+    },
+    {
+      "source": "/api/me",
+      "destination": "/api/site?r=me"
+    },
+    {
+      "source": "/api/membership",
+      "destination": "/api/site?r=membership"
+    }
   ],
-  "crons": [{ "path": "/api/telegram", "schedule": "0 8 * * *" }]
+  "crons": [
+    {
+      "path": "/api/telegram",
+      "schedule": "0 8 * * *"
+    }
+  ]
 }

@@ -157,6 +157,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 <script src="sc-engine.js"></script>
 <script src="sc-geo.js"></script>
 <script src="sc-report-library.js"></script>
+<script src="sc-report-variants.js"></script>
 <script src="sc-report.js"></script>
 <script>document.write('<style>'+SCReport.CSS+'</style>')</script>
 </head>
@@ -211,15 +212,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
   </div>
   <div class="pt-footer-bot"><span>© 2026 PsyTectrics™ · All rights reserved</span><span>Site by <a href="https://ric-lee.co.uk" target="_blank" rel="noopener">Ric</a></span></div>
 </footer>
+<script src="pt-auth.js"></script>
 <script>
 
 const app=document.getElementById('report');
-const sid=new URLSearchParams(location.search).get('session_id');
+const qs=new URLSearchParams(location.search),sid=qs.get('session_id'),rid=qs.get('rid');
 const msg=t=>{app.innerHTML='<div class="rmsg">'+t+'</div>'};
-if(!sid){msg('This page shows your report after checkout. <a href="test.html?t=awareness-profile">Take the Awareness Profile →</a>')}
+if(!sid&&!rid){msg('This page shows your report after checkout. <a href="test.html?t=awareness-profile">Take the Awareness Profile →</a>')}
 else{
   msg('Building your report…');
-  Promise.all([fetch('/api/profile-report?session_id='+encodeURIComponent(sid)).then(r=>r.json().then(d=>({ok:r.ok,d}))),fetch('tests/awareness-profile.json').then(r=>r.json())])
+  const get=async()=>{if(rid){await PTAuth.ready;if(!PTAuth.user())return {ok:false,d:{error:'Please <a href="account.html?next='+encodeURIComponent(location.pathname+location.search)+'">sign in</a> to open this report.'}};}
+    const r=await fetch('/api/profile-report?'+(rid?'rid='+encodeURIComponent(rid):'session_id='+encodeURIComponent(sid)),{headers:rid?PTAuth.authHeader():{}});return {ok:r.ok,d:await r.json()}};
+  Promise.all([get(),fetch('tests/awareness-profile.json').then(r=>r.json())])
   .then(([res,test])=>{
     if(!res.ok)throw new Error(res.d.error||'Could not load your report.');
     const d=res.d,answers={};test.items.forEach((it,i)=>answers[it.id]=d.answers[i]);
@@ -227,9 +231,9 @@ else{
     const date=new Date(d.date).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
     app.innerHTML='<div class="rbar no-print"><span>Payment received — here is your full report. Bookmark this page to come back to it.</span><button class="btn" id="prt">Save as PDF</button></div>'+SCReport.build(R,{name:d.name,date,code:d.sourceCode,logo:'pt_logo.png'},test,answers);
     app.insertAdjacentHTML('beforeend','<div data-pt-review="Awareness Profile"></div>');
-    const w=document.createElement('script');w.src='pt-widgets.js';document.body.appendChild(w);
+    if(!document.querySelector('script[src="pt-widgets.js"]')){const w=document.createElement('script');w.src='pt-widgets.js';document.body.appendChild(w);}
     document.getElementById('prt').onclick=()=>window.print();
-    history.replaceState({},'',location.pathname+'?session_id='+encodeURIComponent(sid));
+    history.replaceState({},'',location.pathname+(rid?'?rid='+encodeURIComponent(rid):'?session_id='+encodeURIComponent(sid)));
   }).catch(e=>msg(e.message+' If you were charged, email <a href="mailto:hello@psytectrics.com">hello@psytectrics.com</a> with your receipt and we will send your report.'));
 }
 const hamburger=document.getElementById('hamburger');

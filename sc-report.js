@@ -4,6 +4,7 @@
   const E = root.SCEngine || (typeof require !== 'undefined' && require('./sc-engine.js'));
   const G = root.SCGeo || (typeof require !== 'undefined' && require('./sc-geo.js'));
   const L = root.SCReportLibrary || (typeof require !== 'undefined' && require('./sc-report-library.js'));
+  const V = root.SCReportVariants || (typeof require !== 'undefined' && require('./sc-report-variants.js'));
   const COL = { Narc: '#C4622D', Empath: '#1D9E75', Grounded: '#534AB7', Volatile: '#A0426B' };
   const r0 = Math.round;
   const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -14,6 +15,9 @@
   const word = ['', 'Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'];
 
   function build(R, meta = {}, test = null, answers = null) {
+    // one wording per person: seeded by their Source Code (or their answers)
+    const seed = meta.code || (Array.isArray(answers) ? answers.join('') : answers ? Object.values(answers).join('') : '');
+    const codeText = (id, s) => (V && V.CODES_ALT[id] && V.pick(seed, id) === 1) ? V.CODES_ALT[id][s] : L.CODES[id][s];
     const T = L.TYPES[R.type] || L.TYPES.mixed;
     const ranked = E.PATTERNS.slice().sort((a, b) => (R.patterns[b].shadow || 0) - (R.patterns[a].shadow || 0));
     const sec = (n, kicker, title, body) => `<section class="sec"><div class="kick"><span>${String(n).padStart(2, '0')}</span>${esc(kicker)}</div><h2>${esc(title)}</h2>${body}</section>`;
@@ -48,12 +52,12 @@
       const ids = Object.keys(E.NODES).filter(id => E.NODES[id].pattern === p && R.nodes[id]);
       if (!ids.length) return;
       h += sec(++n, p, `Your ${p} codes`, ids.map(id => { const c = R.nodes[id], s = state(c.balance);
-        return `<div class="code"><h4>${esc(c.name)} ${chip(s)}</h4><p>${esc(L.CODES[id][s])}</p></div>`; }).join(''));
+        return `<div class="code"><h4>${esc(c.name)} ${chip(s)}</h4><p>${esc(codeText(id, s))}</p></div>`; }).join(''));
     });
     // ---- part 4 needs balancing
     h += `<div class="part">Part four · What needs balancing</div>`;
     h += sec(++n, 'Your next three moves', 'What needs balancing', R.needs.length ? R.needs.map((c, i) =>
-      `<div class="need" style="border-color:${COL[c.pattern]}"><h4>${i + 1}. ${esc(c.name)} <span class="pnm">${c.pattern}</span></h4><p>${esc(L.CODES[c.id][state(c.balance)])}</p><p class="fix"><strong>Try this:</strong> ${esc(c.fix)}</p><p class="ch">${esc(c.ch)}</p></div>`).join('')
+      `<div class="need" style="border-color:${COL[c.pattern]}"><h4>${i + 1}. ${esc(c.name)} <span class="pnm">${c.pattern}</span></h4><p>${esc(codeText(c.id, state(c.balance)))}</p><p class="fix"><strong>Try this:</strong> ${esc(c.fix)}</p><p class="ch">${esc(c.ch)}</p></div>`).join('')
       : '<p>Nothing is pulling you far off centre. Your work now is keeping the Observer position under real pressure (Chapter 11).</p>');
     // ---- part 5 people
     h += `<div class="part">Part five · People, love and work</div>`;

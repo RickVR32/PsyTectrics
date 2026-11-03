@@ -1,13 +1,13 @@
 -- Run this in Supabase: Project → SQL Editor → New query → paste → Run
 
-create table solo_submissions (
+create table if not exists solo_submissions (
   id uuid primary key default gen_random_uuid(),
   created_at timestamptz default now(),
 
   -- contact
   email text not null,
   name text,
-  marketing_opt_in boolean default true,
+  marketing_opt_in boolean default false,
 
   -- intro context fields
   age_band text,
@@ -37,9 +37,9 @@ create table solo_submissions (
   notes text
 );
 
-create index idx_solo_submissions_email on solo_submissions(email);
-create index idx_solo_submissions_stripe_session on solo_submissions(stripe_session_id);
-create index idx_solo_submissions_created on solo_submissions(created_at desc);
+create index if not exists idx_solo_submissions_email on solo_submissions(email);
+create index if not exists idx_solo_submissions_stripe_session on solo_submissions(stripe_session_id);
+create index if not exists idx_solo_submissions_created on solo_submissions(created_at desc);
 
 -- ─────────────────────────────────────────────────────────────
 -- Observer / Business report requests (added with server-side checkout)
@@ -144,3 +144,29 @@ create table if not exists reviews (
 );
 create index if not exists idx_reviews_status on reviews(status, created_at desc);
 alter table reviews enable row level security;
+
+-- ─────────────────────────────────────────────────────────────
+-- Accounts (logins) and membership
+-- ─────────────────────────────────────────────────────────────
+create table if not exists accounts (
+  email text primary key,
+  created_at timestamptz default now(),
+  updated_at timestamptz default now(),
+  last_seen timestamptz,
+  marketing_opt_in boolean default false
+);
+alter table accounts enable row level security;
+
+create table if not exists members (
+  email text primary key,
+  created_at timestamptz default now(),
+  updated_at timestamptz default now(),
+  stripe_customer_id text,
+  stripe_subscription_id text unique,
+  status text,
+  plan text,
+  current_period_end timestamptz,
+  cancel_at_period_end boolean default false
+);
+alter table members enable row level security;
+create index if not exists idx_test_results_email on test_results(email);

@@ -97,6 +97,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .map-key span{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:-0.6rem}
 #geo{cursor:zoom-in;-webkit-overflow-scrolling:touch}#geo.zoom{overflow:auto;cursor:zoom-out;margin:0 -1rem}#geo.zoom svg{min-width:820px;max-width:none!important}
 .geo-hint{display:none;font-size:0.75rem;color:var(--muted);text-align:center;margin-top:0.3rem}@media(max-width:700px){.geo-hint{display:block}}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:1rem}@media(max-width:760px){.pair{grid-template-columns:1fr}}
+.geo-small svg{max-width:100%!important}
+.safety{background:#FFF6E5;border:1px solid #E9C46A;border-left:4px solid #C48A1C;padding:1rem 1.2rem;margin-bottom:1rem;font-size:0.9rem;line-height:1.6;color:#4A3B12}
+.sc-code{font-family:var(--mono);font-size:0.78rem;word-break:break-all;background:var(--accent-soft);padding:0.15rem 0.35rem}
 .geo-key{margin-top:0.8rem;font-size:0.82rem;color:var(--muted)}.geo-key summary{cursor:pointer;color:var(--text)}.geo-key ul{margin:0.5rem 0 0;padding-left:1.1rem;line-height:1.7}
 .live-geo{max-width:420px;margin:1.6rem auto 0;opacity:.95}.live-geo svg{max-width:420px!important}
 .needs{list-style:none;display:flex;flex-direction:column;gap:0.7rem;margin:0;padding:0}
@@ -237,7 +241,7 @@ function question(){
   <div class="scale">${T.scale.map((s,i)=>`<button data-v="${i+1}" class="${answers[idx]===i+1?'sel':''}">${esc(s)}</button>`).join('')}</div>
   <div class="nav-row"><button class="btn btn-ghost" id="back" ${idx===0?'disabled':''}>← Back</button></div>
   ${T.version==='v4'?'<div class="live-geo" id="live-geo" aria-hidden="true"></div>':''}`;
-  if(T.version==='v4'&&window.SCGeo){try{const a={};T.questions.forEach((q,i)=>{if(answers[i]!=null)a[q.id]=answers[i]});
+  if(T.version==='v4'&&window.SCGeo){try{const a={};T.questions.forEach((q,i)=>{if(answers[i]!=null&&(!T.couples||q.who==='me'))a[q.id]=answers[i]});
     const any=Object.keys(a).length;document.getElementById('live-geo').innerHTML=SCGeo.svg(any?SCEngine.score({items:T.questions},a):SCEngine.score({items:[]},{}),{live:any+' / '+T.questions.length})}catch(e){document.getElementById('live-geo').remove()}}
   let locked=false; // stops a fast double-tap skipping the next question
   app.querySelectorAll('.scale button').forEach(b=>b.onclick=()=>{if(locked)return;locked=true;answers[idx]=+b.dataset.v;
@@ -249,7 +253,9 @@ function question(){
   document.getElementById('back').onclick=()=>{if(idx>0){idx--;question()}};
 }
 function score(){
-  if(T.version==='v4'){const a={};T.questions.forEach((q,i)=>a[q.id]=answers[i]);result=SCEngine.score({items:T.questions},a);return}
+  if(T.version==='v4'){const a={};T.questions.forEach((q,i)=>a[q.id]=answers[i]);
+    if(T.couples){const part=w=>({items:T.questions.filter(q=>q.who===w)});result={version:'v4',couples:true,me:SCEngine.score(part('me'),a),partner:SCEngine.score(part('partner'),a)};return}
+    result=SCEngine.score({items:T.questions},a);return}
   const dims=Object.keys(T.dimensions),sum={},cnt={};dims.forEach(d=>{sum[d]=0;cnt[d]=0});
   T.questions.forEach((q,i)=>{const v=q.reverse?6-answers[i]:answers[i];sum[q.dim]+=v;cnt[q.dim]++});
   if(T.scoring==='ratio'){
@@ -266,22 +272,36 @@ function score(){
   }
 }
 function bars(obj){return Object.entries(obj).map(([d,v])=>`<div class="bar-row"><span style="color:${T.dimensions[d].color}">${esc(T.dimensions[d].label)}</span><div class="bar-bg"><div style="width:${v}%;background:${T.dimensions[d].color}"></div></div><span class="bar-pct">${v}${T.scoring==='ratio'?'%':''}</span></div>`).join('')}
+function pairKey(a,b){const t=[a.type,b.type];if(t.includes('loop'))return 'loop+any';if(t.includes('narc')&&t.includes('empath'))return 'narc+empath';if(t[0]==='narc'&&t[1]==='narc')return 'narc+narc';if(t[0]==='empath'&&t[1]==='empath')return 'empath+empath';return 'steady'}
+function needsList(R,them){
+  if(!R.needs.length)return them?'<li style="border-left-color:#2F8A5B"><strong>No code stands out as badly off balance.</strong><br>If something still feels wrong between you, trust that too.</li>':'<li style="border-left-color:#2F8A5B"><strong>Nothing major pulling you off centre.</strong><br>Keep practising noticing what happens while it happens.<br><span class="ch">Ch 11 · The Observer position</span></li>';
+  return R.needs.map(n=>`<li style="border-left-color:${SCGeo.COL[n.pattern]}"><strong>${esc(n.name)}</strong> <span class="nm">${esc(n.pattern)} · light ${Math.round(n.light)} / shadow ${Math.round(n.shadow)}</span><br>${them?'This is where their pattern is most likely to land on you.':T.paywall?'<span class="lock">Your steps for this code are in the full report.</span>':esc(n.fix||'')+'<br><span class="ch">'+esc(n.ch||'')+'</span>'}</li>`).join('');
+}
 function results(){
   let main;
   if(result.version==='v4'){
+    const them=T.about==='them';
+    if(result.couples){
+      const pk=pairKey(result.me,result.partner),pr=(T.pairs||{})[pk]||{title:'',text:''};
+      const side=(R,who,id)=>{const ty=(T.types||{})[R.type]||{title:'',text:''};return `<div class="res-card"><div class="res-label">${who}</div><div class="res-big">${esc(ty.title)}</div><p class="res-text">${esc(ty.text)} Level ${R.level}/10 · ${esc(R.stage)}.</p><div id="${id}" class="geo-small"></div></div>`};
+      main=`<div class="res-card"><div class="res-label">Your loop</div><div class="res-big">${esc(pr.title)}</div><p class="res-text">${esc(pr.text)}</p></div>
+      <div class="pair">${side(result.me,'You','geo-me')}${side(result.partner,'Your partner, as you see them','geo-partner')}</div>
+      <p class="map-key"><span style="background:#2F8A5B"></span>Balanced <span style="background:#C48A1C"></span>Leaning <span style="background:#C2413A"></span>Needs balancing <span style="background:#E4E2DC"></span>Not measured</p>
+      <div class="res-card"><div class="res-label">Where it tips for you</div><ul class="needs">${needsList(result.me,false)}</ul></div>`;
+    }else{
     const ty=(T.types||{})[result.type]||{title:'',text:''};
     const st=(k,v,sub)=>`<div class="stat"><span class="k">${k}</span><span class="v">${v}</span><span class="s">${sub}</span></div>`;
-    const needs=result.needs.length?result.needs.map(n=>`<li style="border-left-color:${SCGeo.COL[n.pattern]}"><strong>${esc(n.name)}</strong> <span class="nm">${esc(n.pattern)} · light ${Math.round(n.light)} / shadow ${Math.round(n.shadow)}</span><br>${T.paywall?'<span class="lock">Your steps for this code are in the full report.</span>':esc(n.fix||'')+'<br><span class="ch">'+esc(n.ch||'')+'</span>'}</li>`).join(''):'<li style="border-left-color:#2F8A5B"><strong>Nothing major pulling you off centre.</strong><br>Keep practising noticing what happens while it happens.<br><span class="ch">Ch 11 · The Observer position</span></li>';
-    main=`<div class="res-card"><div class="res-label">Your balance</div><div class="res-big">${esc(ty.title)}</div><p class="res-text">${esc(ty.text)}</p></div>
+    main=`${T.safety?`<div class="safety" role="note">${esc(T.safety)}</div>`:''}<div class="res-card"><div class="res-label">${them?'Their pattern':'Your balance'}</div><div class="res-big">${esc(ty.title)}</div><p class="res-text">${esc(ty.text)}</p></div>
     <div class="stats">${st('Level',result.level+' / 10',result.stage)}${st('Board ring',result.ring,'of 5 · Zero-Point')}${st('Lean',SCEngine.leanLabel(result.lean),'Narc ↔ Empath')}${st('Charge',Math.round(result.charge),'Both roles')}${st('Regulation',Math.round(result.regulation),'Grounded vs Volatile')}${st('Drift',result.drift.toFixed(1),'Says vs does · 0–5')}</div>
-    <div class="res-card"><div class="res-label">Your Balance Map</div><div id="geo"></div><p class="geo-hint">Tap the map to zoom in, tap again to zoom out.</p><p class="map-key"><span style="background:#2F8A5B"></span>Balanced <span style="background:#C48A1C"></span>Leaning <span style="background:#C2413A"></span>Needs balancing <span style="background:#C9CCD6"></span>Not measured in this test</p>
+    <div class="res-card"><div class="res-label">${them?'Their Balance Map':'Your Balance Map'}</div><div id="geo"></div><p class="geo-hint">Tap the map to zoom in, tap again to zoom out.</p><p class="map-key"><span style="background:#2F8A5B"></span>Balanced <span style="background:#C48A1C"></span>Leaning <span style="background:#C2413A"></span>Needs balancing <span style="background:#E4E2DC"></span>Not measured in this test</p>
     <details class="geo-key"><summary>The geometry behind the map</summary><ul>
       <li><b>Seed of life</b> (centre): Omniality, the potential before any pattern forms.</li>
       <li><b>Inner ring</b>: the Zero-Point boundary.</li>
       <li><b>Diamond</b>: a tetrahedron seen from above, with the four codes as its corners.</li>
       <li><b>Outer ring</b>: the existence field, φ (1.618) times the distance to the codes.</li>
       <li><b>Ovals and triangles</b>: the 8 Apps and the 16 Source Codes, each triangle coloured by its balance.</li></ul></details></div>
-    <div class="res-card"><div class="res-label">What needs balancing</div><ul class="needs">${needs}</ul></div>`;
+    <div class="res-card"><div class="res-label">${them?'Where it gets difficult with them':'What needs balancing'}</div><ul class="needs">${needsList(result,them)}</ul></div>`;
+    }
   }else
   if(result.type==='ratio'){const r=T.results[result.dominant];
     main=`<div class="res-card"><div class="res-label">Your dominant pattern</div><div class="res-big" style="color:${T.dimensions[result.dominant].color}">${esc(r.title)}</div><p class="res-text">${esc(r.text)}</p></div>
@@ -296,7 +316,7 @@ function results(){
     <input type="email" id="pe" placeholder="you@example.com" autocomplete="email"/>
     <label><input type="checkbox" id="pm"/> Send me news about new tests, the games and the book. You can unsubscribe any time.</label>
     <button class="btn" id="pb">${esc(T.paywall.button)} — ${esc(T.price)} →</button><div class="save-msg" id="pmsg">Secure payment via Stripe. Got a discount code? Add it at checkout.</div></div>`:''}
-  <div class="save"${T.paywall?' hidden':''}><h3>Email me my result</h3><p>Get a copy of this result by email. Optional.</p>
+  <div class="save"${T.paywall?' hidden':''} id="savebox"><h3>Keep this result</h3><p>Get it by email with your personal Source Code, or <a href="account.html?next=${encodeURIComponent(location.pathname+location.search)}">sign in</a> to save every result in one place.</p>
     <input type="email" id="em" placeholder="you@example.com" autocomplete="email"/>
     <label><input type="checkbox" id="mk"/> Also send me occasional updates about new PsyTectrics tests. You can unsubscribe any time.</label>
     <button class="btn" id="sv">Send my result →</button><div class="save-msg" id="svm"></div></div>
@@ -306,25 +326,40 @@ function results(){
   document.getElementById('again').onclick=e=>{e.preventDefault();answers.fill(null);intro()};
   document.getElementById('sv').onclick=save;
   if(T.paywall)document.getElementById('pb').onclick=unlock;
-  if(result.version==='v4'){const g=document.getElementById('geo');SCGeo.render(g,result);g.onclick=()=>g.classList.toggle('zoom')}
+  if(result.version==='v4'){
+    if(result.couples){SCGeo.render(document.getElementById('geo-me'),result.me);SCGeo.render(document.getElementById('geo-partner'),result.partner)}
+    else{const g=document.getElementById('geo');SCGeo.render(g,result);g.onclick=()=>g.classList.toggle('zoom')}
+    if(window.PTAuth)PTAuth.ready.then(async()=>{if(!PTAuth.user())return;autoSave();
+      if(T.paywall){const pe=document.getElementById('pe');pe.value=PTAuth.user().email;pe.readOnly=true;
+        const me=await PTAuth.me();if(me&&me.member&&me.member.active){document.getElementById('pb').textContent='Open my full report: included in your membership →';document.getElementById('pmsg').textContent='Members get every full report included.'}}})}
   window.scrollTo(0,0);
 }
 async function unlock(){
   const em=document.getElementById('pe').value.trim(),msg=document.getElementById('pmsg'),btn=document.getElementById('pb');
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){msg.textContent='Please enter a valid email address so we can send your report.';return}
+  const signedIn=window.PTAuth&&PTAuth.user();
+  if(!signedIn&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){msg.textContent='Please enter a valid email address so we can send your report.';return}
   btn.disabled=true;msg.textContent='Opening secure checkout…';
-  try{const r=await fetch('/api/create-profile-checkout',{method:'POST',headers:{'Content-Type':'application/json'},
+  try{const r=await fetch('/api/create-profile-checkout',{method:'POST',headers:{'Content-Type':'application/json',...(window.PTAuth?PTAuth.authHeader():{})},
       body:JSON.stringify({email:em,name:document.getElementById('pn').value.trim(),marketingOptIn:document.getElementById('pm').checked,answers})});
     const d=await r.json();if(r.ok&&d.url){location.href=d.url;return}throw new Error(d.error)}
   catch(e){btn.disabled=false;msg.textContent=(e&&e.message)||'Something went wrong. Please try again.'}
+}
+const codeLine=c=>c?`<br>Your Source Code: <code class="sc-code">${esc(c)}</code>`:'';
+async function autoSave(){
+  const box=document.getElementById('savebox');if(!box)return;box.hidden=false;
+  box.innerHTML='<h3>Saving to your account…</h3>';
+  try{const r=await fetch('/api/save-test-result',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+PTAuth.token()},body:JSON.stringify({test:T.id,answers})});
+    const d=await r.json();if(!r.ok)throw new Error(d.error);
+    box.innerHTML='<h3>Saved to your account ✓</h3><p>See all your results and your history on <a href="account.html">your dashboard</a>.'+codeLine(d.code)+'</p>'}
+  catch(e){box.innerHTML='<h3>Could not save just now</h3><p>'+esc((e&&e.message)||'Please try again later.')+'</p>'}
 }
 async function save(){
   const em=document.getElementById('em').value.trim(),msg=document.getElementById('svm'),btn=document.getElementById('sv');
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){msg.textContent='Please enter a valid email address.';return}
   btn.disabled=true;msg.textContent='Sending…';
   try{const r=await fetch('/api/save-test-result',{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({test:T.id,email:em,marketingOptIn:document.getElementById('mk').checked,answers,result})});
-    if(!r.ok)throw 0;const d=await r.json();msg.textContent=d.emailed?'Done — check your inbox.':'Saved — thank you.';}
+      body:JSON.stringify({test:T.id,email:em,marketingOptIn:document.getElementById('mk').checked,answers})});
+    if(!r.ok)throw 0;const d=await r.json();msg.innerHTML=(d.emailed?'Done, check your inbox.':'Saved, thank you.')+codeLine(d.code);}
   catch{btn.disabled=false;msg.textContent='Something went wrong. Please try again.'}
 }
 
@@ -334,6 +369,7 @@ const drawer=document.getElementById('navDrawer');
 hamburger.addEventListener('click',function(){hamburger.classList.toggle('open');drawer.classList.toggle('open');});
 drawer.querySelectorAll('a').forEach(function(link){link.addEventListener('click',function(){hamburger.classList.remove('open');drawer.classList.remove('open');});});
 </script>
+<script src="pt-auth.js"></script>
 <script src="pt-widgets.js" defer></script>
 </body>
 </html>

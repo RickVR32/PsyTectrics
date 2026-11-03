@@ -1,0 +1,269 @@
+{
+ "id": "work",
+ "version": "v4",
+ "title": "Work",
+ "titleEm": "Balance",
+ "eyebrow": "Free · 32 questions · 6 minutes · Area pack",
+ "intro": "Work is where the patterns show up most politely, and cost the most quietly. Answer about how you actually are at work, especially under pressure, with a manager, or in conflict with colleagues.",
+ "scale": [
+  "Strongly disagree",
+  "Disagree",
+  "Neutral",
+  "Agree",
+  "Strongly agree"
+ ],
+ "items": [
+  {
+   "id": "q1",
+   "pattern": "Narc",
+   "node": "intention",
+   "side": "light",
+   "text": "I can let others run things their way at work, even when I'd do it differently."
+  },
+  {
+   "id": "q2",
+   "pattern": "Narc",
+   "node": "intention",
+   "side": "shadow",
+   "text": "I need to be in control of projects to feel they'll go right."
+  },
+  {
+   "id": "q3",
+   "pattern": "Narc",
+   "node": "presence",
+   "side": "light",
+   "text": "I can stay in a tense meeting and keep engaging."
+  },
+  {
+   "id": "q4",
+   "pattern": "Narc",
+   "node": "presence",
+   "side": "shadow",
+   "text": "When feedback gets personal, I shut down or go defensive."
+  },
+  {
+   "id": "q5",
+   "pattern": "Narc",
+   "node": "ownership",
+   "side": "light",
+   "text": "I own it when something I did goes wrong at work."
+  },
+  {
+   "id": "q6",
+   "pattern": "Narc",
+   "node": "ownership",
+   "side": "shadow",
+   "text": "When a project fails, I can always point to why it wasn't down to me."
+  },
+  {
+   "id": "q7",
+   "pattern": "Narc",
+   "node": "impact",
+   "side": "light",
+   "text": "I notice how my tone lands with colleagues while I'm speaking."
+  },
+  {
+   "id": "q8",
+   "pattern": "Narc",
+   "node": "impact",
+   "side": "shadow",
+   "text": "People have told me I come across harsher than I mean to."
+  },
+  {
+   "id": "q9",
+   "pattern": "Empath",
+   "node": "balance",
+   "side": "light",
+   "text": "I can disappoint a colleague without over-explaining."
+  },
+  {
+   "id": "q10",
+   "pattern": "Empath",
+   "node": "balance",
+   "side": "shadow",
+   "text": "I write long messages to make sure nobody's annoyed with me."
+  },
+  {
+   "id": "q11",
+   "pattern": "Empath",
+   "node": "connection",
+   "side": "light",
+   "text": "I'm fine when my manager doesn't check in for a while."
+  },
+  {
+   "id": "q12",
+   "pattern": "Empath",
+   "node": "connection",
+   "side": "shadow",
+   "text": "If my manager is short with me, I worry about it all day."
+  },
+  {
+   "id": "q13",
+   "pattern": "Empath",
+   "node": "clearhead",
+   "side": "light",
+   "text": "Under deadline pressure, I can still think clearly."
+  },
+  {
+   "id": "q14",
+   "pattern": "Empath",
+   "node": "clearhead",
+   "side": "shadow",
+   "text": "When work piles up, I panic and can't prioritise."
+  },
+  {
+   "id": "q15",
+   "pattern": "Empath",
+   "node": "holding",
+   "side": "light",
+   "text": "I can say no to extra work when I'm at capacity."
+  },
+  {
+   "id": "q16",
+   "pattern": "Empath",
+   "node": "holding",
+   "side": "shadow",
+   "text": "I take on more than I can handle so I don't let people down."
+  },
+  {
+   "id": "q17",
+   "pattern": "Grounded",
+   "node": "coreself",
+   "side": "light",
+   "text": "I feel like the same person at work and at home."
+  },
+  {
+   "id": "q18",
+   "pattern": "Grounded",
+   "node": "coreself",
+   "side": "shadow",
+   "text": "I keep a calm face at work while I'm stressed underneath."
+  },
+  {
+   "id": "q19",
+   "pattern": "Grounded",
+   "node": "integrity",
+   "side": "light",
+   "text": "I do what I say I'll do at work."
+  },
+  {
+   "id": "q20",
+   "pattern": "Grounded",
+   "node": "integrity",
+   "side": "shadow",
+   "text": "I bend my values to fit in or get ahead."
+  },
+  {
+   "id": "q21",
+   "pattern": "Grounded",
+   "node": "consistency",
+   "side": "light",
+   "text": "Colleagues know what to expect from me."
+  },
+  {
+   "id": "q22",
+   "pattern": "Grounded",
+   "node": "consistency",
+   "side": "shadow",
+   "text": "My mood at work changes how I treat people."
+  },
+  {
+   "id": "q23",
+   "pattern": "Grounded",
+   "node": "honesty",
+   "side": "light",
+   "text": "I can look honestly at my own performance."
+  },
+  {
+   "id": "q24",
+   "pattern": "Grounded",
+   "node": "honesty",
+   "side": "shadow",
+   "text": "I avoid feedback that might show I'm not doing well."
+  },
+  {
+   "id": "q25",
+   "pattern": "Volatile",
+   "node": "purpose",
+   "side": "light",
+   "text": "I know what I want from my work and I'm moving towards it."
+  },
+  {
+   "id": "q26",
+   "pattern": "Volatile",
+   "node": "purpose",
+   "side": "shadow",
+   "text": "I throw myself into new roles or projects, then lose interest fast."
+  },
+  {
+   "id": "q27",
+   "pattern": "Volatile",
+   "node": "pattern",
+   "side": "light",
+   "text": "I can spot the situations at work that set me off."
+  },
+  {
+   "id": "q28",
+   "pattern": "Volatile",
+   "node": "pattern",
+   "side": "shadow",
+   "text": "I keep ending up in the same clashes with different people."
+  },
+  {
+   "id": "q29",
+   "pattern": "Volatile",
+   "node": "limit",
+   "side": "light",
+   "text": "When I'm at my limit at work, I step away before I snap."
+  },
+  {
+   "id": "q30",
+   "pattern": "Volatile",
+   "node": "limit",
+   "side": "shadow",
+   "text": "I've sent messages or said things at work in the heat of the moment I regretted."
+  },
+  {
+   "id": "q31",
+   "pattern": "Volatile",
+   "node": "cycles",
+   "side": "light",
+   "text": "I've changed a work habit that used to cause me trouble."
+  },
+  {
+   "id": "q32",
+   "pattern": "Volatile",
+   "node": "cycles",
+   "side": "shadow",
+   "text": "I burn out, recover, then do it all again."
+  }
+ ],
+ "types": {
+  "narc": {
+   "title": "The controller",
+   "text": "At work you contract under pressure: you take control, defend your position and shut down when it gets personal. You get things done, but people may stop telling you things."
+  },
+  "empath": {
+   "title": "The over-giver",
+   "text": "At work you expand under pressure: you over-explain, take on too much and worry about how you're seen. People rely on you, and your own capacity disappears."
+  },
+  "loop": {
+   "title": "Boom and burnout",
+   "text": "You swing between holding it all tightly and giving everything away. The red codes show where the swing starts."
+  },
+  "mixed": {
+   "title": "Mostly steady at work",
+   "text": "No strong pull either way. A few codes show where work pressure tips you; fix those first."
+  },
+  "zero": {
+   "title": "Grounded at work",
+   "text": "You stay steady at work more often than not. Watch the amber codes in busy seasons."
+  }
+ },
+ "cta": {
+  "text": "Leading a team? A Business Audit maps the whole team's patterns.",
+  "label": "See the Business Audit →",
+  "href": "business.html"
+ },
+ "disclaimer": "This is a self-reflection tool, not a psychological or occupational assessment."
+}

@@ -1,0 +1,283 @@
+{
+ "id": "dealing-with-narc",
+ "version": "v4",
+ "title": "Am I Dealing",
+ "titleEm": "With a Narc?",
+ "eyebrow": "Free · 34 questions · 7 minutes · About someone else",
+ "intro": "Think of one person, such as a partner, ex, parent, boss or co-parent, and answer about how they usually behave with you, especially when things are tense. This maps their pattern on the SC Blueprint. It can't diagnose anyone, and it isn't a judgement of who they are, but it can make a confusing pattern easier to see.",
+ "about": "them",
+ "scale": [
+  "Strongly disagree",
+  "Disagree",
+  "Neutral",
+  "Agree",
+  "Strongly agree"
+ ],
+ "items": [
+  {
+   "id": "d1",
+   "pattern": "Narc",
+   "node": "intention",
+   "side": "light",
+   "text": "They can say what they want and still leave room for my view."
+  },
+  {
+   "id": "d2",
+   "pattern": "Narc",
+   "node": "intention",
+   "side": "shadow",
+   "text": "Decisions have to go their way, or there's a price to pay."
+  },
+  {
+   "id": "d3",
+   "pattern": "Narc",
+   "node": "presence",
+   "side": "light",
+   "text": "They'll stay in a hard conversation with me, even when it gets emotional."
+  },
+  {
+   "id": "d4",
+   "pattern": "Narc",
+   "node": "presence",
+   "side": "shadow",
+   "text": "When I raise something, they go cold, silent or walk away."
+  },
+  {
+   "id": "d5",
+   "pattern": "Narc",
+   "node": "ownership",
+   "side": "light",
+   "text": "They can admit when they've got something wrong."
+  },
+  {
+   "id": "d6",
+   "pattern": "Narc",
+   "node": "ownership",
+   "side": "shadow",
+   "text": "Somehow it always ends up being my fault, or someone else's."
+  },
+  {
+   "id": "d7",
+   "pattern": "Narc",
+   "node": "impact",
+   "side": "light",
+   "text": "They notice when they've hurt me and do something about it."
+  },
+  {
+   "id": "d8",
+   "pattern": "Narc",
+   "node": "impact",
+   "side": "shadow",
+   "text": "They tell me I'm too sensitive when I say something hurt."
+  },
+  {
+   "id": "d9",
+   "pattern": "Empath",
+   "node": "balance",
+   "side": "light",
+   "text": "They can let me be upset without trying to fix or argue me out of it."
+  },
+  {
+   "id": "d10",
+   "pattern": "Empath",
+   "node": "balance",
+   "side": "shadow",
+   "text": "They over-explain and won't drop it until I agree."
+  },
+  {
+   "id": "d11",
+   "pattern": "Empath",
+   "node": "connection",
+   "side": "light",
+   "text": "They're fine when I need time to myself."
+  },
+  {
+   "id": "d12",
+   "pattern": "Empath",
+   "node": "connection",
+   "side": "shadow",
+   "text": "If I don't reply quickly, they get anxious, angry or accusing."
+  },
+  {
+   "id": "d13",
+   "pattern": "Empath",
+   "node": "clearhead",
+   "side": "light",
+   "text": "They can calm down and think before reacting."
+  },
+  {
+   "id": "d14",
+   "pattern": "Empath",
+   "node": "clearhead",
+   "side": "shadow",
+   "text": "Once they're upset, there's no reasoning with them."
+  },
+  {
+   "id": "d15",
+   "pattern": "Empath",
+   "node": "holding",
+   "side": "light",
+   "text": "They respect a no from me the first time."
+  },
+  {
+   "id": "d16",
+   "pattern": "Empath",
+   "node": "holding",
+   "side": "shadow",
+   "text": "They push and push until I give in."
+  },
+  {
+   "id": "d17",
+   "pattern": "Grounded",
+   "node": "coreself",
+   "side": "light",
+   "text": "They seem like the same person whoever they're with."
+  },
+  {
+   "id": "d18",
+   "pattern": "Grounded",
+   "node": "coreself",
+   "side": "shadow",
+   "text": "They're charming in public and very different behind closed doors."
+  },
+  {
+   "id": "d19",
+   "pattern": "Grounded",
+   "node": "integrity",
+   "side": "light",
+   "text": "Their actions match the values they talk about."
+  },
+  {
+   "id": "d20",
+   "pattern": "Grounded",
+   "node": "integrity",
+   "side": "shadow",
+   "text": "They rewrite what happened so they come out looking good."
+  },
+  {
+   "id": "d21",
+   "pattern": "Grounded",
+   "node": "consistency",
+   "side": "light",
+   "text": "I can predict how they'll react most of the time."
+  },
+  {
+   "id": "d22",
+   "pattern": "Grounded",
+   "node": "consistency",
+   "side": "shadow",
+   "text": "I feel like I'm walking on eggshells around them."
+  },
+  {
+   "id": "d23",
+   "pattern": "Grounded",
+   "node": "honesty",
+   "side": "light",
+   "text": "They'll look honestly at their own behaviour if I raise it calmly."
+  },
+  {
+   "id": "d24",
+   "pattern": "Grounded",
+   "node": "honesty",
+   "side": "shadow",
+   "text": "They deny things I clearly remember happening."
+  },
+  {
+   "id": "d25",
+   "pattern": "Volatile",
+   "node": "purpose",
+   "side": "light",
+   "text": "When they're stressed, they still act with some kind of plan."
+  },
+  {
+   "id": "d26",
+   "pattern": "Volatile",
+   "node": "purpose",
+   "side": "shadow",
+   "text": "They swing from loving and generous to cold or cruel."
+  },
+  {
+   "id": "d27",
+   "pattern": "Volatile",
+   "node": "pattern",
+   "side": "light",
+   "text": "They can see their own patterns and talk about them."
+  },
+  {
+   "id": "d28",
+   "pattern": "Volatile",
+   "node": "pattern",
+   "side": "shadow",
+   "text": "The same argument keeps happening and nothing changes."
+  },
+  {
+   "id": "d29",
+   "pattern": "Volatile",
+   "node": "limit",
+   "side": "light",
+   "text": "When they hit their limit, they step away rather than lash out."
+  },
+  {
+   "id": "d30",
+   "pattern": "Volatile",
+   "node": "limit",
+   "side": "shadow",
+   "text": "In heated moments they say or do things that scare or crush me."
+  },
+  {
+   "id": "d31",
+   "pattern": "Volatile",
+   "node": "cycles",
+   "side": "light",
+   "text": "After a falling-out, we actually sort it out."
+  },
+  {
+   "id": "d32",
+   "pattern": "Volatile",
+   "node": "cycles",
+   "side": "shadow",
+   "text": "After a blow-up, things reset as if nothing happened."
+  },
+  {
+   "id": "d33",
+   "pattern": "Narc",
+   "side": "role",
+   "text": "Under pressure, protecting themselves matters more to them than how I feel."
+  },
+  {
+   "id": "d34",
+   "pattern": "Empath",
+   "side": "role",
+   "text": "Under pressure, they'd rather keep me close than respect my limits."
+  }
+ ],
+ "types": {
+  "narc": {
+   "title": "They lean strongly Narc",
+   "text": "From your answers, this person protects themselves by contracting: holding their position, going cold, deflecting blame. That is a pattern, not a diagnosis. But if you often end up doubting yourself or apologising for things you didn't do, that matters. The red codes show where it lands on you."
+  },
+  "empath": {
+   "title": "They lean Empath",
+   "text": "From your answers, this person protects themselves by expanding: chasing, over-explaining, pushing for closeness. It can feel intense or smothering rather than cold. The red codes show where it lands on you."
+  },
+  "loop": {
+   "title": "They switch between both",
+   "text": "From your answers, this person swings between going cold and pushing hard, sometimes in the same argument. That unpredictability is often what wears people down most. The red codes show where it shows up."
+  },
+  "mixed": {
+   "title": "No single pattern stands out",
+   "text": "From your answers, this person doesn't lean strongly either way. Some codes still show strain: look at the red and amber ones to see where things get difficult between you."
+  },
+  "zero": {
+   "title": "Mostly balanced",
+   "text": "From your answers, this person stays fairly steady with you. They can own things, respect limits and come back after a disagreement. If something still feels wrong, trust that too: the codes below may show where."
+  }
+ },
+ "safety": "If you feel frightened of this person, or they control your money, phone or who you see, that is not a pattern to manage alone. In the UK you can call the free 24-hour National Domestic Abuse Helpline on 0808 2000 247. In an emergency call 999.",
+ "cta": {
+  "text": "Want it read properly? An Observer Report is a written report on this person built from their actual messages, without them needing to take part.",
+  "label": "Get an Observer Report (£75) →",
+  "href": "observer.html"
+ },
+ "disclaimer": "This reflects your view of someone else's behaviour. It is not a psychological assessment and cannot tell you whether anyone has a personality disorder or any condition."
+}

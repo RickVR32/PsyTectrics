@@ -1,0 +1,269 @@
+{
+ "id": "money",
+ "version": "v4",
+ "title": "Money",
+ "titleEm": "Balance",
+ "eyebrow": "Free · 32 questions · 6 minutes · Area pack",
+ "intro": "The same patterns that run your relationships run your money. Contracting looks like control and avoidance; expanding looks like giving it away to keep people close. Answer about how you actually handle money, especially when it's tight.",
+ "scale": [
+  "Strongly disagree",
+  "Disagree",
+  "Neutral",
+  "Agree",
+  "Strongly agree"
+ ],
+ "items": [
+  {
+   "id": "q1",
+   "pattern": "Narc",
+   "node": "intention",
+   "side": "light",
+   "text": "I can make money decisions with my partner or family without needing the final say."
+  },
+  {
+   "id": "q2",
+   "pattern": "Narc",
+   "node": "intention",
+   "side": "shadow",
+   "text": "I keep control of the money because I don't trust others with it."
+  },
+  {
+   "id": "q3",
+   "pattern": "Narc",
+   "node": "presence",
+   "side": "light",
+   "text": "I can talk about money problems openly, even when it's uncomfortable."
+  },
+  {
+   "id": "q4",
+   "pattern": "Narc",
+   "node": "presence",
+   "side": "shadow",
+   "text": "When money comes up, I change the subject or go quiet."
+  },
+  {
+   "id": "q5",
+   "pattern": "Narc",
+   "node": "ownership",
+   "side": "light",
+   "text": "I own my money mistakes instead of blaming circumstances."
+  },
+  {
+   "id": "q6",
+   "pattern": "Narc",
+   "node": "ownership",
+   "side": "shadow",
+   "text": "When I'm short, it's usually someone or something else's fault."
+  },
+  {
+   "id": "q7",
+   "pattern": "Narc",
+   "node": "impact",
+   "side": "light",
+   "text": "I notice how my spending affects the people I live with."
+  },
+  {
+   "id": "q8",
+   "pattern": "Narc",
+   "node": "impact",
+   "side": "shadow",
+   "text": "I only realise the effect of a purchase when someone else points it out."
+  },
+  {
+   "id": "q9",
+   "pattern": "Empath",
+   "node": "balance",
+   "side": "light",
+   "text": "I can say no when someone asks to borrow money."
+  },
+  {
+   "id": "q10",
+   "pattern": "Empath",
+   "node": "balance",
+   "side": "shadow",
+   "text": "I lend or give money I can't really afford to keep people happy."
+  },
+  {
+   "id": "q11",
+   "pattern": "Empath",
+   "node": "connection",
+   "side": "light",
+   "text": "I don't use money to make people like me."
+  },
+  {
+   "id": "q12",
+   "pattern": "Empath",
+   "node": "connection",
+   "side": "shadow",
+   "text": "I treat people to feel wanted, then worry about it afterwards."
+  },
+  {
+   "id": "q13",
+   "pattern": "Empath",
+   "node": "clearhead",
+   "side": "light",
+   "text": "When I get a bill or a shock, I can think it through calmly."
+  },
+  {
+   "id": "q14",
+   "pattern": "Empath",
+   "node": "clearhead",
+   "side": "shadow",
+   "text": "Money worries spiral in my head until I can't think straight."
+  },
+  {
+   "id": "q15",
+   "pattern": "Empath",
+   "node": "holding",
+   "side": "light",
+   "text": "I stick to a budget even when friends are spending."
+  },
+  {
+   "id": "q16",
+   "pattern": "Empath",
+   "node": "holding",
+   "side": "shadow",
+   "text": "I go along with plans I can't afford rather than say so."
+  },
+  {
+   "id": "q17",
+   "pattern": "Grounded",
+   "node": "coreself",
+   "side": "light",
+   "text": "My sense of worth doesn't depend on what I earn or own."
+  },
+  {
+   "id": "q18",
+   "pattern": "Grounded",
+   "node": "coreself",
+   "side": "shadow",
+   "text": "I act more relaxed about money than I really am."
+  },
+  {
+   "id": "q19",
+   "pattern": "Grounded",
+   "node": "integrity",
+   "side": "light",
+   "text": "My spending matches what I say matters to me."
+  },
+  {
+   "id": "q20",
+   "pattern": "Grounded",
+   "node": "integrity",
+   "side": "shadow",
+   "text": "I tell myself stories to justify purchases I know I shouldn't make."
+  },
+  {
+   "id": "q21",
+   "pattern": "Grounded",
+   "node": "consistency",
+   "side": "light",
+   "text": "I handle money the same way whether things are good or bad."
+  },
+  {
+   "id": "q22",
+   "pattern": "Grounded",
+   "node": "consistency",
+   "side": "shadow",
+   "text": "I'm careful for weeks, then blow it all in one go."
+  },
+  {
+   "id": "q23",
+   "pattern": "Grounded",
+   "node": "honesty",
+   "side": "light",
+   "text": "I know roughly what I have and what I owe."
+  },
+  {
+   "id": "q24",
+   "pattern": "Grounded",
+   "node": "honesty",
+   "side": "shadow",
+   "text": "I avoid opening my banking app or letters when I'm worried."
+  },
+  {
+   "id": "q25",
+   "pattern": "Volatile",
+   "node": "purpose",
+   "side": "light",
+   "text": "I have a money goal and I work towards it."
+  },
+  {
+   "id": "q26",
+   "pattern": "Volatile",
+   "node": "purpose",
+   "side": "shadow",
+   "text": "I go all-in on a money plan, then drop it completely."
+  },
+  {
+   "id": "q27",
+   "pattern": "Volatile",
+   "node": "pattern",
+   "side": "light",
+   "text": "I can spot my spending triggers before they hit."
+  },
+  {
+   "id": "q28",
+   "pattern": "Volatile",
+   "node": "pattern",
+   "side": "shadow",
+   "text": "I know my money patterns but keep repeating them."
+  },
+  {
+   "id": "q29",
+   "pattern": "Volatile",
+   "node": "limit",
+   "side": "light",
+   "text": "When I'm stressed, I can stop myself before I spend or gamble to feel better."
+  },
+  {
+   "id": "q30",
+   "pattern": "Volatile",
+   "node": "limit",
+   "side": "shadow",
+   "text": "When I'm stressed, I spend, bet or trade to feel better."
+  },
+  {
+   "id": "q31",
+   "pattern": "Volatile",
+   "node": "cycles",
+   "side": "light",
+   "text": "I've broken at least one bad money habit for good."
+  },
+  {
+   "id": "q32",
+   "pattern": "Volatile",
+   "node": "cycles",
+   "side": "shadow",
+   "text": "I keep ending up in the same money hole."
+  }
+ ],
+ "types": {
+  "narc": {
+   "title": "Money on lockdown",
+   "text": "With money you contract: you control it, avoid talking about it, or don't look at it. It feels safe, but it can leave you isolated with the problem and the people around you shut out."
+  },
+  "empath": {
+   "title": "Money as connection",
+   "text": "With money you expand: you give, lend, treat and go along, often to keep people close. It comes from a good place, but your own security can quietly disappear."
+  },
+  "loop": {
+   "title": "Feast and famine",
+   "text": "You swing between tight control and letting it all go. Careful for weeks, then a blow-out. The red codes show where the swing starts."
+  },
+  "mixed": {
+   "title": "Mostly steady, a few leaks",
+   "text": "No strong pull either way, but a few codes show where money slips. Fix those and the rest tends to follow."
+  },
+  "zero": {
+   "title": "Grounded with money",
+   "text": "You handle money from a steady place more often than not. Keep an eye on the amber codes under pressure."
+  }
+ },
+ "cta": {
+  "text": "Money patterns usually mirror how you handle people. The full Awareness Profile shows the whole picture.",
+  "label": "Take the Awareness Profile, free →",
+  "href": "test.html?t=awareness-profile"
+ },
+ "disclaimer": "This is a self-reflection tool, not financial advice. If money worries feel overwhelming, MoneyHelper (moneyhelper.org.uk) offers free, impartial help in the UK. If gambling is a problem, call the National Gambling Helpline on 0808 8020 133."
+}
