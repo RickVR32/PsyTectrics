@@ -69,7 +69,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .hero-stat-num{font-family:var(--serif);font-size:1.8rem;font-weight:300;color:#FFFFFF;line-height:1}
 .hero-stat-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:0.3rem}
 .hero-geo{display:flex;align-items:center;justify-content:center;position:relative;height:100%;min-height:500px}
-.geo-diagram-wrap{width:min(500px,90%);aspect-ratio:1;position:relative}
+.geo-diagram-wrap{width:min(620px,94%);aspect-ratio:1;position:relative}
 .geo-diagram-wrap svg{width:100%;height:100%}
 .geo-label-narc{position:absolute;top:6%;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;color:#C4622D;opacity:0.7}
 .geo-label-sist{position:absolute;right:2%;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;color:#534AB7;opacity:0.7}
@@ -77,6 +77,29 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .geo-label-oll{position:absolute;left:2%;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;color:#A0426B;opacity:0.7}
 .geo-cta{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);white-space:nowrap;animation:pulse-text 3s ease-in-out infinite}
 @keyframes pulse-text{0%,100%{opacity:0.3}50%{opacity:0.7}}
+/* animated SC Blueprint hero (hero-geo.js) */
+#hero-geo svg{width:100%;height:100%;overflow:hidden}
+#hero-geo .hg-draw{stroke-dasharray:1;stroke-dashoffset:1;animation:hg-draw 1.4s ease forwards}
+#hero-geo .hg-draw[stroke-dasharray="3 9"]{stroke-dasharray:3 9;stroke-dashoffset:0;opacity:0;animation:hg-fade 1.2s ease forwards}
+#hero-geo .hg-pop{opacity:0;transform-box:fill-box;transform-origin:center;animation:hg-pop .6s cubic-bezier(.2,1.4,.4,1) forwards}
+#hero-geo .hg-code{transition:fill .8s ease}
+#hero-geo .hg-pulse{opacity:.9}
+#hero-geo .hg-spin-slow{transform-origin:450px 450px;animation:hg-spin 60s linear infinite}
+#hero-geo .hg-spin-rev{transform-origin:450px 450px;animation:hg-spin 90s linear infinite reverse}
+#hero-geo .hg-breathe{transform-origin:450px 450px;animation:hg-breathe 5s ease-in-out infinite}
+#hero-geo .hg-oc polygon{animation:hg-oc 4s ease-in-out infinite}
+#hero-geo.hg-zero .hg-seat{stroke-width:4;filter:drop-shadow(0 0 10px #00D4FF)}
+#hero-geo .hg-seat{transition:stroke-width .6s, filter .6s}
+@keyframes hg-draw{to{stroke-dashoffset:0}}
+@keyframes hg-fade{to{opacity:1}}
+@keyframes hg-pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
+@keyframes hg-spin{to{transform:rotate(360deg)}}
+@keyframes hg-breathe{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.12)}}
+@keyframes hg-oc{0%,100%{stroke-width:2.4}50%{stroke-width:3.6}}
+#hero-geo.hg-still *{animation:none!important;opacity:1!important;stroke-dashoffset:0!important}
+#hero-geo.hg-still .hg-pulse{display:none}
+@media(prefers-reduced-motion:reduce){#hero-geo *{animation:none!important;opacity:1!important;stroke-dashoffset:0!important}#hero-geo .hg-pulse{display:none}}
+
 section{padding:6rem 0;border-top:1px solid var(--line)}
 .container{max-width:1200px;margin:0 auto;padding:0 3rem}
 .section-label{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;display:block}
@@ -145,7 +168,7 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
 @media(max-width:1200px){.bp-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:1024px){
   .hero{grid-template-columns:1fr}
-  .hero-geo{display:none}
+  .hero-geo{min-height:0;padding:0 1rem 3rem;flex-direction:column}
   .what-grid{grid-template-columns:repeat(3,1fr)}
 }
 @media(max-width:768px){
@@ -154,7 +177,8 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
   .nav-hamburger{display:flex}
   .hero{grid-template-columns:1fr;min-height:auto;padding-bottom:2rem}
   .hero-copy{padding:2.5rem 1.25rem}
-  .hero-geo{display:none}
+  .hero-geo{min-height:0;padding:0 0 2.5rem}
+  .geo-cta{position:static;transform:none;display:block;text-align:center;margin-top:0.5rem;white-space:normal}
   .hero-stat-row{gap:1.2rem;flex-wrap:wrap;margin-top:2rem;padding-top:1.5rem}
   .container{padding:0 1.25rem}
   section{padding:3.5rem 0}
@@ -273,60 +297,8 @@ section{padding:6rem 0;border-top:1px solid var(--line)}
     </div>
   </div>
   <div class="hero-geo">
-    <div class="geo-diagram-wrap">
-      <span class="geo-label-narc">Narc</span>
-      <span class="geo-label-sist">Grounded</span>
-      <span class="geo-label-yarc">Empath</span>
-      <span class="geo-label-oll">Volatile</span>
-      <svg viewBox="120 120 660 660" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
-        <polygon points="450,302 598,450 450,598 302,450" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.2"/>
-        <circle cx="450" cy="450" r="220" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.6" stroke-dasharray="3 9"/>
-        <circle cx="450" cy="450" r="70" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
-        <line x1="450" y1="106" x2="450" y2="794" stroke="rgba(255,255,255,0.06)" stroke-width="0.5" stroke-dasharray="4 8"/>
-        <line x1="106" y1="450" x2="794" y2="450" stroke="rgba(255,255,255,0.06)" stroke-width="0.5" stroke-dasharray="4 8"/>
-        <line x1="450" y1="302" x2="367.6" y2="246" stroke="#C4622D" stroke-width="1.4" opacity="0.5"/>
-        <line x1="367.6" y1="246" x2="286.6" y2="198.4" stroke="#C4622D" stroke-width="1" opacity="0.3"/>
-        <line x1="367.6" y1="246" x2="392.8" y2="155.5" stroke="#C4622D" stroke-width="1" opacity="0.3"/>
-        <line x1="450" y1="302" x2="532.4" y2="246" stroke="#C4622D" stroke-width="1.4" opacity="0.5"/>
-        <line x1="532.4" y1="246" x2="507.2" y2="155.5" stroke="#C4622D" stroke-width="1" opacity="0.3"/>
-        <line x1="532.4" y1="246" x2="613.4" y2="198.4" stroke="#C4622D" stroke-width="1" opacity="0.3"/>
-        <line x1="598" y1="450" x2="654" y2="367.6" stroke="#534AB7" stroke-width="1.4" opacity="0.5"/>
-        <line x1="654" y1="367.6" x2="701.6" y2="286.6" stroke="#534AB7" stroke-width="1" opacity="0.3"/>
-        <line x1="654" y1="367.6" x2="744.5" y2="392.8" stroke="#534AB7" stroke-width="1" opacity="0.3"/>
-        <line x1="598" y1="450" x2="654" y2="532.4" stroke="#534AB7" stroke-width="1.4" opacity="0.5"/>
-        <line x1="654" y1="532.4" x2="744.5" y2="507.2" stroke="#534AB7" stroke-width="1" opacity="0.3"/>
-        <line x1="654" y1="532.4" x2="701.6" y2="613.4" stroke="#534AB7" stroke-width="1" opacity="0.3"/>
-        <line x1="450" y1="598" x2="532.4" y2="654" stroke="#1D9E75" stroke-width="1.4" opacity="0.5"/>
-        <line x1="532.4" y1="654" x2="613.4" y2="701.6" stroke="#1D9E75" stroke-width="1" opacity="0.3"/>
-        <line x1="532.4" y1="654" x2="507.2" y2="744.5" stroke="#1D9E75" stroke-width="1" opacity="0.3"/>
-        <line x1="450" y1="598" x2="367.6" y2="654" stroke="#1D9E75" stroke-width="1.4" opacity="0.5"/>
-        <line x1="367.6" y1="654" x2="392.8" y2="744.5" stroke="#1D9E75" stroke-width="1" opacity="0.3"/>
-        <line x1="367.6" y1="654" x2="286.6" y2="701.6" stroke="#1D9E75" stroke-width="1" opacity="0.3"/>
-        <line x1="302" y1="450" x2="246" y2="532.4" stroke="#A0426B" stroke-width="1.4" opacity="0.5"/>
-        <line x1="246" y1="532.4" x2="198.4" y2="613.4" stroke="#A0426B" stroke-width="1" opacity="0.3"/>
-        <line x1="246" y1="532.4" x2="155.5" y2="507.2" stroke="#A0426B" stroke-width="1" opacity="0.3"/>
-        <line x1="302" y1="450" x2="246" y2="367.6" stroke="#A0426B" stroke-width="1.4" opacity="0.5"/>
-        <line x1="246" y1="367.6" x2="155.5" y2="392.8" stroke="#A0426B" stroke-width="1" opacity="0.3"/>
-        <line x1="246" y1="367.6" x2="198.4" y2="286.6" stroke="#A0426B" stroke-width="1" opacity="0.3"/>
-        <circle cx="450" cy="450" r="52" fill="rgba(6,11,24,0.8)" stroke="rgba(0,212,255,0.3)" stroke-width="1.8"/>
-        <circle cx="450" cy="450" r="39" fill="none" stroke="rgba(0,212,255,0.1)" stroke-width="0.5"/>
-        <circle cx="450" cy="450" r="3" fill="#00D4FF" opacity="0.6"/>
-        <text x="450" y="454" text-anchor="middle" font-size="9" fill="rgba(0,212,255,0.5)" font-family="monospace" letter-spacing="1">ZERO-POINT</text>
-        <polygon points="450,272 480,302 450,332 420,302" fill="rgba(196,98,45,0.08)" stroke="#C4622D" stroke-width="2"/>
-        <polygon points="598,420 628,450 598,480 568,450" fill="rgba(83,74,183,0.08)" stroke="#534AB7" stroke-width="2"/>
-        <polygon points="450,568 480,598 450,628 420,598" fill="rgba(29,158,117,0.08)" stroke="#1D9E75" stroke-width="2"/>
-        <polygon points="302,420 332,450 302,480 272,450" fill="rgba(160,66,107,0.08)" stroke="#A0426B" stroke-width="2"/>
-        <ellipse cx="367.6" cy="246" rx="18" ry="10" transform="rotate(-22,367.6,246)" fill="none" stroke="#C4622D" stroke-width="1.8" opacity="0.6"/>
-        <ellipse cx="532.4" cy="246" rx="18" ry="10" transform="rotate(22,532.4,246)" fill="none" stroke="#C4622D" stroke-width="1.8" opacity="0.6"/>
-        <ellipse cx="654" cy="367.6" rx="18" ry="10" transform="rotate(68,654,367.6)" fill="none" stroke="#534AB7" stroke-width="1.8" opacity="0.6"/>
-        <ellipse cx="654" cy="532.4" rx="18" ry="10" transform="rotate(112,654,532.4)" fill="none" stroke="#534AB7" stroke-width="1.8" opacity="0.6"/>
-        <ellipse cx="532.4" cy="654" rx="18" ry="10" transform="rotate(158,532.4,654)" fill="none" stroke="#1D9E75" stroke-width="1.8" opacity="0.6"/>
-        <ellipse cx="367.6" cy="654" rx="18" ry="10" transform="rotate(202,367.6,654)" fill="none" stroke="#1D9E75" stroke-width="1.8" opacity="0.6"/>
-        <ellipse cx="246" cy="532.4" rx="18" ry="10" transform="rotate(248,246,532.4)" fill="none" stroke="#A0426B" stroke-width="1.8" opacity="0.6"/>
-        <ellipse cx="246" cy="367.6" rx="18" ry="10" transform="rotate(292,246,367.6)" fill="none" stroke="#A0426B" stroke-width="1.8" opacity="0.6"/>
-      </svg>
-      <span class="geo-cta">The SC Blueprint™ · 56 nodes · 2 layers</span>
-    </div>
+    <div class="geo-diagram-wrap" id="hero-geo"></div>
+    <span class="geo-cta">The SC Blueprint™ · 4 codes · 8 Apps · 16 Source Codes</span>
   </div>
 </div>
 <section>
@@ -502,5 +474,6 @@ hamburger.addEventListener('click',function(){hamburger.classList.toggle('open')
 drawer.querySelectorAll('a').forEach(function(link){link.addEventListener('click',function(){hamburger.classList.remove('open');drawer.classList.remove('open');});});
 </script>
 <script src="pt-widgets.js" defer></script>
+<script src="hero-geo.js" defer></script>
 </body>
 </html>

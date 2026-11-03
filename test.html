@@ -95,8 +95,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .stat .s{font-size:0.74rem;color:var(--muted2)}
 .map-key{display:flex;flex-wrap:wrap;gap:0.4rem 1rem;align-items:center;font-size:0.78rem;color:var(--muted);margin-top:0.8rem}
 .map-key span{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:-0.6rem}
+#geo{cursor:zoom-in;-webkit-overflow-scrolling:touch}#geo.zoom{overflow:auto;cursor:zoom-out;margin:0 -1rem}#geo.zoom svg{min-width:820px;max-width:none!important}
+.geo-hint{display:none;font-size:0.75rem;color:var(--muted);text-align:center;margin-top:0.3rem}@media(max-width:700px){.geo-hint{display:block}}
 .geo-key{margin-top:0.8rem;font-size:0.82rem;color:var(--muted)}.geo-key summary{cursor:pointer;color:var(--text)}.geo-key ul{margin:0.5rem 0 0;padding-left:1.1rem;line-height:1.7}
-.live-geo{max-width:340px;margin:1.6rem auto 0;opacity:.95}.live-geo svg{max-width:340px!important}
+.live-geo{max-width:420px;margin:1.6rem auto 0;opacity:.95}.live-geo svg{max-width:420px!important}
 .needs{list-style:none;display:flex;flex-direction:column;gap:0.7rem;margin:0;padding:0}
 .needs li{border:1px solid var(--line);border-left:3px solid;padding:0.8rem 1rem;font-size:0.9rem;line-height:1.65;background:#fff}
 .needs .nm{font-family:var(--mono);font-size:0.68rem;color:var(--muted)}
@@ -272,13 +274,13 @@ function results(){
     const needs=result.needs.length?result.needs.map(n=>`<li style="border-left-color:${SCGeo.COL[n.pattern]}"><strong>${esc(n.name)}</strong> <span class="nm">${esc(n.pattern)} · light ${Math.round(n.light)} / shadow ${Math.round(n.shadow)}</span><br>${T.paywall?'<span class="lock">Your steps for this code are in the full report.</span>':esc(n.fix||'')+'<br><span class="ch">'+esc(n.ch||'')+'</span>'}</li>`).join(''):'<li style="border-left-color:#2F8A5B"><strong>Nothing major pulling you off centre.</strong><br>Keep practising noticing what happens while it happens.<br><span class="ch">Ch 11 · The Observer position</span></li>';
     main=`<div class="res-card"><div class="res-label">Your balance</div><div class="res-big">${esc(ty.title)}</div><p class="res-text">${esc(ty.text)}</p></div>
     <div class="stats">${st('Level',result.level+' / 10',result.stage)}${st('Board ring',result.ring,'of 5 · Zero-Point')}${st('Lean',SCEngine.leanLabel(result.lean),'Narc ↔ Empath')}${st('Charge',Math.round(result.charge),'Both roles')}${st('Regulation',Math.round(result.regulation),'Grounded vs Volatile')}${st('Drift',result.drift.toFixed(1),'Says vs does · 0–5')}</div>
-    <div class="res-card"><div class="res-label">Your Balance Map</div><div id="geo"></div><p class="map-key"><span style="background:#2F8A5B"></span>Balanced <span style="background:#C48A1C"></span>Leaning <span style="background:#C2413A"></span>Needs balancing <span style="background:#C9CCD6"></span>Not measured in this test</p>
+    <div class="res-card"><div class="res-label">Your Balance Map</div><div id="geo"></div><p class="geo-hint">Tap the map to zoom in, tap again to zoom out.</p><p class="map-key"><span style="background:#2F8A5B"></span>Balanced <span style="background:#C48A1C"></span>Leaning <span style="background:#C2413A"></span>Needs balancing <span style="background:#C9CCD6"></span>Not measured in this test</p>
     <details class="geo-key"><summary>The geometry behind the map</summary><ul>
       <li><b>Seed of life</b> (centre): Omniality, the potential before any pattern forms.</li>
       <li><b>Inner ring</b>: the Zero-Point boundary.</li>
       <li><b>Diamond</b>: a tetrahedron seen from above, with the four codes as its corners.</li>
       <li><b>Outer ring</b>: the existence field, φ (1.618) times the distance to the codes.</li>
-      <li><b>Dashed rings</b>: the five rings of the board, yours lit in blue.</li></ul></details></div>
+      <li><b>Ovals and triangles</b>: the 8 Apps and the 16 Source Codes, each triangle coloured by its balance.</li></ul></details></div>
     <div class="res-card"><div class="res-label">What needs balancing</div><ul class="needs">${needs}</ul></div>`;
   }else
   if(result.type==='ratio'){const r=T.results[result.dominant];
@@ -304,7 +306,7 @@ function results(){
   document.getElementById('again').onclick=e=>{e.preventDefault();answers.fill(null);intro()};
   document.getElementById('sv').onclick=save;
   if(T.paywall)document.getElementById('pb').onclick=unlock;
-  if(result.version==='v4')SCGeo.render(document.getElementById('geo'),result);
+  if(result.version==='v4'){const g=document.getElementById('geo');SCGeo.render(g,result);g.onclick=()=>g.classList.toggle('zoom')}
   window.scrollTo(0,0);
 }
 async function unlock(){
