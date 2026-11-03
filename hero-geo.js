@@ -25,14 +25,14 @@
   <defs><radialGradient id="hg-glow"><stop offset="0" stop-color="#00D4FF" stop-opacity=".35"/><stop offset="1" stop-color="#00D4FF" stop-opacity="0"/></radialGradient></defs>
   <circle cx="450" cy="450" r="150" fill="url(#hg-glow)" class="hg-breathe"/>`;
   // sacred geometry
-  s += `<g class="hg-spin-slow" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="1">`;
+  s += `<g class="hg-spin-slow" fill="none" style="stroke:var(--hg-faint)" stroke-width="1">`;
   s += `<circle class="hg-draw" pathLength="1" cx="450" cy="450" r="48" ${delay(0)}/>`;
   for (let i = 0; i < 6; i++) { const a = i * Math.PI / 3; s += `<circle class="hg-draw" pathLength="1" cx="${(C + 48 * Math.cos(a)).toFixed(1)}" cy="${(C + 48 * Math.sin(a)).toFixed(1)}" r="48" ${delay(0.15 + i * 0.12)}/>`; }
   s += `</g>`;
-  s += `<circle class="hg-draw" pathLength="1" cx="450" cy="450" r="96" fill="none" stroke="rgba(255,255,255,.18)" ${delay(0.9)}/>`;
-  s += `<g class="hg-spin-rev"><circle class="hg-draw" pathLength="1" cx="450" cy="450" r="239.5" fill="none" stroke="rgba(255,255,255,.16)" stroke-dasharray="3 9" ${delay(1.0)}/></g>`;
-  s += `<line class="hg-draw" pathLength="1" x1="450" y1="106" x2="450" y2="794" stroke="rgba(255,255,255,.08)" ${delay(1.1)}/><line class="hg-draw" pathLength="1" x1="106" y1="450" x2="794" y2="450" stroke="rgba(255,255,255,.08)" ${delay(1.1)}/>`;
-  s += `<polygon class="hg-draw" pathLength="1" points="450,302 598,450 450,598 302,450" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.3" ${delay(1.3)}/>`;
+  s += `<circle class="hg-draw" pathLength="1" cx="450" cy="450" r="96" fill="none" style="stroke:var(--hg-faint)" ${delay(0.9)}/>`;
+  s += `<g class="hg-spin-rev"><circle class="hg-draw" pathLength="1" cx="450" cy="450" r="239.5" fill="none" style="stroke:var(--hg-faint)" stroke-dasharray="3 9" ${delay(1.0)}/></g>`;
+  s += `<line class="hg-draw" pathLength="1" x1="450" y1="106" x2="450" y2="794" style="stroke:var(--hg-faint);opacity:.5" ${delay(1.1)}/><line class="hg-draw" pathLength="1" x1="106" y1="450" x2="794" y2="450" style="stroke:var(--hg-faint);opacity:.5" ${delay(1.1)}/>`;
+  s += `<polygon class="hg-draw" pathLength="1" points="450,302 598,450 450,598 302,450" fill="none" style="stroke:var(--hg-line)" stroke-width="1.3" ${delay(1.3)}/>`;
   // branches, apps, codes
   let t = 0;
   APPS.forEach(([p, ax, ay, rot], ai) => {
@@ -42,23 +42,23 @@
       const i = t++, pts = TRI[i], [cx, cy] = cen(pts);
       s += `<line class="hg-draw" pathLength="1" x1="${ax}" y1="${ay}" x2="${cx.toFixed(1)}" y2="${cy.toFixed(1)}" stroke="${col}" stroke-width="1.1" opacity=".5" ${delay(base + 0.3)}/>`;
       // pulse travelling out along the branch (loops after build-in)
-      s += `<circle r="3" fill="${col}" class="hg-pulse"><animateMotion dur="3.2s" begin="${(3.4 + i * 0.2).toFixed(1)}s" repeatCount="indefinite" path="M${C},${C} L${vx},${vy} L${ax},${ay} L${cx.toFixed(1)},${cy.toFixed(1)}"/></circle>`;
+      s += `<circle r="3" fill="${col}" class="hg-pulse" visibility="hidden"><set attributeName="visibility" to="visible" begin="${(3.4 + i * 0.2).toFixed(1)}s"/><animateMotion dur="3.2s" begin="${(3.4 + i * 0.2).toFixed(1)}s" repeatCount="indefinite" path="M${C},${C} L${vx},${vy} L${ax},${ay} L${cx.toFixed(1)},${cy.toFixed(1)}"/></circle>`;
       const dx = cx - C, dy = cy - C, dd = Math.hypot(dx, dy), lx = cx + dx / dd * 22, ly = cy + dy / dd * 22;
       const anchor = Math.abs(dx / dd) < 0.35 ? 'middle' : dx > 0 ? 'start' : 'end';
       s += `<g class="hg-pop" ${delay(base + 0.55)}><polygon data-i="${i}" class="hg-code" points="${big(pts, 1.4)}" fill="#C2413A" stroke="${col}" stroke-width="2"/>`;
       s += `<text x="${lx.toFixed(1)}" y="${(ly + 4).toFixed(1)}" text-anchor="${anchor}" font-size="12" fill="${col}" font-family="Space Mono, monospace" opacity=".85">${NAMES[i]}</text></g>`;
     }
-    s += `<g class="hg-pop" ${delay(base + 0.2)}><ellipse cx="${ax}" cy="${ay}" rx="21" ry="11.5" transform="rotate(${rot},${ax},${ay})" fill="#060B18" stroke="${col}" stroke-width="2"/>`;
+    s += `<g class="hg-pop" ${delay(base + 0.2)}><ellipse cx="${ax}" cy="${ay}" rx="21" ry="11.5" transform="rotate(${rot},${ax},${ay})" style="fill:var(--hg-bg)" stroke="${col}" stroke-width="2"/>`;
     s += `<text x="${ax}" y="${ay + 3.5}" text-anchor="middle" font-size="9.5" fill="${col}" font-family="Space Mono, monospace">A${ai + 1}</text></g>`;
   });
   for (const p of Object.keys(OC)) {
     const [x, y] = OC[p], col = COL[p];
-    s += `<g class="hg-pop hg-oc" ${delay(1.5)}><polygon points="${x},${y - 40} ${x + 40},${y} ${x},${y + 40} ${x - 40},${y}" fill="#060B18" stroke="${col}" stroke-width="2.4"/>`;
+    s += `<g class="hg-pop hg-oc" ${delay(1.5)}><polygon points="${x},${y - 40} ${x + 40},${y} ${x},${y + 40} ${x - 40},${y}" style="fill:var(--hg-bg)" stroke="${col}" stroke-width="2.4"/>`;
     s += `<text x="${x}" y="${y + 4}" text-anchor="middle" font-size="11" font-weight="700" fill="${col}" font-family="Space Mono, monospace">${p}</text></g>`;
   }
-  s += `<g class="hg-pop" ${delay(0.5)}><circle cx="450" cy="450" r="52" fill="#060B18" stroke="#00D4FF" stroke-width="2.4" class="hg-seat"/>`;
-  s += `<text id="hg-level" x="450" y="456" text-anchor="middle" font-size="28" font-weight="700" fill="#00D4FF" font-family="Montserrat, sans-serif">L1</text>`;
-  s += `<text x="450" y="474" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.55)" font-family="Space Mono, monospace" letter-spacing="1">ZERO-POINT</text></g>`;
+  s += `<g class="hg-pop" ${delay(0.5)}><circle cx="450" cy="450" r="52" style="fill:var(--hg-bg)" stroke="#00D4FF" stroke-width="2.4" class="hg-seat"/>`;
+  s += `<text id="hg-level" x="450" y="456" text-anchor="middle" font-size="28" font-weight="700" style="fill:var(--hg-level)" font-family="Montserrat, sans-serif">L1</text>`;
+  s += `<text x="450" y="474" text-anchor="middle" font-size="8" style="fill:var(--hg-text)" font-family="Space Mono, monospace" letter-spacing="1">ZERO-POINT</text></g>`;
   s += `</svg>`;
   el.innerHTML = s;
 

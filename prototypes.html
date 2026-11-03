@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<link rel="icon" href="pt_icon.png" type="image/png"/>
+<link rel="icon" href="favicon.ico" sizes="any"/>
+<link rel="icon" href="favicon.svg" type="image/svg+xml"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Prototypes — PsyTectrics™</title>
 <meta name="description" content="The PsyTectrics™ device ecosystem. DPC, Vision, Pulse, Tone and Scan — hardware built on the Awareness Architecture. In development." />
@@ -168,12 +169,14 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; a
 .pt-footer-bot a:hover{color:#00D4FF}
 @media(max-width:768px){.pt-footer-pay,.pt-footer-bot{flex-direction:column;align-items:center;text-align:center}.pay-chips{justify-content:center}}
 </style>
+<script>try{document.documentElement.setAttribute('data-theme',localStorage.getItem('pt-theme')||'light')}catch(e){document.documentElement.setAttribute('data-theme','light')}</script>
+<link rel="stylesheet" href="pt-theme.css"/>
 </head>
 <body>
 
 <nav>
   <a href="index.html" class="nav-logo-wrap">
-    <img src="pt_logo.png" alt="PsyTectrics" class="nav-logo-img"/>
+    <img src="images/brand/logo-light.svg" alt="PsyTectrics" class="nav-logo-img logo-light"/><img src="images/brand/logo-dark.svg" alt="PsyTectrics" class="nav-logo-img logo-dark"/>
   </a>
   <ul class="nav-links">
     <li><a href="reports.html">Reports</a></li>
@@ -405,5 +408,6 @@ drawer.querySelectorAll('a').forEach(function(link) {
   });
 });
 </script>
+<script src="pt-theme.js" defer></script>
 </body>
 </html>

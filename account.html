@@ -5,8 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Your account — PsyTectrics™</title>
 <meta name="description" content="Free and paid PsyTectrics tests built on the SC Blueprint™ framework: Quick Check, Narc Pattern Self-Check, Awareness Profile and Observer Report."/>
-<link rel="icon" href="pt_icon.png" type="image/png"/>
-<link rel="apple-touch-icon" href="pt_icon.png">
+<link rel="icon" href="favicon.ico" sizes="any"/>
+<link rel="icon" href="favicon.svg" type="image/svg+xml"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="manifest" href="site.webmanifest">
 <link rel="canonical" href="https://psytectrics.com/account.html">
 <meta name="robots" content="noindex">
 <meta property="og:type" content="website">
@@ -15,7 +16,7 @@
 <meta property="og:url" content="https://psytectrics.com/tests.html">
 <meta property="og:title" content="Tests — PsyTectrics™">
 <meta property="og:description" content="Free and paid PsyTectrics tests built on the SC Blueprint™ framework: Quick Check, Narc Pattern Self-Check, Awareness Profile and Observer Report.">
-<meta property="og:image" content="https://psytectrics.com/pt_logo_icon.png">
+<meta property="og:image" content="https://psytectrics.com/images/brand/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 <style>
@@ -162,11 +163,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .danger{color:#C2413A;background:none;border:0;padding:0;font:inherit;font-size:.82rem;text-decoration:underline;cursor:pointer}
 @media(max-width:640px){.plans{grid-template-columns:1fr}.rows li{grid-template-columns:1fr}}
 </style>
+<script>try{document.documentElement.setAttribute('data-theme',localStorage.getItem('pt-theme')||'light')}catch(e){document.documentElement.setAttribute('data-theme','light')}</script>
+<link rel="stylesheet" href="pt-theme.css"/>
 </head>
 <body>
 <nav>
   <a href="index.html" class="nav-logo-wrap">
-    <img src="pt_logo.png" alt="PsyTectrics" class="nav-logo-img"/>
+    <img src="images/brand/logo-light.svg" alt="PsyTectrics" class="nav-logo-img logo-light"/><img src="images/brand/logo-dark.svg" alt="PsyTectrics" class="nav-logo-img logo-dark"/>
   </a>
   <ul class="nav-links">
     <li><a href="tests.html" class="active">Tests</a></li>
@@ -283,5 +286,6 @@ PTAuth.ready.then(()=>{
 });
 </script>
 <script src="pt-widgets.js" defer></script>
+<script src="pt-theme.js" defer></script>
 </body>
 </html>

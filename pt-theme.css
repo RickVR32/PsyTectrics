@@ -1,0 +1,99 @@
+/* PsyTectrics light / dark mode. Light is the default; the sun/moon button (pt-theme.js) switches.
+   Pages keep their own styles; this file only re-points the shared colour variables and the
+   handful of hard-coded colours. */
+
+/* ---------- logos: show the right one for the mode ---------- */
+.logo-dark{display:none!important}
+:root[data-theme="dark"] .logo-light{display:none!important}
+:root[data-theme="dark"] .logo-dark{display:block!important}
+
+/* ---------- theme switch ---------- */
+.pt-theme-btn{background:none;border:1px solid var(--line-strong,rgba(0,0,0,.14));color:var(--text,#0B1020);width:34px;height:34px;border-radius:50%;display:inline-grid;place-items:center;cursor:pointer;margin-left:1rem;flex:none;padding:0;transition:border-color .2s,color .2s}
+.pt-theme-btn:hover{border-color:var(--accent,#00D4FF);color:var(--accent,#00D4FF)}
+.pt-theme-btn:focus-visible{outline:2px solid var(--accent,#00D4FF);outline-offset:2px}
+.pt-theme-btn svg{width:16px;height:16px}
+.pt-theme-btn .moon{display:block}.pt-theme-btn .sun{display:none}
+:root[data-theme="dark"] .pt-theme-btn .moon{display:none}
+:root[data-theme="dark"] .pt-theme-btn .sun{display:block}
+
+/* ================= LIGHT (default) ================= */
+:root:not([data-theme="dark"]) nav{background:rgba(255,255,255,.94)!important;backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid rgba(11,16,32,.08)!important}
+:root:not([data-theme="dark"]) .nav-links a{color:#5D6475!important}
+:root:not([data-theme="dark"]) .nav-links a:hover,:root:not([data-theme="dark"]) .nav-links a.active{color:#0B1020!important}
+:root:not([data-theme="dark"]) .nav-hamburger span{background:#0B1020!important}
+:root:not([data-theme="dark"]) .nav-drawer{background:#fff!important;border-bottom:1px solid rgba(11,16,32,.08)!important}
+:root:not([data-theme="dark"]) .nav-drawer a{color:#5D6475!important;border-bottom-color:rgba(11,16,32,.06)!important}
+:root:not([data-theme="dark"]) .nav-drawer a:hover{color:#0B1020!important}
+:root:not([data-theme="dark"]) .nav-drawer .drawer-cta{color:#060B18!important}
+/* homepage hero goes white */
+:root:not([data-theme="dark"]) .hero{background:#fff!important}
+:root:not([data-theme="dark"]) .hero::before{background:radial-gradient(ellipse at 72% 50%,rgba(0,212,255,.10) 0%,transparent 60%)!important}
+:root:not([data-theme="dark"]) .hero h1{color:#0B1020!important}
+:root:not([data-theme="dark"]) .hero-eyebrow{color:#0089A8!important;opacity:1!important}
+:root:not([data-theme="dark"]) .hero-desc{color:#5D6475!important}
+:root:not([data-theme="dark"]) .btn-hero-ghost{border-color:rgba(11,16,32,.2)!important;color:#0B1020!important}
+:root:not([data-theme="dark"]) .hero-stat-row{border-top-color:rgba(11,16,32,.1)!important}
+:root:not([data-theme="dark"]) .hero-stat-num{color:#0B1020!important}
+:root:not([data-theme="dark"]) .hero-stat-label{color:#6B7280!important}
+:root:not([data-theme="dark"]) .geo-cta{color:#6B7280!important}
+/* animated Blueprint colours */
+:root{--hg-faint:rgba(11,16,32,.22);--hg-line:rgba(11,16,32,.32);--hg-bg:#FFFFFF;--hg-text:#5D6475;--hg-level:#0089A8}
+:root[data-theme="dark"]{--hg-faint:rgba(255,255,255,.22);--hg-line:rgba(255,255,255,.3);--hg-bg:#060B18;--hg-text:rgba(255,255,255,.55);--hg-level:#00D4FF}
+/* white-on-navy page headers on inner pages go light too */
+:root:not([data-theme="dark"]) .page-hero.dark,:root:not([data-theme="dark"]) .hero-dark{background:#fff!important;color:#0B1020!important}
+
+/* ================= DARK ================= */
+:root[data-theme="dark"]{
+  --bg:#060B18;--bg-soft:#0E1426;--bg-card:#0E1426;
+  --text:#EDF0F7;--muted:#9AA3B8;--muted2:#6E7891;
+  --line:rgba(255,255,255,.08);--line-strong:rgba(255,255,255,.16);
+  --accent-soft:rgba(0,212,255,.10);--accent-border:rgba(0,212,255,.30);
+  color-scheme:dark;
+}
+:root[data-theme="dark"] body{background:#060B18!important;color:#EDF0F7}
+/* anything hard-coded white becomes a navy card */
+:root[data-theme="dark"] [style*="background:#fff"],:root[data-theme="dark"] [style*="background: #fff"],:root[data-theme="dark"] [style*="background:#FFF"],:root[data-theme="dark"] [style*="background:#ffffff"],:root[data-theme="dark"] [style*="background:white"]{background:#0E1426!important;color:#EDF0F7}
+:root[data-theme="dark"] .panel,:root[data-theme="dark"] .plan,:root[data-theme="dark"] .ptr,:root[data-theme="dark"] .need,:root[data-theme="dark"] .needs li,
+:root[data-theme="dark"] .report-card,:root[data-theme="dark"] .what-card,:root[data-theme="dark"] .card,:root[data-theme="dark"] .res-card,:root[data-theme="dark"] .stat,
+:root[data-theme="dark"] .channel-card,:root[data-theme="dark"] .code-card,:root[data-theme="dark"] .ip-card,:root[data-theme="dark"] .layer-card,:root[data-theme="dark"] .level-card,:root[data-theme="dark"] .product-strip-card,:root[data-theme="dark"] .save,:root[data-theme="dark"] .pay,:root[data-theme="dark"] .form-card,:root[data-theme="dark"] .tier,:root[data-theme="dark"] .price-card{background:#0E1426!important;color:#EDF0F7;border-color:rgba(255,255,255,.1)!important}
+:root[data-theme="dark"] .scale button{background:#0E1426!important;color:#EDF0F7!important;border-color:rgba(255,255,255,.12)!important}
+:root[data-theme="dark"] .scale button.sel,:root[data-theme="dark"] .scale button:hover{border-color:#00D4FF!important;background:rgba(0,212,255,.1)!important}
+:root[data-theme="dark"] input,:root[data-theme="dark"] textarea,:root[data-theme="dark"] select{background:#0B1020!important;color:#EDF0F7!important;border-color:rgba(255,255,255,.16)!important}
+:root[data-theme="dark"] input::placeholder,:root[data-theme="dark"] textarea::placeholder{color:#6E7891}
+:root[data-theme="dark"] h1,:root[data-theme="dark"] h2,:root[data-theme="dark"] h3,:root[data-theme="dark"] h4,:root[data-theme="dark"] strong,:root[data-theme="dark"] b{color:inherit}
+:root[data-theme="dark"] a{color:inherit}
+:root[data-theme="dark"] .btn,:root[data-theme="dark"] .card-btn,:root[data-theme="dark"] .abtn:not(.ghost),:root[data-theme="dark"] .btn-primary,:root[data-theme="dark"] .nav-cta,:root[data-theme="dark"] .btn-hero-primary{color:#060B18!important}
+:root[data-theme="dark"] .btn-ghost,:root[data-theme="dark"] .abtn.ghost{color:#EDF0F7!important;border-color:rgba(255,255,255,.2)!important}
+:root[data-theme="dark"] .safety{background:#2A2210!important;color:#F3E2B3!important;border-color:#6B5520!important}
+:root[data-theme="dark"] .cta-box{background:rgba(0,212,255,.06)!important}
+:root[data-theme="dark"] .ptw-panel{background:#0E1426;color:#EDF0F7;border-color:rgba(255,255,255,.12)}
+:root[data-theme="dark"] .ptw-m.b{background:#141C2E;color:#EDF0F7}
+:root[data-theme="dark"] .ptw-head,:root[data-theme="dark"] .ptw-f{border-color:rgba(255,255,255,.1)}
+:root[data-theme="dark"] .ptw-btn{background:#00D4FF;color:#060B18}
+/* Balance Map keeps a light card so its colours read the same in both modes */
+:root[data-theme="dark"] #geo,:root[data-theme="dark"] .geo-small,:root[data-theme="dark"] #live-geo,:root[data-theme="dark"] .sc-report .geo{background:#F7F8FA;border-radius:8px;padding:.6rem}
+/* paid report: printed page look stays white */
+:root[data-theme="dark"] .sc-report{color:#0B1020}
+@media print{:root[data-theme="dark"] body{background:#fff!important}}
+
+:root[data-theme="dark"] .channel-card:hover,:root[data-theme="dark"] .layer-card:hover,:root[data-theme="dark"] .what-card:hover,:root[data-theme="dark"] .report-card:hover{background:#141C2E!important}
+:root[data-theme="dark"] .channel-card.riclee img{filter:invert(1) brightness(1.6)}
+:root[data-theme="dark"] .hero-principle{background:#0E1426!important;border-color:rgba(255,255,255,.12)!important}
+:root[data-theme="dark"] blockquote{background:transparent!important;color:#EDF0F7!important}
+/* soft-grey blocks from page styles */
+:root[data-theme="dark"] .channels,
+:root[data-theme="dark"] .ci-scale,
+:root[data-theme="dark"] .context-note,
+:root[data-theme="dark"] .cta-banner,
+:root[data-theme="dark"] .cta-strip,
+:root[data-theme="dark"] .drift-card,
+:root[data-theme="dark"] .form-card,
+:root[data-theme="dark"] .h-tier,
+:root[data-theme="dark"] .hero-principle,
+:root[data-theme="dark"] .pricing-includes,
+:root[data-theme="dark"] .quick-link,
+:root[data-theme="dark"] .report-card.featured,
+:root[data-theme="dark"] .res-card,
+:root[data-theme="dark"] .scale button,
+:root[data-theme="dark"] .soon .card-btn,
+:root[data-theme="dark"] .soon-badge{background:#0E1426!important;color:#EDF0F7}

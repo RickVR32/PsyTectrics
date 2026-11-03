@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Bad Habits Card Game — PsyTectrics™</title>
 <meta name="description" content="Bad Habits — SC Framework™ Junior Series. The kids collaborative card game. Ages 7–12. Work together to fill the Good Habits Jar before the Habit Deck runs out."/>
-<link rel="icon" href="pt_icon.png" type="image/png"/>
+<link rel="icon" href="favicon.ico" sizes="any"/>
+<link rel="icon" href="favicon.svg" type="image/svg+xml"/>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -187,11 +188,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .pt-footer-bot a:hover{color:#00D4FF}
 @media(max-width:768px){.pt-footer-pay,.pt-footer-bot{flex-direction:column;align-items:center;text-align:center}.pay-chips{justify-content:center}}
 </style>
+<script>try{document.documentElement.setAttribute('data-theme',localStorage.getItem('pt-theme')||'light')}catch(e){document.documentElement.setAttribute('data-theme','light')}</script>
+<link rel="stylesheet" href="pt-theme.css"/>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo-wrap"><img src="pt_logo.png" alt="PsyTectrics" class="nav-logo-img"/></a>
+  <a href="index.html" class="nav-logo-wrap"><img src="images/brand/logo-light.svg" alt="PsyTectrics" class="nav-logo-img logo-light"/><img src="images/brand/logo-dark.svg" alt="PsyTectrics" class="nav-logo-img logo-dark"/></a>
   <ul class="nav-links">
     <li><a href="reports.html">Reports</a></li>
     <li><a href="prototypes.html">Prototypes</a></li>
@@ -419,5 +422,6 @@ function closeModal(){document.getElementById('modalOverlay').classList.remove('
 function submitNotify(){const e=document.getElementById('modalEmail').value;if(!e||!e.includes('@')){document.getElementById('modalEmail').style.borderColor='#FF6B35';return;}document.getElementById('modalForm').style.display='none';document.getElementById('modalSuccess').style.display='block';}
 document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===this)closeModal();});
 </script>
+<script src="pt-theme.js" defer></script>
 </body>
 </html>

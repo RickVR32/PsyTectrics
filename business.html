@@ -4,9 +4,10 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Business Audit — PsyTectrics™</title>
-<link rel="icon" href="pt_icon.png" type="image/png"/>
+<link rel="icon" href="favicon.ico" sizes="any"/>
+<link rel="icon" href="favicon.svg" type="image/svg+xml"/>
   <meta name="description" content="The PsyTectrics™ Business Audit: a structured behavioural awareness audit for individuals or teams, mapping patterns and friction points. Bespoke scope, written report.">
-  <link rel="apple-touch-icon" href="pt_icon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="manifest" href="site.webmanifest">
   <link rel="canonical" href="https://psytectrics.com/business.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="PsyTectrics">
@@ -14,12 +15,12 @@
   <meta property="og:url" content="https://psytectrics.com/business.html">
   <meta property="og:title" content="Business Audit — PsyTectrics™">
   <meta property="og:description" content="The PsyTectrics™ Business Audit: a structured behavioural awareness audit for individuals or teams, mapping patterns and friction points. Bespoke scope, written report.">
-  <meta property="og:image" content="https://psytectrics.com/pt_logo_icon.png">
+  <meta property="og:image" content="https://psytectrics.com/images/brand/og-image.png">
   <meta property="og:image:width" content="1769">
   <meta property="og:image:height" content="889">
   <meta property="og:image:alt" content="PsyTectrics logo">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://psytectrics.com/pt_logo_icon.png">
+  <meta name="twitter:image" content="https://psytectrics.com/images/brand/og-image.png">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -145,12 +146,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .pt-footer-bot a:hover{color:#00D4FF}
 @media(max-width:768px){.pt-footer-pay,.pt-footer-bot{flex-direction:column;align-items:center;text-align:center}.pay-chips{justify-content:center}}
 </style>
+<script>try{document.documentElement.setAttribute('data-theme',localStorage.getItem('pt-theme')||'light')}catch(e){document.documentElement.setAttribute('data-theme','light')}</script>
+<link rel="stylesheet" href="pt-theme.css"/>
 </head>
 <body>
 
 <nav>
   <a href="index.html" class="nav-logo-wrap">
-    <img src="pt_logo.png" alt="PsyTectrics" class="nav-logo-img"/>
+    <img src="images/brand/logo-light.svg" alt="PsyTectrics" class="nav-logo-img logo-light"/><img src="images/brand/logo-dark.svg" alt="PsyTectrics" class="nav-logo-img logo-dark"/>
   </a>
   <div class="nav-right">
     <span class="nav-badge">Business Audit · From £150</span>
@@ -389,5 +392,6 @@ async function handleSubmit() {
   }
 }
 </script>
+<script src="pt-theme.js" defer></script>
 </body>
 </html>
