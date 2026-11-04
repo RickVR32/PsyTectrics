@@ -86,6 +86,30 @@ module.exports = async (req, res) => {
     } catch (e) { console.error('subscription checkout error', e); }
   }
 
+  // Shop: card game orders and pre-orders
+  const shopType = event.type === 'checkout.session.completed' && event.data.object.metadata && event.data.object.metadata.order_type;
+  if (shopType === 'preorder' || shopType === 'order') {
+    const s = event.data.object;
+    const ship = (s.collected_information && s.collected_information.shipping_details) || s.shipping_details || {};
+    const cust = s.customer_details || {};
+    const addr = ship.address || cust.address || {};
+    let items = {}; try { items = JSON.parse(s.metadata.items || '{}'); } catch (e) {}
+    const row = {
+      stripe_session_id: s.id, order_type: shopType, status: shopType === 'preorder' ? 'preorder' : 'paid',
+      email: String(cust.email || s.customer_email || '').toLowerCase() || null,
+      name: ship.name || cust.name || null, items, decks: parseInt(s.metadata.decks, 10) || null,
+      amount_total: s.amount_total, currency: s.currency, shipping_address: addr
+    };
+    const { error } = await supabase.from('orders').upsert(row, { onConflict: 'stripe_session_id' });
+    if (error) console.error('orders upsert', error);
+    const what = Object.entries(items).map(([k, q]) => `${q} × ${k === 'narcissist' ? 'Narcissist' : 'Bad Habits'}`).join(', ');
+    await notify(`${shopType === 'preorder' ? 'Pre-order' : 'Order'} — ${what}`, {
+      name: row.name || '', email: row.email || '', total: '£' + ((s.amount_total || 0) / 100).toFixed(2),
+      address: [addr.line1, addr.line2, addr.city, addr.postal_code].filter(Boolean).join(', ')
+    });
+    return res.status(200).json({ received: true });
+  }
+
   if (event.type === 'checkout.session.completed' && event.data.object.mode !== 'subscription') {
     const session = event.data.object;
     const requestId = session.metadata?.request_id;

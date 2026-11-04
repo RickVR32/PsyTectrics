@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Shop — PsyTectrics™</title>
+<meta name="description" content="Pre-order the Narcissist Card Game and Bad Habits!, the co-operative card games built on the SC Blueprint™. £25 each, free UK delivery on two or more."/>
+<link rel="icon" href="favicon.ico" sizes="any"/>
+<link rel="icon" href="favicon.svg" type="image/svg+xml"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="manifest" href="site.webmanifest">
+<link rel="canonical" href="https://psytectrics.com/shop.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PsyTectrics">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://psytectrics.com/shop.html">
+<meta property="og:title" content="Pre-order the PsyTectrics card games">
+<meta property="og:description" content="The Narcissist Card Game and Bad Habits!: co-operative card games about the moments that set us off. £25 each.">
+<meta property="og:image" content="https://psytectrics.com/images/shop/og-shop.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FFFFFF;--bg-soft:#F4F6F9;
+  --text:#0B1020;--muted:#6B7280;--muted2:#9CA3AF;
+  --accent:#00D4FF;--accent-soft:rgba(0,212,255,0.08);--accent-border:rgba(0,212,255,0.25);
+  --line:rgba(0,0,0,0.08);--line-strong:rgba(0,0,0,0.14);
+  --serif:'Montserrat',sans-serif;--sans:'Inter',sans-serif;--mono:'Space Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;padding-top:70px;-webkit-font-smoothing:antialiased;min-height:100vh}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0.85rem 2.5rem;border-bottom:1px solid rgba(255,255,255,0.06);background:#060B18;height:70px}
+.nav-logo-wrap{display:flex;align-items:center;text-decoration:none}
+.nav-logo-img{height:52px;width:auto;display:block}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-family:var(--mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.nav-cta{background:var(--accent);color:#060B18;padding:0.6rem 1.4rem;font-family:var(--mono);font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s}
+.nav-cta:hover{opacity:0.85}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.nav-hamburger span{display:block;width:22px;height:2px;background:rgba(255,255,255,0.7);transition:all 0.3s}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-drawer{display:none;position:fixed;top:70px;left:0;right:0;background:#060B18;border-bottom:1px solid rgba(255,255,255,0.08);z-index:199;padding:1.2rem 1.5rem;flex-direction:column}
+.nav-drawer.open{display:flex}
+.nav-drawer a{color:rgba(255,255,255,0.6);text-decoration:none;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.85rem 0;border-bottom:1px solid rgba(255,255,255,0.06);transition:color 0.2s}
+.nav-drawer a:last-child{border-bottom:none}
+.nav-drawer a:hover,.nav-drawer a.active{color:#fff}
+.nav-drawer .drawer-cta{background:var(--accent);color:#060B18;padding:0.75rem 1.2rem;font-weight:700;margin-top:0.8rem;text-align:center;border-bottom:none}
+
+.pt-footer{background:#060B18;border-top:1px solid rgba(255,255,255,0.07);padding:2rem 3rem}
+.pt-footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.pt-footer-logo{font-family:var(--mono);font-size:0.78rem;letter-spacing:0.16em;color:rgba(255,255,255,0.5);font-weight:700}
+.pt-footer-links{display:flex;gap:1.8rem;flex-wrap:wrap}
+.pt-footer-links a{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s}
+.pt-footer-links a:hover{color:rgba(255,255,255,0.7)}
+.pt-footer-note{font-family:var(--mono);font-size:0.58rem;color:rgba(255,255,255,0.2);letter-spacing:0.06em}
+.page-hero{padding:5rem 3rem 4rem;border-bottom:1px solid var(--line);max-width:1200px;margin:0 auto;text-align:center}
+.eyebrow{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:1.2rem}
+.hero-title{font-family:var(--serif);font-size:clamp(2.5rem,5vw,4rem);font-weight:300;line-height:1.05;margin-bottom:1rem}
+.hero-title em{font-style:italic;color:var(--accent)}
+.hero-desc{color:var(--muted);font-size:0.95rem;line-height:1.85;max-width:540px;margin:0 auto}
+@media(max-width:768px){nav{padding:0.8rem 1.2rem}.nav-links{display:none}.nav-hamburger{display:flex}.pt-footer{padding:2rem 1.5rem}.pt-footer-inner{flex-direction:column;text-align:center;align-items:center}.pt-footer-links{justify-content:center}}
+/* LOGO-FIX: real logo file is ~6.45:1 aspect ratio — full height renders 300px+ wide and eats the whole nav bar on phones */
+@media(max-width:768px){
+  .nav-logo-img,nav.pt-nav .nav-logo-img{height:38px!important;width:auto}
+  nav .nav-logo-wrap,nav.pt-nav .nav-logo-wrap{
+    position:absolute;left:0;right:0;top:0;height:70px;
+    display:flex;align-items:center;justify-content:center;
+    pointer-events:none;z-index:1;
+  }
+  nav .nav-logo-wrap img,nav.pt-nav .nav-logo-wrap img{pointer-events:auto}
+  nav,nav.pt-nav{justify-content:flex-end}
+  nav>*:not(.nav-logo-wrap),nav.pt-nav>*:not(.nav-logo-wrap){position:relative;z-index:2}
+}
+@media(max-width:480px){
+  .nav-logo-img,nav.pt-nav .nav-logo-img{height:32px!important}
+}
+@media(max-width:768px){
+  nav,nav.pt-nav{flex-wrap:wrap;height:auto;min-height:70px;row-gap:4px}
+  .nav-right{gap:0.5rem!important}
+}
+
+/* FOOTER-PAY: payment logos + Site by Ric (shared with client builds) */
+.pt-footer-pay{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:1.6rem;padding-top:1.4rem;border-top:1px solid rgba(255,255,255,0.07)}
+.pt-pay-label{display:flex;align-items:center;gap:8px;margin:0;font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.4)}
+.pt-pay-label svg{width:14px;height:14px;stroke:#00D4FF;fill:none;stroke-width:2}
+.pay-chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0}
+.pay-card{display:block;width:51px;height:32px;border-radius:4px}
+.pay-chip{display:inline-flex;align-items:center;justify-content:center;gap:5px;width:51px;height:32px;background:#fff;border-radius:4px}
+.pay-chip img{display:block;height:23px;width:auto}
+.pay-chip.gpay img{height:15px}
+.pay-chip.klarna{background:#ffb3c7;width:auto;padding:0 9px;font-family:'Inter',sans-serif;font-size:.74rem;font-weight:700;color:#0b051d}
+.pay-chip.klarna img{height:11px}
+.pt-footer-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:1.2rem;font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.06em;color:rgba(255,255,255,0.3)}
+.pt-footer-bot a{color:rgba(255,255,255,0.7);text-decoration:none}
+.pt-footer-bot a:hover{color:#00D4FF}
+@media(max-width:768px){.pt-footer-pay,.pt-footer-bot{flex-direction:column;align-items:center;text-align:center}.pay-chips{justify-content:center}}
+/* ---------- SHOP ---------- */
+.shop-hero{max-width:1200px;margin:0 auto;padding:4.5rem 3rem 2rem;display:grid;grid-template-columns:1fr 1.15fr;gap:3rem;align-items:center}
+.shop-hero .hero-desc{margin:0 0 1.6rem}
+.shop-hero .hero-title{text-align:left}
+.hero-img{width:100%;height:auto;display:block;border-radius:6px}
+.perks{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.perks span::before{content:'◈ ';color:var(--accent)}
+.notice{max-width:1200px;margin:1rem auto 0;padding:0 3rem}
+.notice div{background:var(--accent-soft);border:1px solid var(--accent-border);border-left:3px solid var(--accent);padding:1rem 1.2rem;font-size:.9rem;line-height:1.6;color:var(--text)}
+.notice b{font-weight:600}
+.products{max-width:1200px;margin:0 auto;padding:3rem 3rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.product{background:var(--bg);border:1px solid var(--line);display:flex;flex-direction:column;scroll-margin-top:90px}
+.product-img{background:#EEF1F6;aspect-ratio:1/1;overflow:hidden}
+.product-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
+.product:hover .product-img img{transform:scale(1.03)}
+.product-body{padding:2rem 2.2rem 2.2rem;display:flex;flex-direction:column;gap:.9rem;flex:1}
+.badge{font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-border);padding:.28rem .75rem;align-self:flex-start}
+.badge.kids{color:#2F6FED;background:rgba(47,111,237,.08);border-color:rgba(47,111,237,.3)}
+.product h2{font-family:var(--serif);font-size:1.7rem;font-weight:300;line-height:1.15}
+.product h2 em{font-style:italic;color:var(--accent)}
+.product.kids h2 em{color:#2F6FED}
+.product p{color:var(--muted);font-size:.9rem;line-height:1.75}
+.facts{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line)}
+.facts li{padding:.7rem .4rem;text-align:center;border-right:1px solid var(--line);font-family:var(--mono);font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.facts li:last-child{border-right:0}
+.facts b{display:block;font-family:var(--serif);font-size:1rem;letter-spacing:0;text-transform:none;color:var(--text);font-weight:500;margin-bottom:.15rem}
+.inbox{color:var(--muted);font-size:.82rem;line-height:1.7}
+.inbox b{color:var(--text);font-weight:500}
+.buy{display:flex;align-items:center;gap:1rem;margin-top:auto;padding-top:1.2rem;border-top:1px solid var(--line)}
+.price{font-family:var(--serif);font-size:2rem;font-weight:300;line-height:1}
+.price small{display:block;font-family:var(--mono);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:.35rem}
+.qty{display:flex;align-items:center;border:1px solid var(--line-strong);margin-left:auto}
+.qty button{width:40px;height:44px;background:none;border:0;color:var(--text);font-size:1.2rem;cursor:pointer}
+.qty button:hover{color:var(--accent)}
+.qty button:disabled{opacity:.3;cursor:default}
+.qty output{min-width:28px;text-align:center;font-family:var(--mono);font-weight:700}
+.add{background:var(--accent);color:#060B18;border:0;padding:0 1.3rem;height:46px;font-family:var(--mono);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:opacity .2s}
+.add:hover{opacity:.85}
+.kids .add{background:#2F6FED;color:#fff}
+.add[hidden],.qty[hidden]{display:none}
+.why{max-width:1200px;margin:0 auto;padding:4rem 3rem;display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
+.why h3{font-family:var(--serif);font-weight:400;font-size:1.1rem;margin-bottom:.5rem}
+.why p{color:var(--muted);font-size:.88rem;line-height:1.75}
+.why .n{font-family:var(--mono);font-size:.62rem;color:var(--accent);letter-spacing:.16em;display:block;margin-bottom:.8rem}
+.faq{max-width:820px;margin:0 auto;padding:1rem 3rem 5rem}
+.faq h2{font-family:var(--serif);font-weight:300;font-size:clamp(1.6rem,3vw,2.2rem);text-align:center;margin-bottom:2rem}
+.faq h2 em{font-style:italic;color:var(--accent)}
+.faq details{border-bottom:1px solid var(--line);padding:1.1rem 0}
+.faq summary{cursor:pointer;font-weight:500;font-size:.95rem;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+.faq summary::after{content:'+';font-family:var(--mono);color:var(--accent)}
+.faq details[open] summary::after{content:'–'}
+.faq details p{color:var(--muted);font-size:.88rem;line-height:1.75;margin-top:.7rem}
+.faq a{color:var(--accent)}
+/* basket bar */
+.basket{position:fixed;left:0;right:0;bottom:0;z-index:150;background:#060B18;color:#fff;transform:translateY(110%);visibility:hidden;transition:transform .3s,visibility .3s;border-top:1px solid rgba(0,212,255,.3)}
+.basket.show{transform:none;visibility:visible}
+body.has-basket .ptw-btn{bottom:96px!important}body.has-basket .ptw-panel{bottom:152px!important}
+@media(max-width:768px){body.has-basket .ptw-btn{bottom:140px!important}body.has-basket .ptw-panel{bottom:196px!important}}
+.basket-in{max-width:1200px;margin:0 auto;padding:.9rem 3rem;display:flex;align-items:center;gap:1.5rem}
+.basket-sum{flex:1;font-size:.88rem;line-height:1.5}
+.basket-sum b{font-weight:600}
+.basket-sum span{display:block;font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;color:rgba(255,255,255,.55);text-transform:uppercase}
+.basket-total{font-family:var(--serif);font-size:1.5rem;font-weight:300}
+.checkout{background:var(--accent);color:#060B18;border:0;height:48px;padding:0 1.8rem;font-family:var(--mono);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.checkout:disabled{opacity:.6;cursor:wait}
+.basket-err{color:#FF8A8A;font-size:.8rem}
+body.has-basket .pt-footer{padding-bottom:6rem}
+@media(max-width:900px){.shop-hero{grid-template-columns:1fr;padding:3rem 1.5rem 1rem;gap:2rem}.shop-hero .hero-img{order:-1}.products{grid-template-columns:1fr;padding:2rem 1rem;gap:1rem}.why{grid-template-columns:1fr;padding:3rem 1.5rem;gap:1.8rem}.notice{padding:0 1.5rem}}
+@media(max-width:768px){.faq{padding:1rem 1.5rem 4rem}.product-body{padding:1.6rem 1.5rem 1.8rem}.basket-in{padding:.8rem 1rem;gap:.8rem;flex-wrap:wrap}.basket-total{font-size:1.25rem}.checkout{flex:1 0 100%;height:46px}}
+@media(max-width:420px){.facts{grid-template-columns:repeat(2,1fr)}.facts li:nth-child(2){border-right:0}.facts li:nth-child(-n+2){border-bottom:1px solid var(--line)}.buy{flex-wrap:wrap}.qty{margin-left:auto}}
+:root[data-theme="dark"] .basket{background:#0E1426}
+:root[data-theme="dark"] .product-img{background:#DCE1EA}
+</style>
+<script>try{document.documentElement.setAttribute('data-theme',localStorage.getItem('pt-theme')||'light')}catch(e){document.documentElement.setAttribute('data-theme','light')}</script>
+<link rel="stylesheet" href="pt-theme.css"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[
+{"@type":"Product","name":"Narcissist Card Game","image":"https://psytectrics.com/images/shop/narcissist-card-game.jpg","description":"54-card co-operative party game for 2–6 players, 16+.","brand":{"@type":"Brand","name":"PsyTectrics"},"offers":{"@type":"Offer","price":"25.00","priceCurrency":"GBP","availability":"https://schema.org/PreOrder","url":"https://psytectrics.com/shop.html#narcissist"}},
+{"@type":"Product","name":"Bad Habits! Card Game","image":"https://psytectrics.com/images/shop/bad-habits.jpg","description":"54-card co-operative family game for 2–6 players, ages 7–12.","brand":{"@type":"Brand","name":"PsyTectrics"},"offers":{"@type":"Offer","price":"25.00","priceCurrency":"GBP","availability":"https://schema.org/PreOrder","url":"https://psytectrics.com/shop.html#bad-habits"}}]}</script>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo-wrap">
+    <img src="images/brand/logo-light.svg" alt="PsyTectrics" class="nav-logo-img logo-light"/><img src="images/brand/logo-dark.svg" alt="PsyTectrics" class="nav-logo-img logo-dark"/>
+  </a>
+  <ul class="nav-links">
+    <li><a href="tests.html">Tests</a></li>
+    <li><a href="shop.html" class="active">Shop</a></li>
+    <li><a href="reports.html">Reports</a></li>
+    <li><a href="framework.html">Framework</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <a href="index.html">Home</a>
+  <a href="tests.html">Tests</a>
+  <a href="shop.html" class="active">Shop</a>
+  <a href="reports.html">Reports</a>
+  <a href="framework.html">Framework</a>
+  <a href="contact.html">Contact</a>
+  <a href="test.html?t=quick-check" class="drawer-cta">Free Quick Check →</a>
+</div>
+
+<section class="shop-hero">
+  <div>
+    <span class="eyebrow" id="modeEyebrow">Pre-orders open</span>
+    <h1 class="hero-title">Play the<br/><em>pattern.</em></h1>
+    <p class="hero-desc">Two co-operative card games built on the SC Blueprint™. Real moments, real reactions, and one way to win: stay grounded together.</p>
+    <div class="perks"><span>£25 a deck</span><span id="perkShip">Free UK delivery on 2+</span><span>Designed in the UK</span></div>
+  </div>
+  <img class="hero-img" src="images/shop/both-games.webp" width="1600" height="900" alt="The Narcissist Card Game and Bad Habits! boxes side by side"/>
+</section>
+
+<div class="notice" id="thanks" hidden><div><b>Thank you, your order is in.</b> A receipt is on its way to your inbox. <span id="thanksShip">We'll email you when it ships.</span> While you wait, <a href="test.html?t=quick-check" style="color:var(--accent)">take the free Quick Check →</a></div></div>
+<div class="notice" id="closed" hidden><div><b>Orders are paused for a moment.</b> Please check back soon, or <a href="contact.html" style="color:var(--accent)">get in touch</a>.</div></div>
+
+<section class="products">
+  <article class="product" id="narcissist" data-id="narcissist">
+    <div class="product-img"><img src="images/shop/narcissist-card-game.webp" width="1200" height="1200" alt="Narcissist Card Game box with a fan of cards" loading="lazy"/></div>
+    <div class="product-body">
+      <span class="badge" data-badge>Pre-order</span>
+      <h2>Narcissist<br/><em>Card Game</em></h2>
+      <p>The read receipt. The 4:55 Friday email. The co-parent text. Draw a real moment, play your response, and see what happens. Narc and Empath reactions burn the clock. Only <b>Grounded</b> builds the bank. Win together, or lose together.</p>
+      <ul class="facts"><li><b>2–6</b>players</li><li><b>16+</b>ages</li><li><b>20–30</b>minutes</li><li><b>54</b>cards</li></ul>
+      <p class="inbox"><b>In the box:</b> 18 Triggers, 16 Narc and Empath responses, 10 Grounded, 3 Volatile, a rare Held card, 4 Observer cards, the Zero-Point and a rules card. Scan the box for a free Balance Map.</p>
+      <div class="buy">
+        <div class="price">£25<small data-shipline>+ UK delivery</small></div>
+        <div class="qty" hidden><button type="button" data-dec aria-label="One less">−</button><output aria-live="polite">0</output><button type="button" data-inc aria-label="One more">+</button></div>
+        <button type="button" class="add" data-add>Add to basket</button>
+      </div>
+    </div>
+  </article>
+  <article class="product kids" id="bad-habits" data-id="bad-habits">
+    <div class="product-img"><img src="images/shop/bad-habits.webp" width="1200" height="1200" alt="Bad Habits! box with a fan of cards" loading="lazy"/></div>
+    <div class="product-body">
+      <span class="badge kids" data-badge>Pre-order · Family</span>
+      <h2>Bad<br/><em>Habits!</em></h2>
+      <p>Your tower gets knocked over. You're picked last. Bedtime comes too soon. Kids play the Uh-oh, then choose: stomp off, or take three big breaths? Good habits go in the Jar. Fill it together to win.</p>
+      <ul class="facts"><li><b>2–6</b>players</li><li><b>7–12</b>ages</li><li><b>15–20</b>minutes</li><li><b>54</b>cards</li></ul>
+      <p class="inbox"><b>In the box:</b> 18 Uh-oh cards, 12 Bad Habits, 12 Good Habits, 4 Ask cards, 2 Breathe cards, Loop and Held cards, the Good Habits Jar and a rules card.</p>
+      <div class="buy">
+        <div class="price">£25<small data-shipline>+ UK delivery</small></div>
+        <div class="qty" hidden><button type="button" data-dec aria-label="One less">−</button><output aria-live="polite">0</output><button type="button" data-inc aria-label="One more">+</button></div>
+        <button type="button" class="add" data-add>Add to basket</button>
+      </div>
+    </div>
+  </article>
+</section>
+
+<section class="why">
+  <div><span class="n">01 · CO-OPERATIVE</span><h3>Everyone wins, or nobody does</h3><p>No one gets picked on. The table works together against the clock, so the talk is about the moment, not about each other.</p></div>
+  <div><span class="n">02 · REAL MOMENTS</span><h3>Built from everyday triggers</h3><p>Every card is a situation you'll recognise. The game makes it safe to laugh at how we react, and to try a better way.</p></div>
+  <div><span class="n">03 · SC BLUEPRINT™</span><h3>Same framework as the tests</h3><p>Narc, Empath, Grounded and Volatile: the four codes behind every PsyTectrics test. Scan the box for your own free Balance Map.</p></div>
+</section>
+
+<section class="faq">
+  <h2>Good to <em>know</em></h2>
+  <details><summary>When will my order ship?</summary><p id="faqShip">These are pre-orders. Your game ships as soon as the first print run lands, and we'll email you the moment it's on its way.</p></details>
+  <details><summary>Do I pay now?</summary><p>Yes. You pay at checkout so your deck is reserved in the first run. Payments are handled securely by Stripe, and you can use card, Apple Pay, Google Pay or Klarna where available.</p></details>
+  <details><summary>Can I cancel?</summary><p>Yes. Cancel any time before it ships for a full refund: just reply to your receipt or <a href="contact.html">contact us</a>. After delivery you still have 14 days to change your mind, as long as the deck is unused and in its wrapping.</p></details>
+  <details><summary>How much is delivery?</summary><p id="faqDelivery">UK delivery is £3.95, or free when you order two or more decks. We only ship within the UK for now.</p></details>
+  <details><summary>Is the Narcissist Card Game about diagnosing people?</summary><p>No. It's a self-reflection game, not a diagnosis. It's about patterns everyone falls into sometimes, and it's built so nobody is singled out.</p></details>
+  <details><summary>Is Bad Habits! OK for younger children?</summary><p>It's designed for ages 7 to 12. Younger children can join in with a grown-up reading the cards.</p></details>
+  <details><summary>Can I buy for a school, clinic or shop?</summary><p>Yes. For 10 or more decks, or wholesale, <a href="contact.html">get in touch</a> and we'll send a quote.</p></details>
+</section>
+
+<div class="basket" id="basket" role="region" aria-label="Basket">
+  <div class="basket-in">
+    <div class="basket-sum"><b id="bItems">0 decks</b><span id="bShip">+ UK delivery</span><span class="basket-err" id="bErr" hidden></span></div>
+    <div class="basket-total" id="bTotal">£0</div>
+    <button type="button" class="checkout" id="bGo">Pre-order now →</button>
+  </div>
+</div>
+
+<footer class="pt-footer">
+  <div class="pt-footer-inner">
+    <span class="pt-footer-logo">PSYTECTRICS™</span>
+    <div class="pt-footer-links">
+      <a href="index.html">Home</a>
+      <a href="tests.html">Tests</a>
+      <a href="shop.html">Shop</a>
+      <a href="reports.html">Reports</a>
+      <a href="framework.html">Framework</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+  </div>
+  <div class="pt-footer-pay">
+    <p class="pt-pay-label"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Secure payments via Stripe</p>
+    <ul class="pay-chips" aria-label="Accepted payment methods">
+      <li><img class="pay-card" src="images/pay/visa.svg" alt="Visa" width="51" height="32"></li>
+      <li><img class="pay-card" src="images/pay/mastercard.svg" alt="Mastercard" width="51" height="32"></li>
+      <li><img class="pay-card" src="images/pay/amex.svg" alt="American Express" width="51" height="32"></li>
+      <li class="pay-chip"><img src="images/pay/applepay.svg" alt="Apple Pay" width="36" height="23"></li>
+      <li class="pay-chip gpay"><img src="images/pay/googlepay.svg" alt="Google Pay" width="38" height="15"></li>
+      <li class="pay-chip klarna"><img src="images/pay/klarna.svg" alt="" width="12" height="12">Klarna</li>
+      <li><img class="pay-card" src="images/pay/diners.svg" alt="Diners Club" width="51" height="32"></li>
+      <li><img class="pay-card" src="images/pay/amazonpay.svg" alt="Amazon Pay" width="51" height="32"></li>
+    </ul>
+  </div>
+  <div class="pt-footer-bot"><span>© 2026 PsyTectrics™ · All rights reserved</span><span>Site by <a href="https://ric-lee.co.uk" target="_blank" rel="noopener">Ric</a></span></div>
+</footer>
+<script>
+const hamburger=document.getElementById('hamburger');
+const drawer=document.getElementById('navDrawer');
+hamburger.addEventListener('click',function(){hamburger.classList.toggle('open');drawer.classList.toggle('open');});
+drawer.querySelectorAll('a').forEach(function(link){link.addEventListener('click',function(){hamburger.classList.remove('open');drawer.classList.remove('open');});});
+</script>
+<script>
+(function(){
+  // Defaults match lib/routes/shop.js; /api/shop overrides them.
+  let C={open:true,mode:'preorder',shipping:395,freeFrom:2,maxQty:10,products:{narcissist:{price:2500},'bad-habits':{price:2500}},shipNote:''};
+  const basket={narcissist:0,'bad-habits':0};
+  try{const s=JSON.parse(localStorage.getItem('pt-basket')||'{}');for(const k in basket)if(Number.isInteger(s[k])&&s[k]>=0)basket[k]=Math.min(10,s[k]);}catch(e){}
+  const gbp=p=>'£'+(p%100?(p/100).toFixed(2):p/100);
+  const $=id=>document.getElementById(id);
+  const decks=()=>Object.values(basket).reduce((a,b)=>a+b,0);
+
+  function render(){
+    const n=decks(), free=C.freeFrom>0&&n>=C.freeFrom;
+    let sub=0;for(const k in basket)sub+=basket[k]*((C.products[k]||{}).price||2500);
+    const ship=n?(free?0:C.shipping):0;
+    document.querySelectorAll('.product').forEach(el=>{
+      const q=basket[el.dataset.id]||0;
+      el.querySelector('.qty').hidden=!q; el.querySelector('[data-add]').hidden=!!q;
+      el.querySelector('output').textContent=q;
+      el.querySelector('[data-inc]').disabled=q>=C.maxQty;
+    });
+    $('bItems').textContent=n+(n===1?' deck':' decks')+(n?' · '+Object.entries(basket).filter(([,q])=>q).map(([k,q])=>q+' × '+(k==='narcissist'?'Narcissist':'Bad Habits!')).join(', '):'');
+    $('bShip').textContent=free?'Free UK delivery':'+ '+gbp(C.shipping)+' UK delivery'+(C.freeFrom>1?' · free on '+C.freeFrom+'+':'');
+    $('bTotal').textContent=gbp(sub+ship);
+    $('basket').classList.toggle('show',n>0&&C.open); document.body.classList.toggle('has-basket',n>0&&C.open);
+    try{localStorage.setItem('pt-basket',JSON.stringify(basket));}catch(e){}
+  }
+  document.querySelectorAll('.product').forEach(el=>{
+    const id=el.dataset.id;
+    el.querySelector('[data-add]').onclick=()=>{basket[id]=1;render();el.querySelector('[data-inc]').focus();};
+    el.querySelector('[data-inc]').onclick=()=>{basket[id]=Math.min(C.maxQty,basket[id]+1);render();};
+    el.querySelector('[data-dec]').onclick=()=>{basket[id]=Math.max(0,basket[id]-1);render();if(!basket[id])el.querySelector('[data-add]').focus();};
+  });
+  $('bGo').onclick=async()=>{
+    const b=$('bGo'),err=$('bErr');err.hidden=true;b.disabled=true;b.textContent='Opening checkout…';
+    try{
+      const r=await fetch('/api/shop',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:basket})});
+      const d=await r.json().catch(()=>({}));
+      if(!r.ok||!d.url)throw new Error(d.error||'Something went wrong. Please try again.');
+      location.href=d.url;
+    }catch(e){err.textContent=e.message;err.hidden=false;b.disabled=false;b.textContent=C.mode==='preorder'?'Pre-order now →':'Checkout →';}
+  };
+  function applyConfig(){
+    const pre=C.mode==='preorder';
+    $('modeEyebrow').textContent=pre?'Pre-orders open':'In stock · ships within 3 days';
+    $('bGo').textContent=pre?'Pre-order now →':'Checkout →';
+    document.querySelectorAll('[data-badge]').forEach((b,i)=>b.textContent=(pre?'Pre-order':'In stock')+(i?' · Family':''));
+    document.querySelectorAll('.add').forEach(a=>a.textContent=pre?'Pre-order':'Add to basket');
+    const sl=C.freeFrom>1?'Free UK delivery on '+C.freeFrom+'+':'+ UK delivery';
+    document.querySelectorAll('[data-shipline]').forEach(s=>s.textContent=sl);
+    $('perkShip').textContent=C.freeFrom>1?'Free UK delivery on '+C.freeFrom+'+':'UK delivery '+gbp(C.shipping);
+    $('faqDelivery').textContent='UK delivery is '+gbp(C.shipping)+(C.freeFrom>1?', or free when you order '+C.freeFrom+' or more decks':'')+'. We only ship within the UK for now.';
+    if(C.shipNote)$('faqShip').textContent=C.shipNote;
+    $('closed').hidden=C.open;
+    if(!C.open)document.querySelectorAll('.add,.qty button').forEach(b=>b.disabled=true);
+    render();
+  }
+  render();
+  fetch('/api/shop').then(r=>r.ok?r.json():null).then(d=>{if(d){C=Object.assign(C,d);applyConfig();}}).catch(()=>{});
+  const q=new URLSearchParams(location.search);
+  if(q.get('order')==='thanks'){
+    for(const k in basket)basket[k]=0;render();
+    $('thanks').hidden=false;$('thanks').scrollIntoView({block:'center'});
+    history.replaceState(null,'','shop.html');
+  }
+})();
+</script>
+<script src="pt-auth.js"></script>
+<script src="pt-widgets.js" defer></script>
+<script src="pt-theme.js" defer></script>
+</body>
+</html>

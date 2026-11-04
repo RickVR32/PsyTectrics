@@ -97,3 +97,7 @@
 :root[data-theme="dark"] .scale button,
 :root[data-theme="dark"] .soon .card-btn,
 :root[data-theme="dark"] .soon-badge{background:#0E1426!important;color:#EDF0F7}
+
+/* nav: keep links on one line now there are six (Shop added) */
+.nav-links a,[data-pt-account]{white-space:nowrap}
+@media(min-width:769px) and (max-width:1050px){.nav-links{gap:1.1rem!important}.nav-logo-img{height:42px!important}}

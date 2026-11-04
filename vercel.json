@@ -31,12 +31,38 @@
     {
       "source": "/api/membership",
       "destination": "/api/site?r=membership"
+    },
+    {
+      "source": "/api/shop",
+      "destination": "/api/site?r=shop"
     }
   ],
   "crons": [
     {
       "path": "/api/telegram",
       "schedule": "0 8 * * *"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/free",
+      "destination": "/test.html?t=quick-check&utm_medium=print&utm_source=insert&utm_campaign=free",
+      "permanent": false
+    },
+    {
+      "source": "/qr/narc",
+      "destination": "/test.html?t=quick-check&utm_medium=print&utm_source=insert&utm_campaign=narcissist-card-game",
+      "permanent": false
+    },
+    {
+      "source": "/qr/kids",
+      "destination": "/test.html?t=quick-check&utm_medium=print&utm_source=insert&utm_campaign=bad-habits",
+      "permanent": false
+    },
+    {
+      "source": "/shop",
+      "destination": "/shop.html",
+      "permanent": false
     }
   ]
 }
