@@ -1,6 +1,6 @@
 /* One function, many small routes (Vercel Hobby allows 12 functions per project).
    vercel.json rewrites /api/decode, /api/ask, /api/reviews, /api/save-test-result,
-   /api/profile-report, /api/config, /api/me, /api/membership and /api/shop here, so the site's URLs stay the same. */
+   /api/profile-report, /api/config, /api/me, /api/membership, /api/shop and /api/game here, so the site's URLs stay the same. */
 const ROUTES = {
   'decode': () => require('../lib/routes/decode'),
   'ask': () => require('../lib/routes/ask'),
@@ -10,7 +10,8 @@ const ROUTES = {
   'config': () => require('../lib/routes/config'),
   'me': () => require('../lib/routes/me'),
   'membership': () => require('../lib/routes/membership'),
-  'shop': () => require('../lib/routes/shop')
+  'shop': () => require('../lib/routes/shop'),
+  'game': () => require('../lib/routes/game')
 };
 module.exports = async (req, res) => {
   const r = String((req.query && req.query.r) || '');
