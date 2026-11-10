@@ -866,7 +866,7 @@ function renderCodes(oc) {
  const codes = [
  { name:'NARC', pct: oc.narc, col:'#D85A30' },
  { name:'YARC', pct: oc.yarc, col:'#1D9E75' },
- { name:'SIST', pct: oc.sist, col:'#7B6FD0' },
+ { name:'CIST', pct: oc.sist, col:'#7B6FD0' },
  { name:'Øll', pct: oc.oll, col:'#D4537E' },
  ];
 
@@ -992,7 +992,7 @@ async function callVISIONScan(data) {
  const sys = `You are the VISION — Smart Mirror · PsyTectrics™. You are a smart mirror powered by the DPC processor core. You read a person's biometric state and self-report, score them through the framework, and decide whether to stay in reflective mode or shift to dialogue.
 
 FRAMEWORK:
-- SC Blueprints™: NARC (extractive), YARC (giving), SIST (regulating), Øll (volatile). Zero-Point = 25% each.
+- SC Blueprints™: NARC (extractive), YARC (giving), CIST (regulating), Øll (volatile). Zero-Point = 25% each.
 - Drift 0–5: gap between conscious and subconscious. 0=aligned. >2.5 = dialogue threshold.
 - Balance Scale −5 to +5. 0 = Zero-Point.
 - HRV low = stress/NARC/Øll. EDA spikes = subconscious activation. High latency = avoidance. High voice tension = activation.
@@ -1002,7 +1002,7 @@ Return ONLY valid JSON:
  "balance_scale": <-5 to 5, one decimal>,
  "drift": <0 to 5, one decimal>,
  "bs_state": <short string>,
- "dominant_code": <"NARC"|"YARC"|"SIST"|"Øll">,
+ "dominant_code": <"NARC"|"YARC"|"CIST"|"Øll">,
  "observer_codes": { "narc":<int>, "yarc":<int>, "sist":<int>, "oll":<int> },
  "mode": <"reflective"|"dialogue">,
  "reflection": <string — if reflective mode: a single short observation the mirror surfaces back to the person. Not coaching, not prescriptive. Just what the data shows. 1 sentence, present tense, second person. e.g. "Your subconscious is running a different pattern to what you're presenting.">,
@@ -1044,7 +1044,7 @@ Current scores:
 - Drift: ${scores.drift}
 - Balance Scale: ${scores.balance_scale} (${scores.bs_state})
 - Dominant code: ${scores.dominant_code}
-- NARC: ${scores.observer_codes.narc}%, YARC: ${scores.observer_codes.yarc}%, SIST: ${scores.observer_codes.sist}%, Øll: ${scores.observer_codes.oll}%
+- NARC: ${scores.observer_codes.narc}%, YARC: ${scores.observer_codes.yarc}%, CIST: ${scores.observer_codes.sist}%, Øll: ${scores.observer_codes.oll}%
 
 Respond in 1-3 sentences. No preamble. Just the mirror speaking.`;
 

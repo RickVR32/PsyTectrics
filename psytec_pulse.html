@@ -644,7 +644,7 @@ function renderCodes(s) {
  const codes = [
  { name:'NARC', pct: s.observer_codes.narc, col:'#D85A30' },
  { name:'YARC', pct: s.observer_codes.yarc, col:'#1D9E75' },
- { name:'SIST', pct: s.observer_codes.sist, col:'#534AB7' },
+ { name:'CIST', pct: s.observer_codes.sist, col:'#534AB7' },
  { name:'Øll', pct: s.observer_codes.oll, col:'#D4537E' },
  ];
  let startAngle = -90;
@@ -772,7 +772,7 @@ function updateMetrics(s) {
  bsEl.style.color = s.balance_scale > 0.5 ? '#1D9E75' : s.balance_scale < -0.5 ? '#D85A30' : '#EF9F27';
 
  domEl.textContent = s.dominant_code;
- const domCols = { NARC:'#D85A30', YARC:'#1D9E75', SIST:'#534AB7', 'Øll':'#D4537E' };
+ const domCols = { NARC:'#D85A30', YARC:'#1D9E75', CIST:'#534AB7', 'Øll':'#D4537E' };
  domEl.style.color = domCols[s.dominant_code] || '#9A9990';
 
  const zp = Math.abs(s.balance_scale).toFixed(1);
@@ -785,12 +785,12 @@ async function callDP1(formData) {
  const systemPrompt = `You are the DPC — Duality Processor Core powering the PsyTec Pulse smartwatch. Process biometric and self-report inputs and return scored output for the watch display.
 
 FRAMEWORK:
-- SC Blueprints™: NARC (extractive), YARC (giving), SIST (regulating), Øll (volatile). Sum = 100%. Zero-Point = 25% each.
+- SC Blueprints™: NARC (extractive), YARC (giving), CIST (regulating), Øll (volatile). Sum = 100%. Zero-Point = 25% each.
 - Drift: 0–5. D = |Conscious − Subconscious|. 0=aligned, 5=critical.
 - Balance Scale: −5 (collapse) to +5 (full awareness). 0 = Zero-Point.
-- HRV low = stress = NARC/Øll subconscious signal. HRV high = regulated = SIST/YARC signal.
+- HRV low = stress = NARC/Øll subconscious signal. HRV high = regulated = CIST/YARC signal.
 - EDA spikes = subconscious activation despite conscious composure = higher drift.
-- High response latency = avoidance/cognitive load = SIST over-analysis or Øll.
+- High response latency = avoidance/cognitive load = CIST over-analysis or Øll.
 - Restless/erratic movement = high drift, Øll-adjacent.
 
 Respond ONLY with valid JSON, no other text:
@@ -799,7 +799,7 @@ Respond ONLY with valid JSON, no other text:
  "drift": <number 0 to 5, one decimal>,
  "bs_state": <string>,
  "drift_state": <string>,
- "dominant_code": <"NARC"|"YARC"|"SIST"|"Øll">,
+ "dominant_code": <"NARC"|"YARC"|"CIST"|"Øll">,
  "observer_codes": { "narc": <int>, "yarc": <int>, "sist": <int>, "oll": <int> },
  "haptic": <"none"|"single"|"double"|"triple">,
  "haptic_reason": <string, why this haptic fired or "none">,

@@ -775,7 +775,7 @@ nav.pt-nav .nav-back:hover { color:rgba(255,255,255,0.8); }
  <text x="387" y="152" text-anchor="middle" font-size="8" fill="#7A90B8" font-family="monospace" letter-spacing="0.1em">STAGE 3</text>
  <text x="387" y="167" text-anchor="middle" font-size="10" fill="#3A5080" font-family="monospace">OBSERVER CODE</text>
  <text x="387" y="182" text-anchor="middle" font-size="10" fill="#3A5080" font-family="monospace">RATIO ENGINE</text>
- <text x="387" y="196" text-anchor="middle" font-size="8" fill="#A8BCE0" font-family="monospace">NARC·YARC·SIST·Øll</text>
+ <text x="387" y="196" text-anchor="middle" font-size="8" fill="#A8BCE0" font-family="monospace">NARC·YARC·CIST·Øll</text>
  <!-- Stage 4: Drift -->
  <rect x="160" y="216" width="300" height="52" rx="4" fill="#EAEFF8" stroke="#C8D4E8" stroke-width="0.8"/>
  <text x="310" y="237" text-anchor="middle" font-size="9" fill="#7A90B8" font-family="monospace" letter-spacing="0.1em">STAGE 4</text>
@@ -883,7 +883,7 @@ nav.pt-nav .nav-back:hover { color:rgba(255,255,255,0.8); }
  <span class="oc-pct" id="pct-yarc">25%</span>
  </div>
  <div class="oc-row">
- <span class="oc-name">SIST</span>
+ <span class="oc-name">CIST</span>
  <div class="oc-track"><div class="oc-fill" id="oc-sist" style="width:25%;background:#534AB7;"></div></div>
  <span class="oc-pct" id="pct-sist">25%</span>
  </div>
@@ -1064,7 +1064,7 @@ async function callDP1(userInput, isFormMode, formData) {
  const systemPrompt = `You are the DPC processor chip — the computational core of the PsyTectrics™ Awareness Architecture device suite. You process inputs through 5 sequential stages and output scored data. You are not a therapist or coach. You are a scoring engine. Your output is precise, clinical, and framework-native.
 
 THE FRAMEWORK:
-- 4 SC Blueprints™: NARC (extractive/competitive), YARC (giving/empathic), SIST (regulating/analytical), Øll (volatile/all-or-nothing)
+- 4 SC Blueprints™: NARC (extractive/competitive), YARC (giving/empathic), CIST (regulating/analytical), Øll (volatile/all-or-nothing)
 - Zero-Point = 25% each. That is the target state.
 - Drift = gap between Conscious and Subconscious layer scores (D = |C - S|). 0 = full alignment.
 - Balance Scale: -5 (collapse/Øll dominant) to +5 (full conscious awareness, 25/25/25/25). 0 = Zero-Point.
@@ -1073,7 +1073,7 @@ THE FRAMEWORK:
 PROCESSING STAGES:
 1. Input Ingestion — accept self-report and biometric data
 2. Dual Yin-Yang Scoring — score Conscious and Subconscious layers independently
-3. SC Blueprint™ Ratio — resolve into NARC/YARC/SIST/Øll percentages (must sum to 100)
+3. SC Blueprint™ Ratio — resolve into NARC/YARC/CIST/Øll percentages (must sum to 100)
 4. Drift Calculation — D = |Conscious score - Subconscious score|
 5. Balance Scale Output — map to -5 to +5 axis
 
@@ -1083,7 +1083,7 @@ RESPONSE FORMAT: Return ONLY valid JSON with this exact structure, no other text
  "drift": <number 0 to 5, one decimal place>,
  "bs_state": <short string: state label e.g. "Drift activated" / "Zero-Point" / "NARC rising" / "Emotional overload" / "Collapse">,
  "drift_state": <short string e.g. "Moderate · rising" or "Aligned" or "Critical">,
- "dominant_code": <"NARC" | "YARC" | "SIST" | "Øll">,
+ "dominant_code": <"NARC" | "YARC" | "CIST" | "Øll">,
  "observer_codes": {
  "narc": <integer 0-100>,
  "yarc": <integer 0-100>,
@@ -1199,7 +1199,7 @@ Dominant Code : ${results.dominant_code}
 
 NARC ${results.observer_codes.narc}%
 YARC ${results.observer_codes.yarc}%
-SIST ${results.observer_codes.sist}%
+CIST ${results.observer_codes.sist}%
 Øll ${results.observer_codes.oll}%
 \`\`\``;
 
